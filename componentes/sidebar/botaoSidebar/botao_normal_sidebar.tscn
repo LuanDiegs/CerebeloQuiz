@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://da8wliqqanqml"]
+
+[ext_resource type="Theme" uid="uid://8xh3gdu6447r" path="res://componentes/sidebar/botaoSidebar/botao_normal_sidebarTema.tres" id="1_oqb0d"]
+
+[node name="BotaoNormal" type="Button"]
+offset_right = 230.0
+offset_bottom = 75.0
+theme = ExtResource("1_oqb0d")
+text = "Botao"

@@ -11,14 +11,21 @@ config_version=5
 [application]
 
 config/name="CerebeloQuiz"
+config/version="0.1"
 run/main_scene="res://cenas/index.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+TransicaoCena="*res://cenas/transicoes-de-cena/transicao_cena.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
