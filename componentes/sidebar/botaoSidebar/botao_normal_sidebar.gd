@@ -5,3 +5,4 @@ class_name BotaoMenuSidebar
 
 func _on_pressed():
 	TransicaoCena.trocar_cena(redirecionarPara)
+	var teste;
