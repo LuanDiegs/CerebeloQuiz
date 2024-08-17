@@ -4,6 +4,6 @@
 
 [node name="BotaoNormal" type="Button"]
 offset_right = 230.0
-offset_bottom = 75.0
+offset_bottom = 65.0
 theme = ExtResource("1_oqb0d")
 text = "Botao"

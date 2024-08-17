@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://kn80jvfuvsx6"]
 
-[ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_xvn1g"]
+[ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_lrvm3"]
 
 [node name="Login" type="Control"]
 layout_mode = 3
@@ -10,5 +10,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sidebar" parent="." instance=ExtResource("1_xvn1g")]
+[node name="Sidebar" parent="." instance=ExtResource("1_lrvm3")]
 layout_mode = 0
