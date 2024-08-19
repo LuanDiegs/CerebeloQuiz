@@ -1,6 +1,7 @@
 extends Button
 class_name BotaoMenuSidebar
 
+
 @export var redirecionarPara: String
 
 
