@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://00qaslrwjpwy"]
+
+[ext_resource type="Theme" uid="uid://cr75nofmmxdg7" path="res://resources/Themes/LineEditwithBorder.tres" id="1_sfmt2"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_hvjb1"]
+[ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="3_o46i7"]
+[ext_resource type="Texture2D" uid="uid://do3xi1txsir1d" path="res://resources/imagens/2lupa.png" id="4_kna3q"]
+
+[node name="Header" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_sfmt2")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(900, 50)
+layout_mode = 0
+offset_left = 290.0
+offset_top = 40.0
+offset_right = 1240.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_hvjb1")
+theme_override_font_sizes/font_size = 32
+text = "MEUS QUIZZES FAVORITOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 120.0
+offset_right = 990.0
+offset_bottom = 170.0
+focus_neighbor_right = NodePath(".")
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_o46i7")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Digite o nome do quiz ou do usuário para pesquisar..."
+max_length = 650
+right_icon = ExtResource("4_kna3q")
