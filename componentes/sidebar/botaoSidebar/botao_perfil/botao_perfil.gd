@@ -1,0 +1,2 @@
+extends BotaoMenuSidebar
+class_name BotaoPerfil

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0ma7k43jqbmc"]
+
+[ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_v8eap"]
+[ext_resource type="PackedScene" uid="uid://c3442ngep7hm" path="res://componentes/inputs/input_Padrao/input_padrao.tscn" id="2_1pu6w"]
+
+[node name="CadastroUsuario" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fundo" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Fundo"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sidebar" parent="." instance=ExtResource("1_v8eap")]
+layout_mode = 0
+
+[node name="Formulario" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InputPadrao" parent="Formulario" instance=ExtResource("2_1pu6w")]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 294.0
+offset_right = 756.0
+offset_bottom = 344.0
+placeholder = "Insira um email válido"
+labelTexto = "Email:"
