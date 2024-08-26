@@ -13,11 +13,21 @@ func _ready():
 	cadastrar_botao.connect("pressed", cadastrarUsuario)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func cadastrarUsuario() -> void:
 	var usuario = Usuarios.new(usuario.text, email.text, senha.text, data_nascimento.text, telefone.text)
-	BD.inserirDados(EntidadeConstantes.UsuarioTabela, usuario.dadoAInserir)
+	var response = BD.inserirDados(EntidadeConstantes.UsuarioTabela, usuario.dadoAInserir)
+	
+#	Se retornar true significa que a inserção foi um sucesso
+	if(response):
+		limparCampos()
+		print("Sucesso")
+	else:
+		print("Erro")
+		
+		
+func limparCampos():
+	usuario.clear()
+	email.clear()
+	senha.clear()
+	data_nascimento.clear()
+	telefone.clear()
