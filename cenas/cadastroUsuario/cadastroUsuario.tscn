@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0ma7k43jqbmc"]
+[gd_scene load_steps=5 format=3 uid="uid://d0ma7k43jqbmc"]
 
+[ext_resource type="Script" path="res://cenas/cadastroUsuario/cadastro_usuario.gd" id="1_dgeut"]
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_v8eap"]
 [ext_resource type="PackedScene" uid="uid://c3442ngep7hm" path="res://componentes/inputs/input_Padrao/input_padrao.tscn" id="2_1pu6w"]
+[ext_resource type="PackedScene" uid="uid://cvcug70t0ygmf" path="res://componentes/botoes/botao_normal.tscn" id="3_gybhb"]
 
 [node name="CadastroUsuario" type="Control"]
 layout_mode = 3
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dgeut")
 
 [node name="Fundo" type="CanvasLayer" parent="."]
 layer = -1
@@ -26,14 +29,69 @@ layout_mode = 0
 
 [node name="Formulario" type="Control" parent="."]
 anchors_preset = 0
+offset_top = -8.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 32.0
 
-[node name="InputPadrao" parent="Formulario" instance=ExtResource("2_1pu6w")]
+[node name="Email" parent="Formulario" instance=ExtResource("2_1pu6w")]
 layout_mode = 0
-offset_left = 356.0
-offset_top = 294.0
-offset_right = 756.0
-offset_bottom = 344.0
+offset_left = 358.0
+offset_top = 289.0
+offset_right = 758.0
+offset_bottom = 339.0
 placeholder = "Insira um email válido"
 labelTexto = "Email:"
+
+[node name="Usuario" parent="Formulario" instance=ExtResource("2_1pu6w")]
+layout_mode = 0
+offset_left = 789.0
+offset_top = 289.0
+offset_right = 1189.0
+offset_bottom = 339.0
+placeholder = "Insire seu nome de usuário"
+labelTexto = "Usuário:"
+
+[node name="DataNascimento" parent="Formulario" instance=ExtResource("2_1pu6w")]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 394.0
+offset_right = 758.0
+offset_bottom = 444.0
+placeholder = "Insira sua data de nascimento"
+labelTexto = "Data de nascimento:"
+
+[node name="Telefone" parent="Formulario" instance=ExtResource("2_1pu6w")]
+layout_mode = 0
+offset_left = 789.0
+offset_top = 394.0
+offset_right = 1189.0
+offset_bottom = 444.0
+placeholder = "Insira seu telefone"
+labelTexto = "Telefone:"
+
+[node name="Senha" parent="Formulario" instance=ExtResource("2_1pu6w")]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 501.0
+offset_right = 760.0
+offset_bottom = 551.0
+placeholder = "Insira sua senha"
+labelTexto = "Senha:"
+
+[node name="ConfirmaSenha" parent="Formulario" instance=ExtResource("2_1pu6w")]
+layout_mode = 0
+offset_left = 791.0
+offset_top = 501.0
+offset_right = 1191.0
+offset_bottom = 551.0
+placeholder = "Confirme sua senha"
+labelTexto = "Confirme sua senha:"
+
+[node name="CadastrarBotao" parent="Formulario" instance=ExtResource("3_gybhb")]
+layout_mode = 0
+offset_left = 574.0
+offset_top = 589.0
+offset_right = 974.0
+offset_bottom = 639.0
+text = "CADASTRAR
+"

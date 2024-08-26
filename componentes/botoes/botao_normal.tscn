@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvcug70t0ygmf"]
+
+[ext_resource type="Theme" uid="uid://cro4iukemjhou" path="res://componentes/botoes/botao_normalTema.tres" id="1_o1kh7"]
+
+[node name="BotaoNormal" type="Button"]
+custom_minimum_size = Vector2(400, 50)
+offset_right = 350.0
+offset_bottom = 35.0
+theme = ExtResource("1_o1kh7")
+text = "Botao"

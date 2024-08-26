@@ -3,7 +3,7 @@ class_name Usuarios
 
 var dadoAInserir: Dictionary
 
-func _init(nome: String, email: String, senha: String, dataNascimento: String, telefone: int):
+func _init(nome: String, email: String, senha: String, dataNascimento: String, telefone: String):
 	self.dadoAInserir = {
 		"nome": nome,
 		"email": email,
