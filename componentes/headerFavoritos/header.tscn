@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://00qaslrwjpwy"]
 
-[ext_resource type="Theme" uid="uid://cr75nofmmxdg7" path="res://resources/Themes/LineEditwithBorder.tres" id="1_sfmt2"]
+[ext_resource type="Theme" uid="uid://dfqbmqxldc5bw" path="res://resources/Themes/OptionButtonwithBorder.tres" id="1_cf7l6"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_hvjb1"]
 [ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="3_o46i7"]
 [ext_resource type="Texture2D" uid="uid://do3xi1txsir1d" path="res://resources/imagens/2lupa.png" id="4_kna3q"]
@@ -10,7 +10,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme = ExtResource("1_sfmt2")
+theme = ExtResource("1_cf7l6")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
@@ -41,3 +41,22 @@ theme_override_font_sizes/font_size = 24
 placeholder_text = "Digite o nome do quiz ou do usuário para pesquisar..."
 max_length = 650
 right_icon = ExtResource("4_kna3q")
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 1010.0
+offset_top = 120.0
+offset_right = 1240.0
+offset_bottom = 170.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_o46i7")
+theme_override_font_sizes/font_size = 24
+selected = 0
+item_count = 3
+popup/item_0/text = "FILTRAR"
+popup/item_1/text = "RECENTES"
+popup/item_1/id = 1
+popup/item_2/text = "PRÓPRIOS"
+popup/item_2/id = 2

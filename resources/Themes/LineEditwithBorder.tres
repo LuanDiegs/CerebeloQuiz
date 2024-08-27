@@ -13,3 +13,4 @@ border_color = Color(0.117647, 0.117647, 0.117647, 1)
 [resource]
 Label/styles/normal = SubResource("StyleBoxFlat_kbnly")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_4jkqp")
+OptionButton/font_sizes/font_size = 24

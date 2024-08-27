@@ -1,0 +1,38 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dfqbmqxldc5bw"]
+
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="1_25bjj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbnly"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 1
+border_color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jkqp"]
+bg_color = Color(1, 1, 1, 1)
+border_width_bottom = 2
+border_color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3hl7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4haoi"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+default_font = ExtResource("1_25bjj")
+default_font_size = 24
+Label/styles/normal = SubResource("StyleBoxFlat_kbnly")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_4jkqp")
+OptionButton/font_sizes/font_size = 24
+OptionButton/styles/focus = SubResource("StyleBoxFlat_o3hl7")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_4haoi")
