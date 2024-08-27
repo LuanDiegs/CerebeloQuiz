@@ -14,8 +14,8 @@ func _ready():
 
 
 func cadastrarUsuario() -> void:
-	var usuario = Usuarios.new(usuario.text, email.text, senha.text, data_nascimento.text, telefone.text)
-	var response = BD.inserirDados(EntidadeConstantes.UsuarioTabela, usuario.dadoAInserir)
+	var usuario = Usuarios.new().instanciaEntidade(usuario.text, email.text, senha.text, data_nascimento.text, telefone.text)
+	var response = BD.inserirDados(EntidadeConstantes.UsuarioTabela, usuario)
 	
 #	Se retornar true significa que a inserção foi um sucesso
 	if(response):

@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 TransicaoCena="*res://cenas/transicoes-de-cena/transicao_cena.tscn"
 BD="*res://banco_de_dados/banco_de_dados.gd"
 EntidadeConstantes="*res://banco_de_dados/entidades/entidades_constantes.gd"
+SessaoUsuario="*res://globals/sessao.gd"
 
 [display]
 

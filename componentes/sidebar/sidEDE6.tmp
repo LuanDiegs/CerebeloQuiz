@@ -1,0 +1,162 @@
+[gd_scene load_steps=9 format=3 uid="uid://4ykp06og1xp2"]
+
+[ext_resource type="Theme" uid="uid://crxo0r1ylmse7" path="res://componentes/sidebar/sidebarTema.tres" id="1_b34h6"]
+[ext_resource type="Script" path="res://componentes/sidebar/sidebar.gd" id="2_lbasx"]
+[ext_resource type="PackedScene" uid="uid://da8wliqqanqml" path="res://componentes/sidebar/botaoSidebar/botao_normal_sidebar.tscn" id="2_orqhk"]
+[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botao_perfil/botao_perfil.gd" id="3_0723v"]
+[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botao_normal_sidebar.gd" id="3_mnyfy"]
+[ext_resource type="Theme" uid="uid://bqahw306y08uc" path="res://componentes/sidebar/botaoSidebar/botao_criar_quizz/botao_criar_quizz_sidebarTema.tres" id="4_04r82"]
+[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botao_criar_quizz/botao_criar_quizz.gd" id="4_61853"]
+[ext_resource type="Texture2D" uid="uid://2qx50vmr5d24" path="res://resources/imagens/body-organ 64px.png" id="5_pvyk5"]
+
+[node name="Sidebar" type="Panel" groups=["botaoPerfil"]]
+offset_right = 250.0
+offset_bottom = 720.0
+theme = ExtResource("1_b34h6")
+script = ExtResource("2_lbasx")
+
+[node name="SessaoDeUsuario" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ContainerUsuario" type="MarginContainer" parent="SessaoDeUsuario"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 100.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="Separador" type="Line2D" parent="SessaoDeUsuario/ContainerUsuario"]
+position = Vector2(0, 107)
+points = PackedVector2Array(0, -5, 250, -5)
+width = 1.0
+sharp_limit = 1.0
+round_precision = 1
+antialiased = true
+
+[node name="Perfil" parent="SessaoDeUsuario/ContainerUsuario" groups=["botaoPerfil"] instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(230, 65)
+layout_mode = 2
+text = "[PERFIL]"
+script = ExtResource("3_0723v")
+redirecionarPara = "res://cenas/cadastroUsuario/cadastroUsuario.tscn"
+
+[node name="SessaoCentral" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SessaoCentral"]
+layout_mode = 0
+offset_top = 102.0
+offset_right = 250.0
+offset_bottom = 646.0
+
+[node name="BotaoCriarQuiz" type="MarginContainer" parent="SessaoCentral/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="CriarQuiz" parent="SessaoCentral/VBoxContainer/BotaoCriarQuiz" node_paths=PackedStringArray("iconBotaoCriarQuiz") instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(230, 65)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("4_04r82")
+text = "CRIAR QUIZ"
+icon_alignment = 1
+script = ExtResource("4_61853")
+iconBotaoCriarQuiz = NodePath("../../../IconBotaoCriarQuiz")
+
+[node name="ContainerBotoesCentrais2" type="MarginContainer" parent="SessaoCentral/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxBotoesCentrais" type="VBoxContainer" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="QuizzesPopulares" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(230, 65)
+layout_mode = 2
+size_flags_vertical = 0
+text = "QUIZZES 
+POPULARES"
+script = ExtResource("3_mnyfy")
+
+[node name="MeusQuizes" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(230, 65)
+layout_mode = 2
+size_flags_vertical = 0
+text = "MEUS QUIZZES"
+script = ExtResource("3_mnyfy")
+
+[node name="QuizzesFavoritos" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(230, 65)
+layout_mode = 2
+size_flags_vertical = 0
+text = "QUIZZES
+FAVORITOS"
+script = ExtResource("3_mnyfy")
+redirecionarPara = "res://cenas/quizzes favoritos/favoritos.tscn"
+
+[node name="PerguntasFrequentes" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(230, 65)
+layout_mode = 2
+size_flags_vertical = 0
+text = "PERGUNTAS
+FREQUENTES"
+script = ExtResource("3_mnyfy")
+
+[node name="SobreNos" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(230, 65)
+layout_mode = 2
+size_flags_vertical = 0
+text = "SOBRE NÓS"
+script = ExtResource("3_mnyfy")
+
+[node name="IconBotaoCriarQuiz" type="TextureRect" parent="SessaoCentral"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 131.0
+offset_right = 99.0
+offset_bottom = 195.0
+scale = Vector2(0.572493, 0.572493)
+texture = ExtResource("5_pvyk5")
+
+[node name="SessaoDeLogin" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ContainerSessaoLogin" type="MarginContainer" parent="SessaoDeLogin"]
+layout_mode = 0
+offset_top = 620.0
+offset_right = 250.0
+offset_bottom = 720.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="Separador" type="Line2D" parent="SessaoDeLogin/ContainerSessaoLogin"]
+position = Vector2(0, 5)
+points = PackedVector2Array(0, -5, 250, -5)
+width = 1.0
+sharp_limit = 1.0
+round_precision = 1
+antialiased = true
+
+[node name="Login" parent="SessaoDeLogin/ContainerSessaoLogin" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(230, 65)
+layout_mode = 2
+text = "LOGIN"
+script = ExtResource("3_mnyfy")
+redirecionarPara = "res://cenas/login/login.tscn"
