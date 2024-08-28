@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0ma7k43jqbmc"]
 
-[ext_resource type="Script" path="res://cenas/cadastroUsuario/cadastro_usuario.gd" id="1_dgeut"]
+[ext_resource type="Script" path="res://cenas/cadastroUsuario/cadastroUsuario.gd" id="1_dgeut"]
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_v8eap"]
-[ext_resource type="PackedScene" uid="uid://c3442ngep7hm" path="res://componentes/inputs/input_Padrao/input_padrao.tscn" id="2_1pu6w"]
-[ext_resource type="PackedScene" uid="uid://cvcug70t0ygmf" path="res://componentes/botoes/botao_normal.tscn" id="3_gybhb"]
+[ext_resource type="PackedScene" uid="uid://c3442ngep7hm" path="res://componentes/inputs/input_padrao/inputPadrao.tscn" id="2_1pu6w"]
+[ext_resource type="PackedScene" uid="uid://cvcug70t0ygmf" path="res://componentes/botoes/botaoNormal.tscn" id="3_gybhb"]
 
 [node name="CadastroUsuario" type="Control"]
 layout_mode = 3
@@ -26,72 +26,103 @@ grow_vertical = 2
 
 [node name="Sidebar" parent="." instance=ExtResource("1_v8eap")]
 layout_mode = 0
+anchor_right = 0.195313
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Formulario" type="Control" parent="."]
-anchors_preset = 0
-offset_top = -8.0
-offset_right = 40.0
-offset_bottom = 32.0
+layout_mode = 1
+anchor_left = 0.196
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.119995
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Email" parent="Formulario" instance=ExtResource("2_1pu6w")]
 layout_mode = 0
-offset_left = 358.0
-offset_top = 289.0
-offset_right = 758.0
-offset_bottom = 339.0
+anchor_left = 0.100097
+anchor_top = 0.405556
+anchor_right = 0.488824
+anchor_bottom = 0.475
+offset_right = 0.0
+offset_bottom = 0.0
 placeholder = "Insira um email válido"
 labelTexto = "Email:"
+metadata/_edit_use_anchors_ = true
 
 [node name="Usuario" parent="Formulario" instance=ExtResource("2_1pu6w")]
 layout_mode = 0
-offset_left = 789.0
-offset_top = 289.0
-offset_right = 1189.0
-offset_bottom = 339.0
+anchor_left = 0.51895
+anchor_top = 0.405556
+anchor_right = 0.907677
+anchor_bottom = 0.475
+offset_right = 0.0
+offset_bottom = 0.0
 placeholder = "Insire seu nome de usuário"
 labelTexto = "Usuário:"
+metadata/_edit_use_anchors_ = true
 
 [node name="DataNascimento" parent="Formulario" instance=ExtResource("2_1pu6w")]
 layout_mode = 0
-offset_left = 358.0
-offset_top = 394.0
-offset_right = 758.0
-offset_bottom = 444.0
+anchor_left = 0.100097
+anchor_top = 0.551389
+anchor_right = 0.488824
+anchor_bottom = 0.620833
+offset_top = 3.05176e-05
+offset_right = 0.0
+offset_bottom = 0.0
 placeholder = "Insira sua data de nascimento"
 labelTexto = "Data de nascimento:"
+metadata/_edit_use_anchors_ = true
 
 [node name="Telefone" parent="Formulario" instance=ExtResource("2_1pu6w")]
 layout_mode = 0
-offset_left = 789.0
-offset_top = 394.0
-offset_right = 1189.0
-offset_bottom = 444.0
+anchor_left = 0.51895
+anchor_top = 0.551389
+anchor_right = 0.907677
+anchor_bottom = 0.620833
+offset_top = 3.05176e-05
+offset_right = 0.0
+offset_bottom = 0.0
 placeholder = "Insira seu telefone"
 labelTexto = "Telefone:"
+metadata/_edit_use_anchors_ = true
 
 [node name="Senha" parent="Formulario" instance=ExtResource("2_1pu6w")]
 layout_mode = 0
-offset_left = 360.0
-offset_top = 501.0
-offset_right = 760.0
-offset_bottom = 551.0
+anchor_left = 0.102041
+anchor_top = 0.7
+anchor_right = 0.490768
+anchor_bottom = 0.769444
+offset_right = 0.0
+offset_bottom = 0.0
 placeholder = "Insira sua senha"
 labelTexto = "Senha:"
+metadata/_edit_use_anchors_ = true
 
 [node name="ConfirmaSenha" parent="Formulario" instance=ExtResource("2_1pu6w")]
 layout_mode = 0
-offset_left = 791.0
-offset_top = 501.0
-offset_right = 1191.0
-offset_bottom = 551.0
+anchor_left = 0.520894
+anchor_top = 0.7
+anchor_right = 0.909621
+anchor_bottom = 0.769444
+offset_right = 0.0
+offset_bottom = 0.0
 placeholder = "Confirme sua senha"
 labelTexto = "Confirme sua senha:"
+metadata/_edit_use_anchors_ = true
 
 [node name="CadastrarBotao" parent="Formulario" instance=ExtResource("3_gybhb")]
 layout_mode = 0
-offset_left = 574.0
-offset_top = 589.0
-offset_right = 974.0
-offset_bottom = 639.0
+anchor_left = 0.31001
+anchor_top = 0.822222
+anchor_right = 0.698737
+anchor_bottom = 0.891667
+offset_right = 0.0
+offset_bottom = 0.0
 text = "CADASTRAR
 "
+metadata/_edit_use_anchors_ = true

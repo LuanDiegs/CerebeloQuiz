@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://4ykp06og1xp2"]
+[gd_scene load_steps=10 format=3 uid="uid://4ykp06og1xp2"]
 
 [ext_resource type="Theme" uid="uid://crxo0r1ylmse7" path="res://componentes/sidebar/sidebarTema.tres" id="1_b34h6"]
 [ext_resource type="Script" path="res://componentes/sidebar/sidebar.gd" id="2_lbasx"]
-[ext_resource type="PackedScene" uid="uid://da8wliqqanqml" path="res://componentes/sidebar/botaoSidebar/botao_normal_sidebar.tscn" id="2_orqhk"]
-[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botao_perfil/botao_perfil.gd" id="3_0723v"]
-[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botao_normal_sidebar.gd" id="3_mnyfy"]
-[ext_resource type="Theme" uid="uid://bqahw306y08uc" path="res://componentes/sidebar/botaoSidebar/botao_criar_quizz/botao_criar_quizz_sidebarTema.tres" id="4_04r82"]
-[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botao_criar_quizz/botao_criar_quizz.gd" id="4_61853"]
+[ext_resource type="PackedScene" uid="uid://da8wliqqanqml" path="res://componentes/sidebar/botaoSidebar/botaoNormalSidebar.tscn" id="2_orqhk"]
+[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botaoPerfil/botaoPerfil.gd" id="3_0723v"]
+[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botaoNormalSidebar.gd" id="3_mnyfy"]
+[ext_resource type="Theme" uid="uid://bqahw306y08uc" path="res://componentes/sidebar/botaoSidebar/botaoCriarQuizz/botaoCriarQuizzSidebarTema.tres" id="4_04r82"]
+[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botaoCriarQuizz/botaoCriarQuizz.gd" id="4_61853"]
 [ext_resource type="Texture2D" uid="uid://2qx50vmr5d24" path="res://resources/imagens/body-organ 64px.png" id="5_pvyk5"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="9_7vew8"]
 
 [node name="Sidebar" type="Panel" groups=["botaoPerfil"]]
 offset_right = 250.0
@@ -16,14 +17,16 @@ theme = ExtResource("1_b34h6")
 script = ExtResource("2_lbasx")
 
 [node name="SessaoDeUsuario" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.14
+offset_bottom = 0.199997
 
 [node name="ContainerUsuario" type="MarginContainer" parent="SessaoDeUsuario"]
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 100.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 10
@@ -45,24 +48,30 @@ script = ExtResource("3_0723v")
 redirecionarPara = "res://cenas/cadastroUsuario/cadastroUsuario.tscn"
 
 [node name="SessaoCentral" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_top = 0.143
+anchor_right = 1.004
+anchor_bottom = 0.86
+offset_top = 0.0399933
+offset_right = -1.00002
+offset_bottom = -0.200012
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SessaoCentral"]
-layout_mode = 0
-offset_top = 102.0
-offset_right = 250.0
-offset_bottom = 646.0
+[node name="SessaoCentral" type="VBoxContainer" parent="SessaoCentral"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="BotaoCriarQuiz" type="MarginContainer" parent="SessaoCentral/VBoxContainer"]
+[node name="BotaoCriarQuiz" type="MarginContainer" parent="SessaoCentral/SessaoCentral"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 15
 
-[node name="CriarQuiz" parent="SessaoCentral/VBoxContainer/BotaoCriarQuiz" node_paths=PackedStringArray("iconBotaoCriarQuiz") instance=ExtResource("2_orqhk")]
+[node name="CriarQuiz" parent="SessaoCentral/SessaoCentral/BotaoCriarQuiz" node_paths=PackedStringArray("iconBotaoCriarQuiz") instance=ExtResource("2_orqhk")]
 custom_minimum_size = Vector2(230, 65)
 layout_mode = 2
 size_flags_vertical = 0
@@ -71,19 +80,20 @@ text = "CRIAR QUIZ"
 icon_alignment = 1
 script = ExtResource("4_61853")
 iconBotaoCriarQuiz = NodePath("../../../IconBotaoCriarQuiz")
+redirecionarPara = "res://cenas/criarQuiz/criarQuiz.tscn"
 
-[node name="ContainerBotoesCentrais2" type="MarginContainer" parent="SessaoCentral/VBoxContainer"]
+[node name="ContainerBotoesCentrais" type="MarginContainer" parent="SessaoCentral/SessaoCentral"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxBotoesCentrais" type="VBoxContainer" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2"]
+[node name="VBoxBotoesCentrais" type="VBoxContainer" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="QuizzesPopulares" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+[node name="QuizzesPopulares" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
 custom_minimum_size = Vector2(230, 65)
 layout_mode = 2
 size_flags_vertical = 0
@@ -91,23 +101,23 @@ text = "QUIZZES
 POPULARES"
 script = ExtResource("3_mnyfy")
 
-[node name="MeusQuizes" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+[node name="MeusQuizes" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
 custom_minimum_size = Vector2(230, 65)
 layout_mode = 2
 size_flags_vertical = 0
 text = "MEUS QUIZZES"
 script = ExtResource("3_mnyfy")
 
-[node name="QuizzesFavoritos" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+[node name="QuizzesFavoritos" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
 custom_minimum_size = Vector2(230, 65)
 layout_mode = 2
 size_flags_vertical = 0
 text = "QUIZZES
 FAVORITOS"
 script = ExtResource("3_mnyfy")
-redirecionarPara = "res://cenas/quizzes favoritos/favoritos.tscn"
+redirecionarPara = "res://cenas/quizzesFavoritos/quizzesFavoritos.tscn"
 
-[node name="PerguntasFrequentes" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+[node name="PerguntasFrequentes" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
 custom_minimum_size = Vector2(230, 65)
 layout_mode = 2
 size_flags_vertical = 0
@@ -115,7 +125,7 @@ text = "PERGUNTAS
 FREQUENTES"
 script = ExtResource("3_mnyfy")
 
-[node name="SobreNos" parent="SessaoCentral/VBoxContainer/ContainerBotoesCentrais2/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+[node name="SobreNos" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
 custom_minimum_size = Vector2(230, 65)
 layout_mode = 2
 size_flags_vertical = 0
@@ -124,23 +134,41 @@ script = ExtResource("3_mnyfy")
 
 [node name="IconBotaoCriarQuiz" type="TextureRect" parent="SessaoCentral"]
 layout_mode = 0
-offset_left = 35.0
-offset_top = 131.0
-offset_right = 99.0
-offset_bottom = 195.0
+offset_left = 33.0
+offset_top = 29.0
+offset_right = 97.0
+offset_bottom = 93.0
 scale = Vector2(0.572493, 0.572493)
 texture = ExtResource("5_pvyk5")
 
+[node name="VersaoSoftware" type="Label" parent="SessaoCentral"]
+layout_mode = 0
+offset_top = 494.0
+offset_right = 250.0
+offset_bottom = 517.0
+theme_override_fonts/font = ExtResource("9_7vew8")
+theme_override_font_sizes/font_size = 16
+text = "
+"
+horizontal_alignment = 1
+
 [node name="SessaoDeLogin" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_top = 0.862
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.359985
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ContainerSessaoLogin" type="MarginContainer" parent="SessaoDeLogin"]
-layout_mode = 0
-offset_top = 620.0
-offset_right = 250.0
-offset_bottom = 720.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 10

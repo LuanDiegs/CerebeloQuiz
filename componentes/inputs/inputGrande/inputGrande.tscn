@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwnglevk7xndx"]
+
+[ext_resource type="Theme" uid="uid://bkysxn3qk6hqy" path="res://componentes/inputs/inputGrande/inputGrandeTema.tres" id="1_p83ru"]
+
+[node name="InputGrande" type="LineEdit" groups=["botaoPerfil"]]
+custom_minimum_size = Vector2(950, 75)
+offset_right = 600.0
+offset_bottom = 75.0
+theme = ExtResource("1_p83ru")
+placeholder_text = "Insira um texto"

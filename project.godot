@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="CerebeloQuiz"
-config/version="0.1"
+config/version="0.0"
 run/main_scene="res://cenas/index/index.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-TransicaoCena="*res://cenas/transicoes-de-cena/transicao_cena.tscn"
-BD="*res://banco_de_dados/banco_de_dados.gd"
-EntidadeConstantes="*res://banco_de_dados/entidades/entidades_constantes.gd"
+TransicaoCena="*res://cenas/transicaoCena/transicaoCena.tscn"
+BD="*res://bancoDeDados/bancoDeDados.gd"
+EntidadeConstantes="*res://bancoDeDados/entidades/entidadesConstantes.gd"
 SessaoUsuario="*res://globals/sessao.gd"
 
 [display]

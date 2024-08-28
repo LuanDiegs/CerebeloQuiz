@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddljpik6uajgo"]
+
+[ext_resource type="PackedScene" uid="uid://00qaslrwjpwy" path="res://componentes/headerFavoritos/headerFavoritos.tscn" id="1_yp7p5"]
+[ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="2_npobm"]
+
+[node name="Favoritos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Comum" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.196094
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Fundo" type="CanvasLayer" parent="Comum"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Comum/Fundo"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sidebar" parent="Comum" instance=ExtResource("2_npobm")]
+layout_mode = 0
+anchor_right = 0.996015
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Header" parent="." instance=ExtResource("1_yp7p5")]
+layout_mode = 1
+anchor_left = 0.230469
+anchor_top = 0.0694444
+anchor_right = 0.972657
+anchor_bottom = 0.25

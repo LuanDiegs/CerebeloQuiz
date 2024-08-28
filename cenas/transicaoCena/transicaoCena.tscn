@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cg1k83wjryr58"]
 
-[ext_resource type="Script" path="res://cenas/transicoes-de-cena/transicao_cena.gd" id="1_x56ta"]
+[ext_resource type="Script" path="res://cenas/transicaoCena/transicaoCena.gd" id="1_x56ta"]
 
 [sub_resource type="Animation" id="Animation_4o0o2"]
 length = 0.001

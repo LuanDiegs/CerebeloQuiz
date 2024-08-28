@@ -7,32 +7,30 @@
 
 [node name="Header" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_right = 0.742188
+anchor_bottom = 0.180556
 theme = ExtResource("1_cf7l6")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Titulo" type="Label" parent="."]
 custom_minimum_size = Vector2(900, 50)
 layout_mode = 0
-offset_left = 290.0
-offset_top = 40.0
-offset_right = 1240.0
-offset_bottom = 90.0
+anchor_right = 0.999999
+anchor_bottom = 0.384614
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_hvjb1")
 theme_override_font_sizes/font_size = 32
 text = "MEUS QUIZZES FAVORITOS"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="LineEdit" type="LineEdit" parent="."]
-layout_mode = 0
-offset_left = 290.0
-offset_top = 120.0
-offset_right = 990.0
-offset_bottom = 170.0
+[node name="InputPesquisa" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.615383
+anchor_right = 0.736842
+anchor_bottom = 1.02307
 focus_neighbor_right = NodePath(".")
 theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -42,12 +40,12 @@ placeholder_text = "Digite o nome do quiz ou do usuário para pesquisar..."
 max_length = 650
 right_icon = ExtResource("4_kna3q")
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="FiltroBotao" type="OptionButton" parent="."]
 layout_mode = 0
-offset_left = 1010.0
-offset_top = 120.0
-offset_right = 1240.0
-offset_bottom = 170.0
+anchor_left = 0.757894
+anchor_top = 0.615383
+anchor_right = 0.999999
+anchor_bottom = 0.999998
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -60,3 +58,4 @@ popup/item_1/text = "RECENTES"
 popup/item_1/id = 1
 popup/item_2/text = "PRÓPRIOS"
 popup/item_2/id = 2
+metadata/_edit_use_anchors_ = true

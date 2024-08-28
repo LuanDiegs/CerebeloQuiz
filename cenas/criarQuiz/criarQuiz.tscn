@@ -1,0 +1,128 @@
+[gd_scene load_steps=7 format=3 uid="uid://ererdchmeglr"]
+
+[ext_resource type="PackedScene" uid="uid://dwnglevk7xndx" path="res://componentes/inputs/inputGrande/inputGrande.tscn" id="1_47w50"]
+[ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_ccnmd"]
+[ext_resource type="Script" path="res://componentes/inputs/inputGrande/inputGrande.gd" id="3_c1q18"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="4_regbd"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_j3bxe"]
+color = Color(0.227451, 0.258824, 0.521569, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owpwh"]
+
+[node name="Criar-quiz" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Separador" type="HSeparator" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.499
+anchor_right = 1.001
+anchor_bottom = 0.512
+offset_top = -0.279999
+offset_right = -1.28003
+offset_bottom = 0.359985
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_j3bxe")
+
+[node name="Comum" type="Control" parent="."]
+anchors_preset = 0
+anchor_right = 0.196094
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Fundo" type="CanvasLayer" parent="Comum"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Comum/Fundo"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sidebar" parent="Comum" instance=ExtResource("1_ccnmd")]
+layout_mode = 0
+
+[node name="FormularioInicial" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.196
+anchor_right = 1.0
+anchor_bottom = 0.499
+offset_left = 0.119995
+offset_bottom = 3.72
+
+[node name="TituloQuiz" parent="FormularioInicial" instance=ExtResource("1_47w50")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.11
+anchor_right = 0.959
+anchor_bottom = 0.317
+offset_left = -0.0730019
+offset_top = 0.0699959
+offset_right = 1.18896
+offset_bottom = -0.0709991
+script = ExtResource("3_c1q18")
+placeholder = "INSIRA O TÍTULO DO QUIZ"
+
+[node name="Perguntas" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.196094
+anchor_right = 1.0
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HeaderPerguntas" type="VBoxContainer" parent="Perguntas"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.532
+anchor_right = 0.959
+anchor_bottom = 0.59
+offset_left = -0.0730019
+offset_top = -0.0400085
+offset_right = 0.188965
+offset_bottom = 0.199982
+
+[node name="Titulo" type="HBoxContainer" parent="Perguntas/HeaderPerguntas"]
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="Perguntas/HeaderPerguntas/Titulo"]
+custom_minimum_size = Vector2(745, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.172549, 0.2, 0.435294, 1)
+theme_override_fonts/font = ExtResource("4_regbd")
+theme_override_font_sizes/font_size = 30
+text = "Perguntas do seu quiz"
+
+[node name="AdicionarQuiz" type="Button" parent="Perguntas/HeaderPerguntas/Titulo"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="PerguntasScrollContainer" type="ScrollContainer" parent="Perguntas"]
+custom_minimum_size = Vector2(950, 250)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.037
+anchor_top = 0.6
+anchor_right = 0.96
+anchor_bottom = 0.947
+offset_left = -0.0730019
+offset_top = -3.05176e-05
+offset_right = 0.159973
+offset_bottom = 0.159973
+theme_override_styles/panel = SubResource("StyleBoxFlat_owpwh")
+
+[node name="PerguntasContainer" type="VBoxContainer" parent="Perguntas/PerguntasScrollContainer"]
+layout_mode = 2

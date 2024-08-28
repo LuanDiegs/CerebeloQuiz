@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3442ngep7hm"]
 
-[ext_resource type="Theme" uid="uid://dr6uapej5umyj" path="res://componentes/inputs/input_Padrao/input_padrao_tema.tres" id="1_oxaw1"]
+[ext_resource type="Theme" uid="uid://dr6uapej5umyj" path="res://componentes/inputs/input_padrao/inputPadraoTema.tres" id="1_oxaw1"]
 [ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="2_1wqlo"]
-[ext_resource type="Script" path="res://componentes/inputs/input_Padrao/input_padrao.gd" id="2_cjebn"]
+[ext_resource type="Script" path="res://componentes/inputs/input_padrao/inputPadrao.gd" id="2_cjebn"]
 
 [node name="InputPadrao" type="LineEdit" groups=["botaoPerfil"]]
 offset_right = 400.0
