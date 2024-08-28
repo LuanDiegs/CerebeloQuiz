@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://bqahw306y08uc"]
 
-[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="1_jhmya"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_7uq5f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2f6dl"]
 content_margin_left = 25.0
@@ -43,7 +43,7 @@ corner_radius_bottom_left = 15
 [resource]
 Button/constants/h_separation = 0
 Button/font_sizes/font_size = 22
-Button/fonts/font = ExtResource("1_jhmya")
+Button/fonts/font = ExtResource("1_7uq5f")
 Button/styles/focus = SubResource("StyleBoxFlat_2f6dl")
 Button/styles/hover = SubResource("StyleBoxFlat_b5j86")
 Button/styles/normal = SubResource("StyleBoxFlat_w82c0")

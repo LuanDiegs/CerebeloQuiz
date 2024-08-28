@@ -1,17 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://ererdchmeglr"]
+[gd_scene load_steps=6 format=3 uid="uid://ererdchmeglr"]
 
 [ext_resource type="PackedScene" uid="uid://dwnglevk7xndx" path="res://componentes/inputs/inputGrande/inputGrande.tscn" id="1_47w50"]
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_ccnmd"]
 [ext_resource type="Script" path="res://componentes/inputs/inputGrande/inputGrande.gd" id="3_c1q18"]
-[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="4_regbd"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="3_rmhbx"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_j3bxe"]
 color = Color(0.227451, 0.258824, 0.521569, 1)
 grow_begin = 0.0
 grow_end = 0.0
 thickness = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owpwh"]
 
 [node name="Criar-quiz" type="Control"]
 layout_mode = 3
@@ -68,30 +66,29 @@ anchor_top = 0.11
 anchor_right = 0.959
 anchor_bottom = 0.317
 offset_left = -0.0730019
-offset_top = 0.0699959
-offset_right = 1.18896
-offset_bottom = -0.0709991
+offset_top = -8.93
+offset_right = 1.18903
+offset_bottom = -9.071
+theme_override_fonts/font = ExtResource("3_rmhbx")
 script = ExtResource("3_c1q18")
 placeholder = "INSIRA O TÍTULO DO QUIZ"
 
 [node name="Perguntas" type="Control" parent="."]
 layout_mode = 1
 anchor_left = 0.196094
+anchor_top = 0.504167
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.00278
 metadata/_edit_use_anchors_ = true
 
 [node name="HeaderPerguntas" type="VBoxContainer" parent="Perguntas"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.037
-anchor_top = 0.532
-anchor_right = 0.959
-anchor_bottom = 0.59
-offset_left = -0.0730019
-offset_top = -0.0400085
-offset_right = 0.188965
-offset_bottom = 0.199982
+anchor_left = 0.0369291
+anchor_top = 0.0779944
+anchor_right = 0.959184
+anchor_bottom = 0.195632
+metadata/_edit_use_anchors_ = true
 
 [node name="Titulo" type="HBoxContainer" parent="Perguntas/HeaderPerguntas"]
 layout_mode = 2
@@ -100,7 +97,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(745, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.172549, 0.2, 0.435294, 1)
-theme_override_fonts/font = ExtResource("4_regbd")
+theme_override_fonts/font = ExtResource("3_rmhbx")
 theme_override_font_sizes/font_size = 30
 text = "Perguntas do seu quiz"
 
@@ -114,15 +111,48 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(950, 250)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.037
-anchor_top = 0.6
-anchor_right = 0.96
-anchor_bottom = 0.947
-offset_left = -0.0730019
-offset_top = -3.05176e-05
-offset_right = 0.159973
-offset_bottom = 0.159973
-theme_override_styles/panel = SubResource("StyleBoxFlat_owpwh")
+anchor_left = 0.0369291
+anchor_top = 0.220056
+anchor_right = 0.960155
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
 
 [node name="PerguntasContainer" type="VBoxContainer" parent="Perguntas/PerguntasScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Perguntas/PerguntasScrollContainer/PerguntasContainer"]
+custom_minimum_size = Vector2(950, 125)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="Perguntas/PerguntasScrollContainer/PerguntasContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Perguntas/PerguntasScrollContainer/PerguntasContainer"]
+custom_minimum_size = Vector2(950, 125)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="Perguntas/PerguntasScrollContainer/PerguntasContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="Perguntas/PerguntasScrollContainer/PerguntasContainer"]
+custom_minimum_size = Vector2(950, 125)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="Perguntas/PerguntasScrollContainer/PerguntasContainer/MarginContainer3"]
 layout_mode = 2
