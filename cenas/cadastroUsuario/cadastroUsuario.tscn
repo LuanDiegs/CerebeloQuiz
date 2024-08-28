@@ -25,11 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sidebar" parent="." instance=ExtResource("1_v8eap")]
-layout_mode = 0
-anchor_right = 0.195313
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
+layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Formulario" type="Control" parent="."]
