@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctv8byspwkxmf"]
+
+[ext_resource type="Script" path="res://componentes/containerPerguntaCriacaoQuiz/container_pergunta_criacao_quiz.gd" id="1_8nlb1"]
+[ext_resource type="Theme" uid="uid://blp8ujo6bo4cc" path="res://componentes/containerPerguntaCriacaoQuiz/containerPerguntaCriacaoQuizTema.tres" id="1_y6v5s"]
+
+[node name="ContainerPerguntaCriacaoQuiz" type="MarginContainer"]
+custom_minimum_size = Vector2(950, 125)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -330.0
+offset_bottom = -595.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_8nlb1")
+
+[node name="PanelQuiz" type="Panel" parent="."]
+custom_minimum_size = Vector2(930, 115)
+layout_mode = 2
+theme = ExtResource("1_y6v5s")
+
+[node name="MarginConteudo" type="MarginContainer" parent="PanelQuiz"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Conteudos" type="HBoxContainer" parent="PanelQuiz/MarginConteudo"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelQuiz/MarginConteudo/Conteudos"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+
+[node name="teste" type="Button" parent="PanelQuiz/MarginConteudo/Conteudos"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
