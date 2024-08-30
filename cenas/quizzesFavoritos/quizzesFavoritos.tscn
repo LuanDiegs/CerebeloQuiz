@@ -1,7 +1,59 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddljpik6uajgo"]
+[gd_scene load_steps=11 format=3 uid="uid://ddljpik6uajgo"]
 
 [ext_resource type="PackedScene" uid="uid://00qaslrwjpwy" path="res://componentes/headerFavoritos/headerFavoritos.tscn" id="1_yp7p5"]
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="2_npobm"]
+[ext_resource type="PackedScene" uid="uid://pnnjrhc43n2r" path="res://componentes/mainFavoritos/mainFavoritos.tscn" id="3_1fgkl"]
+[ext_resource type="Theme" uid="uid://c58th1t7fg6kh" path="res://resources/Themes/TextureRectFavoritos.tres" id="4_hud0k"]
+[ext_resource type="Theme" uid="uid://dxvkfj4obr6uv" path="res://resources/Themes/panelFavoritos.tres" id="4_n2fug"]
+[ext_resource type="Texture2D" uid="uid://7yhd3fbtwe5p" path="res://resources/imagens/noImage.png" id="6_u1vp8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kwa3"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6, 0.6, 0.6, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4282s"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6, 0.6, 0.6, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0fpb"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6, 0.6, 0.6, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvia1"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6, 0.6, 0.6, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="Favoritos" type="Control"]
 layout_mode = 3
@@ -29,6 +81,13 @@ grow_vertical = 2
 
 [node name="Sidebar" parent="Comum" instance=ExtResource("2_npobm")]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.00034
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Header" parent="." instance=ExtResource("1_yp7p5")]
@@ -37,3 +96,75 @@ anchor_left = 0.230469
 anchor_top = 0.0694444
 anchor_right = 0.972657
 anchor_bottom = 0.25
+offset_right = 19.9994
+offset_bottom = -3.05176e-05
+
+[node name="Main" parent="." instance=ExtResource("3_1fgkl")]
+layout_mode = 1
+offset_right = -0.439941
+offset_bottom = -199.84
+theme = ExtResource("4_hud0k")
+
+[node name="quiz1" type="Panel" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.234
+anchor_bottom = 1.0
+offset_right = 0.200012
+theme = ExtResource("4_n2fug")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5kwa3")
+
+[node name="TextureRect" type="TextureRect" parent="Main/quiz1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 36.25
+offset_top = 1.0
+offset_right = -36.25
+offset_bottom = 1.0
+grow_horizontal = 2
+texture = ExtResource("6_u1vp8")
+expand_mode = 5
+
+[node name="quiz2" type="Panel" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.255
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 0.249969
+offset_right = -9.99997
+theme_override_styles/panel = SubResource("StyleBoxFlat_4282s")
+
+[node name="quiz3" type="Panel" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.511
+anchor_right = 0.745
+anchor_bottom = 1.0
+offset_left = -0.450043
+offset_right = -0.250061
+theme_override_styles/panel = SubResource("StyleBoxFlat_e0fpb")
+
+[node name="quiz4" type="Panel" parent="Main"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.766
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.200012
+offset_right = 6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_wvia1")
+
+[node name="VScrollBar" type="VScrollBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.98
+anchor_top = 0.278
+anchor_right = 0.989
+anchor_bottom = 0.972
+offset_left = 0.599976
+offset_top = -0.160034
+offset_right = 0.0799561
+offset_bottom = 0.159973
