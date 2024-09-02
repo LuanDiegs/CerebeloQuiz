@@ -1,11 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddljpik6uajgo"]
+[gd_scene load_steps=9 format=3 uid="uid://ddljpik6uajgo"]
 
 [ext_resource type="PackedScene" uid="uid://00qaslrwjpwy" path="res://componentes/headerFavoritos/headerFavoritos.tscn" id="1_yp7p5"]
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="2_npobm"]
 [ext_resource type="PackedScene" uid="uid://pnnjrhc43n2r" path="res://componentes/mainFavoritos/mainFavoritos.tscn" id="3_1fgkl"]
-[ext_resource type="Theme" uid="uid://c58th1t7fg6kh" path="res://resources/Themes/TextureRectFavoritos.tres" id="4_hud0k"]
-[ext_resource type="Theme" uid="uid://dxvkfj4obr6uv" path="res://resources/Themes/panelFavoritos.tres" id="4_n2fug"]
-[ext_resource type="Texture2D" uid="uid://7yhd3fbtwe5p" path="res://resources/imagens/noImage.png" id="6_u1vp8"]
+[ext_resource type="Theme" uid="uid://c58th1t7fg6kh" path="res://resources/temas/textureRectFavoritos.tres" id="4_hud0k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kwa3"]
 bg_color = Color(1, 1, 1, 1)
@@ -111,7 +109,6 @@ anchors_preset = -1
 anchor_right = 0.234
 anchor_bottom = 1.0
 offset_right = 0.200012
-theme = ExtResource("4_n2fug")
 theme_override_styles/panel = SubResource("StyleBoxFlat_5kwa3")
 
 [node name="TextureRect" type="TextureRect" parent="Main/quiz1"]
@@ -124,7 +121,6 @@ offset_top = 1.0
 offset_right = -36.25
 offset_bottom = 1.0
 grow_horizontal = 2
-texture = ExtResource("6_u1vp8")
 expand_mode = 5
 
 [node name="quiz2" type="Panel" parent="Main"]
