@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://vmqyqb4yfsos"]
+
+[ext_resource type="Theme" uid="uid://bueidph1nopmi" path="res://componentes/popUps/popUpFundo.tres" id="1_4hjoo"]
+[ext_resource type="Script" path="res://componentes/popUps/popUpConfirmacao/popUpConfirmacao.gd" id="2_b1cgn"]
+[ext_resource type="Theme" uid="uid://dvbp11qywc6mv" path="res://componentes/popUps/popUp.tres" id="2_sm57t"]
+
+[node name="FundoPopUp" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 360)
+theme = ExtResource("1_4hjoo")
+script = ExtResource("2_b1cgn")
+
+[node name="PopUp" type="Panel" parent="."]
+custom_minimum_size = Vector2(750, 400)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.207031
+anchor_top = 0.222222
+anchor_right = 0.792969
+anchor_bottom = 0.777778
+offset_left = 234.0
+offset_top = 59.0
+offset_right = -234.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_sm57t")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0ma7k43jqbmc"]
+[gd_scene load_steps=6 format=3 uid="uid://d0ma7k43jqbmc"]
 
 [ext_resource type="Script" path="res://cenas/cadastroUsuario/cadastroUsuario.gd" id="1_dgeut"]
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_v8eap"]
 [ext_resource type="PackedScene" uid="uid://c3442ngep7hm" path="res://componentes/inputs/inputPadrao/inputPadrao.tscn" id="2_1pu6w"]
 [ext_resource type="PackedScene" uid="uid://cvcug70t0ygmf" path="res://componentes/botoes/botaoNormal.tscn" id="3_gybhb"]
+[ext_resource type="PackedScene" uid="uid://vmqyqb4yfsos" path="res://componentes/popUps/popUpConfirmacao/popUpConfirmacao.tscn" id="5_wd38j"]
 
 [node name="CadastroUsuario" type="Control"]
 layout_mode = 3
@@ -122,3 +123,7 @@ offset_bottom = 0.0
 text = "CADASTRAR
 "
 metadata/_edit_use_anchors_ = true
+
+[node name="FundoPopUp" parent="." instance=ExtResource("5_wd38j")]
+layout_mode = 0
+anchors_preset = 0

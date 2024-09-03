@@ -9,6 +9,8 @@ class_name CadastroUsuario
 @onready var confirma_senha = $Formulario/ConfirmaSenha
 @onready var cadastrar_botao = $Formulario/CadastrarBotao
 
+const popUpConfirmacaoComponente = preload("res://componentes/popUps/popUpConfirmacao/popUpConfirmacao.tscn")
+
 func _ready():
 	cadastrar_botao.connect("pressed", cadastrarUsuario)
 
@@ -18,6 +20,9 @@ func cadastrarUsuario() -> void:
 	var response = BD.inserirDados(EntidadeConstantes.UsuarioTabela, usuario)
 	
 #	Se retornar true significa que a inserção foi um sucesso
+	var popUpConfirmacao = popUpConfirmacaoComponente.instantiate() as PopUpConfirmacao
+	PopUp.abrirPopUp(popUpConfirmacao)
+	
 	if(response):
 		limparCampos()
 		print("Sucesso")

@@ -25,5 +25,5 @@ func verificaSessao():
 	else:
 		perfilBotao.text = "DESLOGADO!"
 		loginBotao.text = "LOGIN"
-		criarQuizBotao.visible = false
+		#criarQuizBotao.visible = false
 		icon_botao_criar_quiz.visible = false

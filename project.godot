@@ -22,6 +22,7 @@ TransicaoCena="*res://cenas/transicaoCena/transicaoCena.tscn"
 BD="*res://bancoDeDados/bancoDeDados.gd"
 EntidadeConstantes="*res://bancoDeDados/entidades/entidadesConstantes.gd"
 SessaoUsuario="*res://globals/sessao.gd"
+PopUp="*res://globals/popUpBase.gd"
 
 [display]
 
