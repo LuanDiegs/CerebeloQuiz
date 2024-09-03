@@ -1,57 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddljpik6uajgo"]
+[gd_scene load_steps=4 format=3 uid="uid://ddljpik6uajgo"]
 
 [ext_resource type="PackedScene" uid="uid://00qaslrwjpwy" path="res://componentes/headerFavoritos/headerFavoritos.tscn" id="1_yp7p5"]
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="2_npobm"]
-[ext_resource type="PackedScene" uid="uid://pnnjrhc43n2r" path="res://componentes/mainFavoritos/mainFavoritos.tscn" id="3_1fgkl"]
-[ext_resource type="Theme" uid="uid://c58th1t7fg6kh" path="res://resources/temas/textureRectFavoritos.tres" id="4_hud0k"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kwa3"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.6, 0.6, 0.6, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4282s"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.6, 0.6, 0.6, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0fpb"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.6, 0.6, 0.6, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvia1"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.6, 0.6, 0.6, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[ext_resource type="PackedScene" uid="uid://datycm4pdyx2d" path="res://componentes/mainFavoritos/panel_quiz.tscn" id="3_flwth"]
 
 [node name="Favoritos" type="Control"]
 layout_mode = 3
@@ -97,126 +48,28 @@ anchor_bottom = 0.265278
 offset_right = 19.9994
 offset_bottom = -3.05176e-05
 
-[node name="Main" parent="." instance=ExtResource("3_1fgkl")]
-visible = false
-layout_mode = 1
-offset_right = -0.439941
-offset_bottom = -199.84
-theme = ExtResource("4_hud0k")
-
-[node name="quiz1" type="Panel" parent="Main"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.234
-anchor_bottom = 1.0
-offset_right = 0.200012
-theme_override_styles/panel = SubResource("StyleBoxFlat_5kwa3")
-
-[node name="TextureRect" type="TextureRect" parent="Main/quiz1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 36.25
-offset_top = 1.0
-offset_right = -36.25
-offset_bottom = 1.0
-grow_horizontal = 2
-expand_mode = 5
-
-[node name="quiz2" type="Panel" parent="Main"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.255
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 0.249969
-offset_right = -9.99997
-theme_override_styles/panel = SubResource("StyleBoxFlat_4282s")
-
-[node name="quiz3" type="Panel" parent="Main"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.511
-anchor_right = 0.745
-anchor_bottom = 1.0
-offset_left = -0.450043
-offset_right = -0.250061
-theme_override_styles/panel = SubResource("StyleBoxFlat_e0fpb")
-
-[node name="quiz4" type="Panel" parent="Main"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.766
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.200012
-offset_right = 6.10352e-05
-theme_override_styles/panel = SubResource("StyleBoxFlat_wvia1")
-
-[node name="VScrollBar" type="VScrollBar" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.98
-anchor_top = 0.278
-anchor_right = 0.989
-anchor_bottom = 0.972
-offset_left = 0.599976
-offset_top = -0.160034
-offset_right = 0.0799561
-offset_bottom = 0.159973
-
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.221875
 anchor_top = 0.291667
-anchor_right = 0.979688
-anchor_bottom = 0.972222
-offset_bottom = 1.52588e-05
+anchor_right = 0.98
+anchor_bottom = 0.986
+offset_right = -0.400024
+offset_bottom = 0.0802002
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(239, 300)
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
 
-[node name="Panel2" type="Panel" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(239, 300)
+[node name="PanelQuiz" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
 layout_mode = 2
 
-[node name="Panel3" type="Panel" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(239, 300)
+[node name="PanelQuiz2" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
 layout_mode = 2
 
-[node name="Panel4" type="Panel" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(239, 300)
+[node name="PanelQuiz3" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(239, 300)
-layout_mode = 2
-
-[node name="Panel2" type="Panel" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(239, 300)
-layout_mode = 2
-
-[node name="Panel3" type="Panel" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(239, 300)
-layout_mode = 2
-
-[node name="Panel4" type="Panel" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(239, 300)
+[node name="PanelQuiz4" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
 layout_mode = 2

@@ -8,6 +8,7 @@ border_width_bottom = 1
 border_color = Color(0.117647, 0.117647, 0.117647, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jkqp"]
+content_margin_left = 10.0
 bg_color = Color(1, 1, 1, 1)
 border_width_bottom = 2
 border_color = Color(0.117647, 0.117647, 0.117647, 1)
