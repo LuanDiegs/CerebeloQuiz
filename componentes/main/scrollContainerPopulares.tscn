@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://1pddmxtluccu"]
+
+[ext_resource type="PackedScene" uid="uid://codj1qfrivht6" path="res://componentes/main/panel_quizPopular.tscn" id="1_mg0mn"]
+
+[node name="ScrollContainer" type="ScrollContainer"]
+anchors_preset = -1
+anchor_left = 0.221875
+anchor_top = 0.291667
+anchor_right = 0.98
+anchor_bottom = 0.986
+offset_right = -0.400024
+offset_bottom = 0.0802002
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 4
+
+[node name="PanelQuiz" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
+
+[node name="PanelQuiz2" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
+
+[node name="PanelQuiz3" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
+
+[node name="PanelQuiz4" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
+
+[node name="PanelQuiz5" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
+
+[node name="PanelQuiz6" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
+
+[node name="PanelQuiz7" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
+
+[node name="PanelQuiz8" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
+
+[node name="PanelQuiz9" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
+
+[node name="PanelQuiz10" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
+
+[node name="PanelQuiz11" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
+
+[node name="PanelQuiz12" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+layout_mode = 2
