@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://00qaslrwjpwy"]
 
-[ext_resource type="Theme" uid="uid://dfqbmqxldc5bw" path="res://resources/temas/optionButtonwithBorder.tres" id="1_cf7l6"]
+[ext_resource type="Theme" uid="uid://k0hfxchkjo62" path="res://resources/temas/optionBtWithBorder.tres" id="1_rlsug"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_hvjb1"]
 [ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="3_o46i7"]
 [ext_resource type="Texture2D" uid="uid://do3xi1txsir1d" path="res://resources/imagens/2lupa.png" id="4_kna3q"]
@@ -9,7 +9,7 @@
 layout_mode = 3
 anchor_right = 0.742188
 anchor_bottom = 0.180556
-theme = ExtResource("1_cf7l6")
+theme = ExtResource("1_rlsug")
 metadata/_edit_use_anchors_ = true
 
 [node name="Titulo" type="Label" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://datycm4pdyx2d"]
+[gd_scene load_steps=16 format=3 uid="uid://datycm4pdyx2d"]
 
 [ext_resource type="Texture2D" uid="uid://bqc3ej2f1ddii" path="res://resources/imagens/noImage.png" id="1_moj3x"]
 [ext_resource type="Texture2D" uid="uid://bw6etviqo7xcw" path="res://resources/imagens/Denuncia.png" id="2_sbah5"]
@@ -23,8 +23,36 @@ corner_radius_bottom_left = 15
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dc278"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmboa"]
+bg_color = Color(0.190195, 0.393794, 0.211888, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnj1u"]
+bg_color = Color(0.370621, 0.711656, 0.406093, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0406t"]
 bg_color = Color(0.258824, 0.517647, 0.286275, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02bcb"]
+bg_color = Color(0.313726, 0.164706, 0.572549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nc0b3"]
+bg_color = Color(0.498039, 0.321569, 0.847059, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -114,9 +142,16 @@ offset_left = 12.0
 offset_top = 190.0
 offset_right = 227.0
 offset_bottom = 230.0
+theme_override_colors/font_disabled_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_nahm5")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/hover = SubResource("StyleBoxFlat_kmboa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lnj1u")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0406t")
 text = "Jogar individualmente"
 icon = ExtResource("6_rxu63")
@@ -128,9 +163,16 @@ offset_left = 12.0
 offset_top = 240.0
 offset_right = 227.0
 offset_bottom = 280.0
+theme_override_colors/font_disabled_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_nahm5")
 theme_override_font_sizes/font_size = 18
+theme_override_styles/hover = SubResource("StyleBoxFlat_02bcb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nc0b3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_djybb")
 text = "Jogar na twitch
 "

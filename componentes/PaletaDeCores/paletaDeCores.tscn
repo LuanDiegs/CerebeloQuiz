@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn5etx50m2vhw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nfsw"]
+bg_color = Color(0.372549, 0.709804, 0.407843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flar8"]
+bg_color = Color(0.258824, 0.517647, 0.286275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5v7i"]
+bg_color = Color(0.188235, 0.392157, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0oone"]
+bg_color = Color(0.499687, 0.321931, 0.848379, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nwe7"]
+bg_color = Color(0.403922, 0.227451, 0.717647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk5bl"]
+bg_color = Color(0.314458, 0.163767, 0.573433, 1)
+
+[node name="PaletaDeCores" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GreenPressed" type="Button" parent="."]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_2nfsw")
+text = "PRESSED"
+
+[node name="GreenNormal" type="Button" parent="."]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 200.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_flar8")
+text = "NORMAL
+"
+
+[node name="GreenHover" type="Button" parent="."]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 200.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_o5v7i")
+text = "HOVER"
+
+[node name="PurplePressed" type="Button" parent="."]
+layout_mode = 0
+offset_left = 210.0
+offset_right = 410.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_0oone")
+text = "PRESSED"
+
+[node name="PurpleNormal" type="Button" parent="."]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 60.0
+offset_right = 410.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_6nwe7")
+text = "NORMAL
+"
+
+[node name="PurpleHover" type="Button" parent="."]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 120.0
+offset_right = 410.0
+offset_bottom = 170.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_wk5bl")
+text = "HOVER"

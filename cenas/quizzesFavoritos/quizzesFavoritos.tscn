@@ -61,6 +61,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
+columns = 4
 
 [node name="PanelQuiz" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
 layout_mode = 2
@@ -72,4 +73,28 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PanelQuiz4" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
+layout_mode = 2
+
+[node name="PanelQuiz5" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
+layout_mode = 2
+
+[node name="PanelQuiz6" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
+layout_mode = 2
+
+[node name="PanelQuiz7" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
+layout_mode = 2
+
+[node name="PanelQuiz8" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
+layout_mode = 2
+
+[node name="PanelQuiz9" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
+layout_mode = 2
+
+[node name="PanelQuiz10" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
+layout_mode = 2
+
+[node name="PanelQuiz11" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
+layout_mode = 2
+
+[node name="PanelQuiz12" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
 layout_mode = 2
