@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://00qaslrwjpwy" path="res://componentes/header/headerFavoritos.tscn" id="1_yp7p5"]
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="2_npobm"]
-[ext_resource type="PackedScene" uid="uid://datycm4pdyx2d" path="res://componentes/main/panel_quizFavorito.tscn" id="3_flwth"]
+[ext_resource type="PackedScene" uid="uid://fsrh5isfarrb" path="res://componentes/scrollContainer/scrollContainerFavoritos.tscn" id="3_36yi8"]
 
 [node name="Favoritos" type="Control"]
 layout_mode = 3
@@ -46,53 +46,9 @@ anchor_bottom = 0.265278
 offset_left = 0.0
 offset_bottom = -1.00017
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainerQuizzezFavoritos" parent="." instance=ExtResource("3_36yi8")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.221875
-anchor_top = 0.291667
-anchor_right = 0.98
-anchor_bottom = 0.986
-offset_right = -0.400024
-offset_bottom = 0.0802002
-metadata/_edit_use_anchors_ = true
-
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
-layout_mode = 2
-columns = 4
-
-[node name="PanelQuiz" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
-
-[node name="PanelQuiz2" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
-
-[node name="PanelQuiz3" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
-
-[node name="PanelQuiz4" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
-
-[node name="PanelQuiz5" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
-
-[node name="PanelQuiz6" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
-
-[node name="PanelQuiz7" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
-
-[node name="PanelQuiz8" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
-
-[node name="PanelQuiz9" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
-
-[node name="PanelQuiz10" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
-
-[node name="PanelQuiz11" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
-
-[node name="PanelQuiz12" parent="ScrollContainer/GridContainer" instance=ExtResource("3_flwth")]
-layout_mode = 2
+anchor_left = 0.226563
+anchor_top = 0.304167
+anchor_right = 0.984375
+anchor_bottom = 0.998611

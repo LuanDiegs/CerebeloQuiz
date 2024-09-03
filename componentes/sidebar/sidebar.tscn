@@ -100,6 +100,7 @@ size_flags_vertical = 0
 text = "QUIZZES 
 POPULARES"
 script = ExtResource("3_mnyfy")
+redirecionarPara = "res://cenas/quizzesPopulares/quizzesPopulares.tscn"
 
 [node name="MeusQuizes" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
 custom_minimum_size = Vector2(230, 65)

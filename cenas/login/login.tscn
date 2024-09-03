@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://cenas/login/login.gd" id="1_jcxea"]
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_lrvm3"]
-[ext_resource type="PackedScene" uid="uid://c3442ngep7hm" path="res://componentes/inputs/input_padrao/inputPadrao.tscn" id="2_t6l7a"]
+[ext_resource type="PackedScene" uid="uid://c3442ngep7hm" path="res://componentes/inputs/inputPadrao/inputPadrao.tscn" id="2_t6l7a"]
 [ext_resource type="PackedScene" uid="uid://cvcug70t0ygmf" path="res://componentes/botoes/botaoNormal.tscn" id="3_npl0y"]
 [ext_resource type="Script" path="res://componentes/botoes/botaoNormal.gd" id="4_kdq2s"]
 
