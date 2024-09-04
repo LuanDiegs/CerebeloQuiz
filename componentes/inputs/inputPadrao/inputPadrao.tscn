@@ -23,6 +23,8 @@ theme_override_font_sizes/font_size = 20
 text = "Label:"
 
 [node name="labelErro" type="Label" parent="LabelInput"]
+visible = false
+layout_mode = 0
 offset_left = 1.0
 offset_top = 83.0
 offset_right = 62.0
@@ -30,3 +32,4 @@ offset_bottom = 103.0
 theme_override_colors/font_color = Color(0.877006, 0.152657, 9.62615e-08, 1)
 theme_override_fonts/font = ExtResource("2_1wqlo")
 theme_override_font_sizes/font_size = 14
+text = "Ocorreu um erro no campo"

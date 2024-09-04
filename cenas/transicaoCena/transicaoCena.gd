@@ -2,7 +2,9 @@ extends CanvasLayer
 class_name TransicaoDeCena
 
 @onready var transicao = $Transicao
-	
+
+var telaQuizzesPopulares := "res://cenas/quizzesPopulares/quizzesPopulares.tscn"
+
 func trocar_cena(target: String) -> void:
 	if(target != null):
 		transicao.play("bloco_entra")

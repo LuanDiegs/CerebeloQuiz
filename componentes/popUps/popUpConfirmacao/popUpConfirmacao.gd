@@ -1,2 +1,0 @@
-extends PopUpBase
-class_name PopUpConfirmacao

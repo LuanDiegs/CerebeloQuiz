@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_v8eap"]
 [ext_resource type="PackedScene" uid="uid://c3442ngep7hm" path="res://componentes/inputs/inputPadrao/inputPadrao.tscn" id="2_1pu6w"]
 [ext_resource type="PackedScene" uid="uid://cvcug70t0ygmf" path="res://componentes/botoes/botaoNormal.tscn" id="3_gybhb"]
-[ext_resource type="PackedScene" uid="uid://vmqyqb4yfsos" path="res://componentes/popUps/popUpConfirmacao/popUpConfirmacao.tscn" id="5_wd38j"]
+[ext_resource type="Script" path="res://componentes/botoes/botaoNormal.gd" id="5_2c3c7"]
 
 [node name="CadastroUsuario" type="Control"]
 layout_mode = 3
@@ -39,48 +39,52 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Email" parent="Formulario" instance=ExtResource("2_1pu6w")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.100097
-anchor_top = 0.405556
+anchor_top = 0.365278
 anchor_right = 0.488824
-anchor_bottom = 0.475
+anchor_bottom = 0.434722
 offset_right = 0.0
 offset_bottom = 0.0
 placeholder = "Insira um email válido"
-labelTexto = "Email:"
+labelTexto = "Email*:"
 metadata/_edit_use_anchors_ = true
 
 [node name="Usuario" parent="Formulario" instance=ExtResource("2_1pu6w")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.51895
-anchor_top = 0.405556
+anchor_top = 0.365278
 anchor_right = 0.907677
-anchor_bottom = 0.475
+anchor_bottom = 0.434722
 offset_right = 0.0
 offset_bottom = 0.0
 placeholder = "Insire seu nome de usuário"
-labelTexto = "Usuário:"
+labelTexto = "Usuário*:"
 metadata/_edit_use_anchors_ = true
 
 [node name="DataNascimento" parent="Formulario" instance=ExtResource("2_1pu6w")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.100097
-anchor_top = 0.551389
+anchor_top = 0.531944
 anchor_right = 0.488824
-anchor_bottom = 0.620833
+anchor_bottom = 0.601388
 offset_top = 3.05176e-05
 offset_right = 0.0
 offset_bottom = 0.0
 placeholder = "Insira sua data de nascimento"
-labelTexto = "Data de nascimento:"
+labelTexto = "Data de nascimento*:"
 metadata/_edit_use_anchors_ = true
 
 [node name="Telefone" parent="Formulario" instance=ExtResource("2_1pu6w")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.51895
-anchor_top = 0.551389
+anchor_top = 0.531944
 anchor_right = 0.907677
-anchor_bottom = 0.620833
+anchor_bottom = 0.601388
 offset_top = 3.05176e-05
 offset_right = 0.0
 offset_bottom = 0.0
@@ -97,7 +101,7 @@ anchor_bottom = 0.769444
 offset_right = 0.0
 offset_bottom = 0.0
 placeholder = "Insira sua senha"
-labelTexto = "Senha:"
+labelTexto = "Senha*:"
 metadata/_edit_use_anchors_ = true
 
 [node name="ConfirmaSenha" parent="Formulario" instance=ExtResource("2_1pu6w")]
@@ -109,7 +113,7 @@ anchor_bottom = 0.769444
 offset_right = 0.0
 offset_bottom = 0.0
 placeholder = "Confirme sua senha"
-labelTexto = "Confirme sua senha:"
+labelTexto = "Confirme sua senha*:"
 metadata/_edit_use_anchors_ = true
 
 [node name="CadastrarBotao" parent="Formulario" instance=ExtResource("3_gybhb")]
@@ -122,8 +126,5 @@ offset_right = 0.0
 offset_bottom = 0.0
 text = "CADASTRAR
 "
+script = ExtResource("5_2c3c7")
 metadata/_edit_use_anchors_ = true
-
-[node name="FundoPopUp" parent="." instance=ExtResource("5_wd38j")]
-layout_mode = 0
-anchors_preset = 0
