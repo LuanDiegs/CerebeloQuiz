@@ -73,10 +73,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Separador2" type="HSeparator" parent="PopUp/ContainerVertical"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_2g45q")
-
 [node name="Fechar" type="Button" parent="PopUp/ContainerVertical"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2

@@ -7,12 +7,13 @@ func _ready() -> void:
 	
 
 func criaPopupNotificacao(
-	componente: PopUpNotificacao,
 	conteudo: String = "Ocorreu um erro inesperado",
 	redirecionaPara: String = "",
 	titulo: String = "Atenção", 
 	textoBotaoFechar: String = "Fechar") -> void:
-		
+	
+	var componente = preload("res://componentes/popUps/popUpNotificacao/popUpNotificacao.tscn").instantiate()
+	
 	#Coloca os parametros
 	componente.titulo = titulo
 	componente.conteudo = conteudo

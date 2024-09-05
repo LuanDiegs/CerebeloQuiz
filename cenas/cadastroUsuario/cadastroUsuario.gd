@@ -31,13 +31,12 @@ func cadastrarUsuario() -> void:
 	 	#Se retornar true significa que a inserção foi um sucesso
 		var popUpNotificacaoComponente = preload("res://componentes/popUps/popUpNotificacao/popUpNotificacao.tscn").instantiate()
 		if(response):
-			PopUp.criaPopupNotificacao(
-				popUpNotificacaoComponente, 
+			PopUp.criaPopupNotificacao( 
 				"Seu cadastro foi feito com sucesso!", 
 				TransicaoCena.telaQuizzesPopulares)
 			SessaoUsuario.sessaoAtivada()
 		else:
-			PopUp.criaPopupNotificacao(popUpNotificacaoComponente, "Ocorreu um erro ao realizar o cadastro")
+			PopUp.criaPopupNotificacao("Ocorreu um erro ao realizar o cadastro")
 
 
 func limparCampos():

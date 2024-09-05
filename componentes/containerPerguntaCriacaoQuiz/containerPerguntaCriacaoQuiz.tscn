@@ -4,22 +4,22 @@
 [ext_resource type="Theme" uid="uid://blp8ujo6bo4cc" path="res://componentes/containerPerguntaCriacaoQuiz/containerPerguntaCriacaoQuizTema.tres" id="1_y6v5s"]
 
 [node name="ContainerPerguntaCriacaoQuiz" type="MarginContainer"]
-custom_minimum_size = Vector2(950, 125)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -330.0
-offset_bottom = -595.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(925, 100)
+anchors_preset = -1
+anchor_right = 0.722656
+anchor_bottom = 0.152778
+size_flags_horizontal = 3
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 20
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 script = ExtResource("1_8nlb1")
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelQuiz" type="Panel" parent="."]
-custom_minimum_size = Vector2(930, 115)
+custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("1_y6v5s")
 
 [node name="MarginConteudo" type="MarginContainer" parent="PanelQuiz"]
@@ -37,12 +37,15 @@ theme_override_constants/margin_bottom = 15
 [node name="Conteudos" type="HBoxContainer" parent="PanelQuiz/MarginConteudo"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelQuiz/MarginConteudo/Conteudos"]
-custom_minimum_size = Vector2(800, 0)
+[node name="Conteudo" type="Label" parent="PanelQuiz/MarginConteudo/Conteudos"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Teste"
 
-[node name="botaoAgarrar" type="Button" parent="PanelQuiz/MarginConteudo/Conteudos"]
+[node name="BotaoAgarrar" type="Button" parent="PanelQuiz/MarginConteudo/Conteudos"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 6
 
-[connection signal="gui_input" from="PanelQuiz/MarginConteudo/Conteudos/botaoAgarrar" to="." method="_on_botaoAgarrar_gui_input"]
+[connection signal="gui_input" from="PanelQuiz/MarginConteudo/Conteudos/BotaoAgarrar" to="." method="_on_botaoAgarrar_gui_input"]

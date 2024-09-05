@@ -20,7 +20,7 @@ func realizarLogin():
 			TransicaoCena.trocar_cena(TransicaoCena.telaQuizzesPopulares)
 		else:
 			var popUpNotificacao = preload("res://componentes/popUps/popUpNotificacao/popUpNotificacao.tscn").instantiate()
-			PopUp.criaPopupNotificacao(popUpNotificacao, "O email ou senha inválidos")
+			PopUp.criaPopupNotificacao("O email ou senha inválidos")
 
 
 func validaCampos():

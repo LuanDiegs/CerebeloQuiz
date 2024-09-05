@@ -1,9 +1,53 @@
-[gd_scene format=3 uid="uid://vm0l2tcvjfhw"]
+[gd_scene load_steps=6 format=3 uid="uid://vm0l2tcvjfhw"]
+
+[ext_resource type="Script" path="res://componentes/botoes/botaoToggle/botaoToggle.gd" id="1_iew16"]
+[ext_resource type="ButtonGroup" uid="uid://cbt3cg8k7kixa" path="res://componentes/botoes/botaoToggle/grupoBotoesToggle.tres" id="2_8xgi5"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="3_02kn6"]
+[ext_resource type="Theme" uid="uid://drrsbctu48jki" path="res://componentes/botoes/botaoToggle/botaoToggleEsquerda.tres" id="3_5augw"]
+[ext_resource type="Theme" uid="uid://c8x4nxt7p7kom" path="res://componentes/botoes/botaoToggle/botaoToggleDireita.tres" id="5_i0sex"]
 
 [node name="BotaoToggle" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.2375
+anchor_bottom = 0.116667
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_iew16")
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelTituloInput" type="Label" parent="."]
+layout_mode = 0
+anchor_right = 0.917763
+anchor_bottom = 0.404761
+theme_override_colors/font_color = Color(0.172549, 0.2, 0.435294, 1)
+theme_override_fonts/font = ExtResource("3_02kn6")
+theme_override_font_sizes/font_size = 24
+text = "Label"
+metadata/_edit_use_anchors_ = true
+
+[node name="ContainerBotoes" type="HBoxContainer" parent="."]
+layout_mode = 0
+anchor_top = 0.404761
+anchor_right = 1.0
+anchor_bottom = 0.999997
+metadata/_edit_use_anchors_ = true
+
+[node name="Opcao1" type="Button" parent="ContainerBotoes"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_5augw")
+toggle_mode = true
+button_group = ExtResource("2_8xgi5")
+text = "Opção 1"
+
+[node name="Opcao2" type="Button" parent="ContainerBotoes"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("5_i0sex")
+toggle_mode = true
+button_group = ExtResource("2_8xgi5")
+text = "Opção 2"
