@@ -1,10 +1,16 @@
 extends EntidadeBase
 class_name Usuarios
 
-var dadoAInserir: Dictionary
+var propriedades: Dictionary
+
+#Propriedades da entidade
+var id: int
+var nome: String
+var email: String
+var isDesativado: bool
 
 func instanciaEntidade(nome: String, email: String, senha: String, dataNascimento: String, telefone: String):
-	self.dadoAInserir = {
+	self.propriedades = {
 		"nome": nome,
 		"email": email,
 		"senha": senha,
@@ -13,7 +19,7 @@ func instanciaEntidade(nome: String, email: String, senha: String, dataNasciment
 		"isdesativado": false,
 	}
 	
-	return dadoAInserir
+	return propriedades
 	
 	
 func verificarLogin(email: String, senha: String):
@@ -24,8 +30,9 @@ func verificarLogin(email: String, senha: String):
 	banco.query_with_bindings(query, parametros)
 	
 	var usuarioId
-	if(banco.query_result): usuarioId = banco.query_result[0].usuarioId
-	
+	if(banco.query_result): 
+		usuarioId = banco.query_result[0].usuarioId
+
 	return usuarioId
 
 
@@ -36,4 +43,16 @@ func getUsuario(usuarioId):
 
 	banco.query_with_bindings(query, parametros)
 	
-	if(banco.query_result): return banco.query_result[0]
+	if(banco.query_result): 
+		return _criaEntidade(banco.query_result[0])
+
+
+func _criaEntidade(dados: Dictionary):
+	var entidade = Usuarios.new()
+	
+	entidade.id = dados.get("usuarioId")
+	entidade.nome = dados.get("nome")
+	entidade.email = dados.get("email")
+	entidade.isDesativado = dados.get("isDesativado")
+	
+	return entidade

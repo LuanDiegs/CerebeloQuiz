@@ -3,20 +3,20 @@ class_name CadastroUsuario
 
 @onready var usuario := $Formulario/Usuario
 @onready var email := $Formulario/Email
-@onready var data_nascimento := $Formulario/DataNascimento
+@onready var dataNascimento := $Formulario/DataNascimento
 @onready var telefone := $Formulario/Telefone
 @onready var senha := $Formulario/Senha
-@onready var confirma_senha := $Formulario/ConfirmaSenha
-@onready var cadastrar_botao = $Formulario/CadastrarBotao
+@onready var confirmaSenha := $Formulario/ConfirmaSenha
+@onready var cadastrarBotao := $Formulario/CadastrarBotao
 
 
 var formularioValido := true
-var msgCampoObrigatorio = "O campo é obrigatório"
+var msgCampoObrigatorio := "O campo é obrigatório"
 
 
 func _ready():
-	cadastrar_botao.connect("pressed", cadastrarUsuario)
-	confirma_senha.connect("focus_exited", validaSenhas)
+	cadastrarBotao.connect("pressed", cadastrarUsuario)
+	confirmaSenha.connect("focus_exited", validaSenhas)
 	senha.connect("focus_exited", validaSenhas)
 
 
@@ -25,7 +25,7 @@ func cadastrarUsuario() -> void:
 	validaCampos()
 	
 	if(formularioValido):
-		var usuario = Usuarios.new().instanciaEntidade(usuario.text, email.text, senha.text, data_nascimento.text, telefone.text)
+		var usuario = Usuarios.new().instanciaEntidade(usuario.text, email.text, senha.text, dataNascimento.text, telefone.text)
 		var response = BD.inserirDados(EntidadeConstantes.UsuarioTabela, usuario)
 
 	 	#Se retornar true significa que a inserção foi um sucesso
@@ -43,9 +43,9 @@ func limparCampos():
 	usuario.clear()
 	email.clear()
 	senha.clear()
-	data_nascimento.clear()
+	dataNascimento.clear()
 	telefone.clear()
-	confirma_senha.clear()
+	confirmaSenha.clear()
 
 
 func validaCampos():
@@ -67,11 +67,11 @@ func validaCampos():
 		email.removeErroNoInput()
 		
 	#Valida data de nascimento
-	if(data_nascimento.text.is_empty()):
-		data_nascimento.insereErroNoInput(msgCampoObrigatorio)
+	if(dataNascimento.text.is_empty()):
+		dataNascimento.insereErroNoInput(msgCampoObrigatorio)
 		formularioValido = false
 	else:
-		data_nascimento.removeErroNoInput()
+		dataNascimento.removeErroNoInput()
 	
 	validaSenhas()
 
@@ -85,18 +85,18 @@ func validaSenhas():
 		formularioValido = false
 		senhasValidas = false
 	
-	if(confirma_senha.text.is_empty()):
-		confirma_senha.insereErroNoInput(msgCampoObrigatorio)
+	if(confirmaSenha.text.is_empty()):
+		confirmaSenha.insereErroNoInput(msgCampoObrigatorio)
 		formularioValido = false
 		senhasValidas = false
 	
-	if(senha.text != confirma_senha.text):
+	if(senha.text != confirmaSenha.text):
 		var msgSenhasNaoCoincidem = "As senhas não coincidem"
 		senha.insereErroNoInput(msgSenhasNaoCoincidem)
-		confirma_senha.insereErroNoInput(msgSenhasNaoCoincidem)
+		confirmaSenha.insereErroNoInput(msgSenhasNaoCoincidem)
 		formularioValido = false
 		senhasValidas = false
 	
 	if(senhasValidas):
 		senha.removeErroNoInput()
-		confirma_senha.removeErroNoInput()
+		confirmaSenha.removeErroNoInput()

@@ -2,14 +2,14 @@ extends Node
 class_name Sessao
 
 var isLogada: bool = false
-var usuarioIdLogado
+var usuarioLogado: Usuarios
 
 
 func sessaoAtivada(usuarioId):
 	isLogada = true
-	usuarioIdLogado = usuarioId
-
+	usuarioLogado = Usuarios.new().getUsuario(usuarioId)
+	
 
 func sessaoDesativada():
 	isLogada = false
-	usuarioIdLogado = null
+	usuarioLogado = null
