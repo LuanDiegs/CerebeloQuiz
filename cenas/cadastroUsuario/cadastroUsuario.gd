@@ -34,7 +34,7 @@ func cadastrarUsuario() -> void:
 			PopUp.criaPopupNotificacao( 
 				"Seu cadastro foi feito com sucesso!", 
 				TransicaoCena.telaQuizzesPopulares)
-			SessaoUsuario.sessaoAtivada()
+			SessaoUsuario.sessaoAtivada(response)
 		else:
 			PopUp.criaPopupNotificacao("Ocorreu um erro ao realizar o cadastro")
 

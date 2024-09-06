@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://4ykp06og1xp2"]
+[gd_scene load_steps=11 format=3 uid="uid://4ykp06og1xp2"]
 
 [ext_resource type="Theme" uid="uid://crxo0r1ylmse7" path="res://componentes/sidebar/sidebarTema.tres" id="1_b34h6"]
 [ext_resource type="Script" path="res://componentes/sidebar/sidebar.gd" id="2_lbasx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botaoCriarQuizz/botaoCriarQuizz.gd" id="4_61853"]
 [ext_resource type="Texture2D" uid="uid://2qx50vmr5d24" path="res://resources/imagens/body-organ 64px.png" id="5_pvyk5"]
 [ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="9_7vew8"]
+[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botaoLogin/botaoLogin.gd" id="10_6rvil"]
 
 [node name="Sidebar" type="Panel" groups=["botaoPerfil"]]
 offset_right = 250.0
@@ -187,5 +188,4 @@ antialiased = true
 custom_minimum_size = Vector2(230, 65)
 layout_mode = 2
 text = "LOGIN"
-script = ExtResource("3_mnyfy")
-redirecionarPara = "res://cenas/login/login.tscn"
+script = ExtResource("10_6rvil")

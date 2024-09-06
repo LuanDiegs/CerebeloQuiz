@@ -142,7 +142,7 @@ offset_top = 6.0
 offset_bottom = 6.0
 textoOpcao1 = "Público"
 textoOpcao2 = "Privado"
-valorOpcao2 = 1
+valorOpcao1 = 1
 labelTexto = "Visualização"
 
 [node name="ClassificacaoIndicativa" type="OptionButton" parent="FormularioInicial"]

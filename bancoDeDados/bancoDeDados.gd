@@ -14,7 +14,8 @@ func conectarBanco():
 
 
 func inserirDados(tableName: String, data: Dictionary):
-	return banco.insert_row(tableName, data)
+	if(banco.insert_row(tableName, data)):
+		return banco.last_insert_rowid
 
 
 func atualizarDados(tableName: String, condicoes: String, dados: Dictionary):

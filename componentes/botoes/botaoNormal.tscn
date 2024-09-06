@@ -6,5 +6,6 @@
 custom_minimum_size = Vector2(400, 50)
 offset_right = 350.0
 offset_bottom = 35.0
+mouse_default_cursor_shape = 2
 theme = ExtResource("1_o1kh7")
 text = "Botao"

@@ -5,5 +5,6 @@
 [node name="BotaoNormal" type="Button"]
 offset_right = 230.0
 offset_bottom = 65.0
+mouse_default_cursor_shape = 2
 theme = ExtResource("1_oqb0d")
 text = "Botao"

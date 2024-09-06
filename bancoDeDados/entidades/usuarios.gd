@@ -23,4 +23,17 @@ func verificarLogin(email: String, senha: String):
 	
 	banco.query_with_bindings(query, parametros)
 	
-	return banco.query_result.size() > 0
+	var usuarioId
+	if(banco.query_result): usuarioId = banco.query_result[0].usuarioId
+	
+	return usuarioId
+
+
+func getUsuario(usuarioId):
+	var banco = BD.banco as SQLite
+	var query = "SELECT * FROM " + EntidadeConstantes.UsuarioTabela + " WHERE usuarioId=?"
+	var parametros = [usuarioId]
+
+	banco.query_with_bindings(query, parametros)
+	
+	if(banco.query_result): return banco.query_result[0]

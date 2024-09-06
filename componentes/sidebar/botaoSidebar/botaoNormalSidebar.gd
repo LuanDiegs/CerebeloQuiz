@@ -7,16 +7,18 @@ class_name BotaoMenuSidebar
 func _ready():
 	connect("pressed", _on_pressed)
 	
-	if(self.name != "Login" and !self.is_in_group("botaoPerfil")):
+	if(!self.is_in_group("botaoPerfil")):
 		connect("mouse_entered", _on_hover)
 		connect("mouse_exited", _on_hover)
 		
 	#Coloca o mouse de clicar ao entrar no botão
 	mouse_default_cursor_shape = CURSOR_POINTING_HAND
 
+
 func _on_pressed():
 	if !redirecionarPara.is_empty():
 		TransicaoCena.trocar_cena(redirecionarPara)
+
 
 func _on_hover():
 	#Animation tween

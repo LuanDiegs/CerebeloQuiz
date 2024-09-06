@@ -20,15 +20,17 @@ config/icon="res://icon.svg"
 
 TransicaoCena="*res://cenas/transicaoCena/transicaoCena.tscn"
 BD="*res://bancoDeDados/bancoDeDados.gd"
+UsuariosEntidade="*res://bancoDeDados/entidades/usuarios.gd"
 EntidadeConstantes="*res://bancoDeDados/entidades/entidadesConstantes.gd"
 SessaoUsuario="*res://globals/sessao.gd"
-PopUp="*res://globals/popUpBase.gd"
 ConstantesPadroes="*res://globals/constantesPadrao.gd"
+PopUp="*res://globals/popUpBase.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

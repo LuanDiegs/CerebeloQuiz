@@ -16,7 +16,7 @@ func realizarLogin():
 		var response = Usuarios.new().verificarLogin(email.text, senha.text)
 
 		if(response):
-			SessaoUsuario.sessaoAtivada()
+			SessaoUsuario.sessaoAtivada(response)
 			TransicaoCena.trocar_cena(TransicaoCena.telaQuizzesPopulares)
 		else:
 			var popUpNotificacao = preload("res://componentes/popUps/popUpNotificacao/popUpNotificacao.tscn").instantiate()
