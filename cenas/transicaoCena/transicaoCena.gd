@@ -4,6 +4,7 @@ class_name TransicaoDeCena
 @onready var transicao = $Transicao
 
 const telaQuizzesPopulares := "res://cenas/quizzesPopulares/quizzesPopulares.tscn"
+const telaPerguntasFrequentes := "res://cenas/perguntasFrequentes/perguntasFrequentes.tscn"
 const telaLogin := "res://cenas/login/login.tscn"
 
 

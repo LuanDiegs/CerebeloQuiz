@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4vphgog1ukg1"]
+
+[ext_resource type="Theme" uid="uid://k0hfxchkjo62" path="res://resources/temas/optionBtWithBorder.tres" id="1_decqd"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_6vvuk"]
+
+[node name="Header" type="Control"]
+layout_mode = 3
+anchor_right = 0.758
+anchor_bottom = 0.069
+offset_right = -0.23999
+offset_bottom = 0.319996
+theme = ExtResource("1_decqd")
+metadata/_edit_use_anchors_ = true
+
+[node name="Titulo" type="Label" parent="."]
+custom_minimum_size = Vector2(900, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.999999
+anchor_bottom = 0.384614
+offset_bottom = 0.000183105
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_6vvuk")
+theme_override_font_sizes/font_size = 32
+text = "PERGUNTAS FREQUENTES"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

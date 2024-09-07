@@ -3,7 +3,6 @@ class_name BotaoMenuSidebar
 
 @export var redirecionarPara: String
 
-
 func _ready():
 	connect("pressed", _on_pressed)
 	
