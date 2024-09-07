@@ -1,0 +1,174 @@
+[gd_scene load_steps=12 format=3 uid="uid://bkqebfftf76n3"]
+
+[ext_resource type="Theme" uid="uid://bueidph1nopmi" path="res://componentes/popUps/popUpFundo.tres" id="1_aa541"]
+[ext_resource type="Script" path="res://componentes/popUps/popUpFormPergunta/popUpFormPergunta.gd" id="2_8xtpa"]
+[ext_resource type="Theme" uid="uid://dvbp11qywc6mv" path="res://componentes/popUps/popUp.tres" id="3_c3fvs"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="4_rjvwc"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="5_bnd3p"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2g45q"]
+color = Color(0.227451, 0.258824, 0.521569, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12tbl"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.7, 0.7, 0.7, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qq3pd"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.85098, 0.85098, 0.85098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp14f"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_fge2d"]
+TextEdit/colors/font_color = Color(0.313726, 0.313726, 0.313726, 1)
+TextEdit/colors/font_placeholder_color = Color(0.6, 0.6, 0.6, 1)
+TextEdit/font_sizes/font_size = 24
+TextEdit/fonts/font = ExtResource("5_bnd3p")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_12tbl")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_qq3pd")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_wp14f")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e66ei"]
+
+[node name="FundoPopUp" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 360)
+theme = ExtResource("1_aa541")
+script = ExtResource("2_8xtpa")
+
+[node name="PopUp" type="Panel" parent="."]
+custom_minimum_size = Vector2(900, 600)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148438
+anchor_top = 0.075
+anchor_right = 0.851563
+anchor_bottom = 0.908333
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(450, 300.5)
+theme = ExtResource("3_c3fvs")
+metadata/_edit_use_anchors_ = true
+
+[node name="ContainerVertical" type="VBoxContainer" parent="PopUp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(450, 353)
+
+[node name="Titulo" type="Label" parent="PopUp/ContainerVertical"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_rjvwc")
+theme_override_font_sizes/font_size = 40
+text = "NOVO [ENTIDADE]"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Separador" type="HSeparator" parent="PopUp/ContainerVertical"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_2g45q")
+
+[node name="MarginForm" type="MarginContainer" parent="PopUp/ContainerVertical"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+
+[node name="Form" type="VBoxContainer" parent="PopUp/ContainerVertical/MarginForm"]
+layout_mode = 2
+
+[node name="PerguntaConteudo" type="TextEdit" parent="PopUp/ContainerVertical/MarginForm/Form"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+theme = SubResource("Theme_fge2d")
+placeholder_text = "Escreva sua pergunta aqui..."
+wrap_mode = 1
+caret_blink = true
+
+[node name="Espaço" type="Label" parent="PopUp/ContainerVertical/MarginForm/Form"]
+layout_mode = 2
+
+[node name="Alternativas" type="VBoxContainer" parent="PopUp/ContainerVertical/MarginForm/Form"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HeaderAlternativas" type="HBoxContainer" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas"]
+layout_mode = 2
+
+[node name="InserirNovaPergunta" type="Button" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas/HeaderAlternativas"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+text = "Inserir nova alternativa"
+
+[node name="Panel" type="Panel" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e66ei")
+
+[node name="Panel2" type="Panel" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e66ei")
+
+[node name="Panel3" type="Panel" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e66ei")
+
+[node name="Panel4" type="Panel" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e66ei")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Salvar" type="Button" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas/HBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Salvar"
+
+[node name="Fechar" type="Button" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas/HBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Cancelar"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

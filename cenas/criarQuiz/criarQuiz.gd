@@ -19,14 +19,35 @@ func _ready() -> void:
 
 
 func salvarQuiz() -> void:
-	var quiz = Quizzes.new().instanciaEntidade(tituloQuiz.text, botaoToggleIsPrivado.obterValorSelecionado(), classificacaoIndicativa.get_selected_id(), SessaoUsuario.usuarioIdLogado)
+	var quiz = Quizzes.new().instanciaEntidade(tituloQuiz.text, botaoToggleIsPrivado.obterValorSelecionado(), classificacaoIndicativa.get_selected_id(), SessaoUsuario.usuarioLogado.idUsuario)
+	var erroAoInserir = false
 	
-	var response  = BD.inserirDados(EntidadeConstantes.QuizzesTabela, quiz)
-	var mensagem = "Quiz criado com sucesso!" if response else "Ocorreu um erro ao salvar o quiz"
+	BD.comecaTransacao()
+	#Retorna o id do quiz inserido
+	var responseQuiz  = BD.inserirDados(EntidadeConstantes.QuizzesTabela, quiz)
 	
-	#TODO: Criar tela de meus quizzes e redirecionar apos salvar corretamente
-	var redirecionamento = "meusQuizzes" if response else null
-	PopUp.criaPopupNotificacao(mensagem)
+	if(responseQuiz):
+		#Pega os filhos do container de perguntas
+		var perguntas = perguntasContainer.get_children()
+		
+		#Percorre todos as perguntas
+		for pergunta in perguntas:
+			var idQuiz = responseQuiz
+			pergunta = pergunta as ContainerPerguntaQuiz
+			var perguntaAInserir = Perguntas.new().instanciaEntidade(pergunta.conteudoPergunta, idQuiz)
+			var responsePergunta = BD.inserirDados(EntidadeConstantes.PerguntasTabela, perguntaAInserir)
+			
+			if(responsePergunta):
+				#TODO: Inserir as alternativas
+				pass
+			else:
+				erroAoInserir = true
+	else: 
+		erroAoInserir = true
+		
+	BD.finalizaTransacao()
+			
+	verificarResponse(erroAoInserir)
 
 
 func criarPergunta() -> void:
@@ -36,3 +57,11 @@ func criarPergunta() -> void:
 	else:
 		var mensagemMaximoPerguntas = "Um quiz pode ter no máximo " + str(ConstantesPadroes.MAXIMO_PERGUNTAS_QUIZ) + " perguntas"
 		PopUp.criaPopupNotificacao(mensagemMaximoPerguntas)
+
+
+func verificarResponse(erroAoInserir: bool):
+	var mensagem = "Ocorreu um erro ao salvar o quiz" if erroAoInserir else "Quiz criado com sucesso!"
+	
+	#TODO: Criar tela de meus quizzes e redirecionar apos salvar corretamente
+	var redirecionamento = "" if erroAoInserir else "meusQuizzes"
+	PopUp.criaPopupNotificacao(mensagem)

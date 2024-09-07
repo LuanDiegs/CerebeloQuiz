@@ -4,9 +4,9 @@ class_name Usuarios
 var propriedades: Dictionary
 
 #Propriedades da entidade
-var id: int
-var nome: String
-var email: String
+var idUsuario: int
+var nomeUsuario: String
+var emailUsuario: String
 var isDesativado: bool
 
 func instanciaEntidade(nome: String, email: String, senha: String, dataNascimento: String, telefone: String):
@@ -50,9 +50,9 @@ func getUsuario(usuarioId):
 func _criaEntidade(dados: Dictionary):
 	var entidade = Usuarios.new()
 	
-	entidade.id = dados.get("usuarioId")
-	entidade.nome = dados.get("nome")
-	entidade.email = dados.get("email")
+	entidade.idUsuario = dados.get("usuarioId")
+	entidade.nomeUsuario = dados.get("nome")
+	entidade.emailUsuario = dados.get("email")
 	entidade.isDesativado = dados.get("isDesativado")
 	
 	return entidade

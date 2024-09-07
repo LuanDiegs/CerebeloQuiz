@@ -9,10 +9,17 @@ var limiteDoContainer = 100
 @onready var vbox: VBoxContainer = self.get_parent()
 
 @onready var botaoAgarrar = $PanelQuiz/MarginConteudo/Conteudos/BotaoAgarrar
-@onready var conteudo: Label = $PanelQuiz/MarginConteudo/Conteudos/Conteudo
+@onready var _testeLabel: Label = $PanelQuiz/MarginConteudo/Conteudos/Conteudo
+
+@onready var botaoEditar = $PanelQuiz/MarginConteudo/Conteudos/BotaoEditar
+
+var idPergunta = 0
+var conteudoPergunta = ""
+
 
 func _ready() -> void:
 	set_process_input(false)
+	botaoEditar.connect("pressed", abrirFormPergunta)
 	
 
 func _input(event: InputEvent) -> void:
@@ -56,4 +63,9 @@ func _on_botaoAgarrar_gui_input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	conteudo.text = "Pergunta Nº " + str(self.get_index() + 1)
+	_testeLabel.text = "Pergunta Nº " + str(self.get_index() + 1)
+
+
+func abrirFormPergunta():
+	var titulo = "Nova pergunta" if idPergunta == 0 else "Editar pergunta"
+	PopUp.criaPopupEditFormPergunta(titulo, 0, idPergunta, self)

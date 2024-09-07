@@ -14,7 +14,20 @@ CREATE TABLE "quizzes" (
 	"titulo" TEXT NOT NULL CHECK("titulo" != ''),
 	"isPrivado"	INTEGER NOT NULL CHECK(typeof("isPrivado") = 'integer' AND "isPrivado" IN (1, 0)),
 	"classificacaoIndicativa" INTEGER NOT NULL CHECK(typeof("classificacaoIndicativa") = 'integer' AND "classificacaoIndicativa" IN (1, 2)),
-	"usuarioId"	TEXT NOT NULL CHECK("usuarioId" != ''),
-	FOREIGN KEY("usuarioId") REFERENCES "usuarios"("usuarioId"),
-	PRIMARY KEY("quizId" AUTOINCREMENT)
+	"usuarioId"	INTEGER NOT NULL,
+	PRIMARY KEY("quizId" AUTOINCREMENT),
+	CONSTRAINT usuarioFk
+		FOREIGN KEY (usuarioId)
+		REFERENCES usuarios(usuarioId)
+)
+
+CREATE TABLE "perguntas" (
+	"perguntaId" INTEGER NOT NULL,
+	"conteudoTexto" TEXT NOT NULL CHECK("conteudoTexto" != ''),
+	"quizId" INTEGER NOT NULL,
+	PRIMARY KEY("perguntaId" AUTOINCREMENT),
+	CONSTRAINT quizFk
+		FOREIGN KEY (quizId)
+		REFERENCES quizzes(quizId)
+		ON DELETE CASCADE
 )

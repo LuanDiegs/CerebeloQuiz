@@ -18,11 +18,11 @@ func _process(delta):
 		
 func verificaSessao():	
 	if(SessaoUsuario.isLogada):
-		perfilBotao.text = SessaoUsuario.usuarioLogado.nome
+		perfilBotao.text = SessaoUsuario.usuarioLogado.nomeUsuario
 		loginBotao.text = "DESLOGAR"
 		criarQuizBotao.visible = true
 		icon_botao_criar_quiz.visible = true
 	else:
 		perfilBotao.text = "DESLOGADO!"
-		#criarQuizBotao.visible = false
+		criarQuizBotao.visible = false
 		icon_botao_criar_quiz.visible = false

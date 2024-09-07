@@ -43,9 +43,16 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Teste"
 
+[node name="BotaoEditar" type="Button" parent="PanelQuiz/MarginConteudo/Conteudos"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Editar"
+
 [node name="BotaoAgarrar" type="Button" parent="PanelQuiz/MarginConteudo/Conteudos"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 6
+text = "Agarra"
 
 [connection signal="gui_input" from="PanelQuiz/MarginConteudo/Conteudos/BotaoAgarrar" to="." method="_on_botaoAgarrar_gui_input"]
