@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwfirh0i4fw5b"]
+
+[ext_resource type="PackedScene" uid="uid://dq4wq04hpvlb2" path="res://cenas/index/index.tscn" id="1_7uhcr"]
+
+[node name="perguntasFrequentes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Index" parent="." instance=ExtResource("1_7uhcr")]
+layout_mode = 1
