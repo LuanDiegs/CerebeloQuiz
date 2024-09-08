@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhxhm5ws63efu"]
+
+[ext_resource type="Theme" uid="uid://drxojeynar5av" path="res://componentes/containerAlternativaFormQuiz/containerAlternativaCorretaFormQuizTema.tres" id="1_atjhp"]
+[ext_resource type="Script" path="res://componentes/containerAlternativaFormQuiz/containerAlternativaFormQuiz.gd" id="2_056oa"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="2_hbf1m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfbiu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7twq"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_gqy53"]
+TextEdit/colors/font_color = Color(1, 1, 1, 1)
+TextEdit/colors/font_placeholder_color = Color(0.88, 0.88, 0.88, 0.784314)
+TextEdit/font_sizes/font_size = 16
+TextEdit/fonts/font = ExtResource("2_hbf1m")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_cfbiu")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_h7twq")
+
+[node name="ContainerAlternativaFormQuiz" type="Panel"]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = -1
+anchor_top = 0.00277778
+anchor_right = 0.65625
+anchor_bottom = 0.0722222
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(420, 25)
+theme = ExtResource("1_atjhp")
+script = ExtResource("2_056oa")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginConteudo" type="MarginContainer" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(420, 25)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 7
+metadata/_edit_use_anchors_ = true
+
+[node name="Conteudos" type="HBoxContainer" parent="MarginConteudo"]
+layout_mode = 2
+alignment = 1
+
+[node name="ConteudoAlternativa" type="TextEdit" parent="MarginConteudo/Conteudos"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_gqy53")
+placeholder_text = "Digite aqui a alternativa correta..."
+wrap_mode = 1
+scroll_smooth = true
+caret_blink = true
+
+[node name="BotaoRemover" type="Button" parent="MarginConteudo/Conteudos" groups=["alternativa"]]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+text = "Apagar"

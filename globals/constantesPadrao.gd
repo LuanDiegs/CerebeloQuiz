@@ -2,3 +2,5 @@ extends Node
 class_name ConstantesPadrao
 
 var MAXIMO_PERGUNTAS_QUIZ = 20
+var MAXIMO_ALTERNATIVA_PERGUNTA = 4
+var MINIMO_ALTERNATIVA_PERGUNTA = 2

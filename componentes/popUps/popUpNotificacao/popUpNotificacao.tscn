@@ -67,10 +67,11 @@ layout_mode = 2
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_4i2ny")
-theme_override_font_sizes/font_size = 32
-text = "Ocorreu um erro inesperado"
+theme_override_font_sizes/font_size = 24
+text = "Ocorreu um erro"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="Fechar" type="Button" parent="PopUp/ContainerVertical"]

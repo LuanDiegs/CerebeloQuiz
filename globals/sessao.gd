@@ -7,7 +7,8 @@ var usuarioLogado: Usuarios
 
 func _ready():
 	#APENAS PARA DEBUG, COMENTAR QUANDO FOR MOSTRAR O PRODUTO
-	sessaoAtivada(11)
+	sessaoAtivada(1)
+	pass
 
 
 func sessaoAtivada(usuarioId):
