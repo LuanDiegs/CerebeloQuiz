@@ -13,6 +13,7 @@ var redirecionaPara: String
 @onready var conteudoLabel: Label = $"PopUp/ContainerVertical/Conteúdo"
 @onready var fecharBotao: Button = $PopUp/ContainerVertical/Fechar
 
+var botaoFecharInvisivel: bool = false
 
 func _ready() -> void:
 	popUp.scale = Vector2(0,0)
@@ -22,6 +23,9 @@ func _ready() -> void:
 	tituloLabel.text = titulo
 	conteudoLabel.text = conteudo
 	fecharBotao.text = textoBotaoFechar
+	
+	if(botaoFecharInvisivel):
+		fecharBotao.visible = false
 	
 	
 func animaEntrada():
@@ -45,5 +49,6 @@ func fechaPopup():
 
 
 func _on_gui_input(event: InputEvent) -> void:
-	if(event.is_action_pressed("CliqueDireito")):
-		fechaPopup()
+	if(!botaoFecharInvisivel):
+		if(event.is_action_pressed("CliqueDireito")):
+			fechaPopup()

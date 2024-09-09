@@ -9,8 +9,9 @@ func _ready() -> void:
 func criaPopupNotificacao(
 	conteudo: String = "Ocorreu um erro inesperado",
 	redirecionaPara: String = "",
-	titulo: String = "Atenção", 
-	textoBotaoFechar: String = "Fechar") -> void:
+	titulo: String = "Atenção",
+	botaoFecharInvisivel: bool = false,
+	textoBotaoFechar: String = "Fechar"):
 	
 	var componente = preload("res://componentes/popUps/popUpNotificacao/popUpNotificacao.tscn").instantiate()
 	
@@ -19,12 +20,15 @@ func criaPopupNotificacao(
 	componente.conteudo = conteudo
 	componente.textoBotaoFechar = textoBotaoFechar
 	componente.redirecionaPara = redirecionaPara
+	componente.botaoFecharInvisivel = botaoFecharInvisivel
 	
 	#Cria o componente na tela
 	get_tree().root.add_child(componente)
 	
 	#Anima a entrada do componente
 	componente.animaEntrada()
+	
+	return componente
 
 
 func criaPopupEditFormPergunta(
