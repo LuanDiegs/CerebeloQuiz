@@ -23,6 +23,10 @@ var componenteCardPergunta: ContainerPerguntaQuiz
 var alternativasConteudoSalvas: Array
 const alternativaComponente = preload("res://componentes/containerAlternativaFormQuiz/containerAlternativaFormQuiz.tscn")
 
+#Temas alternativas
+const _temaAlternativaIncorreto = preload("res://componentes/containerAlternativaFormQuiz/containerAlternativaIncorretaFormQuizTema.tres")
+const _temaAlternativaCorreta = preload("res://componentes/containerAlternativaFormQuiz/containerAlternativaCorretaFormQuizTema.tres")
+
 
 func _ready() -> void:
 	popUp.scale = Vector2(0,0)
@@ -87,7 +91,7 @@ func inserirNovaAlternativa():
 		
 	var alternativa = alternativaComponente.instantiate()
 	alternativasContainer.add_child(alternativa)
-
+	
 
 func _on_gui_input(event: InputEvent) -> void:
 	if(event.is_action_pressed("CliqueDireito")):

@@ -4,33 +4,34 @@ class_name ContainerAlternativaFormQuiz
 @onready var botaoRemover = $MarginConteudo/Conteudos/BotaoRemover as Button
 
 var alternativaId := 0
-var isAlternativaCorreta := false
+var isAlternativaCorreta := false 
 var conteudoAlternativaTexto := ""
-@onready var conteudoAlternativaInput = $MarginConteudo/Conteudos/ConteudoAlternativa as TextEdit
+@onready var _conteudoAlternativaInput = $MarginConteudo/Conteudos/ConteudoAlternativa as TextEdit
+
+#Temas
+const _temaAlternativaIncorreto = preload("res://componentes/containerAlternativaFormQuiz/containerAlternativaIncorretaFormQuizTema.tres")
+const _temaAlternativaCorreta = preload("res://componentes/containerAlternativaFormQuiz/containerAlternativaCorretaFormQuizTema.tres")
 
 
 func _process(delta):
 	botaoRemover.visible = get_tree().get_nodes_in_group("alternativa").size() > ConstantesPadroes.MINIMO_ALTERNATIVA_PERGUNTA
+	
 	if(self.get_index() == 0):
 		isAlternativaCorreta = true
-		
-	
+		_conteudoAlternativaInput.placeholder_text = "Digite aqui a alternativa correta..."
+		self.theme = _temaAlternativaCorreta
+	else:
+		isAlternativaCorreta = false
+		_conteudoAlternativaInput.placeholder_text = "Digite aqui a alternativa incorreta..."
+		self.theme = _temaAlternativaIncorreto
+
+
 func _ready():
 	botaoRemover.connect("pressed", removeAlternativa)
-	conteudoAlternativaInput.connect("text_changed", func(): conteudoAlternativaTexto = conteudoAlternativaInput.text)
+	_conteudoAlternativaInput.connect("text_changed", func(): conteudoAlternativaTexto = _conteudoAlternativaInput.text)
 	
-	conteudoAlternativaInput.text = conteudoAlternativaTexto
+	_conteudoAlternativaInput.text = conteudoAlternativaTexto
 	
 	
 func removeAlternativa():
 	self.queue_free()
-
-
-func verificaSeBotaoApagarFicaVisivel():
-	if(get_tree().get_nodes_in_group("alternativa").size() > ConstantesPadroes.MINIMO_ALTERNATIVA_PERGUNTA):
-		var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-		tween.tween_property(botaoRemover, "scale", Vector2(1.1,1.1), 0.1)
-		tween.tween_property(botaoRemover, "scale", Vector2(0,0), 0.1)
-		await tween.finished
-		
-		botaoRemover.visible = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bhxhm5ws63efu"]
 
-[ext_resource type="Theme" uid="uid://drxojeynar5av" path="res://componentes/containerAlternativaFormQuiz/containerAlternativaCorretaFormQuizTema.tres" id="1_atjhp"]
+[ext_resource type="Theme" uid="uid://bipbibr8jv65b" path="res://componentes/containerAlternativaFormQuiz/containerAlternativaIncorretaFormQuizTema.tres" id="1_vp5es"]
 [ext_resource type="Script" path="res://componentes/containerAlternativaFormQuiz/containerAlternativaFormQuiz.gd" id="2_056oa"]
 [ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="2_hbf1m"]
 
@@ -29,7 +29,7 @@ anchor_bottom = 0.0722222
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(420, 25)
-theme = ExtResource("1_atjhp")
+theme = ExtResource("1_vp5es")
 script = ExtResource("2_056oa")
 metadata/_edit_use_anchors_ = true
 

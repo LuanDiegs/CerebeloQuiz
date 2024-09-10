@@ -32,9 +32,7 @@ func criaPopupNotificacao(
 
 
 func criaPopupEditFormPergunta(
-	titulo: String = "Atenção", 
-	idDoQuiz: int = 0,
-	idDaPergunta: int = 0,
+	titulo: String = "Atenção",
 	perguntaCard: ContainerPerguntaQuiz = null) -> void:
 		
 	var componente = preload("res://componentes/popUps/popUpFormPergunta/popUpFormPergunta.tscn").instantiate()

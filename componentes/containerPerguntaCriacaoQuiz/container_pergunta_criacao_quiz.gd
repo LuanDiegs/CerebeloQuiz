@@ -69,4 +69,4 @@ func _process(delta: float) -> void:
 
 func abrirFormPergunta():
 	var titulo = "Nova pergunta" if idPergunta == 0 else "Editar pergunta"
-	PopUp.criaPopupEditFormPergunta(titulo, 0, idPergunta, self)
+	PopUp.criaPopupEditFormPergunta(titulo, self)
