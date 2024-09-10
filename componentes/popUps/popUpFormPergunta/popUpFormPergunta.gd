@@ -61,7 +61,9 @@ func fechaPopup(salvar: bool):
 	
 	if(salvar and componenteCardPergunta):
 		componenteCardPergunta.conteudoPergunta = perguntaConteudoInput.text
-		componenteCardPergunta.alternativasConteudoSalvas = alternativasContainer.get_children().map(func(value: ContainerAlternativaFormQuiz): return [value.conteudoAlternativaTexto, value.isAlternativaCorreta])
+		componenteCardPergunta.alternativasConteudoSalvas = alternativasContainer.get_children().map(
+			func(value: ContainerAlternativaFormQuiz): 
+				return {"conteudoAlternativa" : value.conteudoAlternativaTexto, "isAlternativaCorreta": value.isAlternativaCorreta})
 	self.queue_free()
 
 
@@ -71,7 +73,8 @@ func criaAlternativasDefaultOuSalvas():
 	
 	for i in quantidadeAInserir:
 		var alternativa = alternativaComponente.instantiate()
-		alternativa.conteudoAlternativaTexto = "" if !alternativasConteudoSalvas else alternativasConteudoSalvas[i][0]
+		alternativa.conteudoAlternativaTexto = "" if !alternativasConteudoSalvas else alternativasConteudoSalvas[i]["conteudoAlternativa"]
+		alternativa.alternativaId = 0 if !alternativasConteudoSalvas else alternativasConteudoSalvas[i]["alternativaId"]
 		
 		alternativasContainer.add_child(alternativa)
 		

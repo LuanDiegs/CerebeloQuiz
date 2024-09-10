@@ -3,6 +3,7 @@ class_name ContainerAlternativaFormQuiz
 
 @onready var botaoRemover = $MarginConteudo/Conteudos/BotaoRemover as Button
 
+var alternativaId := 0
 var isAlternativaCorreta := false
 var conteudoAlternativaTexto := ""
 @onready var conteudoAlternativaInput = $MarginConteudo/Conteudos/ConteudoAlternativa as TextEdit

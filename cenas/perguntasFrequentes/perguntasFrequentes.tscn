@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwfirh0i4fw5b"]
 
-[ext_resource type="PackedScene" uid="uid://dq4wq04hpvlb2" path="res://cenas/index/index.tscn" id="1_7uhcr"]
+[ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_6u4su"]
 [ext_resource type="PackedScene" uid="uid://b4vphgog1ukg1" path="res://componentes/header/headerPerguntasFrequentes.tscn" id="2_noavp"]
 
 [node name="perguntasFrequentes" type="Control"]
@@ -11,16 +11,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Comum" parent="." instance=ExtResource("1_7uhcr")]
+[node name="Comum" type="Control" parent="."]
 layout_mode = 1
+anchor_right = 0.196094
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Header" parent="." instance=ExtResource("2_noavp")]
+[node name="Fundo" type="CanvasLayer" parent="Comum"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Comum/Fundo"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sidebar" parent="Comum" instance=ExtResource("1_6u4su")]
 layout_mode = 1
-anchor_left = 0.219
-anchor_top = 0.069
-anchor_right = 0.977
-anchor_bottom = 0.139
-offset_left = -0.320007
-offset_top = 0.319996
-offset_right = -0.560059
-offset_bottom = -0.0800095
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.196094
+anchor_right = 1.0
+anchor_bottom = 0.998611
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="Header" parent="MarginContainer" instance=ExtResource("2_noavp")]
+layout_mode = 2

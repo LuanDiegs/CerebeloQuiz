@@ -109,6 +109,7 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "MEUS QUIZZES"
 script = ExtResource("3_mnyfy")
+redirecionarPara = "res://cenas/meusQuizzes/meusQuizzes.tscn"
 
 [node name="QuizzesFavoritos" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
 custom_minimum_size = Vector2(230, 65)
@@ -126,6 +127,7 @@ size_flags_vertical = 0
 text = "PERGUNTAS
 FREQUENTES"
 script = ExtResource("3_mnyfy")
+redirecionarPara = "res://cenas/perguntasFrequentes/perguntasFrequentes.tscn"
 
 [node name="SobreNos" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
 custom_minimum_size = Vector2(230, 65)

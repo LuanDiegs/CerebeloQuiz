@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://unde2lvowa5h"]
+
+[ext_resource type="Script" path="res://componentes/cardMeusQuizzes/cardMeusQuizzes.gd" id="1_ebr11"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_yhce4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4s71"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.227451, 0.258824, 0.521569, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_3by8i"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_r4s71")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgolk"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_xyoo1"]
+Panel/styles/panel = SubResource("StyleBoxFlat_kgolk")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1d1fn"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_g6774"]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_yhce4")
+Label/styles/normal = SubResource("StyleBoxFlat_1d1fn")
+
+[node name="CardMeusQuizzes" type="MarginContainer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.208333
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_ebr11")
+metadata/_edit_use_anchors_ = true
+
+[node name="PainelMeusQuizzes" type="PanelContainer" parent="."]
+layout_mode = 2
+theme = SubResource("Theme_3by8i")
+
+[node name="MarginDentroDoPanel" type="MarginContainer" parent="PainelMeusQuizzes"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="Elementos" type="HBoxContainer" parent="PainelMeusQuizzes/MarginDentroDoPanel"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PainelMeusQuizzes/MarginDentroDoPanel/Elementos"]
+custom_minimum_size = Vector2(225, 100)
+layout_mode = 2
+theme = SubResource("Theme_xyoo1")
+
+[node name="TituloQuiz" type="Label" parent="PainelMeusQuizzes/MarginDentroDoPanel/Elementos"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = SubResource("Theme_g6774")
+text = "[TITULO DO QUIZ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotoesContainer" type="VBoxContainer" parent="PainelMeusQuizzes/MarginDentroDoPanel/Elementos"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Editar" type="Button" parent="PainelMeusQuizzes/MarginDentroDoPanel/Elementos/BotoesContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+text = "EDITAR"
+
+[node name="Deletar" type="Button" parent="PainelMeusQuizzes/MarginDentroDoPanel/Elementos/BotoesContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+text = "DELETAR"

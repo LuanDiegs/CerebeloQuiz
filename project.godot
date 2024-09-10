@@ -24,6 +24,7 @@ UsuariosEntidade="*res://bancoDeDados/entidades/usuarios.gd"
 EntidadeConstantes="*res://bancoDeDados/entidades/entidadesConstantes.gd"
 SessaoUsuario="*res://globals/sessao.gd"
 ConstantesPadroes="*res://globals/constantesPadrao.gd"
+Utils="*res://globals/utils.gd"
 TelaCarregamento="*res://globals/telaCarregamento.gd"
 PopUp="*res://globals/popUpBase.gd"
 
@@ -43,6 +44,7 @@ enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
 
 botaoPerfil="Botão que é utilizado para visualizar o perfil"
 alternativa=""
+CardPergunaEditFormQuiz=""
 
 [input]
 

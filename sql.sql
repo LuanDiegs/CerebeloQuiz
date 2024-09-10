@@ -5,7 +5,7 @@ CREATE TABLE usuarios (
 	senha	TEXT NOT NULL CHECK(senha != ''),
 	dataNascimento TEXT NOT NULL CHECK(dataNascimento != ''),
 	telefone INTEGER CHECK(telefone == NULL OR typeof(telefone) = 'integer'),
-	isDesativado	INTEGER DEFAULT 0 CHECK(typeof(isDesativado) = 'integer' AND isDesativado IN (1, 0)),
+	isDesativado INTEGER DEFAULT 0 CHECK(typeof(isDesativado) = 'integer' AND isDesativado IN (1, 0)),
 	PRIMARY KEY(usuarioId AUTOINCREMENT)
 );
 
@@ -21,9 +21,12 @@ CREATE TABLE quizzes (
 		REFERENCES usuarios(usuarioId)
 );
 
+CREATE INDEX quizzesUsuarioIdIdx
+ON quizzes (usuarioId);
+
 CREATE TABLE perguntas (
 	perguntaId INTEGER NOT NULL,
-	conteudoTexto TEXT NOT NULL CHECK(conteudoTexto != ''),
+	conteudoPergunta TEXT NOT NULL CHECK(conteudoPergunta != ''),
 	quizId INTEGER NOT NULL,
 	PRIMARY KEY(perguntaId AUTOINCREMENT),
 	CONSTRAINT quizFk
@@ -32,9 +35,12 @@ CREATE TABLE perguntas (
 		ON DELETE CASCADE
 );
 
+CREATE INDEX perguntasQuizIdIdx
+ON perguntas (quizId);
+
 CREATE TABLE alternativas (
 	alternativaId INTEGER NOT NULL,
-	conteudoTexto TEXT NOT NULL CHECK(conteudoTexto != ''),
+	conteudoAlternativa TEXT NOT NULL CHECK(conteudoQuiz != ''),
 	isAlternativaCorreta INTEGER NOT NULL CHECK(typeof(isAlternativaCorreta) = 'integer' AND isAlternativaCorreta IN (1, 0)),
 	perguntaId INTEGER NOT NULL,
 	PRIMARY KEY(alternativaId AUTOINCREMENT),
@@ -43,3 +49,6 @@ CREATE TABLE alternativas (
 		REFERENCES perguntas(perguntaId)
 		ON DELETE CASCADE
 );
+
+CREATE INDEX alternativasPerguntaIdIdx
+ON alternativas (perguntaId);

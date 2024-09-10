@@ -3,32 +3,24 @@
 [ext_resource type="Script" path="res://componentes/containerPerguntaCriacaoQuiz/container_pergunta_criacao_quiz.gd" id="1_8nlb1"]
 [ext_resource type="Theme" uid="uid://blp8ujo6bo4cc" path="res://componentes/containerPerguntaCriacaoQuiz/containerPerguntaCriacaoQuizTema.tres" id="1_y6v5s"]
 
-[node name="ContainerPerguntaCriacaoQuiz" type="MarginContainer"]
+[node name="ContainerPerguntaCriacaoQuiz" type="MarginContainer" groups=["CardPergunaEditFormQuiz"]]
 custom_minimum_size = Vector2(925, 100)
 anchors_preset = -1
-anchor_right = 0.722656
+anchor_right = 1.0
 anchor_bottom = 0.152778
-size_flags_horizontal = 3
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 script = ExtResource("1_8nlb1")
 metadata/_edit_use_anchors_ = true
 
-[node name="PanelQuiz" type="Panel" parent="."]
+[node name="PanelQuiz" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_y6v5s")
 
 [node name="MarginConteudo" type="MarginContainer" parent="PanelQuiz"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15

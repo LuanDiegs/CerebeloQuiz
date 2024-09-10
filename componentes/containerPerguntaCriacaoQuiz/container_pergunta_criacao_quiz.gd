@@ -5,7 +5,7 @@ var nodePego: ContainerPerguntaQuiz = null
 var dragOffset = 0.0
 var limiteDoContainer = 100
 
-@onready var panelQuiz: Panel = $PanelQuiz
+@onready var panelQuiz: PanelContainer = $PanelQuiz
 @onready var vbox: VBoxContainer = self.get_parent()
 
 @onready var botaoAgarrar = $PanelQuiz/MarginConteudo/Conteudos/BotaoAgarrar
@@ -14,8 +14,9 @@ var limiteDoContainer = 100
 @onready var botaoEditar = $PanelQuiz/MarginConteudo/Conteudos/BotaoEditar
 
 var idPergunta = 0
-var conteudoPergunta = "teste"
-var alternativasConteudoSalvas: Array = [["a", true], ["b", false], ["v", false], ["c", false]]
+var conteudoPergunta = "" #"teste"
+var alternativasConteudoSalvas: Array  #=[["a", true], ["b", false], ["v", false], ["c", false]]
+
 
 func _ready() -> void:
 	set_process_input(false)
@@ -43,7 +44,7 @@ func _on_botaoAgarrar_gui_input(event: InputEvent) -> void:
 		# Pega o node e cria uma cópia
 		nodePego = self.duplicate()
 		nodePego.set_script(null)
-		vbox.get_parent().get_parent().add_child(nodePego)
+		vbox.get_parent().add_child(nodePego)
 		dragOffset = get_global_mouse_position().y - global_position.y
 		
 		# Cria novo estilo
@@ -53,9 +54,8 @@ func _on_botaoAgarrar_gui_input(event: InputEvent) -> void:
 		estiloPanelPego.shadow_offset = Vector2(3,3)
 		
 		# Coloca o estilo novo para falar que está sendo "pego", esconde o node "antigo"
-		var panelPego: Panel = nodePego.get_node("PanelQuiz")
+		var panelPego: PanelContainer = nodePego.get_node("PanelQuiz")
 		panelPego.add_theme_stylebox_override("panel", estiloPanelPego)
-		panelPego.global_position.y = -720
 		panelQuiz.hide()
 		set_process_input(true)
 		

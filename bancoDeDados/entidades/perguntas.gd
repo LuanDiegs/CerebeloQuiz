@@ -3,9 +3,9 @@ class_name Perguntas
 
 var propriedades: Dictionary
 
-func instanciaEntidade(conteudoTexto: String, quizId: int):
+func instanciaEntidade(conteudoPergunta: String, quizId: int):
 	self.propriedades = {
-		"conteudoTexto": conteudoTexto,
+		"conteudoPergunta": conteudoPergunta,
 		"quizId": quizId,
 	}
 	

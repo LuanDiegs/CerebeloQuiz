@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://codj1qfrivht6"]
+[gd_scene load_steps=17 format=3 uid="uid://codj1qfrivht6"]
 
 [ext_resource type="Texture2D" uid="uid://bqc3ej2f1ddii" path="res://resources/imagens/noImage.png" id="1_iblce"]
+[ext_resource type="Script" path="res://componentes/cards/cardBase.gd" id="1_r8sgh"]
 [ext_resource type="Texture2D" uid="uid://bw6etviqo7xcw" path="res://resources/imagens/Denuncia.png" id="2_efpk0"]
 [ext_resource type="Texture2D" uid="uid://dt8v22f1bg266" path="res://resources/imagens/FavoritarEmpty.png" id="3_75c2d"]
 [ext_resource type="Texture2D" uid="uid://dwma0l5jsit4" path="res://resources/imagens/User.png" id="4_1o7qd"]
@@ -65,9 +66,10 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="PanelQuiz" type="Panel"]
+[node name="CardQuiz" type="Panel"]
 custom_minimum_size = Vector2(239, 300)
 theme_override_styles/panel = SubResource("StyleBoxFlat_sfvyi")
+script = ExtResource("1_r8sgh")
 
 [node name="ImgCapaQuiz" type="TextureRect" parent="."]
 layout_mode = 0

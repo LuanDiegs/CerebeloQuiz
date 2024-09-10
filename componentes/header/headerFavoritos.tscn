@@ -1,42 +1,56 @@
-[gd_scene load_steps=5 format=3 uid="uid://00qaslrwjpwy"]
+[gd_scene load_steps=6 format=3 uid="uid://00qaslrwjpwy"]
 
-[ext_resource type="Theme" uid="uid://k0hfxchkjo62" path="res://resources/temas/optionBtWithBorder.tres" id="1_rlsug"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_hvjb1"]
 [ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="3_o46i7"]
 [ext_resource type="Texture2D" uid="uid://do3xi1txsir1d" path="res://resources/imagens/2lupa.png" id="4_kna3q"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs1dp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ts0ap"]
+thickness = 2
+
 [node name="Header" type="Control"]
 layout_mode = 3
-anchor_left = 0.222
-anchor_top = 0.083
-anchor_right = 0.98
-anchor_bottom = 0.264
-offset_left = -0.160034
-offset_top = 0.239998
-offset_right = -0.400024
-offset_bottom = -0.0800018
-theme = ExtResource("1_rlsug")
+anchor_right = 1.0
+anchor_bottom = 0.25
 metadata/_edit_use_anchors_ = true
 
-[node name="Titulo" type="Label" parent="."]
+[node name="Header" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.17647
+offset_bottom = -52.5974
+metadata/_edit_use_anchors_ = true
+
+[node name="Titulo" type="Label" parent="Header"]
 custom_minimum_size = Vector2(900, 50)
-layout_mode = 0
-anchor_right = 0.999999
-anchor_bottom = 0.384614
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_hvjb1")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs1dp")
 text = "MEUS QUIZZES FAVORITOS"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="InputPesquisa" type="LineEdit" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.615383
-anchor_right = 0.736842
-anchor_bottom = 1.02307
+[node name="Separador" type="HSeparator" parent="Header"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ts0ap")
+
+[node name="Espaco" type="Label" parent="Header"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Botoes" type="HBoxContainer" parent="Header"]
+layout_mode = 2
+
+[node name="InputPesquisa" type="LineEdit" parent="Header/Botoes"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 focus_neighbor_right = NodePath(".")
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0.333333, 0.333333, 0.333333, 1)
@@ -47,13 +61,14 @@ theme_override_font_sizes/font_size = 24
 placeholder_text = "Digite o nome do quiz ou do usuário para pesquisar..."
 max_length = 650
 right_icon = ExtResource("4_kna3q")
+metadata/_edit_use_anchors_ = true
 
-[node name="FiltroBotao" type="OptionButton" parent="."]
-layout_mode = 0
-anchor_left = 0.757894
-anchor_top = 0.615383
-anchor_right = 0.999999
-anchor_bottom = 0.999998
+[node name="Espaco" type="Label" parent="Header/Botoes"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="FiltroSelect" type="OptionButton" parent="Header/Botoes"]
+layout_mode = 2
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)

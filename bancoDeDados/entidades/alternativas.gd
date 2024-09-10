@@ -5,7 +5,7 @@ var propriedades: Dictionary
 
 func instanciaEntidade(conteudo: String, isAlternativaCorreta: bool , perguntaId: int):
 	self.propriedades = {
-		"conteudoTexto": conteudo,
+		"conteudoAlternativa": conteudo,
 		"isAlternativaCorreta": isAlternativaCorreta,
 		"perguntaId": perguntaId,
 	}
@@ -20,8 +20,8 @@ func instanciaEntidades(alternativas: Array , perguntaId: int):
 
 func converteEntidade(valor, perguntaId):
 	var propriedade = {
-		"conteudoTexto": valor[0],
-		"isAlternativaCorreta": valor[1],
+		"conteudoAlternativa": valor["conteudoAlternativa"],
+		"isAlternativaCorreta": valor["isAlternativaCorreta"],
 		"perguntaId": perguntaId,
 	}
 	

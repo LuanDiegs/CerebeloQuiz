@@ -32,16 +32,22 @@ grow_vertical = 2
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Header" parent="." instance=ExtResource("1_yp7p5")]
-layout_mode = 1
-anchor_left = 0.221875
-anchor_bottom = 0.265278
-offset_left = 0.0
-offset_bottom = -1.00017
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.196094
+anchor_right = 1.0
+anchor_bottom = 0.998611
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="Header" parent="MarginContainer" instance=ExtResource("1_yp7p5")]
+layout_mode = 2
 
 [node name="ScrollContainerQuizzezFavoritos" parent="." instance=ExtResource("3_36yi8")]
 layout_mode = 1
-anchor_left = 0.226563
+anchor_left = 0.219531
 anchor_top = 0.304167
-anchor_right = 0.984375
+anchor_right = 0.976563
 anchor_bottom = 0.998611

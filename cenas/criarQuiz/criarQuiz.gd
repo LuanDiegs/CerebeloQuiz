@@ -3,8 +3,9 @@ class_name CriarQuiz
 
 const perguntaQuizCardComponente = preload("res://componentes/containerPerguntaCriacaoQuiz/containerPerguntaCriacaoQuiz.tscn")
 
-@onready var adicionarPerguntaBotao: Button = $Perguntas/HeaderPerguntas/Titulo/AdicionarPergunta
-@onready var perguntasContainer: VBoxContainer = $Perguntas/PerguntasScrollContainer/PerguntasContainer
+@onready var _adicionarPerguntaBotao: Button = $Perguntas/HeaderPerguntas/Titulo/AdicionarPergunta
+@onready var _perguntasContainer: VBoxContainer = $Perguntas/PerguntasScrollContainer/PerguntasContainer
+@onready var _labelSemPerguntas = $Perguntas/PerguntasScrollContainer/LabelSemPerguntas
 
 #Formulario salvar quiz
 @onready var salvarQuizBotao := $FormularioInicial/Salvar
@@ -13,12 +14,19 @@ const perguntaQuizCardComponente = preload("res://componentes/containerPerguntaC
 @onready var classificacaoIndicativa := $FormularioInicial/ClassificacaoIndicativa as OptionButton
 var thread: Thread
 
+#Propriedades para abrir o modal de inserção
 var retornou = false
 var responseInsercao = false
 var popUpSalvando: PopUpNotificacao
 
+#Edicao ou inserção
+@export var idRegistroEdicao: int = 0
+var quizSalvo
 
 func _process(delta):
+	#Verifica se tem alguma pergunta para exibir a mensagem
+	_labelSemPerguntas.visible = true if _perguntasContainer.get_child_count() == 0  else false
+	
 	if(retornou):
 		retornou = false
 		responseInsercao = false
@@ -27,25 +35,62 @@ func _process(delta):
 
 func _ready() -> void:
 	thread = Thread.new()
-	adicionarPerguntaBotao.connect("pressed", criarPergunta)
+	_adicionarPerguntaBotao.connect("pressed", criarPergunta)
 	salvarQuizBotao.connect("pressed", salvarQuiz)
+	
+	#Se o quiz tiver um id significa que ele já existe
+	if(idRegistroEdicao != 0):
+		quizSalvo = Quizzes.new().getQuizCompleto(idRegistroEdicao)
+		preencheDadosDoQuizSalvo()
 
+
+func preencheDadosDoQuizSalvo():
+	#Quiz
+	tituloQuiz.text = quizSalvo.titulo
+	botaoToggleIsPrivado.insereValor(quizSalvo.isPrivado)
+	classificacaoIndicativa.selected = quizSalvo.classificacaoIndicativa-1 #-1 pois a gente salva o ID e não o selecionado
+	
+	#Perguntas
+	criarPerguntasSalvas()
+	
+
+func criarPerguntasSalvas():
+	var perguntas = quizSalvo.perguntas
+	
+	#Deleta todas as perguntas default	
+	for n in _perguntasContainer.get_children():
+		_perguntasContainer.remove_child(n)
+	
+	#Insere as perguntas
+	for pergunta in perguntas:
+		var perguntaCard = perguntaQuizCardComponente.instantiate() as ContainerPerguntaQuiz
+		perguntaCard.idPergunta = pergunta.perguntaId
+		perguntaCard.conteudoPergunta = pergunta.conteudoPergunta
+		
+		#Alternativas
+		perguntaCard.alternativasConteudoSalvas = pergunta.alternativas
+		_perguntasContainer.add_child(perguntaCard)
+		
 
 func salvarQuiz() -> void:
 	if(validaFormulario()):
 		var quiz = Quizzes.new().instanciaEntidade(tituloQuiz.text, botaoToggleIsPrivado.obterValorSelecionado(), classificacaoIndicativa.get_selected_id(), SessaoUsuario.usuarioLogado.idUsuario)
-		var perguntas = perguntasContainer.get_children() as Array[ContainerPerguntaQuiz]
+		var perguntas = _perguntasContainer.get_children() as Array[ContainerPerguntaQuiz]
 		
 		popUpSalvando = PopUp.criaPopupNotificacao("Salvando seu quiz...", "", "Salvando...", true) as PopUpNotificacao
-		thread.start(criarQuizAlgoritmo.bind(quiz, perguntas))
+		thread.start(salvarQuizAlgoritmo.bind(quiz, perguntas))
 		
 
-func criarQuizAlgoritmo(quiz, perguntas):
+func salvarQuizAlgoritmo(quiz, perguntas):
 	var erroAoInserir = false
 	
-	#Insercao do quiz, retornando o id criado
-	var responseQuiz  = BD.inserirQuiz(quiz, perguntas)
-	
+	#Insercao ou edição do quiz, retornando o id criado
+	var responseQuiz
+	if(idRegistroEdicao == 0):
+		responseQuiz = Quizzes.new().inserirQuiz(quiz, perguntas)
+	else:
+		responseQuiz = Quizzes.new().editarQuiz(idRegistroEdicao, quiz, perguntas)
+		
 	if(!responseQuiz):
 		erroAoInserir = true
 	
@@ -56,7 +101,7 @@ func criarQuizAlgoritmo(quiz, perguntas):
 func validaFormulario():
 	var mensagem = ""
 	var valido = true
-	var perguntasComConteudoVazio = perguntasContainer.get_children().map(getPerguntasComConteudoVazio)
+	var perguntasComConteudoVazio = _perguntasContainer.get_children().map(getPerguntasComConteudoVazio)
 	
 	if(tituloQuiz.text.is_empty()):
 		valido = false
@@ -72,9 +117,18 @@ func validaFormulario():
 		#Remove a última vírgula e coloca um ponto
 		mensagem = mensagem.left(mensagem.length()-2) + "." if !valido else ""
 	
+	#Necessário salvar pelo menos 1 pergunta
 	if(valido):
-		var alternativasComProblemas = perguntasContainer.get_children().map(getAlternativasComConteudoVazio)
+		var alternativas = _perguntasContainer.get_children()
+		if(!alternativas):
+			valido = false
+			mensagem = "É necessário inserir pelo menos 1 pergunta."
+		
+		
+	if(valido):
+		var alternativasComProblemas = _perguntasContainer.get_children().map(getAlternativasComConteudoVazio)
 		mensagem = "As alternativas dos seguintes quizzes estão inválidas: \n"
+		
 		for i in alternativasComProblemas.size():
 			if(alternativasComProblemas[i]):
 				valido = false
@@ -82,6 +136,7 @@ func validaFormulario():
 			
 		#Remove a última vírgula e coloca um ponto
 		mensagem = mensagem.left(mensagem.length()-2) + "." if !valido else ""
+		
 	if(!mensagem.is_empty()):
 		PopUp.criaPopupNotificacao(mensagem)
 	
@@ -89,9 +144,9 @@ func validaFormulario():
 
 
 func criarPergunta() -> void:
-	if(perguntasContainer.get_children().size() < ConstantesPadroes.MAXIMO_PERGUNTAS_QUIZ):
+	if(_perguntasContainer.get_children().size() < ConstantesPadroes.MAXIMO_PERGUNTAS_QUIZ):
 		var perguntaCard = perguntaQuizCardComponente.instantiate()
-		perguntasContainer.add_child(perguntaCard)
+		_perguntasContainer.add_child(perguntaCard)
 	else:
 		var mensagemMaximoPerguntas = "Um quiz pode ter no máximo " + str(ConstantesPadroes.MAXIMO_PERGUNTAS_QUIZ) + " perguntas"
 		PopUp.criaPopupNotificacao(mensagemMaximoPerguntas)
@@ -106,10 +161,10 @@ func verificarResponse(erroAoInserir: bool):
 	#Remove o popup de salvando
 	if(popUpSalvando):
 		popUpSalvando.queue_free()
-			
-	#TODO: Criar tela de meus quizzes e redirecionar apos salvar corretamente
-	var redirecionamento = "" if erroAoInserir else "meusQuizzes"
-	PopUp.criaPopupNotificacao(mensagem)
+	
+	#Mostra o popup e redireciona para a tela de meus quizzes
+	var redirecionamento = "" if erroAoInserir else TransicaoCena.telaMeusQuizzes
+	PopUp.criaPopupNotificacao(mensagem, redirecionamento)
 
 
 func getPerguntasComConteudoVazio(pergunta: ContainerPerguntaQuiz):
@@ -120,7 +175,7 @@ func getPerguntasComConteudoVazio(pergunta: ContainerPerguntaQuiz):
 
 
 func getAlternativasComConteudoVazio(pergunta: ContainerPerguntaQuiz):
-	var alternativas = pergunta.alternativasConteudoSalvas.map(func(value): return value[0] == "")
+	var alternativas = pergunta.alternativasConteudoSalvas.map(func(value): return value["conteudoAlternativa"] == "")
 	var alternativasInvalidas = alternativas.has(true)
 	
 	if alternativasInvalidas: 
@@ -130,4 +185,5 @@ func getAlternativasComConteudoVazio(pergunta: ContainerPerguntaQuiz):
 
 
 func _exit_tree():
-	thread.wait_to_finish()
+	if(thread.is_alive()):
+		thread.wait_to_finish()

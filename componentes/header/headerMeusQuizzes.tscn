@@ -1,50 +1,64 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjkqryv64dep8"]
+[gd_scene load_steps=7 format=3 uid="uid://bxmn3h6n30sjt"]
 
-[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_qdvdb"]
-[ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="3_h3vne"]
-[ext_resource type="Texture2D" uid="uid://do3xi1txsir1d" path="res://resources/imagens/2lupa.png" id="4_ey8hf"]
+[ext_resource type="Script" path="res://componentes/header/headerMeusQuizzes.gd" id="1_0f1eb"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_s7m8h"]
+[ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="2_27uiw"]
+[ext_resource type="Texture2D" uid="uid://do3xi1txsir1d" path="res://resources/imagens/2lupa.png" id="3_hxadb"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vd3bf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8i3l"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_gvu0o"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gsadk"]
 thickness = 2
 
-[node name="Header" type="Control"]
+[node name="HeaderMeusQuizzes" type="Control"]
 layout_mode = 3
 anchor_right = 1.0
-anchor_bottom = 0.268056
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 92)
+mouse_default_cursor_shape = 2
+script = ExtResource("1_0f1eb")
 metadata/_edit_use_anchors_ = true
 
 [node name="Header" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.17647
-offset_bottom = -52.5974
+anchor_bottom = 1.0
+offset_bottom = -13.0006
 metadata/_edit_use_anchors_ = true
 
 [node name="Titulo" type="Label" parent="Header"]
 custom_minimum_size = Vector2(900, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_qdvdb")
+theme_override_fonts/font = ExtResource("1_s7m8h")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_vd3bf")
-text = "QUIZZES POPULARES"
+theme_override_styles/normal = SubResource("StyleBoxFlat_g8i3l")
+text = "MEUS QUIZZES"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Separador" type="HSeparator" parent="Header"]
 layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_gvu0o")
+theme_override_styles/separator = SubResource("StyleBoxLine_gsadk")
 
 [node name="Espaco" type="Label" parent="Header"]
-custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
 [node name="Botoes" type="HBoxContainer" parent="Header"]
+layout_mode = 2
+
+[node name="BotaoCriarQuiz" type="Button" parent="Header/Botoes"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "CRIAR QUIZ"
+
+[node name="Separador" type="Label" parent="Header/Botoes"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
 [node name="InputPesquisa" type="LineEdit" parent="Header/Botoes"]
@@ -56,14 +70,14 @@ theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0.333333, 0.333333, 0.333333, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/caret_width = 2
-theme_override_fonts/font = ExtResource("3_h3vne")
+theme_override_fonts/font = ExtResource("2_27uiw")
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Digite o nome do quiz ou do usuário para pesquisar..."
 max_length = 650
-right_icon = ExtResource("4_ey8hf")
+right_icon = ExtResource("3_hxadb")
 metadata/_edit_use_anchors_ = true
 
-[node name="Espaco" type="Label" parent="Header/Botoes"]
+[node name="Separador2" type="Label" parent="Header/Botoes"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
@@ -72,7 +86,7 @@ layout_mode = 2
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_h3vne")
+theme_override_fonts/font = ExtResource("2_27uiw")
 theme_override_font_sizes/font_size = 24
 selected = 0
 item_count = 3

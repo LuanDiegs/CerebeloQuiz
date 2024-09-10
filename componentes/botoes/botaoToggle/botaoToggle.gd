@@ -24,3 +24,10 @@ func obterValorSelecionado():
 	
 	if(botaoOpcao2.button_pressed):
 		return valorOpcao2
+
+
+func insereValor(valor: bool):
+	if(!valor):
+		botaoOpcao1.button_pressed = true
+	else:
+		botaoOpcao2.button_pressed = true

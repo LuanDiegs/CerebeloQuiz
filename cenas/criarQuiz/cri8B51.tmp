@@ -50,6 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2l7ao")
+idRegistroEdicao = null
 
 [node name="Separador" type="HSeparator" parent="."]
 layout_mode = 1
@@ -222,9 +223,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = SubResource("GDScript_6hpt4")
 
-[node name="LabelSemPerguntas" type="Label" parent="Perguntas/PerguntasScrollContainer"]
+[node name="LabelSemPerguntas" type="Label" parent="Perguntas/PerguntasScrollContainer/PerguntasContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.589762, 0.589762, 0.589762, 1)
 theme_override_fonts/font = ExtResource("3_rmhbx")
 theme_override_font_sizes/font_size = 24
