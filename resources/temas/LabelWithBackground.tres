@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://cuj86t12656g2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8dco"]
-content_margin_left = 30.0
+content_margin_left = 20.0
 content_margin_top = 10.0
-content_margin_right = 10.0
+content_margin_right = 20.0
 content_margin_bottom = 10.0
 bg_color = Color(0.839216, 0.85098, 0.933333, 1)
 border_width_left = 2
