@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwfirh0i4fw5b"]
+[gd_scene load_steps=8 format=3 uid="uid://dwfirh0i4fw5b"]
 
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_6u4su"]
 [ext_resource type="PackedScene" uid="uid://b4vphgog1ukg1" path="res://componentes/header/headerPerguntasFrequentes.tscn" id="2_noavp"]
 [ext_resource type="Theme" uid="uid://cuj86t12656g2" path="res://resources/temas/LabelWithBackground.tres" id="3_gp868"]
 [ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="4_7c4h6"]
+[ext_resource type="Script" path="res://addons/collapsible_container/collapsible_elements/collapsible_container.gd" id="5_kg4yv"]
 
 [sub_resource type="Theme" id="Theme_vj5dj"]
 
@@ -14,7 +15,7 @@ font_size = 32
 font_color = Color(0.117647, 0.117647, 0.117647, 1)
 outline_color = Color(0.784314, 0.784314, 0.784314, 1)
 
-[node name="perguntasFrequentes" type="Control"]
+[node name="PerguntasFrequentes" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,25 +61,47 @@ layout_mode = 2
 
 [node name="Main" type="Control" parent="."]
 layout_mode = 1
-anchor_right = 0.031
-anchor_bottom = 0.056
-offset_left = 280.0
-offset_top = 120.0
-offset_right = 1210.32
-offset_bottom = 654.68
+anchor_left = 0.21875
+anchor_top = 0.166667
+anchor_right = 0.976563
+anchor_bottom = 0.965278
 theme = ExtResource("3_gp868")
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Main"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollapsibleContainer" type="Control" parent="Main/VBoxContainer"]
+process_mode = 3
+editor_description = "
+			A custom/plugin Control node capable of hiding and revealing its children by folding and unfolding.
+			
+Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
+clip_contents = true
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+script = ExtResource("5_kg4yv")
+folding_direction_preset = 10
+sizing_constraint = 1
+auto_update_size = 0
+sizing_node = NodePath("Label")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/CollapsibleContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.289
-anchor_top = -0.207
-anchor_right = -0.289
-anchor_bottom = -0.207
-offset_left = 315.33
-offset_top = 119.025
-offset_right = 1215.33
-offset_bottom = 269.025
+anchor_left = -0.0377777
+anchor_top = 0.00666667
+anchor_right = -0.0377778
+anchor_bottom = 0.00666667
+offset_left = 35.0
+offset_right = 935.0
+offset_bottom = 150.0
 theme = SubResource("Theme_vj5dj")
 text = "Como criar um quiz?"
 label_settings = SubResource("LabelSettings_rqr3h")
+metadata/_edit_use_anchors_ = true
