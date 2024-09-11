@@ -41,6 +41,7 @@ func criaPopupEditFormPergunta(
 	componente.titulo = titulo
 	if(perguntaCard):
 		componente.componenteCardPergunta = perguntaCard
+		componente.idPergunta = perguntaCard.idPergunta
 	
 	#Cria o componente na tela
 	get_tree().root.add_child(componente)

@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbpu55nprnqfu"]
+
+[ext_resource type="Script" path="res://componentes/escolhaAlternativaQuiz/escolhaAlternativaQuiz.gd" id="1_0j1lq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bacol"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.306923, 0.306923, 0.306922, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_w0syx"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_bacol")
+
+[node name="QuizzCard" type="PanelContainer"]
+custom_minimum_size = Vector2(732, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_w0syx")
+script = ExtResource("1_0j1lq")
+metadata/_edit_use_anchors_ = true
+
+[node name="QuizEAlternativas" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="QuizTexto" type="PanelContainer" parent="QuizEAlternativas"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Espaco" type="Label" parent="QuizEAlternativas"]
+layout_mode = 2
+
+[node name="Alternativa1" type="Button" parent="QuizEAlternativas"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Alternativa2" type="Button" parent="QuizEAlternativas"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Alternativa3" type="Button" parent="QuizEAlternativas"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Alternativa4" type="Button" parent="QuizEAlternativas"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2

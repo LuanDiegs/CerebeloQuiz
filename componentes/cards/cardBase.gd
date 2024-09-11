@@ -10,4 +10,4 @@ func _ready():
 	
 
 func editarQuizTeste():
-	TransicaoCena.trocar_cena(TransicaoCena.telaEditFormQuiz, 5)
+	TransicaoCena.trocar_cena(TransicaoCena.telaResponderQuiz)

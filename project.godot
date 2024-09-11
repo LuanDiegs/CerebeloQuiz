@@ -12,6 +12,7 @@ config_version=5
 
 config/name="CerebeloQuiz"
 config/version="0.0"
+config/tags=PackedStringArray("tg")
 run/main_scene="res://cenas/quizzesPopulares/quizzesPopulares.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"

@@ -16,6 +16,7 @@ var textoBotaoFechar: String
 #Pergunta
 @onready var perguntaConteudoInput := $PopUp/ContainerVertical/MarginForm/Form/PerguntaConteudo as TextEdit
 var componenteCardPergunta: ContainerPerguntaQuiz
+var idPergunta: int = 0
 
 #Alternativas
 @onready var inserirNovaAlternativaBotao = $PopUp/ContainerVertical/MarginForm/Form/Alternativas/HeaderAlternativas/InserirNovaAlternativa
@@ -67,7 +68,7 @@ func fechaPopup(salvar: bool):
 		componenteCardPergunta.conteudoPergunta = perguntaConteudoInput.text
 		componenteCardPergunta.alternativasConteudoSalvas = alternativasContainer.get_children().map(
 			func(value: ContainerAlternativaFormQuiz): 
-				return {"conteudoAlternativa" : value.conteudoAlternativaTexto, "isAlternativaCorreta": value.isAlternativaCorreta})
+				return {"conteudoAlternativa" : value.conteudoAlternativaTexto, "isAlternativaCorreta": value.isAlternativaCorreta, "alternativaId": value.alternativaId})
 	self.queue_free()
 
 
@@ -78,8 +79,9 @@ func criaAlternativasDefaultOuSalvas():
 	for i in quantidadeAInserir:
 		var alternativa = alternativaComponente.instantiate()
 		alternativa.conteudoAlternativaTexto = "" if !alternativasConteudoSalvas else alternativasConteudoSalvas[i]["conteudoAlternativa"]
-		alternativa.alternativaId = 0 if !alternativasConteudoSalvas else alternativasConteudoSalvas[i]["alternativaId"]
 		
+		alternativa.alternativaId = 0 if !alternativasConteudoSalvas or !alternativasConteudoSalvas[i].has("alternativaId") else alternativasConteudoSalvas[i]["alternativaId"]
+		print(alternativa.alternativaId)
 		alternativasContainer.add_child(alternativa)
 		
 		
