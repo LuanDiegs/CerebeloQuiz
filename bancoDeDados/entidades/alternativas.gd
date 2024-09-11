@@ -3,6 +3,10 @@ class_name Alternativas
 
 var propriedades: Dictionary
 
+var conteudoAlternativa
+var isAlternativaCorreta
+var perguntaId
+
 func instanciaEntidade(conteudo: String, isAlternativaCorreta: bool , perguntaId: int):
 	self.propriedades = {
 		"conteudoAlternativa": conteudo,
@@ -11,6 +15,7 @@ func instanciaEntidade(conteudo: String, isAlternativaCorreta: bool , perguntaId
 	}
 	
 	return propriedades
+
 
 func instanciaEntidades(alternativas: Array , perguntaId: int):
 	var dados = alternativas.map(converteEntidade.bind(perguntaId))

@@ -93,6 +93,13 @@ func getQuizCompleto(idQuiz):
 	return quiz
 
 
+func getPerguntasEAlternativasDoQuiz(idQuiz):
+	var quizCompleto = getQuizCompleto(idQuiz)
+	var perguntas = quizCompleto["perguntas"]
+	
+	return perguntas
+	
+	
 func getQuizzesDoUsuario(idUsuario):
 	var banco = BD.banco as SQLite
 	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesTabela + " WHERE usuarioId=?"

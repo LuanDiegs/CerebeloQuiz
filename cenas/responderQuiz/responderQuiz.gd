@@ -13,41 +13,92 @@ var _minutosPercorridos: int = 0
 #Botoes avançar e retroceder pergunta
 @onready var _retrocederPerguntaBotao: Button = $MarginQuizzes/QuizzesContainer/RetrocederPerguntaBotao
 @onready var _avancarPerguntaBotao: Button = $MarginQuizzes/QuizzesContainer/AvancarPerguntaBotao
+var _insercaoPerguntaTerminou := true
 
 #Container quiz
 @onready var _quizContainer: VBoxContainer = $MarginQuizzes/QuizzesContainer/MarginContainer/QuizContainer
-@onready var _quizCard: PanelContainer = $MarginQuizzes/QuizzesContainer/MarginContainer/QuizContainer/QuizzCard as EscolhaAlternativaQuiz
+var _quizCard: EscolhaAlternativaQuiz = null
+
+#Quiz
+var idQuiz: int = 17
+var perguntas: Array
+var perguntasCardsComponentes: Array
+var indexPerguntaAtual := 0
+
+
+func _process(delta):
+	#Verifica se os botões de avançar e retroceder ficarão desabilitados
+	if(indexPerguntaAtual+1 == perguntasCardsComponentes.size()):
+		_avancarPerguntaBotao.disabled = true
+	else:
+		_avancarPerguntaBotao.disabled = false
+	
+	if(indexPerguntaAtual == 0):
+		_retrocederPerguntaBotao.disabled = true
+	else:
+		_retrocederPerguntaBotao.disabled = false
 
 
 func _ready() -> void:
 	_retrocederPerguntaBotao.connect("pressed", perguntaAnterior)
 	_avancarPerguntaBotao.connect("pressed", proximaPergunta)
 	_tempoPercorrido.connect("timeout", aumentaTimer)
+	
+	#Insere as perguntas na variável e já cria seus componentes
+	perguntas = Quizzes.new().getPerguntasEAlternativasDoQuiz(idQuiz)
+	await criarComponentesDasPerguntas(perguntas)
+	
+	_quizContainer.add_child(perguntasCardsComponentes[indexPerguntaAtual])
+	_quizCard = perguntasCardsComponentes[indexPerguntaAtual]
+
+
+func criarComponentesDasPerguntas(perguntas: Array):
+	for pergunta in perguntas:
+		var quizCardComponente = preload("res://componentes/escolhaAlternativaQuiz/escolhaAlternativaQuiz.tscn").instantiate() as EscolhaAlternativaQuiz
+		
+		quizCardComponente.perguntaId = pergunta["perguntaId"]
+		quizCardComponente.perguntaConteudo = pergunta["conteudoPergunta"]
+		quizCardComponente.alternativas = pergunta["alternativas"]
+		
+		perguntasCardsComponentes.append(quizCardComponente)
 
 
 func proximaPergunta():
-	var perguntaAnterior = _quizCard.duplicate() as EscolhaAlternativaQuiz
+	if(!_insercaoPerguntaTerminou):
+		return
+	
+	_insercaoPerguntaTerminou = false
+	indexPerguntaAtual +=1
+	var proximaPergunta = perguntasCardsComponentes[indexPerguntaAtual]
 	
 	await animaEntradaSaida(true)
 	
 	#Insere a pergunta normal
-	_quizContainer.add_child(perguntaAnterior)
-	_quizCard = perguntaAnterior
+	_quizCard = proximaPergunta
+	_insercaoPerguntaTerminou = true
+	_quizContainer.add_child(proximaPergunta)
 
 
 func perguntaAnterior():
-	var perguntaAnterior = _quizCard.duplicate() as EscolhaAlternativaQuiz
+	if(!_insercaoPerguntaTerminou):
+		return
+	
+	_insercaoPerguntaTerminou = false
+	indexPerguntaAtual -= 1
+	var perguntaAnterior = perguntasCardsComponentes[indexPerguntaAtual]
 	
 	await animaEntradaSaida(false)
 	
 	#Insere a pergunta normal
-	_quizContainer.add_child(perguntaAnterior)
 	_quizCard = perguntaAnterior
+	_insercaoPerguntaTerminou = true
+	_quizContainer.add_child(perguntaAnterior)
+	
 	
 
 func animaEntradaSaida(isEntradaEsquerda: bool = true):
 	#Insere o node 'fantasma' para fazer a animação
-	var perguntaAnteriorFantasma = _quizCard.duplicate() as EscolhaAlternativaQuiz
+	var perguntaAnteriorFantasma = perguntasCardsComponentes[indexPerguntaAtual].duplicate()
 	
 	#Coloca propriedades para a animação rodar ok
 	perguntaAnteriorFantasma.global_position = _quizCard.global_position
@@ -60,8 +111,7 @@ func animaEntradaSaida(isEntradaEsquerda: bool = true):
 	_quizCard.saidaPergunta()
 	
 	#Anima entrada e tira o node após terminar a animação
-	await perguntaAnteriorFantasma.entradaPergunta()
-	perguntaAnteriorFantasma.queue_free()
+	await perguntaAnteriorFantasma.entradaPergunta(true)
 
 
 func aumentaTimer():
