@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://djc7ie5w0dc73"]
+
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="1_1v3r8"]
+[ext_resource type="Texture2D" uid="uid://bjkvvxqty8765" path="res://resources/imagens/setaBaixo.png" id="2_deio0"]
+[ext_resource type="Theme" uid="uid://cuj86t12656g2" path="res://resources/temas/LabelWithBackground.tres" id="3_yj4os"]
+[ext_resource type="Script" path="res://addons/collapsible_container/collapsible_elements/collapsible_container.gd" id="4_mnn7k"]
+[ext_resource type="FontFile" uid="uid://bx1dxv0xq3rv3" path="res://resources/fonts/Nunito/static/Nunito-Regular.ttf" id="5_ypgw3"]
+
+[sub_resource type="Theme" id="Theme_vj5dj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rqr3h"]
+line_spacing = 5.0
+font = ExtResource("5_ypgw3")
+font_size = 24
+font_color = Color(0.117647, 0.117647, 0.117647, 1)
+outline_color = Color(0.784314, 0.784314, 0.784314, 1)
+
+[node name="VBoxContainer" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+anchor_left = 0.036
+anchor_top = 0.035
+anchor_right = 0.964
+anchor_bottom = 0.403
+offset_left = 0.079998
+offset_top = -0.124992
+offset_right = -0.0800171
+offset_bottom = -1.72502
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(900, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(838, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_1v3r8")
+theme_override_font_sizes/font_size = 32
+text = "Como criar um quiz?"
+
+[node name="MenuButton" type="MenuButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+icon = ExtResource("2_deio0")
+
+[node name="CollapsibleContainer" type="Control" parent="."]
+editor_description = "
+			A custom/plugin Control node capable of hiding and revealing its children by folding and unfolding.
+			
+Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
+clip_contents = true
+custom_minimum_size = Vector2(900, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+tooltip_text = "Como criar um quiz?"
+theme = ExtResource("3_yj4os")
+script = ExtResource("4_mnn7k")
+auto_update_size = 0
+sizing_node = NodePath("Label")
+__preview_buttons = true
+use_custom_open_size = true
+custom_open_size = Vector2(900, 150)
+use_custom_close_size = true
+tween_duration_sec = 0.2
+_preview_auto_update_size = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CollapsibleContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0377778
+anchor_top = 0.00666667
+anchor_right = -0.0377778
+anchor_bottom = 0.00666667
+offset_left = 35.0
+offset_right = 935.0
+offset_bottom = 150.0
+theme = SubResource("Theme_vj5dj")
+theme_override_font_sizes/font_size = 24
+text = "Para criar um quiz é necessário... Para criar um quiz é necessário... Para criar um quiz é necessário... Para criar um quiz é necessário... Para criar um quiz é necessário..."
+label_settings = SubResource("LabelSettings_rqr3h")
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
