@@ -42,7 +42,6 @@ func editarQuiz(idRegistroEdicao: int, quiz, perguntas):
 	var banco = BD.banco as SQLite
 	var condicao = "WHERE "
 	
-	
 	return 0
 
 

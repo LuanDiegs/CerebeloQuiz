@@ -46,6 +46,7 @@ enabled=PackedStringArray("res://addons/collapsible_container/plugin.cfg", "res:
 botaoPerfil="Botão que é utilizado para visualizar o perfil"
 alternativa=""
 CardPergunaEditFormQuiz=""
+alternativasResposta=""
 
 [input]
 

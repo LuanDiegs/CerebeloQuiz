@@ -52,3 +52,23 @@ CREATE TABLE alternativas (
 
 CREATE INDEX alternativasPerguntaIdIdx
 ON alternativas (perguntaId);
+
+CREATE TABLE rankingPessoal (
+	rankingPessoalId INTEGER NOT NULL,
+	pontuacao INTEGER NOT NULL CHECK(typeof(pontuacao) = 'integer'),
+	quizId INTEGER NOT NULL,
+	usuarioId INTEGER NOT NULL,
+	PRIMARY KEY(rankingPessoalId AUTOINCREMENT),
+	CONSTRAINT quizFk
+		FOREIGN KEY (quizId)
+		REFERENCES quizzes(quizId)
+	CONSTRAINT usuarioFk
+		FOREIGN KEY (usuarioId)
+		REFERENCES usuarios(usuarioId)
+);
+
+CREATE INDEX rankingPessoalQuizIdIdx
+ON rankingPessoal (quizId);
+
+CREATE INDEX rankingPessoalUsuarioIdIdx
+ON rankingPessoal (usuarioId);

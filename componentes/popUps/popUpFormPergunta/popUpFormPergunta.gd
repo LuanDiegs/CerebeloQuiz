@@ -81,7 +81,6 @@ func criaAlternativasDefaultOuSalvas():
 		alternativa.conteudoAlternativaTexto = "" if !alternativasConteudoSalvas else alternativasConteudoSalvas[i]["conteudoAlternativa"]
 		
 		alternativa.alternativaId = 0 if !alternativasConteudoSalvas or !alternativasConteudoSalvas[i].has("alternativaId") else alternativasConteudoSalvas[i]["alternativaId"]
-		print(alternativa.alternativaId)
 		alternativasContainer.add_child(alternativa)
 		
 		

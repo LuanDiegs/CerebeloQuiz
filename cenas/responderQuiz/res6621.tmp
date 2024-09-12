@@ -51,9 +51,9 @@ layout_mode = 0
 anchor_left = 0.195313
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_left = 35
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 35
+theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 20
 metadata/_edit_use_anchors_ = true
 
@@ -72,9 +72,9 @@ text = "<-"
 [node name="MarginContainer" type="MarginContainer" parent="MarginQuizzes/QuizzesContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 15
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 15
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 30
 
 [node name="QuizContainer" type="VBoxContainer" parent="MarginQuizzes/QuizzesContainer/MarginContainer"]
@@ -103,11 +103,3 @@ text = "->"
 
 [node name="TempoPercorrido" type="Timer" parent="."]
 autostart = true
-
-[node name="Salvar" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1224.0
-offset_top = 686.0
-offset_right = 1279.0
-offset_bottom = 717.0
-text = "salvar"
