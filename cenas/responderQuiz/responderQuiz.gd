@@ -6,17 +6,17 @@ class_name ResponderQuiz
 
 #Timer
 @onready var _tempoPercorrido: Timer = $TempoPercorrido
-@onready var _tempoPercorridoLabel: Label = $MarginQuizzes/QuizzesContainer/MarginContainer/QuizContainer/TempoPercorridoLabel
+@onready var _tempoPercorridoLabel: Label = $ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer/TempoPercorridoLabel
 var _segundosPercorridos: int = 0
 var _minutosPercorridos: int = 0
 
 #Botoes avançar e retroceder pergunta
-@onready var _retrocederPerguntaBotao: Button = $MarginQuizzes/QuizzesContainer/RetrocederPerguntaBotao
-@onready var _avancarPerguntaBotao: Button = $MarginQuizzes/QuizzesContainer/AvancarPerguntaBotao
+@onready var _retrocederPerguntaBotao: Button = $ScrollQuizzes/MarginQuizzes/QuizzesContainer/RetrocederPerguntaBotao
+@onready var _avancarPerguntaBotao: Button = $ScrollQuizzes/MarginQuizzes/QuizzesContainer/AvancarPerguntaBotao
 var _insercaoPerguntaTerminou := true
 
 #Container quiz
-@onready var _quizContainer: VBoxContainer = $MarginQuizzes/QuizzesContainer/MarginContainer/QuizContainer
+@onready var _quizContainer: VBoxContainer = $ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer
 var _quizCard: EscolhaAlternativaQuiz = null
 
 #Quiz
@@ -164,7 +164,7 @@ func responderQuiz():
 	
 	if(SessaoUsuario.isLogada):
 		var tempoTotalPercorrido = (_minutosPercorridos*60) + _segundosPercorridos
-		print(tempoTotalPercorrido)
+
 		var pontuacaoFinal = (acertos*100)/tempoTotalPercorrido
 		var rankingPessoal = RankingPessoal.new().instanciaEntidade(pontuacaoFinal, quizId, SessaoUsuario.usuarioLogado.idUsuario)
 		var response = BD.inserirDados(EntidadeConstantes.RankingPessoalTabela, rankingPessoal)
