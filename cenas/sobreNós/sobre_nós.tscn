@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://2wd8i33mbuxq"]
+[gd_scene load_steps=5 format=3 uid="uid://2wd8i33mbuxq"]
 
 [ext_resource type="PackedScene" uid="uid://dq4wq04hpvlb2" path="res://cenas/index/index.tscn" id="1_nubdn"]
+[ext_resource type="PackedScene" uid="uid://cgxhvl0bbqpr5" path="res://componentes/header/titulo.tscn" id="2_qrj3u"]
+[ext_resource type="PackedScene" uid="uid://dsvvawk8r61ko" path="res://componentes/panel/panel.tscn" id="3_d37r3"]
+[ext_resource type="PackedScene" uid="uid://xdx1elefqpmj" path="res://componentes/header/hSeparator.tscn" id="3_drndv"]
 
 [node name="sobreNós" type="Control"]
 layout_mode = 3
@@ -12,3 +15,58 @@ grow_vertical = 2
 
 [node name="Comum" parent="." instance=ExtResource("1_nubdn")]
 layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.195
+anchor_right = 1.0
+anchor_bottom = 0.167
+offset_left = 0.399994
+offset_bottom = -0.240005
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+
+[node name="Header" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Header"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.292
+anchor_top = -0.225
+anchor_right = -0.292
+anchor_bottom = -0.225
+offset_left = 283.24
+offset_top = 21.375
+offset_right = 1253.24
+offset_bottom = 117.375
+
+[node name="Titulo" parent="MarginContainer/Header/VBoxContainer" instance=ExtResource("2_qrj3u")]
+layout_mode = 2
+text = "SOBRE NÓS"
+
+[node name="Separador" parent="MarginContainer/Header/VBoxContainer" instance=ExtResource("3_drndv")]
+layout_mode = 2
+
+[node name="Main" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 280.0
+offset_top = 135.0
+offset_right = 1250.0
+offset_bottom = 705.0
+
+[node name="Panel" parent="Main" instance=ExtResource("3_d37r3")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 450.0
+offset_bottom = 300.0
+
+[node name="Panel2" parent="Main" instance=ExtResource("3_d37r3")]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 0.0
+offset_right = 970.0
+offset_bottom = 300.0

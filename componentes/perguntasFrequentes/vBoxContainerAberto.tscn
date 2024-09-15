@@ -43,8 +43,8 @@ theme_override_font_sizes/font_size = 32
 text = "Como criar um quiz?"
 vertical_alignment = 1
 
-[node name="MenuButton" type="MenuButton" parent="HBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
+[node name="MenuButton" type="MenuButton" parent="HBoxContainer" groups=["abrirFechar"]]
+custom_minimum_size = Vector2(58, 50)
 layout_mode = 2
 icon = ExtResource("2_oyhgo")
 icon_alignment = 1

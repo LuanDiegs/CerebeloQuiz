@@ -1,12 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4vphgog1ukg1"]
+[gd_scene load_steps=3 format=3 uid="uid://b4vphgog1ukg1"]
 
-[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_6vvuk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxcbw"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_0lfe2"]
-thickness = 2
+[ext_resource type="PackedScene" uid="uid://cgxhvl0bbqpr5" path="res://componentes/header/titulo.tscn" id="1_5e2o0"]
+[ext_resource type="PackedScene" uid="uid://xdx1elefqpmj" path="res://componentes/header/hSeparator.tscn" id="2_cuta2"]
 
 [node name="Header" type="Control"]
 layout_mode = 3
@@ -22,18 +17,8 @@ anchor_bottom = 1.0
 offset_bottom = -35.6563
 metadata/_edit_use_anchors_ = true
 
-[node name="Titulo" type="Label" parent="Header"]
-custom_minimum_size = Vector2(900, 50)
+[node name="Titulo" parent="Header" instance=ExtResource("1_5e2o0")]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_6vvuk")
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_nxcbw")
-text = "PERGUNTAS FREQUENTES"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="Separador" type="HSeparator" parent="Header"]
+[node name="Separador" parent="Header" instance=ExtResource("2_cuta2")]
 layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_0lfe2")

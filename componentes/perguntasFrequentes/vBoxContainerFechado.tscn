@@ -35,7 +35,7 @@ layout_mode = 2
 theme = ExtResource("1_cb4eu")
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(838, 58)
+custom_minimum_size = Vector2(838, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_l1hsi")
@@ -43,8 +43,8 @@ theme_override_font_sizes/font_size = 32
 text = "Como criar uma sessão com outros participantes?"
 vertical_alignment = 1
 
-[node name="MenuButton" type="MenuButton" parent="HBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
+[node name="MenuButton" type="MenuButton" parent="HBoxContainer" groups=["abrirFechar"]]
+custom_minimum_size = Vector2(58, 50)
 layout_mode = 2
 icon = ExtResource("2_k6j0t")
 icon_alignment = 1
@@ -56,6 +56,7 @@ editor_description = "
 			
 Give feedback at: https://github.com/ArshvirGoraya/Godot-Collapsible-Container"
 clip_contents = true
+custom_minimum_size = Vector2(900, 150)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 2

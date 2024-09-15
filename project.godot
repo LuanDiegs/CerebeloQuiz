@@ -47,6 +47,7 @@ botaoPerfil="Botão que é utilizado para visualizar o perfil"
 alternativa=""
 CardPergunaEditFormQuiz=""
 alternativasResposta=""
+abrirFechar="Botão do tipo MenuButton, utilizado para controlar o Collapsible"
 
 [input]
 
