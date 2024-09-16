@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://2wd8i33mbuxq"]
+[gd_scene load_steps=9 format=3 uid="uid://2wd8i33mbuxq"]
 
 [ext_resource type="PackedScene" uid="uid://dq4wq04hpvlb2" path="res://cenas/index/index.tscn" id="1_nubdn"]
 [ext_resource type="PackedScene" uid="uid://cgxhvl0bbqpr5" path="res://componentes/header/titulo.tscn" id="2_qrj3u"]
-[ext_resource type="PackedScene" uid="uid://dsvvawk8r61ko" path="res://componentes/panel/panel.tscn" id="3_d37r3"]
+[ext_resource type="PackedScene" uid="uid://dsvvawk8r61ko" path="res://componentes/panel/panelQuadrado.tscn" id="3_d37r3"]
 [ext_resource type="PackedScene" uid="uid://xdx1elefqpmj" path="res://componentes/header/hSeparator.tscn" id="3_drndv"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="5_50044"]
+[ext_resource type="PackedScene" uid="uid://dsf02j8x81udb" path="res://componentes/panel/panelHorizontal.tscn" id="6_0cg5s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ck3sd"]
+font = ExtResource("5_50044")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrg3u"]
+font = ExtResource("5_50044")
+font_size = 32
 
 [node name="sobreNós" type="Control"]
 layout_mode = 3
@@ -59,14 +69,52 @@ offset_bottom = 705.0
 
 [node name="Panel" parent="Main" instance=ExtResource("3_d37r3")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 450.0
-offset_bottom = 300.0
+
+[node name="Label3" type="Label" parent="Main/Panel"]
+custom_minimum_size = Vector2(450, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Missão, visão e valores"
+label_settings = SubResource("LabelSettings_ck3sd")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Panel2" parent="Main" instance=ExtResource("3_d37r3")]
 layout_mode = 0
 offset_left = 520.0
-offset_top = 0.0
 offset_right = 970.0
-offset_bottom = 300.0
+
+[node name="Label4" type="Label" parent="Main/Panel2"]
+custom_minimum_size = Vector2(450, 100)
+layout_mode = 0
+offset_right = 450.0
+offset_bottom = 100.0
+text = "Nossos quizzes"
+label_settings = SubResource("LabelSettings_ck3sd")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel3" parent="Main" instance=ExtResource("6_0cg5s")]
+layout_mode = 0
+offset_top = 330.0
+offset_bottom = 560.0
+
+[node name="Label3" type="Label" parent="Main/Panel3"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 968.0
+offset_bottom = 70.0
+text = "Entre em contato conosco!
+"
+label_settings = SubResource("LabelSettings_rrg3u")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="Main/Panel3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

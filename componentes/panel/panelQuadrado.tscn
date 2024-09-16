@@ -21,6 +21,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="LabelSettings" id="LabelSettings_uy45m"]
+font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7quws"]
 content_margin_left = 20.0
@@ -39,10 +40,8 @@ font_size = 20
 font_color = Color(0, 0, 0, 1)
 
 [node name="Panel" type="Panel"]
-offset_left = 280.0
-offset_top = 140.0
-offset_right = 730.0
-offset_bottom = 440.0
+offset_right = 450.0
+offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7vngi")
 
 [node name="Label" type="Label" parent="."]
@@ -52,8 +51,7 @@ offset_bottom = 100.0
 theme = ExtResource("1_x5jgq")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_0x5ck")
-theme_override_font_sizes/font_size = 64
-text = "Missão, visão e valores."
+theme_override_font_sizes/font_size = 32
 label_settings = SubResource("LabelSettings_uy45m")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -63,9 +61,10 @@ autowrap_mode = 2
 layout_mode = 0
 offset_left = 2.0
 offset_top = 102.0
-offset_right = 418.0
+offset_right = 448.0
 offset_bottom = 287.0
 theme = SubResource("Theme_ncgwx")
+theme_override_font_sizes/font_size = 20
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed tristique ipsum. Maecenas suscipit luctus accumsan. Etiam et libero posuere, auctor felis eu, consectetur ante."
 label_settings = SubResource("LabelSettings_0tm2j")
 horizontal_alignment = 3
