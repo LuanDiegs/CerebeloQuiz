@@ -66,6 +66,7 @@ func _ready() -> void:
 		_quizContainer.add_child(perguntasCardsComponentes[i])
 		_quizContainer.remove_child(perguntasCardsComponentes[i])
 
+
 func criarComponentesDasPerguntas(perguntas: Array):
 	for pergunta in perguntas:
 		var quizCardComponente = preload("res://componentes/escolhaAlternativaQuiz/escolhaAlternativaQuiz.tscn").instantiate() as EscolhaAlternativaQuiz
@@ -78,15 +79,15 @@ func criarComponentesDasPerguntas(perguntas: Array):
 
 
 func proximaPergunta():
-	animaEntradaSaida(true, true)
+	animaEntradaSaida(true)
 
 
 func perguntaAnterior():
-	animaEntradaSaida(false, false)
+	animaEntradaSaida(false)
 
 
 #Sem animação por enquanto
-func animaEntradaSaida(isEntradaEsquerda: bool = true, isProximaPergunta: bool = true):
+func animaEntradaSaida(isProximaPergunta: bool = true):
 	if(!_insercaoPerguntaTerminou):
 		return
 	
@@ -99,13 +100,13 @@ func animaEntradaSaida(isEntradaEsquerda: bool = true, isProximaPergunta: bool =
 
 	#Coloca propriedades para a animação rodar ok
 	perguntaCard.global_position = _quizCard.global_position
-	perguntaCard.isEntradaEsquerda = isEntradaEsquerda
+	perguntaCard.isEntradaEsquerda = isProximaPergunta
 	
 	self.add_child(perguntaCard)
 	perguntaCard.set_deferred("size", _quizCard.size)
 	
 	#Anima saida pergunta
-	_quizCard.isEntradaEsquerda = isEntradaEsquerda
+	_quizCard.isEntradaEsquerda = isProximaPergunta
 	#_quizCard.saidaPergunta()
 	
 	#Anima entrada e tira o node após terminar a animação
@@ -152,6 +153,7 @@ func formataTempo(minutos: int, segundos: int):
 func responderQuiz():
 	var alternativas: Array[BotaoEscolherAlternativa]
 	var acertos := 0
+	var quantidadePerguntasRespondidas := 0
 	
 	#Pega todas os cards das perguntas
 	for cardPergunta in perguntasCardsComponentes:
@@ -160,7 +162,14 @@ func responderQuiz():
 		for alternativa in vbox:
 			if(alternativa.is_in_group("alternativasResposta")):
 				alternativa = alternativa as BotaoEscolherAlternativa
+				quantidadePerguntasRespondidas = quantidadePerguntasRespondidas+1 if alternativa.button_pressed else quantidadePerguntasRespondidas
 				acertos = acertos+1 if alternativa.button_pressed and alternativa.isAlternativaCorreta else acertos
+	
+	#Verifica se ele respondeu todas as perguntas
+	#TODO: Ele só verifica por enquanto, alterar quanto criar o popup de confirmação
+	if(quantidadePerguntasRespondidas < perguntasCardsComponentes.size()):
+		PopUp.criaPopupNotificacao("Você não respondeu todas as perguntas.\n Quer salvar mesmo assim?")
+		return
 	
 	if(SessaoUsuario.isLogada):
 		var tempoTotalPercorrido = (_minutosPercorridos*60) + _segundosPercorridos
@@ -183,6 +192,7 @@ func responderQuiz():
 func notificaPontuacao(acertos: int):
 	var aviso = "*Não logado\n" if !SessaoUsuario.isLogada else ""
 	var mensagem = "Você acertou " + str(acertos) + "/" + str(perguntasCardsComponentes.size())
+	
 	PopUp.criaPopupNotificacao(
 		aviso + mensagem, 
 		"", 
