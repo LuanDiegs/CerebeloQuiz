@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://cvseroxaerrnp"]
+[gd_scene load_steps=35 format=3 uid="uid://cvseroxaerrnp"]
 
 [ext_resource type="Script" path="res://cenas/responderQuizTwitch/responderQuizTwitch.gd" id="1_nlroy"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_tcl7k"]
 [ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="2_widrn"]
 [ext_resource type="Script" path="res://cenas/responderQuizTwitch/teste.gd" id="3_cihme"]
 [ext_resource type="Theme" uid="uid://bgaaf3jd53b7o" path="res://cenas/responderQuizTwitch/mensagemRichLabelTema.tres" id="5_eud7t"]
+[ext_resource type="FontFile" uid="uid://bx1dxv0xq3rv3" path="res://resources/fonts/Nunito/static/Nunito-Regular.ttf" id="6_35c3d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oqja"]
 bg_color = Color(1, 1, 1, 1)
@@ -138,7 +139,7 @@ content_margin_top = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78o3r"]
 content_margin_left = 10.0
-content_margin_top = 15.0
+content_margin_top = 0.0
 content_margin_right = 10.0
 bg_color = Color(0.9, 0.9, 0.9, 1)
 border_width_left = 2
@@ -152,14 +153,35 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="Theme" id="Theme_exraf"]
-TextEdit/colors/caret_color = Color(0, 0, 0, 1)
-TextEdit/colors/font_color = Color(0.1, 0.1, 0.1, 1)
-TextEdit/colors/font_placeholder_color = Color(0.603922, 0.603922, 0.603922, 1)
-TextEdit/font_sizes/font_size = 24
-TextEdit/fonts/font = ExtResource("2_widrn")
-TextEdit/styles/focus = SubResource("StyleBoxFlat_78o3r")
-TextEdit/styles/normal = SubResource("StyleBoxFlat_78o3r")
+[sub_resource type="Theme" id="Theme_wwpq8"]
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0.3, 0.3, 0.3, 1)
+LineEdit/colors/font_placeholder_color = Color(0.603922, 0.603922, 0.603922, 1)
+LineEdit/font_sizes/font_size = 26
+LineEdit/fonts/font = ExtResource("2_widrn")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_78o3r")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_78o3r")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq6it"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.290196, 0.313726, 0.545098, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_3ttso"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_pq6it")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwakr"]
+bg_color = Color(0.358, 0.6, 0.336, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="RespondeQuizTwitch" type="Control"]
 layout_mode = 3
@@ -419,17 +441,17 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_lyhlr")
 
-[node name="ItensMargin" type="MarginContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal"]
+[node name="ItensTituloMargin" type="MarginContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal"]
 layout_mode = 2
 theme_override_constants/margin_left = 35
 theme_override_constants/margin_top = 35
 theme_override_constants/margin_right = 35
 theme_override_constants/margin_bottom = 35
 
-[node name="Itens" type="VBoxContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin"]
+[node name="ItensTitulo" type="VBoxContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin"]
 layout_mode = 2
 
-[node name="Titulo" type="RichTextLabel" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+[node name="Titulo" type="RichTextLabel" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = -15
@@ -438,22 +460,22 @@ text = "[font=res://resources/fonts/Nunito/static/Nunito-Black.ttf][font_size=70
 [font_size=42]COM A TWITCH!![/font_size][/font]"
 fit_content = true
 
-[node name="PainelComoJogar" type="PanelContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+[node name="PainelComoJogar" type="PanelContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_s3tev")
 
-[node name="MarginPainelComoJogar" type="MarginContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens/PainelComoJogar"]
+[node name="MarginPainelComoJogar" type="MarginContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo/PainelComoJogar"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ItensPainelComoJogar" type="VBoxContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens/PainelComoJogar/MarginPainelComoJogar"]
+[node name="ItensPainelComoJogar" type="VBoxContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo/PainelComoJogar/MarginPainelComoJogar"]
 layout_mode = 2
 
-[node name="Titulo" type="Label" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens/PainelComoJogar/MarginPainelComoJogar/ItensPainelComoJogar"]
+[node name="Titulo" type="Label" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo/PainelComoJogar/MarginPainelComoJogar/ItensPainelComoJogar"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
 theme_override_fonts/font = ExtResource("1_tcl7k")
@@ -461,12 +483,12 @@ theme_override_font_sizes/font_size = 24
 text = "COMO JOGAR"
 horizontal_alignment = 1
 
-[node name="Separador" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens/PainelComoJogar/MarginPainelComoJogar/ItensPainelComoJogar"]
+[node name="Separador" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo/PainelComoJogar/MarginPainelComoJogar/ItensPainelComoJogar"]
 layout_mode = 2
 theme = SubResource("Theme_oy20c")
 theme_override_constants/separation = 1
 
-[node name="Instrucoes" type="Label" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens/PainelComoJogar/MarginPainelComoJogar/ItensPainelComoJogar"]
+[node name="Instrucoes" type="Label" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo/PainelComoJogar/MarginPainelComoJogar/ItensPainelComoJogar"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
 theme_override_constants/line_spacing = 10
@@ -479,29 +501,42 @@ text = "- Vincule seu canal na Twitch!
 - Espalhe conhecimento!
 - Se divirta!"
 
-[node name="Separador" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+[node name="Separador" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo"]
 layout_mode = 2
 theme = SubResource("Theme_wgsyq")
 theme_override_constants/separation = 1
 
-[node name="InputNomeDoCanal" type="TextEdit" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+[node name="InputNomeDoCanal" type="LineEdit" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme = SubResource("Theme_exraf")
+theme = SubResource("Theme_wwpq8")
 placeholder_text = "Insira o nome do canal"
 caret_blink = true
 
-[node name="Separador2" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+[node name="LabelMensagemTwitch" type="Label" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_35c3d")
+theme_override_font_sizes/font_size = 16
+text = "Com sucesso"
+
+[node name="Separador2" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo"]
 layout_mode = 2
 theme = SubResource("Theme_wgsyq")
 theme_override_constants/separation = 1
 
-[node name="BotaoJogar" type="Button" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+[node name="BotaoJogar" type="Button" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "INICIAR QUIZ"
 
+[node name="PerguntaContainer" type="VBoxContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin"]
+visible = false
+layout_mode = 2
+
 [node name="Separador" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro"]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_wgsyq")
 theme_override_constants/separation = 1
@@ -510,11 +545,37 @@ theme_override_constants/separation = 1
 visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+theme = SubResource("Theme_3ttso")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_top = 690.0
-offset_right = 60.0
-offset_bottom = 721.0
-text = "testew
-"
+[node name="CronometroContainer" type="VBoxContainer" parent="MarginTela/ItensDaTela/QuizECronometro/Cronometro"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TituloECronometro" type="HBoxContainer" parent="MarginTela/ItensDaTela/QuizECronometro/Cronometro/CronometroContainer"]
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="MarginTela/ItensDaTela/QuizECronometro/Cronometro/CronometroContainer/TituloECronometro"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("1_tcl7k")
+theme_override_font_sizes/font_size = 24
+text = "TEMPO RESTANTE"
+
+[node name="Cronometro" type="Label" parent="MarginTela/ItensDaTela/QuizECronometro/Cronometro/CronometroContainer/TituloECronometro"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("1_tcl7k")
+theme_override_font_sizes/font_size = 24
+text = "00:00"
+
+[node name="ProgressoDoTempo" type="ProgressBar" parent="MarginTela/ItensDaTela/QuizECronometro/Cronometro/CronometroContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_lwakr")
+max_value = 30.0
+step = 1.0
+show_percentage = false
+
+[node name="Cronometro" type="Timer" parent="MarginTela/ItensDaTela/QuizECronometro/Cronometro"]

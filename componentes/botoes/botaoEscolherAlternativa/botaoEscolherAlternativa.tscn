@@ -1,20 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0pgblipbiylt"]
+[gd_scene load_steps=6 format=3 uid="uid://d0pgblipbiylt"]
 
 [ext_resource type="Theme" uid="uid://cf0egruvk6mmg" path="res://componentes/botoes/botaoEscolherAlternativa/botaoEscolherAlternativaTema.tres" id="1_o5yk0"]
 [ext_resource type="ButtonGroup" uid="uid://w55multln31l" path="res://componentes/botoes/botaoEscolherAlternativa/botaoEscolherAlternativasGrupo.tres" id="2_xwn40"]
 [ext_resource type="Script" path="res://componentes/botoes/botaoEscolherAlternativa/botaoEscolherAlternativa.gd" id="3_4fbet"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="4_pr7rq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adxrp"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
 
 [node name="BotaoEscolherAlternativa" type="Button" groups=["alternativasResposta"]]
-custom_minimum_size = Vector2(250, 30)
+custom_minimum_size = Vector2(250, 35)
 anchors_preset = -1
 anchor_right = 0.195313
-anchor_bottom = 0.0472222
-offset_right = -250.0
-offset_bottom = -34.0
+anchor_bottom = 0.0416667
+offset_right = -249.999
+offset_bottom = -30.0
 theme = ExtResource("1_o5yk0")
 toggle_mode = true
 button_group = ExtResource("2_xwn40")
 text = "teste"
 autowrap_mode = 1
 script = ExtResource("3_4fbet")
+metadata/_edit_use_anchors_ = true
+
+[node name="AlternativaTwitch" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.161765
+anchor_right = 0.16
+anchor_bottom = 0.838235
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_fonts/font = ExtResource("4_pr7rq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_adxrp")
+text = "!s"
 metadata/_edit_use_anchors_ = true

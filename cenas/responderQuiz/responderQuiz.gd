@@ -20,7 +20,7 @@ var _insercaoPerguntaTerminou := true
 var _quizCard: EscolhaAlternativaQuiz = null
 
 #Quiz
-var quizId: int = 1
+var quizId: int = 2
 var perguntas: Array
 var perguntasCardsComponentes: Array[EscolhaAlternativaQuiz]
 var indexPerguntaAtual := 0

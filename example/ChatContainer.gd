@@ -1,6 +1,5 @@
-class_name ChatContainer
-
 extends VBoxContainer
+class_name ChatContainer
 
 var msg_node: PackedScene = preload("res://example/ChatMessage.tscn")
 @onready var scroll_container = $Chat/ScrollContainer
