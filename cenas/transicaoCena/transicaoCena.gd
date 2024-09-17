@@ -9,6 +9,7 @@ const telaLogin := "res://cenas/login/login.tscn"
 const telaEditFormQuiz := "res://cenas/criarQuiz/criarQuiz.tscn"
 const telaMeusQuizzes := "res://cenas/meusQuizzes/meusQuizzes.tscn"
 const telaResponderQuiz := "res://cenas/responderQuiz/responderQuiz.tscn"
+const telaResponderQuizTwitch := "res://cenas/responderQuizTwitch/respondeQuizTwitch.tscn"
 
 
 func trocar_cena(target: String, idRegistroEdicao: int = 0) -> void:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://2wd8i33mbuxq"]
 
-[ext_resource type="PackedScene" uid="uid://dq4wq04hpvlb2" path="res://cenas/index/index.tscn" id="1_nubdn"]
+[ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_mcvx1"]
 [ext_resource type="PackedScene" uid="uid://cgxhvl0bbqpr5" path="res://componentes/header/titulo.tscn" id="2_qrj3u"]
 [ext_resource type="PackedScene" uid="uid://dsvvawk8r61ko" path="res://componentes/panel/panelQuadrado.tscn" id="3_d37r3"]
 [ext_resource type="PackedScene" uid="uid://xdx1elefqpmj" path="res://componentes/header/hSeparator.tscn" id="3_drndv"]
@@ -15,7 +15,7 @@ font_size = 32
 font = ExtResource("5_50044")
 font_size = 32
 
-[node name="sobreNós" type="Control"]
+[node name="SobreNos" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,8 +23,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Comum" parent="." instance=ExtResource("1_nubdn")]
+[node name="Comum" type="Control" parent="."]
 layout_mode = 1
+anchor_right = 0.196094
+anchor_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Fundo" type="CanvasLayer" parent="Comum"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Comum/Fundo"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sidebar" parent="Comum" instance=ExtResource("1_mcvx1")]
+z_index = 1
+layout_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -62,59 +79,75 @@ layout_mode = 2
 
 [node name="Main" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 280.0
-offset_top = 135.0
-offset_right = 1250.0
-offset_bottom = 705.0
+anchor_left = 0.21875
+anchor_top = 0.1875
+anchor_right = 0.976563
+anchor_bottom = 0.979167
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" parent="Main" instance=ExtResource("3_d37r3")]
 layout_mode = 0
+anchor_right = 0.463918
+anchor_bottom = 0.526316
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Label3" type="Label" parent="Main/Panel"]
 custom_minimum_size = Vector2(450, 100)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+anchor_right = 1.0
+anchor_bottom = 0.333333
+offset_right = -410.0
+offset_bottom = -77.0
 text = "Missão, visão e valores"
 label_settings = SubResource("LabelSettings_ck3sd")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel2" parent="Main" instance=ExtResource("3_d37r3")]
-layout_mode = 0
-offset_left = 520.0
-offset_right = 970.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.536082
+anchor_right = 1.0
+anchor_bottom = 0.526316
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Label4" type="Label" parent="Main/Panel2"]
 custom_minimum_size = Vector2(450, 100)
 layout_mode = 0
-offset_right = 450.0
-offset_bottom = 100.0
+anchor_right = 1.0
+anchor_bottom = 0.333333
 text = "Nossos quizzes"
 label_settings = SubResource("LabelSettings_ck3sd")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel3" parent="Main" instance=ExtResource("6_0cg5s")]
 layout_mode = 0
-offset_top = 330.0
-offset_bottom = 560.0
+anchor_top = 0.578947
+anchor_right = 1.0
+anchor_bottom = 0.982456
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Label3" type="Label" parent="Main/Panel3"]
-layout_mode = 0
-offset_left = 2.0
-offset_right = 968.0
-offset_bottom = 70.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.304348
+grow_horizontal = 2
 text = "Entre em contato conosco!
 "
 label_settings = SubResource("LabelSettings_rrg3u")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-
-[node name="Label4" type="Label" parent="Main/Panel3"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true

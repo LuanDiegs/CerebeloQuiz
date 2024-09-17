@@ -135,6 +135,7 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "SOBRE NÓS"
 script = ExtResource("3_mnyfy")
+redirecionarPara = "res://cenas/sobreNós/sobre_nós.tscn"
 
 [node name="IconBotaoCriarQuiz" type="TextureRect" parent="SessaoCentral"]
 layout_mode = 0

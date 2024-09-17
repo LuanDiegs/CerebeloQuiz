@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://070ow7u2f2vn"]
+
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="1_rnw81"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33rjn"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+
+[resource]
+Label/font_sizes/font_size = 14
+Label/fonts/font = ExtResource("1_rnw81")
+Label/styles/normal = SubResource("StyleBoxEmpty_33rjn")

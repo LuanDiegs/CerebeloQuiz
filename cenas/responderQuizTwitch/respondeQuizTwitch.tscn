@@ -1,0 +1,518 @@
+[gd_scene load_steps=31 format=3 uid="uid://cvseroxaerrnp"]
+
+[ext_resource type="Script" path="res://cenas/responderQuizTwitch/responderQuizTwitch.gd" id="1_nlroy"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_tcl7k"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="2_widrn"]
+[ext_resource type="Script" path="res://cenas/responderQuizTwitch/teste.gd" id="3_cihme"]
+[ext_resource type="Theme" uid="uid://070ow7u2f2vn" path="res://cenas/responderQuizTwitch/mensagemTema.tres" id="4_c2wf4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oqja"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_excxv"]
+Button/colors/font_color = Color(0.172549, 0.2, 0.435294, 1)
+Button/font_sizes/font_size = 22
+Button/fonts/font = ExtResource("1_tcl7k")
+Button/styles/normal = SubResource("StyleBoxFlat_4oqja")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jog06"]
+color = Color(0, 0, 0, 0)
+
+[sub_resource type="Theme" id="Theme_wgsyq"]
+HSeparator/styles/separator = SubResource("StyleBoxLine_jog06")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jedsy"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.290196, 0.313726, 0.545098, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_6upbm"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_jedsy")
+
+[sub_resource type="Theme" id="Theme_ilwnt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gplb0"]
+bg_color = Color(0.290196, 0.313726, 0.545098, 1)
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="Theme" id="Theme_7nfw2"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_gplb0")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jasel"]
+bg_color = Color(0.172549, 0.2, 0.435294, 1)
+expand_margin_top = 4.0
+
+[sub_resource type="Theme" id="Theme_drrqy"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_jasel")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5knrv"]
+bg_color = Color(0.290196, 0.313726, 0.545098, 1)
+
+[sub_resource type="Theme" id="Theme_hx3kp"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_5knrv")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8tyjm"]
+bg_color = Color(0.172549, 0.2, 0.435294, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yua2t"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.290196, 0.313726, 0.545098, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a00tr"]
+bg_color = Color(0.290196, 0.313726, 0.545098, 1)
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jwo6l"]
+color = Color(0, 0, 0, 0)
+
+[sub_resource type="Theme" id="Theme_x110m"]
+VSeparator/styles/separator = SubResource("StyleBoxLine_jwo6l")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyhlr"]
+bg_color = Color(0.95, 0.95, 0.95, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.584314, 0.6, 0.74902, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3tev"]
+bg_color = Color(0.172549, 0.2, 0.435294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.172549, 0.2, 0.435294, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_m0w0o"]
+color = Color(0.9, 0.9, 0.9, 1)
+thickness = 2
+
+[sub_resource type="Theme" id="Theme_oy20c"]
+HSeparator/styles/separator = SubResource("StyleBoxLine_m0w0o")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fs0t"]
+content_margin_top = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78o3r"]
+content_margin_left = 10.0
+content_margin_top = 15.0
+content_margin_right = 10.0
+bg_color = Color(0.9, 0.9, 0.9, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.172549, 0.2, 0.435294, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_exraf"]
+TextEdit/colors/caret_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_color = Color(0.1, 0.1, 0.1, 1)
+TextEdit/colors/font_placeholder_color = Color(0.603922, 0.603922, 0.603922, 1)
+TextEdit/font_sizes/font_size = 24
+TextEdit/fonts/font = ExtResource("2_widrn")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_78o3r")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_78o3r")
+
+[node name="RespondeQuizTwitch" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nlroy")
+
+[node name="Comum" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Fundo" type="CanvasLayer" parent="Comum"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Comum/Fundo"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172549, 0.2, 0.435294, 1)
+
+[node name="MarginTela" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="ItensDaTela" type="HBoxContainer" parent="MarginTela"]
+layout_mode = 2
+
+[node name="ItensLaterais" type="VBoxContainer" parent="MarginTela/ItensDaTela"]
+layout_mode = 2
+
+[node name="SairSessaoBotao" type="Button" parent="MarginTela/ItensDaTela/ItensLaterais"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme = SubResource("Theme_excxv")
+text = "SAIR DA SESSÃO
+"
+
+[node name="Separador" type="HSeparator" parent="MarginTela/ItensDaTela/ItensLaterais"]
+layout_mode = 2
+theme = SubResource("Theme_wgsyq")
+theme_override_constants/separation = 1
+
+[node name="Placar" type="PanelContainer" parent="MarginTela/ItensDaTela/ItensLaterais"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme = SubResource("Theme_6upbm")
+
+[node name="ItensPlacar" type="VBoxContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar"]
+layout_mode = 2
+theme = SubResource("Theme_ilwnt")
+
+[node name="Titulo" type="PanelContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme = SubResource("Theme_7nfw2")
+
+[node name="Titulo" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/Titulo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tcl7k")
+theme_override_font_sizes/font_size = 20
+text = "PLACAR
+"
+horizontal_alignment = 1
+
+[node name="PrimeiroColocado" type="PanelContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme = SubResource("Theme_drrqy")
+
+[node name="MarginItem" type="MarginContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/PrimeiroColocado"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 7
+
+[node name="ItensDoPlacar" type="HBoxContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/PrimeiroColocado/MarginItem"]
+layout_mode = 2
+
+[node name="Posicao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/PrimeiroColocado/MarginItem/ItensDoPlacar"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_widrn")
+theme_override_font_sizes/font_size = 18
+text = "1"
+
+[node name="Nome" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/PrimeiroColocado/MarginItem/ItensDoPlacar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_widrn")
+theme_override_font_sizes/font_size = 18
+text = "ZDZIN"
+clip_text = true
+
+[node name="Pontuacao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/PrimeiroColocado/MarginItem/ItensDoPlacar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_widrn")
+theme_override_font_sizes/font_size = 18
+text = "5422"
+horizontal_alignment = 2
+
+[node name="SegundoColocado" type="PanelContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme = SubResource("Theme_hx3kp")
+
+[node name="MarginItem" type="MarginContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/SegundoColocado"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 7
+
+[node name="ItensDoPlacar" type="HBoxContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/SegundoColocado/MarginItem"]
+layout_mode = 2
+
+[node name="Posicao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/SegundoColocado/MarginItem/ItensDoPlacar"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_widrn")
+theme_override_font_sizes/font_size = 18
+text = "2"
+
+[node name="Nome" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/SegundoColocado/MarginItem/ItensDoPlacar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_widrn")
+theme_override_font_sizes/font_size = 18
+text = "ZDZIN"
+clip_text = true
+
+[node name="Pontuacao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/SegundoColocado/MarginItem/ItensDoPlacar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_widrn")
+theme_override_font_sizes/font_size = 18
+text = "5000"
+horizontal_alignment = 2
+
+[node name="TerceiroColocado" type="PanelContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tyjm")
+
+[node name="MarginItem" type="MarginContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/TerceiroColocado"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 7
+
+[node name="ItensDoPlacar" type="HBoxContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/TerceiroColocado/MarginItem"]
+layout_mode = 2
+
+[node name="Posicao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/TerceiroColocado/MarginItem/ItensDoPlacar"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_widrn")
+theme_override_font_sizes/font_size = 18
+text = "3
+"
+
+[node name="Nome" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/TerceiroColocado/MarginItem/ItensDoPlacar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_widrn")
+theme_override_font_sizes/font_size = 18
+text = "ZDZIN"
+clip_text = true
+
+[node name="Pontuacao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/TerceiroColocado/MarginItem/ItensDoPlacar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_widrn")
+theme_override_font_sizes/font_size = 18
+text = "4000"
+horizontal_alignment = 2
+
+[node name="Separador2" type="HSeparator" parent="MarginTela/ItensDaTela/ItensLaterais"]
+layout_mode = 2
+theme = SubResource("Theme_wgsyq")
+theme_override_constants/separation = 1
+
+[node name="Chat" type="PanelContainer" parent="MarginTela/ItensDaTela/ItensLaterais"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yua2t")
+
+[node name="ItensChat" type="VBoxContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Chat"]
+layout_mode = 2
+theme = SubResource("Theme_ilwnt")
+
+[node name="Titulo" type="PanelContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Chat/ItensChat"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a00tr")
+
+[node name="Titulo" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Chat/ItensChat/Titulo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tcl7k")
+theme_override_font_sizes/font_size = 20
+text = "CHAT
+"
+horizontal_alignment = 1
+
+[node name="ContainerMensagensTwitch" type="ScrollContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Chat/ItensChat"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="MensagensTwitch" type="VBoxContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Chat/ItensChat/ContainerMensagensTwitch"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_cihme")
+
+[node name="Label" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Chat/ItensChat/ContainerMensagensTwitch/MensagensTwitch"]
+layout_mode = 2
+theme = ExtResource("4_c2wf4")
+text = "zdzin: oieeeee"
+
+[node name="Separador3" type="HSeparator" parent="MarginTela/ItensDaTela/ItensLaterais"]
+layout_mode = 2
+theme = SubResource("Theme_wgsyq")
+theme_override_constants/separation = 1
+
+[node name="StreamerResponderQuizECamera" type="PanelContainer" parent="MarginTela/ItensDaTela/ItensLaterais"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="Separador" type="VSeparator" parent="MarginTela/ItensDaTela"]
+layout_mode = 2
+theme = SubResource("Theme_x110m")
+
+[node name="QuizECronometro" type="VBoxContainer" parent="MarginTela/ItensDaTela"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PainelPrincipal" type="PanelContainer" parent="MarginTela/ItensDaTela/QuizECronometro"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_lyhlr")
+
+[node name="ItensMargin" type="MarginContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal"]
+layout_mode = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 35
+
+[node name="Itens" type="VBoxContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin"]
+layout_mode = 2
+
+[node name="Titulo" type="RichTextLabel" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -15
+bbcode_enabled = true
+text = "[font=res://resources/fonts/Nunito/static/Nunito-Black.ttf][font_size=70]CEREBELO QUIZ[/font_size]
+[font_size=42]COM A TWITCH!![/font_size][/font]"
+fit_content = true
+
+[node name="PainelComoJogar" type="PanelContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_s3tev")
+
+[node name="MarginPainelComoJogar" type="MarginContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens/PainelComoJogar"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ItensPainelComoJogar" type="VBoxContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens/PainelComoJogar/MarginPainelComoJogar"]
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens/PainelComoJogar/MarginPainelComoJogar/ItensPainelComoJogar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("1_tcl7k")
+theme_override_font_sizes/font_size = 24
+text = "COMO JOGAR"
+horizontal_alignment = 1
+
+[node name="Separador" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens/PainelComoJogar/MarginPainelComoJogar/ItensPainelComoJogar"]
+layout_mode = 2
+theme = SubResource("Theme_oy20c")
+theme_override_constants/separation = 1
+
+[node name="Instrucoes" type="Label" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens/PainelComoJogar/MarginPainelComoJogar/ItensPainelComoJogar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_constants/line_spacing = 10
+theme_override_fonts/font = ExtResource("1_tcl7k")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0fs0t")
+text = "- Vincule seu canal na Twitch!
+- Se prepare para iniciar o quiz.
+- Responda as questões.
+- Espalhe conhecimento!
+- Se divirta!"
+
+[node name="Separador" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+layout_mode = 2
+theme = SubResource("Theme_wgsyq")
+theme_override_constants/separation = 1
+
+[node name="InputNomeDoCanal" type="TextEdit" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme = SubResource("Theme_exraf")
+placeholder_text = "Insira o nome do canal"
+caret_blink = true
+
+[node name="Separador2" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+layout_mode = 2
+theme = SubResource("Theme_wgsyq")
+theme_override_constants/separation = 1
+
+[node name="BotaoJogar" type="Button" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensMargin/Itens"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "INICIAR QUIZ"
+
+[node name="Separador" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro"]
+layout_mode = 2
+theme = SubResource("Theme_wgsyq")
+theme_override_constants/separation = 1
+
+[node name="Cronometro" type="PanelContainer" parent="MarginTela/ItensDaTela/QuizECronometro"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_top = 690.0
+offset_right = 60.0
+offset_bottom = 721.0
+text = "testew
+"
