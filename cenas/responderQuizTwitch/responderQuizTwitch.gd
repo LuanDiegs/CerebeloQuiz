@@ -78,7 +78,7 @@ func handleCronometro():
 	
 	tempoPassado+=1
 	_progressoDoTempo.value+=1
-	_cronometroLabel.text = str(tempoRestante) + ":00"
+	_cronometroLabel.text = ("0" if tempoRestante < 10 else "") + str(tempoRestante) + ":00"
 	
 	if tempoRestante == 0:
 		_cronometroTimer.stop()
