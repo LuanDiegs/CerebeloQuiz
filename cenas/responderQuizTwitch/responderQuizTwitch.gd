@@ -9,8 +9,7 @@ class_name ResponderQuizTwitch
 @onready var _containerSrollMensagensChat = $MarginTela/ItensDaTela/ItensLaterais/Chat/ItensChat/ContainerMensagensTwitch
 @onready var _scrollcontainerSrollMensagensChat = _containerSrollMensagensChat.get_v_scroll_bar()
 @onready var _containerDisplayMensagensChat = $MarginTela/ItensDaTela/ItensLaterais/Chat/ItensChat/ContainerMensagensTwitch/MensagensTwitch
-const _temaMensagensChat = preload("res://cenas/responderQuizTwitch/mensagemTema.tres")
-
+const _temaMensagensChat = preload("res://cenas/responderQuizTwitch/mensagemRichLabelTema.tres")
 
 func _ready():
 	_iniciarQuizBotao.connect("pressed", vinculaComATwitch)
@@ -39,11 +38,13 @@ func vinculaComATwitch():
 
 
 func insereMensagemNoChat(chatter: Chatter):
-	var labelAInserir = Label.new()
-	var mensagem = "%s: %s" % [chatter.tags.display_name, chatter.message]
+	var labelAInserir = RichTextLabel.new()
+	var mensagem = "[color=#6db066]%s[/color]: %s" % [chatter.tags.display_name, chatter.message]
 	
-	#Insere a mensagem no componente e o tema
+	#Insere as propriedades do label
 	labelAInserir.text = mensagem
+	labelAInserir.bbcode_enabled = true
+	labelAInserir.fit_content = true
 	labelAInserir.theme = _temaMensagensChat
 	
 	#Insere o componente como filho do hbox

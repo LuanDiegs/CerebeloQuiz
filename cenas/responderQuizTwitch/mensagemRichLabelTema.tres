@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bgaaf3jd53b7o"]
+
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="1_rlp1n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_prqfq"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+
+[resource]
+RichTextLabel/font_sizes/normal_font_size = 15
+RichTextLabel/fonts/normal_font = ExtResource("1_rlp1n")
+RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_prqfq")

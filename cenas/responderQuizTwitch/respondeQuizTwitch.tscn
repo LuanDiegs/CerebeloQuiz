@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_tcl7k"]
 [ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="2_widrn"]
 [ext_resource type="Script" path="res://cenas/responderQuizTwitch/teste.gd" id="3_cihme"]
-[ext_resource type="Theme" uid="uid://070ow7u2f2vn" path="res://cenas/responderQuizTwitch/mensagemTema.tres" id="4_c2wf4"]
+[ext_resource type="Theme" uid="uid://bgaaf3jd53b7o" path="res://cenas/responderQuizTwitch/mensagemRichLabelTema.tres" id="5_eud7t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oqja"]
 bg_color = Color(1, 1, 1, 1)
@@ -390,10 +390,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("3_cihme")
 
-[node name="Label" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Chat/ItensChat/ContainerMensagensTwitch/MensagensTwitch"]
+[node name="TesteMensagem" type="RichTextLabel" parent="MarginTela/ItensDaTela/ItensLaterais/Chat/ItensChat/ContainerMensagensTwitch/MensagensTwitch"]
 layout_mode = 2
-theme = ExtResource("4_c2wf4")
-text = "zdzin: oieeeee"
+theme = ExtResource("5_eud7t")
+bbcode_enabled = true
+text = "[color=#6db066]zdzin[/color]: oieee"
+fit_content = true
 
 [node name="Separador3" type="HSeparator" parent="MarginTela/ItensDaTela/ItensLaterais"]
 layout_mode = 2
