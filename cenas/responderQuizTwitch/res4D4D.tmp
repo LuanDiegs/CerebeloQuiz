@@ -535,11 +535,6 @@ text = "INICIAR QUIZ"
 visible = false
 layout_mode = 2
 
-[node name="Pontuacao" type="PanelContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-
 [node name="Separador" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro"]
 visible = false
 layout_mode = 2

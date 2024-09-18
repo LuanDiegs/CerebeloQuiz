@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://vmqyqb4yfsos"]
+[gd_scene load_steps=8 format=3 uid="uid://vmqyqb4yfsos"]
 
 [ext_resource type="Theme" uid="uid://bueidph1nopmi" path="res://componentes/popUps/popUpFundo.tres" id="1_4hjoo"]
 [ext_resource type="Script" path="res://componentes/popUps/popUpNotificacao/popUpNotificacao.gd" id="2_b1cgn"]
 [ext_resource type="Theme" uid="uid://dvbp11qywc6mv" path="res://componentes/popUps/popUp.tres" id="2_sm57t"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="4_afug0"]
 [ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="5_4i2ny"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gqg5"]
+content_margin_top = 5.0
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_2g45q"]
 color = Color(0.227451, 0.258824, 0.521569, 1)
@@ -49,10 +52,10 @@ pivot_offset = Vector2(375, 200)
 [node name="Titulo" type="Label" parent="PopUp/ContainerVertical"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_afug0")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4gqg5")
 text = "ATENÇÃO"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -68,7 +71,7 @@ layout_mode = 2
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_4i2ny")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 26
 text = "Ocorreu um erro"
 horizontal_alignment = 1
 vertical_alignment = 1

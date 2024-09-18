@@ -39,12 +39,16 @@ var _chat_timeout_ms: int
 
 const USER_AGENT : String = "User-Agent: VSTC/0.1.0 (Godot Engine)"
 
+var timerConexao: Timer
+var demoraDeConexao: int
+
 func _process(_delta: float):
 	if !_chatClient:
 		return
-
+	
 	_chatClient.poll()
 	var state = _chatClient.get_ready_state()
+	
 	match state:
 		WebSocketPeer.STATE_OPEN:
 			if (!_hasConnected):
@@ -55,6 +59,10 @@ func _process(_delta: float):
 				_chatClient.send_text(_chat_queue.pop_front())
 				_last_msg = Time.get_ticks_msec()
 		WebSocketPeer.STATE_CLOSED:
+			if demoraDeConexao == 5:
+				OnFailure.emit()
+				demoraDeConexao = 0
+				timerConexao.stop()
 			if _hasConnected:
 				_hasConnected = false
 				var code = _chatClient.get_close_code()
@@ -64,19 +72,26 @@ func _process(_delta: float):
 				print("Reconnecting")
 				start_chat_client()
 
+func _ready() -> void:
+	timerConexao = Timer.new()
+	add_child(timerConexao)
+
+
 func start_chat_client():
 	get_settings()
 	if _chatClient:
 		_chatClient.close()
 	_chatClient = WebSocketPeer.new()
 	_chatClient.connect_to_url("%s:%d" % [_twitch_chat_url, _twitch_chat_port])
+	timerConexao.start()
+	timerConexao.connect("timeout", func(): demoraDeConexao+=1)
 
 
 func login_anon(channel_name: String):
 	_channel = TwitchChannel.new()
 	_channel.login = channel_name.to_lower()
 	_use_anon_connection = true
-	start_chat_client()
+	await start_chat_client()
 
 
 func login(twitch_channel: TwitchChannel):
@@ -88,7 +103,7 @@ func onChatConnected():
 	if !_channel:
 		return
 	_hasConnected = true
-	
+
 	_chatClient.send_text("CAP REQ :twitch.tv/tags twitch.tv/commands")
 	
 	if _use_anon_connection:
@@ -100,6 +115,7 @@ func onChatConnected():
 		pass
 		
 	_chatClient.send_text('JOIN ' + '#' + _channel.login.to_lower())
+	
 	OnSucess.emit()
 
 func send_message(message: String):

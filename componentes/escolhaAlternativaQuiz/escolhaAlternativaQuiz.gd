@@ -12,6 +12,7 @@ var perguntaConteudo := ""
 
 #Alternativas
 var isTwitchQuiz: bool = false
+var codigoAlternativaCorreta: String = ""
 var alternativas: Array
 @onready var quizEAlternativas = $QuizEAlternativas as VBoxContainer
 
@@ -73,4 +74,6 @@ func insereAlternativas():
 		#Insere a alternativa da Twitch
 		if isTwitchQuiz:
 			botaoEscolherAlternativa.inserirLabelAlternativaTwitch("!" + str(index))
+			if alternativa.isAlternativaCorreta:
+				codigoAlternativaCorreta = "!" + str(index)
 			index += 1

@@ -7,18 +7,24 @@ class_name ResponderQuizTwitch
 @onready var _iniciarQuizBotao = $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo/BotaoJogar
 @onready var _labelAvisoNomeDoCanalInput = $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo/LabelMensagemTwitch
 
+#Twitch
+var modalCarregando: PopUpNotificacao 
+
 #Chat
 @onready var _containerSrollMensagensChat = $MarginTela/ItensDaTela/ItensLaterais/Chat/ItensChat/ContainerMensagensTwitch
 @onready var _scrollcontainerSrollMensagensChat = _containerSrollMensagensChat.get_v_scroll_bar()
 @onready var _containerDisplayMensagensChat = $MarginTela/ItensDaTela/ItensLaterais/Chat/ItensChat/ContainerMensagensTwitch/MensagensTwitch
 const _temaMensagensChat = preload("res://cenas/responderQuizTwitch/mensagemRichLabelTema.tres")
 
-#Quiz
-const quizId: int = 2
-var perguntas: Array
-var perguntasCardsComponentes: Array[EscolhaAlternativaQuiz]
-var indexPerguntaAtual := 0
+#Quiz e perguntas
+const _quizId: int = 2
+var _perguntas: Array
+var _perguntasCardsComponentes: Array[EscolhaAlternativaQuiz]
+var _indexPerguntaAtual := 0
+var _codigoAlternativaCorretaPerguntaAtual: String
+var _listaPontuacao: Dictionary
 @onready var _perguntaContainer = $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer
+@onready var pontuacao: PanelContainer = $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer/Pontuacao
 
 #Cronometro 
 @onready var _separadorCronometro = $MarginTela/ItensDaTela/QuizECronometro/Separador
@@ -26,8 +32,12 @@ var indexPerguntaAtual := 0
 @onready var _cronometroLabel = $MarginTela/ItensDaTela/QuizECronometro/Cronometro/CronometroContainer/TituloECronometro/Cronometro
 @onready var _cronometroTimer = $MarginTela/ItensDaTela/QuizECronometro/Cronometro/Cronometro
 @onready var _progressoDoTempo = $MarginTela/ItensDaTela/QuizECronometro/Cronometro/CronometroContainer/ProgressoDoTempo
-var tempoLimite := 30
+var tempoLimite := TEMPO_LIMITE_PERGUNTA
 var tempoPassado := 1
+
+#Constantes
+const TEMPO_LIMITE_PERGUNTA = 30
+const TEMPO_LIMITE_RESULTADOS = 10
 
 
 func _ready():
@@ -35,8 +45,8 @@ func _ready():
 	_scrollcontainerSrollMensagensChat.connect("changed", ajustaScrollDoChat)
 	
 	#Pega os quiz e suas perguntas
-	perguntas = Quizzes.new().getPerguntasEAlternativasDoQuiz(quizId)
-	criarComponentesDasPerguntas(perguntas)
+	_perguntas = Quizzes.new().getPerguntasEAlternativasDoQuiz(_quizId)
+	criarComponentesDasPerguntas(_perguntas)
 	
 	#Conecta o cronometro
 	_cronometroTimer.connect("timeout", handleCronometro)
@@ -51,25 +61,85 @@ func criarComponentesDasPerguntas(perguntas: Array):
 		quizCardComponente.perguntaConteudo = pergunta["conteudoPergunta"]
 		quizCardComponente.alternativas = pergunta["alternativas"]
 		quizCardComponente.isTwitchQuiz = true
-		
-		perguntasCardsComponentes.append(quizCardComponente)
+				
+		_perguntasCardsComponentes.append(quizCardComponente)
 
 
 #Ação de clicar no iniciar quiz
 func iniciarQuiz():
-	if vinculaComATwitch():
-		#Deixa visível ou invisivel os componentes
-		_separadorCronometro.visible = true
-		_cronometro.visible = true
-		_itensTituloMargin.remove_child(_itensTituloMargin.get_child(0))
+	tentaVincularComATwitch()
+
+
+func tentaVincularComATwitch():
+	var nomeDoCanal: String = _nomeDoCanalInput.text
+	
+	if !nomeDoCanal:
+		_labelAvisoNomeDoCanalInput.visible = true
+		_labelAvisoNomeDoCanalInput.add_theme_color_override("font_color", Color.FIREBRICK)
+		_labelAvisoNomeDoCanalInput.text = "Insira o nome de um canal!"
 		
-		#Insere a pergunta na tela
-		_perguntaContainer.visible = true
-		_perguntaContainer.add_child(perguntasCardsComponentes[0])
+		return
 		
-		#Inicia o cronometroDaPergunta
-		_cronometroTimer.start()
-		_cronometroLabel.text = str(tempoLimite) + ":00"
+	VerySimpleTwitch.login_chat_anon(nomeDoCanal)
+	VerySimpleTwitch._twitch_chat.OnSucess.connect(vinculadoComATwitchComSucesso)
+	VerySimpleTwitch._twitch_chat.OnFailure.connect(vinculadoComATwitchComErro)
+	
+	modalCarregando = PopUp.criaPopupNotificacao(
+		"Tentando conectar ao canal " + nomeDoCanal, 
+		"",
+		"Conectando...",
+		true)
+
+
+func vinculadoComATwitchComSucesso():
+	if(modalCarregando):
+		await modalCarregando.fechaPopup()
+	
+	VerySimpleTwitch.chat_message_received.connect(pegaMensagem)
+	limpaMensagensDoChat()
+		
+	# Deixa visível ou invisivel os componentes
+	_separadorCronometro.visible = true
+	_cronometro.visible = true
+	_itensTituloMargin.remove_child(_itensTituloMargin.get_child(0))
+	
+	#Insere a pergunta na tela
+	_perguntaContainer.visible = true
+	
+	#Insere a primeira pergunta
+	insereProximaPergunta()
+	
+	#Inicia o cronometro da pergunta
+	_cronometroTimer.start()
+	_cronometroLabel.text = str(tempoLimite) + ":00"
+
+
+func vinculadoComATwitchComErro():
+	modalCarregando.fechaPopup()
+	
+	_labelAvisoNomeDoCanalInput.visible = true
+	_labelAvisoNomeDoCanalInput.add_theme_color_override("font_color", Color.FIREBRICK)
+	_labelAvisoNomeDoCanalInput.text = "Ocorreu um erro ao conectar com a Twitch. Verifique sua conexão ou se o canal está certo."
+
+
+func insereResultadoNaTela():
+	#Remove a antiga pergunta
+	if _indexPerguntaAtual > 0 and _perguntaContainer.get_child(_perguntasCardsComponentes[_indexPerguntaAtual-1].get_index()):
+		_perguntaContainer.remove_child(_perguntasCardsComponentes[_indexPerguntaAtual-1])
+	
+	#Insere o painel como visível
+	pontuacao.visible = true
+	
+	#Inicia o cronometro da pergunta
+	_cronometroTimer.start()
+
+
+func insereProximaPergunta():
+	pontuacao.visible = false
+
+	_perguntaContainer.add_child(_perguntasCardsComponentes[_indexPerguntaAtual])
+	_codigoAlternativaCorretaPerguntaAtual = _perguntasCardsComponentes[_indexPerguntaAtual].codigoAlternativaCorreta
+	_indexPerguntaAtual+=1
 
 
 #Evento que será disparado a cada segundo
@@ -77,47 +147,38 @@ func handleCronometro():
 	var tempoRestante = tempoLimite - tempoPassado
 	
 	tempoPassado+=1
-	_progressoDoTempo.value+=1
-	_cronometroLabel.text = ("0" if tempoRestante < 10 else "") + str(tempoRestante) + ":00"
+	if tempoRestante >= 0:
+		_progressoDoTempo.value+=1
+		_cronometroLabel.text = ("0" if tempoRestante < 10 else "") + str(tempoRestante) + ":00"
 	
-	if tempoRestante == 0:
+	if tempoRestante <= (-3 if tempoLimite == TEMPO_LIMITE_PERGUNTA else -1):
 		_cronometroTimer.stop()
+		
+		if(_indexPerguntaAtual < _perguntasCardsComponentes.size()):
+			if tempoLimite == TEMPO_LIMITE_PERGUNTA:
+				insereResultadoNaTela()
+			elif tempoLimite == TEMPO_LIMITE_RESULTADOS:
+				insereProximaPergunta()
+		else:
+			#TODO: Mostrar a tela final
+			print("acabou")
+			return
+			
 		resetarCronometro()
-		return
 
 
 #Reseta o cronometro para outra pergunta
 func resetarCronometro():
-	tempoPassado = 1
-	_cronometroLabel.text = "00:00"
-	_progressoDoTempo.value = 0
-
-
-func vinculaComATwitch():
-	var nomeDoCanal: String = _nomeDoCanalInput.text
+	var tempoParaTrocarTela = TEMPO_LIMITE_RESULTADOS if tempoLimite == TEMPO_LIMITE_PERGUNTA else TEMPO_LIMITE_PERGUNTA
 	
-	if !nomeDoCanal:
-		_labelAvisoNomeDoCanalInput.visible = true
-		_labelAvisoNomeDoCanalInput.add_theme_color_override("font_color", Color.FIREBRICK)
-		_labelAvisoNomeDoCanalInput.text = "Insira o nome de um canal!"
-		return false
-		
-	if !VerySimpleTwitch._twitch_chat or VerySimpleTwitch._twitch_chat._channel.login != nomeDoCanal:
-		var nomeAntigoCanal = VerySimpleTwitch._twitch_chat._channel.login if VerySimpleTwitch._twitch_chat else null
-		VerySimpleTwitch.login_chat_anon(nomeDoCanal)
-		
-		if !VerySimpleTwitch._twitch_chat._hasConnected:
-			VerySimpleTwitch.chat_message_received.connect(pegaMensagem)
-
-		if nomeAntigoCanal and nomeAntigoCanal != nomeDoCanal:
-			VerySimpleTwitch.change_Channel()
-			limpaMensagensDoChat()
-		
-		_labelAvisoNomeDoCanalInput.visible = true
-		_labelAvisoNomeDoCanalInput.add_theme_color_override("font_color", Color.WEB_GREEN)
-		_labelAvisoNomeDoCanalInput.text = "Conectado com sucesso!"
-		
-	return true
+	tempoPassado = 1
+	_progressoDoTempo.max_value = tempoParaTrocarTela
+	_progressoDoTempo.value = 0
+	tempoLimite = tempoParaTrocarTela
+	
+	#Inicia o cronometro da pergunta
+	_cronometroTimer.start()
+	_cronometroLabel.text = str(tempoParaTrocarTela) + ":00"
 
 
 func pegaMensagem(chatter: Chatter):
