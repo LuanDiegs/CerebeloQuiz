@@ -59,7 +59,6 @@ func insereAlternativas():
 	
 	#Cria um novo grupo
 	var botaoGrupo = ButtonGroup.new()
-	var index = 1
 	
 	for alternativa in alternativas:
 		var botaoEscolherAlternativa = load("res://componentes/botoes/botaoEscolherAlternativa/botaoEscolherAlternativa.tscn").instantiate() as BotaoEscolherAlternativa
@@ -73,7 +72,16 @@ func insereAlternativas():
 		
 		#Insere a alternativa da Twitch
 		if isTwitchQuiz:
-			botaoEscolherAlternativa.inserirLabelAlternativaTwitch("!" + str(index))
+			var codigoOpcaoTwitch = "!" + str(botaoEscolherAlternativa.get_index()-1)
+			botaoEscolherAlternativa.inserirLabelAlternativaTwitch(codigoOpcaoTwitch)
+
 			if alternativa.isAlternativaCorreta:
-				codigoAlternativaCorreta = "!" + str(index)
-			index += 1
+				codigoAlternativaCorreta = codigoOpcaoTwitch
+
+
+func getAlternativaCorreta() -> BotaoEscolherAlternativa:
+	for alternativa in quizEAlternativas.get_children():
+		if alternativa is BotaoEscolherAlternativa and alternativa.isAlternativaCorreta:
+			return alternativa
+
+	return null

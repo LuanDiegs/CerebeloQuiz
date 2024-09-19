@@ -22,8 +22,10 @@ var _perguntas: Array
 var _perguntasCardsComponentes: Array[EscolhaAlternativaQuiz]
 var _indexPerguntaAtual := 0
 var _codigoAlternativaCorretaPerguntaAtual: String
-var _listaPontuacao: Dictionary
 @onready var _perguntaContainer = $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer
+
+var _listaPontuacao: Dictionary
+var _isShowingPergunta: bool = false
 @onready var pontuacao: PanelContainer = $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer/Pontuacao
 
 #Cronometro 
@@ -50,7 +52,22 @@ func _ready():
 	
 	#Conecta o cronometro
 	_cronometroTimer.connect("timeout", handleCronometro)
-
+	
+	#Foca no input
+	_nomeDoCanalInput.grab_focus()
+	
+	#TODO: Arrumar, algoritmo para testar sorteamento das pontuações
+	var teste: Dictionary
+	for i in range(10_000):
+		teste.get_or_add("a"+str(i), randi_range(0, 1000))
+	
+	var teste2 = teste.keys()
+	teste2.sort_custom(func(a, b):
+		return teste[b] < teste[a])
+	
+	for i in range(10):
+		print(teste[teste2[i]])
+		
 
 #Tá repetido mas que se foda
 func criarComponentesDasPerguntas(perguntas: Array):
@@ -132,13 +149,28 @@ func insereResultadoNaTela():
 	
 	#Inicia o cronometro da pergunta
 	_cronometroTimer.start()
+	_isShowingPergunta = false
 
 
 func insereProximaPergunta():
 	pontuacao.visible = false
-
+	_isShowingPergunta = true
+	
+	#Adiciona a pergunta na tela
 	_perguntaContainer.add_child(_perguntasCardsComponentes[_indexPerguntaAtual])
 	_codigoAlternativaCorretaPerguntaAtual = _perguntasCardsComponentes[_indexPerguntaAtual].codigoAlternativaCorreta
+
+
+func mostraRespostaCorreta():
+	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	var nodeAlternativaCorreta = _perguntasCardsComponentes[_indexPerguntaAtual].getAlternativaCorreta()
+	
+	nodeAlternativaCorreta.alteraOffsetPivotCentroComponente()
+	tween.tween_property(nodeAlternativaCorreta, "scale", Vector2(1.1, 1.1), 2.5)
+	
+	await tween.finished
+	
+	#Passa para a próxima pergunta
 	_indexPerguntaAtual+=1
 
 
@@ -154,10 +186,13 @@ func handleCronometro():
 	if tempoRestante <= (-3 if tempoLimite == TEMPO_LIMITE_PERGUNTA else -1):
 		_cronometroTimer.stop()
 		
+		if _isShowingPergunta:
+			await mostraRespostaCorreta()
+
 		if(_indexPerguntaAtual < _perguntasCardsComponentes.size()):
-			if tempoLimite == TEMPO_LIMITE_PERGUNTA:
+			if _isShowingPergunta:
 				insereResultadoNaTela()
-			elif tempoLimite == TEMPO_LIMITE_RESULTADOS:
+			else:
 				insereProximaPergunta()
 		else:
 			#TODO: Mostrar a tela final
@@ -169,7 +204,7 @@ func handleCronometro():
 
 #Reseta o cronometro para outra pergunta
 func resetarCronometro():
-	var tempoParaTrocarTela = TEMPO_LIMITE_RESULTADOS if tempoLimite == TEMPO_LIMITE_PERGUNTA else TEMPO_LIMITE_PERGUNTA
+	var tempoParaTrocarTela = TEMPO_LIMITE_RESULTADOS if !_isShowingPergunta else TEMPO_LIMITE_PERGUNTA
 	
 	tempoPassado = 1
 	_progressoDoTempo.max_value = tempoParaTrocarTela

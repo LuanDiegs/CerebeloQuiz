@@ -584,3 +584,4 @@ step = 1.0
 show_percentage = false
 
 [node name="Cronometro" type="Timer" parent="MarginTela/ItensDaTela/QuizECronometro/Cronometro"]
+wait_time = 0.1
