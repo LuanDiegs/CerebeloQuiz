@@ -1,6 +1,7 @@
 extends Control
 class_name ResponderQuizTwitch
 
+#region Variáveis
 #Painel principal
 @onready var _itensTituloMargin = $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin
 @onready var _nomeDoCanalInput = $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/ItensTitulo/InputNomeDoCanal
@@ -22,11 +23,15 @@ var _perguntas: Array
 var _perguntasCardsComponentes: Array[EscolhaAlternativaQuiz]
 var _indexPerguntaAtual := 0
 var _codigoAlternativaCorretaPerguntaAtual: String
+var _podeResponder: bool = false
 @onready var _perguntaContainer = $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer
 
+#Placar
 var _listaPontuacao: Dictionary
+var _listaUsuariosJaResponderam: Dictionary
 var _isShowingPergunta: bool = false
-@onready var pontuacao: PanelContainer = $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer/Pontuacao
+@onready var _itensPlacar = $MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar
+@onready var _resultadosPainelMaior := $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer/Resultados
 
 #Cronometro 
 @onready var _separadorCronometro = $MarginTela/ItensDaTela/QuizECronometro/Separador
@@ -36,10 +41,12 @@ var _isShowingPergunta: bool = false
 @onready var _progressoDoTempo = $MarginTela/ItensDaTela/QuizECronometro/Cronometro/CronometroContainer/ProgressoDoTempo
 var tempoLimite := TEMPO_LIMITE_PERGUNTA
 var tempoPassado := 1
+#endregion
 
 #Constantes
-const TEMPO_LIMITE_PERGUNTA = 30
+const TEMPO_LIMITE_PERGUNTA = 10
 const TEMPO_LIMITE_RESULTADOS = 10
+const QUANTIDADE_DE_USUARIOS_PARA_MOSTRAR_NA_TELA = 20
 
 
 func _ready():
@@ -53,20 +60,11 @@ func _ready():
 	#Conecta o cronometro
 	_cronometroTimer.connect("timeout", handleCronometro)
 	
+	#Insere o valor máximo do tempo aqui
+	_progressoDoTempo.max_value = TEMPO_LIMITE_PERGUNTA
+	
 	#Foca no input
 	_nomeDoCanalInput.grab_focus()
-	
-	#TODO: Arrumar, algoritmo para testar sorteamento das pontuações
-	var teste: Dictionary
-	for i in range(10_000):
-		teste.get_or_add("a"+str(i), randi_range(0, 1000))
-	
-	var teste2 = teste.keys()
-	teste2.sort_custom(func(a, b):
-		return teste[b] < teste[a])
-	
-	for i in range(10):
-		print(teste[teste2[i]])
 		
 
 #Tá repetido mas que se foda
@@ -82,6 +80,7 @@ func criarComponentesDasPerguntas(perguntas: Array):
 		_perguntasCardsComponentes.append(quizCardComponente)
 
 
+#region Integração com a Twitch e responses
 #Ação de clicar no iniciar quiz
 func iniciarQuiz():
 	tentaVincularComATwitch()
@@ -139,22 +138,37 @@ func vinculadoComATwitchComErro():
 	_labelAvisoNomeDoCanalInput.text = "Ocorreu um erro ao conectar com a Twitch. Verifique sua conexão ou se o canal está certo."
 
 
-func insereResultadoNaTela():
+func pegaMensagem(chatter: Chatter):
+	insereMensagemNoChat(chatter)
+	calculaPontuacaoUsuario(chatter)
+#endregion
+
+
+#region Perguntas e resultados tela
+func insereResultadoNaTela(isResultadoFinal: bool = false):
+	#Ordena o placar e insere dentro da tela
+	ordenaEInserePontuacaoNoPlacar(isResultadoFinal)
+	
 	#Remove a antiga pergunta
 	if _indexPerguntaAtual > 0 and _perguntaContainer.get_child(_perguntasCardsComponentes[_indexPerguntaAtual-1].get_index()):
 		_perguntaContainer.remove_child(_perguntasCardsComponentes[_indexPerguntaAtual-1])
 	
 	#Insere o painel como visível
-	pontuacao.visible = true
+	_resultadosPainelMaior.visible = true
 	
-	#Inicia o cronometro da pergunta
-	_cronometroTimer.start()
-	_isShowingPergunta = false
+	#Inicia o cronometro se não for o final da partida
+	if !isResultadoFinal:
+		_cronometroTimer.start()
+		_isShowingPergunta = false
 
 
 func insereProximaPergunta():
-	pontuacao.visible = false
+	_resultadosPainelMaior.visible = false
 	_isShowingPergunta = true
+	_podeResponder = true
+	
+	#Limpa is usuários que já responderam para responder a nova pergunta
+	_listaUsuariosJaResponderam.clear()
 	
 	#Adiciona a pergunta na tela
 	_perguntaContainer.add_child(_perguntasCardsComponentes[_indexPerguntaAtual])
@@ -162,18 +176,47 @@ func insereProximaPergunta():
 
 
 func mostraRespostaCorreta():
+	#Não podem mais responder
+	_podeResponder = false
+	
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	var nodeAlternativaCorreta = _perguntasCardsComponentes[_indexPerguntaAtual].getAlternativaCorreta()
 	
 	nodeAlternativaCorreta.alteraOffsetPivotCentroComponente()
-	tween.tween_property(nodeAlternativaCorreta, "scale", Vector2(1.1, 1.1), 2.5)
-	
+	nodeAlternativaCorreta.button_pressed = true
+	tween.tween_property(nodeAlternativaCorreta, "scale", Vector2(0.95, 0.95), 0.3)
+	tween.tween_property(nodeAlternativaCorreta, "scale", Vector2(1.1, 1.1), 0.5)
+	tween.tween_property(nodeAlternativaCorreta, "scale", Vector2(1.1, 1.1), 1.5)
 	await tween.finished
 	
 	#Passa para a próxima pergunta
 	_indexPerguntaAtual+=1
 
 
+func ordenaEInserePontuacaoNoPlacar(isResultadoFinal: bool = false):
+	var vintePrimeirosColocados: Dictionary
+	var quantidadeDeUsuariosQueResponderam = _listaPontuacao.size() if _listaPontuacao.size() < QUANTIDADE_DE_USUARIOS_PARA_MOSTRAR_NA_TELA else QUANTIDADE_DE_USUARIOS_PARA_MOSTRAR_NA_TELA
+	
+	#Ordena
+	var usuariosQuePontuaram = _listaPontuacao.keys()
+	usuariosQuePontuaram.sort_custom(func(a, b):
+		return _listaPontuacao[b] < _listaPontuacao[a])
+	
+	for i in range(quantidadeDeUsuariosQueResponderam):
+		vintePrimeirosColocados.get_or_add(i, {"nickname": usuariosQuePontuaram[i], "pontuacao": _listaPontuacao[usuariosQuePontuaram[i]] })
+	
+	#Coloca o placar no placar lateral
+	var itensPlacar = getItensPlacarLatera() as Array[PlacarLateralTwitch]
+	for i in range(itensPlacar.size()):
+		if vintePrimeirosColocados.get(i):
+			itensPlacar[i].inserePlacar(i+1, vintePrimeirosColocados[i]["nickname"], vintePrimeirosColocados[i]["pontuacao"])
+	
+	#Coloca o placar
+	_resultadosPainelMaior.insereDadosNoPainelResultados(vintePrimeirosColocados, isResultadoFinal)
+#endregion
+
+
+#region Cronometro
 #Evento que será disparado a cada segundo
 func handleCronometro():
 	var tempoRestante = tempoLimite - tempoPassado
@@ -183,7 +226,7 @@ func handleCronometro():
 		_progressoDoTempo.value+=1
 		_cronometroLabel.text = ("0" if tempoRestante < 10 else "") + str(tempoRestante) + ":00"
 	
-	if tempoRestante <= (-3 if tempoLimite == TEMPO_LIMITE_PERGUNTA else -1):
+	if tempoRestante <= (-2 if _isShowingPergunta else -1):
 		_cronometroTimer.stop()
 		
 		if _isShowingPergunta:
@@ -193,10 +236,10 @@ func handleCronometro():
 			if _isShowingPergunta:
 				insereResultadoNaTela()
 			else:
+				_resultadosPainelMaior.isResultadoVisível = false
 				insereProximaPergunta()
 		else:
-			#TODO: Mostrar a tela final
-			print("acabou")
+			insereResultadoNaTela(true)
 			return
 			
 		resetarCronometro()
@@ -214,12 +257,42 @@ func resetarCronometro():
 	#Inicia o cronometro da pergunta
 	_cronometroTimer.start()
 	_cronometroLabel.text = str(tempoParaTrocarTela) + ":00"
+#endregion
 
 
-func pegaMensagem(chatter: Chatter):
-	insereMensagemNoChat(chatter)
+#region Pontuacao e resultados
+func calculaPontuacaoUsuario(chatter: Chatter):
+	var nicknameUsuario = chatter.tags.display_name
+	
+	#Pega a mensagem caso ela comece com ! que é o começo das alternativas
+	if _podeResponder and chatter.message[0] == "!":
+		if chatter.message == _codigoAlternativaCorretaPerguntaAtual and !_listaUsuariosJaResponderam.get(nicknameUsuario):			
+			#Se existir o usuário ele coloca a pontuacao	
+			if _listaPontuacao.get(nicknameUsuario):
+				_listaPontuacao[nicknameUsuario] += 1000/tempoPassado
+			
+			_listaPontuacao.get_or_add(nicknameUsuario, 1000/tempoPassado)
+		
+		_listaPontuacao.get_or_add("nicknameUsuario"+str(randi_range(0, 50)), 10*randi_range(0, 30))
+		
+		#O usuário respondeu, independente se acertou ou errou
+		_listaUsuariosJaResponderam.get_or_add(nicknameUsuario, true)
+#endregion
 
 
+#region Placar
+func getItensPlacarLatera() -> Array[PlacarLateralTwitch]:
+	var itensPlacarLateral: Array[PlacarLateralTwitch]
+	
+	for item in _itensPlacar.get_children():
+		if item.is_in_group("placarMinimalistaIntegracaoTwitch"):
+			itensPlacarLateral.append(item)
+	
+	return itensPlacarLateral
+#endregion
+	
+	
+#region Chat
 func insereMensagemNoChat(chatter: Chatter):
 	var labelAInserir = RichTextLabel.new()
 	var mensagem = "[color=#6db066]%s[/color]: %s" % [chatter.tags.display_name, chatter.message]
@@ -245,3 +318,4 @@ func ajustaScrollDoChat():
 func limpaMensagensDoChat():
 	for mensagem in _containerDisplayMensagensChat.get_children():
 		_containerDisplayMensagensChat.remove_child(mensagem)
+#endregion

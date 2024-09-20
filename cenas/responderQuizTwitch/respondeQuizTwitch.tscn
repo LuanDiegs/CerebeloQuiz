@@ -1,11 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://cvseroxaerrnp"]
+[gd_scene load_steps=33 format=3 uid="uid://cvseroxaerrnp"]
 
 [ext_resource type="Script" path="res://cenas/responderQuizTwitch/responderQuizTwitch.gd" id="1_nlroy"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_tcl7k"]
 [ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="2_widrn"]
+[ext_resource type="PackedScene" uid="uid://xgnjmud6qhb6" path="res://componentes/placarLateralTwitch/placarLateralTwitch.tscn" id="3_bv4vy"]
 [ext_resource type="Script" path="res://cenas/responderQuizTwitch/teste.gd" id="3_cihme"]
 [ext_resource type="Theme" uid="uid://bgaaf3jd53b7o" path="res://cenas/responderQuizTwitch/mensagemRichLabelTema.tres" id="5_eud7t"]
 [ext_resource type="FontFile" uid="uid://bx1dxv0xq3rv3" path="res://resources/fonts/Nunito/static/Nunito-Regular.ttf" id="6_35c3d"]
+[ext_resource type="PackedScene" uid="uid://dti8dmq2k3vo" path="res://componentes/painelResultadosTwitch/painelResultadosTwitch.tscn" id="8_l2ccs"]
+[ext_resource type="Script" path="res://componentes/painelResultadosTwitch/painelResultadosTwitch.gd" id="9_6ypjc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oqja"]
 bg_color = Color(1, 1, 1, 1)
@@ -55,24 +58,6 @@ corner_radius_top_right = 5
 
 [sub_resource type="Theme" id="Theme_7nfw2"]
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_gplb0")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jasel"]
-bg_color = Color(0.172549, 0.2, 0.435294, 1)
-expand_margin_top = 4.0
-
-[sub_resource type="Theme" id="Theme_drrqy"]
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_jasel")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5knrv"]
-bg_color = Color(0.290196, 0.313726, 0.545098, 1)
-
-[sub_resource type="Theme" id="Theme_hx3kp"]
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_5knrv")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8tyjm"]
-bg_color = Color(0.172549, 0.2, 0.435294, 1)
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yua2t"]
 content_margin_left = 2.0
@@ -263,114 +248,14 @@ text = "PLACAR
 "
 horizontal_alignment = 1
 
-[node name="PrimeiroColocado" type="PanelContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-theme = SubResource("Theme_drrqy")
-
-[node name="MarginItem" type="MarginContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/PrimeiroColocado"]
-layout_mode = 2
-theme_override_constants/margin_left = 7
-theme_override_constants/margin_right = 7
-
-[node name="ItensDoPlacar" type="HBoxContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/PrimeiroColocado/MarginItem"]
+[node name="PrimeiroColocado" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar" instance=ExtResource("3_bv4vy")]
 layout_mode = 2
 
-[node name="Posicao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/PrimeiroColocado/MarginItem/ItensDoPlacar"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_widrn")
-theme_override_font_sizes/font_size = 18
-text = "1"
-
-[node name="Nome" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/PrimeiroColocado/MarginItem/ItensDoPlacar"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_widrn")
-theme_override_font_sizes/font_size = 18
-text = "ZDZIN"
-clip_text = true
-
-[node name="Pontuacao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/PrimeiroColocado/MarginItem/ItensDoPlacar"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_widrn")
-theme_override_font_sizes/font_size = 18
-text = "5422"
-horizontal_alignment = 2
-
-[node name="SegundoColocado" type="PanelContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-theme = SubResource("Theme_hx3kp")
-
-[node name="MarginItem" type="MarginContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/SegundoColocado"]
-layout_mode = 2
-theme_override_constants/margin_left = 7
-theme_override_constants/margin_right = 7
-
-[node name="ItensDoPlacar" type="HBoxContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/SegundoColocado/MarginItem"]
+[node name="SegundoColocado" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar" instance=ExtResource("3_bv4vy")]
 layout_mode = 2
 
-[node name="Posicao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/SegundoColocado/MarginItem/ItensDoPlacar"]
-custom_minimum_size = Vector2(20, 0)
+[node name="TerceiroColocado" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar" instance=ExtResource("3_bv4vy")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_widrn")
-theme_override_font_sizes/font_size = 18
-text = "2"
-
-[node name="Nome" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/SegundoColocado/MarginItem/ItensDoPlacar"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_widrn")
-theme_override_font_sizes/font_size = 18
-text = "ZDZIN"
-clip_text = true
-
-[node name="Pontuacao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/SegundoColocado/MarginItem/ItensDoPlacar"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_widrn")
-theme_override_font_sizes/font_size = 18
-text = "5000"
-horizontal_alignment = 2
-
-[node name="TerceiroColocado" type="PanelContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8tyjm")
-
-[node name="MarginItem" type="MarginContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/TerceiroColocado"]
-layout_mode = 2
-theme_override_constants/margin_left = 7
-theme_override_constants/margin_right = 7
-
-[node name="ItensDoPlacar" type="HBoxContainer" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/TerceiroColocado/MarginItem"]
-layout_mode = 2
-
-[node name="Posicao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/TerceiroColocado/MarginItem/ItensDoPlacar"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_widrn")
-theme_override_font_sizes/font_size = 18
-text = "3
-"
-
-[node name="Nome" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/TerceiroColocado/MarginItem/ItensDoPlacar"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_widrn")
-theme_override_font_sizes/font_size = 18
-text = "ZDZIN"
-clip_text = true
-
-[node name="Pontuacao" type="Label" parent="MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar/TerceiroColocado/MarginItem/ItensDoPlacar"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_widrn")
-theme_override_font_sizes/font_size = 18
-text = "4000"
-horizontal_alignment = 2
 
 [node name="Separador2" type="HSeparator" parent="MarginTela/ItensDaTela/ItensLaterais"]
 layout_mode = 2
@@ -535,10 +420,9 @@ text = "INICIAR QUIZ"
 visible = false
 layout_mode = 2
 
-[node name="Pontuacao" type="PanelContainer" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer"]
-visible = false
+[node name="Resultados" parent="MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer" instance=ExtResource("8_l2ccs")]
 layout_mode = 2
-size_flags_vertical = 3
+script = ExtResource("9_6ypjc")
 
 [node name="Separador" type="HSeparator" parent="MarginTela/ItensDaTela/QuizECronometro"]
 visible = false
@@ -584,4 +468,3 @@ step = 1.0
 show_percentage = false
 
 [node name="Cronometro" type="Timer" parent="MarginTela/ItensDaTela/QuizECronometro/Cronometro"]
-wait_time = 0.1

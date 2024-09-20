@@ -1,0 +1,162 @@
+[gd_scene load_steps=14 format=3 uid="uid://dti8dmq2k3vo"]
+
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_qkjh4"]
+[ext_resource type="FontFile" uid="uid://cu8ab14nrlprx" path="res://resources/fonts/Nunito/static/Nunito-ExtraBold.ttf" id="2_hpsex"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ctkr"]
+content_margin_left = 25.0
+content_margin_top = 25.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+bg_color = Color(0.172549, 0.2, 0.435294, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_12uqo"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_7ctkr")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyis6"]
+
+[sub_resource type="Theme" id="Theme_ahfga"]
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_cyis6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b3h0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="Theme" id="Theme_0mxxw"]
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("1_qkjh4")
+Label/styles/normal = SubResource("StyleBoxFlat_3b3h0")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0sub"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.290196, 0.313726, 0.545098, 1)
+expand_margin_top = 5.0
+
+[sub_resource type="Theme" id="Theme_od833"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_e0sub")
+
+[sub_resource type="Theme" id="Theme_df4mi"]
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("2_hpsex")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0yo1"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+expand_margin_top = 5.0
+
+[sub_resource type="Theme" id="Theme_yvfno"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_t0yo1")
+
+[node name="Resultados" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_12uqo")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollResultado" type="ScrollContainer" parent="."]
+layout_mode = 2
+horizontal_scroll_mode = 3
+
+[node name="ListaResultados" type="VBoxContainer" parent="ScrollResultado"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Titulo" type="PanelContainer" parent="ScrollResultado/ListaResultados"]
+layout_mode = 2
+theme = SubResource("Theme_ahfga")
+
+[node name="Titulo" type="Label" parent="ScrollResultado/ListaResultados/Titulo"]
+layout_mode = 2
+size_flags_vertical = 1
+theme = SubResource("Theme_0mxxw")
+text = "Titulo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResultadoClaroBase" type="PanelContainer" parent="ScrollResultado/ListaResultados"]
+visible = false
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme = SubResource("Theme_od833")
+
+[node name="InformacoesPosicao" type="HBoxContainer" parent="ScrollResultado/ListaResultados/ResultadoClaroBase"]
+layout_mode = 2
+
+[node name="Colocacao" type="Label" parent="ScrollResultado/ListaResultados/ResultadoClaroBase/InformacoesPosicao"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = SubResource("Theme_df4mi")
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Titulo" type="Label" parent="ScrollResultado/ListaResultados/ResultadoClaroBase/InformacoesPosicao"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = SubResource("Theme_df4mi")
+text = "Nickname"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pontuacao" type="Label" parent="ScrollResultado/ListaResultados/ResultadoClaroBase/InformacoesPosicao"]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
+size_flags_vertical = 1
+theme = SubResource("Theme_df4mi")
+text = "9999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResultadoEscuroBase" type="PanelContainer" parent="ScrollResultado/ListaResultados"]
+visible = false
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme = SubResource("Theme_yvfno")
+
+[node name="InformacoesPosicao" type="HBoxContainer" parent="ScrollResultado/ListaResultados/ResultadoEscuroBase"]
+layout_mode = 2
+
+[node name="Colocacao" type="Label" parent="ScrollResultado/ListaResultados/ResultadoEscuroBase/InformacoesPosicao"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = SubResource("Theme_df4mi")
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Titulo" type="Label" parent="ScrollResultado/ListaResultados/ResultadoEscuroBase/InformacoesPosicao"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = SubResource("Theme_df4mi")
+text = "Nickname"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pontuacao" type="Label" parent="ScrollResultado/ListaResultados/ResultadoEscuroBase/InformacoesPosicao"]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
+size_flags_vertical = 1
+theme = SubResource("Theme_df4mi")
+text = "9999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Delay" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true

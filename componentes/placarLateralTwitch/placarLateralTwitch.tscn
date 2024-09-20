@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://xgnjmud6qhb6"]
+
+[ext_resource type="Script" path="res://componentes/placarLateralTwitch/placarLateralTwitch.gd" id="1_d1ufj"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="2_ghhwy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jasel"]
+bg_color = Color(0.172549, 0.2, 0.435294, 1)
+expand_margin_top = 4.0
+
+[sub_resource type="Theme" id="Theme_drrqy"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_jasel")
+
+[node name="Colocado" type="PanelContainer" groups=["placarMinimalistaIntegracaoTwitch"]]
+custom_minimum_size = Vector2(295, 35)
+anchors_preset = -1
+anchor_right = 0.230469
+anchor_bottom = 0.0486111
+offset_right = -295.0
+offset_bottom = -35.0
+theme = SubResource("Theme_drrqy")
+script = ExtResource("1_d1ufj")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginItem" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_right = 7
+
+[node name="ItensDoPlacar" type="HBoxContainer" parent="MarginItem" groups=["placarMinimalistaIntegracaoTwitch"]]
+layout_mode = 2
+
+[node name="Posicao" type="Label" parent="MarginItem/ItensDoPlacar"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ghhwy")
+theme_override_font_sizes/font_size = 18
+text = "--"
+
+[node name="Nome" type="Label" parent="MarginItem/ItensDoPlacar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_ghhwy")
+theme_override_font_sizes/font_size = 18
+text = "==================="
+clip_text = true
+
+[node name="Pontuacao" type="Label" parent="MarginItem/ItensDoPlacar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ghhwy")
+theme_override_font_sizes/font_size = 18
+text = "------"
+horizontal_alignment = 2

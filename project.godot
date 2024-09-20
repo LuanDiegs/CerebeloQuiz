@@ -49,6 +49,7 @@ alternativa=""
 CardPergunaEditFormQuiz=""
 alternativasResposta=""
 abrirFechar="Botão do tipo MenuButton, utilizado para controlar o Collapsible"
+placarMinimalistaIntegracaoTwitch="placar lateral da integração com a twitch"
 
 [input]
 
