@@ -7,38 +7,40 @@ var textoBotaoFechar: String
 
 var redirecionaPara: String
 
-@onready var popUp: Panel = $PopUp
+@onready var _popUp: Panel = $PopUp
 
-@onready var tituloLabel: Label = $PopUp/ContainerVertical/Titulo
-@onready var conteudoLabel: Label = $"PopUp/ContainerVertical/Conteúdo"
-@onready var fecharBotao: Button = $PopUp/ContainerVertical/Fechar
+@onready var _tituloLabel: Label = $PopUp/ContainerVertical/Titulo
+@onready var _conteudoLabel: Label = $"PopUp/ContainerVertical/Conteúdo"
+@onready var _fecharBotao: Button = $PopUp/ContainerVertical/ContainerBotoes/Fechar
+@onready var _containerBotoes = $PopUp/ContainerVertical/ContainerBotoes
 
 var botaoFecharInvisivel: bool = false
+var isModalConfirmacao: bool = false
 
 func _ready() -> void:
-	popUp.scale = Vector2(0,0)
+	_popUp.scale = Vector2(0,0)
 	
-	fecharBotao.connect("pressed", fechaPopup)
+	_fecharBotao.connect("pressed", fechaPopup)
 	
-	tituloLabel.text = titulo
-	conteudoLabel.text = conteudo
-	fecharBotao.text = textoBotaoFechar
+	_tituloLabel.text = titulo
+	_conteudoLabel.text = conteudo
+	_fecharBotao.text = textoBotaoFechar
 	
 	if(botaoFecharInvisivel):
-		fecharBotao.visible = false
+		_fecharBotao.visible = false
 	
 	
 func animaEntrada():
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(popUp, "scale", Vector2(1.15,1.15), 0.3)
-	tween.tween_property(popUp, "scale", Vector2(1,1), 0.2)
+	tween.tween_property(_popUp, "scale", Vector2(1.15,1.15), 0.3)
+	tween.tween_property(_popUp, "scale", Vector2(1,1), 0.2)
 	await tween.finished
 
 
 func fechaPopup():
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(popUp, "scale", Vector2(1.1,1.1), 0.2)
-	tween.tween_property(popUp, "scale", Vector2(0,0), 0.3)
+	tween.tween_property(_popUp, "scale", Vector2(1.1,1.1), 0.2)
+	tween.tween_property(_popUp, "scale", Vector2(0,0), 0.3)
 	await tween.finished
 	
 	self.queue_free()
@@ -52,3 +54,16 @@ func _on_gui_input(event: InputEvent) -> void:
 	if(!botaoFecharInvisivel):
 		if(event.is_action_pressed("CliqueDireito")):
 			fechaPopup()
+
+
+func inserirBotaoOpcional(textoBotao: String, funcaoBotao: Callable):
+	var novoBotao = _fecharBotao.duplicate() as Button
+	novoBotao.text = textoBotao
+	novoBotao.connect(
+		"pressed", 
+		func(): 
+			funcaoBotao.call()
+			self.fechaPopup())
+	
+	_containerBotoes.add_child(novoBotao)
+	_containerBotoes.move_child(novoBotao, 0)

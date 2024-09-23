@@ -7,6 +7,7 @@ class_name PainelResultadosTwitch
 @onready var _titulo = $ScrollResultado/ListaResultados/Titulo/Titulo
 @onready var _listaResultados = $ScrollResultado/ListaResultados
 @onready var _scrollResultado: ScrollContainer = $ScrollResultado
+@onready var _scrollDoscrollResultado: VScrollBar = _scrollResultado.get_v_scroll_bar()
 var isResultadoVisível := false
 
 @onready var _delay := $Delay as Timer
@@ -14,10 +15,12 @@ var isResultadoVisível := false
 
 func _ready():
 	_delay.connect("timeout", comecaARolarOScroll)
+	_scrollDoscrollResultado.connect("mouse_entered", func(): isResultadoVisível = false)
+	_scrollDoscrollResultado.connect("mouse_exited", func(): isResultadoVisível = true)
 
 
 func _process(delta):
-	if isResultadoVisível:
+	if isResultadoVisível and _scrollDoscrollResultado.value < _scrollDoscrollResultado.max_value:
 		_scrollResultado.get_v_scroll_bar().value += 0.3
 
 
@@ -31,7 +34,7 @@ func insereDadosNoPainelResultados(dados: Dictionary, isResultadoFinalPartida: b
 		
 	_titulo.text = "RESULTADOS DA RODADA" if !isResultadoFinalPartida else "RESULTADOS DA PARTIDA"
 	
-	#Se tiver mais de 3 filhos significa que foram criados os cards já
+	#Se tiver mais de 5 filhos significa que foram criados os cards já
 	if _listaResultados.get_child_count() < 5:
 		for i in range(20):
 			var card = resultadoClaroBase.duplicate() if i % 2 == 0 else resultadoEscuroBase.duplicate()
@@ -61,6 +64,7 @@ func insereDadosNoPainelResultados(dados: Dictionary, isResultadoFinalPartida: b
 		for i in cardsResultados.size():
 			if(dados.get(i)):
 				_insereInformacoesCard(cardsResultados[i], str(i+1), dados[i]["nickname"], str(dados[i]["pontuacao"]))
+
 
 func _insereInformacoesCard(card: PanelContainer, colocacao: String, nickname: String, pontuacao: String) -> PanelContainer:
 	card.get_child(0).get_child(0).text = str(colocacao)

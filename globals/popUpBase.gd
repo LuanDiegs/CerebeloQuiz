@@ -11,7 +11,7 @@ func criaPopupNotificacao(
 	redirecionaPara: String = "",
 	titulo: String = "Atenção",
 	botaoFecharInvisivel: bool = false,
-	textoBotaoFechar: String = "Fechar"):
+	textoBotaoFechar: String = "Fechar") -> PopUpNotificacao:
 	
 	var componente = preload("res://componentes/popUps/popUpNotificacao/popUpNotificacao.tscn").instantiate()
 	
@@ -29,6 +29,17 @@ func criaPopupNotificacao(
 	componente.animaEntrada()
 	
 	return componente
+
+
+func criaPopupConfirmacao(
+	conteudo: String = "Ocorreu um erro inesperado",
+	titulo: String = "Atenção",
+	textoBotaoFechar: String = "Fechar",
+	botaoAdicional: Dictionary = {}):
+	
+	var popup = criaPopupNotificacao(conteudo, "", titulo, false, textoBotaoFechar)
+	
+	popup.inserirBotaoOpcional(botaoAdicional.textoBotao, botaoAdicional.funcaoBotao)
 
 
 func criaPopupEditFormPergunta(

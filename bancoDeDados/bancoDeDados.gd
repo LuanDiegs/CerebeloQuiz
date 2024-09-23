@@ -10,15 +10,9 @@ func _init():
 	
 func conectarBanco():
 	banco.path = "res://cerebelo.db"
+	banco.verbosity_level = SQLite.NORMAL
 	banco.open_db()
-
-
-func comecaTransacao():
-	banco.query("BEGIN TRANSACTION;")
-		
-		
-func finalizaTransacao():
-	banco.query("END TRANSACTION;")
+	pass
 
 
 func inserirDados(tableName: String, data: Dictionary):

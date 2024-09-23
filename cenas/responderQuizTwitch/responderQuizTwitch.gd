@@ -24,12 +24,14 @@ var _perguntasCardsComponentes: Array[EscolhaAlternativaQuiz]
 var _indexPerguntaAtual := 0
 var _codigoAlternativaCorretaPerguntaAtual: String
 var _podeResponder: bool = false
+@onready var _containerAlternativasStreamer := $MarginTela/ItensDaTela/ItensLaterais/StreamerResponderQuizECamera as ContainerCameraStreamerTwitch
 @onready var _perguntaContainer = $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer
 
 #Placar
 var _listaPontuacao: Dictionary
 var _listaUsuariosJaResponderam: Dictionary
 var _isShowingPergunta: bool = false
+var _nomeStreamer: String = ""
 @onready var _itensPlacar = $MarginTela/ItensDaTela/ItensLaterais/Placar/ItensPlacar
 @onready var _resultadosPainelMaior := $MarginTela/ItensDaTela/QuizECronometro/PainelPrincipal/ItensTituloMargin/PerguntaContainer/Resultados
 
@@ -41,6 +43,10 @@ var _isShowingPergunta: bool = false
 @onready var _progressoDoTempo = $MarginTela/ItensDaTela/QuizECronometro/Cronometro/CronometroContainer/ProgressoDoTempo
 var tempoLimite := TEMPO_LIMITE_PERGUNTA
 var tempoPassado := 1
+
+#Sair da sessão
+@onready var _sairSessaoBotao = $MarginTela/ItensDaTela/ItensLaterais/SairSessaoBotao
+
 #endregion
 
 #Constantes
@@ -52,6 +58,7 @@ const QUANTIDADE_DE_USUARIOS_PARA_MOSTRAR_NA_TELA = 20
 func _ready():
 	_iniciarQuizBotao.connect("pressed", iniciarQuiz)
 	_scrollcontainerSrollMensagensChat.connect("changed", ajustaScrollDoChat)
+	_containerAlternativasStreamer.connect("selecionouAlternativa", calculaPontuacaoStreamer)
 	
 	#Pega os quiz e suas perguntas
 	_perguntas = Quizzes.new().getPerguntasEAlternativasDoQuiz(_quizId)
@@ -65,7 +72,20 @@ func _ready():
 	
 	#Foca no input
 	_nomeDoCanalInput.grab_focus()
-		
+	
+	#Sair da sessão botao
+	_sairSessaoBotao.connect("pressed", sairSessaoClicked)
+
+
+func sairSessaoClicked():
+	PopUp.criaPopupConfirmacao("Deseja sair da sessão?", 
+		"Sair da sessão",
+		"Cancelar",
+		{
+			"textoBotao": "Confirmar", 
+			"funcaoBotao": 
+				func(): await TransicaoCena.trocar_cena(TransicaoDeCena.telaQuizzesPopulares)})
+
 
 #Tá repetido mas que se foda
 func criarComponentesDasPerguntas(perguntas: Array):
@@ -95,7 +115,7 @@ func tentaVincularComATwitch():
 		_labelAvisoNomeDoCanalInput.text = "Insira o nome de um canal!"
 		
 		return
-		
+	
 	VerySimpleTwitch.login_chat_anon(nomeDoCanal)
 	VerySimpleTwitch._twitch_chat.OnSucess.connect(vinculadoComATwitchComSucesso)
 	VerySimpleTwitch._twitch_chat.OnFailure.connect(vinculadoComATwitchComErro)
@@ -108,6 +128,7 @@ func tentaVincularComATwitch():
 
 
 func vinculadoComATwitchComSucesso():
+	_nomeStreamer = VerySimpleTwitch._twitch_chat._channel.login
 	if(modalCarregando):
 		await modalCarregando.fechaPopup()
 	
@@ -122,8 +143,9 @@ func vinculadoComATwitchComSucesso():
 	#Insere a pergunta na tela
 	_perguntaContainer.visible = true
 	
-	#Insere a primeira pergunta
+	#Insere a primeira pergunta e coloca as alternativas no container lateral
 	insereProximaPergunta()
+	_containerAlternativasStreamer.trocarConteudoContainer(_perguntasCardsComponentes[_indexPerguntaAtual].alternativas, true)
 	
 	#Inicia o cronometro da pergunta
 	_cronometroTimer.start()
@@ -238,8 +260,11 @@ func handleCronometro():
 			else:
 				_resultadosPainelMaior.isResultadoVisível = false
 				insereProximaPergunta()
+			
+			#Altera o container da camera e das alternativas
+			_containerAlternativasStreamer.trocarConteudoContainer(_perguntasCardsComponentes[_indexPerguntaAtual].alternativas, _isShowingPergunta)
 		else:
-			insereResultadoNaTela(true)
+			insereResultadoNaTela(true) #isFinal
 			return
 			
 		resetarCronometro()
@@ -269,14 +294,26 @@ func calculaPontuacaoUsuario(chatter: Chatter):
 		if chatter.message == _codigoAlternativaCorretaPerguntaAtual and !_listaUsuariosJaResponderam.get(nicknameUsuario):			
 			#Se existir o usuário ele coloca a pontuacao	
 			if _listaPontuacao.get(nicknameUsuario):
-				_listaPontuacao[nicknameUsuario] += 1000/tempoPassado
-			
-			_listaPontuacao.get_or_add(nicknameUsuario, 1000/tempoPassado)
+				_listaPontuacao[nicknameUsuario] += 1000/(tempoPassado-1)
+				
+			_listaPontuacao.get_or_add(nicknameUsuario, 1000/(tempoPassado-1))
 		
+		#DEBUG
 		_listaPontuacao.get_or_add("nicknameUsuario"+str(randi_range(0, 50)), 10*randi_range(0, 30))
 		
 		#O usuário respondeu, independente se acertou ou errou
 		_listaUsuariosJaResponderam.get_or_add(nicknameUsuario, true)
+
+
+func calculaPontuacaoStreamer(acertou: bool):
+	if _podeResponder and acertou:
+		if _listaPontuacao.get(_nomeStreamer):
+			_listaPontuacao[_nomeStreamer] += 1000/(tempoPassado-1)
+			
+		_listaPontuacao.get_or_add(_nomeStreamer, 1000/(tempoPassado-1))
+			
+	#O streamer respondeu, independente se acertou ou errou
+	_listaUsuariosJaResponderam.get_or_add(_nomeStreamer, true)
 #endregion
 
 

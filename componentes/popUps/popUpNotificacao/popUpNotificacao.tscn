@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vmqyqb4yfsos"]
+[gd_scene load_steps=9 format=3 uid="uid://vmqyqb4yfsos"]
 
 [ext_resource type="Theme" uid="uid://bueidph1nopmi" path="res://componentes/popUps/popUpFundo.tres" id="1_4hjoo"]
 [ext_resource type="Script" path="res://componentes/popUps/popUpNotificacao/popUpNotificacao.gd" id="2_b1cgn"]
@@ -12,6 +12,9 @@ content_margin_top = 5.0
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_2g45q"]
 color = Color(0.227451, 0.258824, 0.521569, 1)
 thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8hveo"]
+color = Color(0, 0, 0, 0)
 
 [node name="FundoPopUp" type="Panel"]
 z_index = 100
@@ -78,11 +81,19 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Fechar" type="Button" parent="PopUp/ContainerVertical"]
+[node name="ContainerBotoes" type="HBoxContainer" parent="PopUp/ContainerVertical"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Fechar" type="Button" parent="PopUp/ContainerVertical/ContainerBotoes"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "Fechar"
+
+[node name="Separador2" type="HSeparator" parent="PopUp/ContainerVertical"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_8hveo")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

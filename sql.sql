@@ -40,7 +40,7 @@ ON perguntas (quizId);
 
 CREATE TABLE alternativas (
 	alternativaId INTEGER NOT NULL,
-	conteudoAlternativa TEXT NOT NULL CHECK(conteudoQuiz != ''),
+	conteudoAlternativa TEXT NOT NULL CHECK(conteudoAlternativa != ''),
 	isAlternativaCorreta INTEGER NOT NULL CHECK(typeof(isAlternativaCorreta) = 'integer' AND isAlternativaCorreta IN (1, 0)),
 	perguntaId INTEGER NOT NULL,
 	PRIMARY KEY(alternativaId AUTOINCREMENT),

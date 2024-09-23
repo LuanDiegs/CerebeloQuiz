@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://rltkhsc486qd"]
+
+[ext_resource type="Script" path="res://componentes/containerCameraStreamerTwitch/containerCameraStreamerTwitch.gd" id="1_hedlt"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="1_xphqi"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_m1oc4"]
+[ext_resource type="Script" path="res://componentes/containerCameraStreamerTwitch/alternativaStremerBotao.gd" id="3_v4te4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gg34c"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.290196, 0.313726, 0.545098, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_da0wj"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_gg34c")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mdtq"]
+bg_color = Color(0.175, 0.2075, 0.5, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxdap"]
+bg_color = Color(0.119, 0.1411, 0.34, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6nh1"]
+bg_color = Color(0.135, 0.1665, 0.45, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv4hr"]
+bg_color = Color(0.172549, 0.2, 0.435294, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Theme" id="Theme_8ikfp"]
+Button/font_sizes/font_size = 18
+Button/fonts/font = ExtResource("1_xphqi")
+Button/styles/disabled = SubResource("StyleBoxFlat_6mdtq")
+Button/styles/focus = SubResource("StyleBoxFlat_gxdap")
+Button/styles/hover = SubResource("StyleBoxFlat_d6nh1")
+Button/styles/normal = SubResource("StyleBoxFlat_rv4hr")
+Button/styles/pressed = SubResource("StyleBoxFlat_gxdap")
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_71ceb"]
+
+[node name="StreamerResponderQuizECamera" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 150)
+anchors_preset = -1
+anchor_right = 0.234375
+anchor_bottom = 0.208333
+offset_right = -300.0
+offset_bottom = -150.0
+theme = SubResource("Theme_da0wj")
+script = ExtResource("1_hedlt")
+metadata/_edit_use_anchors_ = true
+
+[node name="StreamerAlternativasVBox" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="StreamerAlternativaBase" type="Button" parent="StreamerAlternativasVBox"]
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = SubResource("Theme_8ikfp")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_71ceb")
+text = "ALTERNATIVA 1"
+text_overrun_behavior = 3
+script = ExtResource("3_v4te4")
+
+[node name="StreamerAlternativasMensagem" type="Label" parent="."]
+custom_minimum_size = Vector2(280, 65)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_m1oc4")
+theme_override_font_sizes/font_size = 20
+text = "POSICIONE SUA CÂMERA AQUI!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
