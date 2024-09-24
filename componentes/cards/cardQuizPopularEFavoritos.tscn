@@ -142,6 +142,7 @@ custom_minimum_size = Vector2(210, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
+focus_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_5uiow")
 theme_override_font_sizes/font_size = 14
@@ -149,6 +150,8 @@ text = "Titulo"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
 
 [node name="Separador" type="HSeparator" parent="ItensCard"]
 layout_mode = 2
