@@ -1,14 +1,14 @@
-extends MarginContainer
+extends PanelContainer
 class_name CardMeusQuizzes
 
 var perguntaId := 0
 var tituloDoQuiz := ""
 
 #Propriedades
-@onready var _tituloQuiz = $PainelMeusQuizzes/MarginDentroDoPanel/Elementos/TituloQuiz
+@onready var _tituloQuiz = $MarginDentroDoPanel/Elementos/TituloQuiz
 
 #Botões
-@onready var _editarBotao = $PainelMeusQuizzes/MarginDentroDoPanel/Elementos/BotoesContainer/Editar
+@onready var _editarBotao = $MarginDentroDoPanel/Elementos/BotoesContainer/Editar
 
 
 func _ready():

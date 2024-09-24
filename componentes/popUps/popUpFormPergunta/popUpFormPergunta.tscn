@@ -135,6 +135,7 @@ layout_mode = 2
 [node name="InserirNovaAlternativa" type="Button" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas/HeaderAlternativas"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Inserir nova alternativa"
 
 [node name="AlternativasContainer" type="VBoxContainer" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas"]
@@ -150,6 +151,7 @@ custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+mouse_default_cursor_shape = 2
 text = "Salvar"
 
 [node name="Fechar" type="Button" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas/RodapeBotoes"]
@@ -157,6 +159,7 @@ custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+mouse_default_cursor_shape = 2
 text = "Cancelar"
 
 [node name="MarginBottom" type="HSeparator" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas"]

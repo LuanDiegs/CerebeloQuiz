@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cvseroxaerrnp"]
+[gd_scene load_steps=37 format=3 uid="uid://cvseroxaerrnp"]
 
 [ext_resource type="Script" path="res://cenas/responderQuizTwitch/responderQuizTwitch.gd" id="1_nlroy"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_tcl7k"]
@@ -10,6 +10,25 @@
 [ext_resource type="PackedScene" uid="uid://dti8dmq2k3vo" path="res://componentes/painelResultadosTwitch/painelResultadosTwitch.tscn" id="8_l2ccs"]
 [ext_resource type="Script" path="res://componentes/painelResultadosTwitch/painelResultadosTwitch.gd" id="9_6ypjc"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x71d6"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_goxcp"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8dom"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oqja"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 5
@@ -19,9 +38,17 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme_excxv"]
 Button/colors/font_color = Color(0.172549, 0.2, 0.435294, 1)
+Button/colors/font_focus_color = Color(0.172549, 0.2, 0.435294, 1)
+Button/colors/font_hover_color = Color(0.172549, 0.2, 0.435294, 1)
+Button/colors/font_hover_pressed_color = Color(0.225, 0.2525, 0.5, 1)
+Button/colors/font_pressed_color = Color(0.223529, 0.25098, 0.501961, 1)
 Button/font_sizes/font_size = 22
 Button/fonts/font = ExtResource("1_tcl7k")
+Button/styles/focus = SubResource("StyleBoxFlat_x71d6")
+Button/styles/hover = SubResource("StyleBoxFlat_goxcp")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_r8dom")
 Button/styles/normal = SubResource("StyleBoxFlat_4oqja")
+Button/styles/pressed = SubResource("StyleBoxFlat_r8dom")
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_jog06"]
 color = Color(0, 0, 0, 0)
@@ -248,6 +275,7 @@ layout_mode = 2
 [node name="SairSessaoBotao" type="Button" parent="MarginTela/ItensDaTela/ItensLaterais"]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_excxv")
 text = "SAIR DA SESSÃO
 "

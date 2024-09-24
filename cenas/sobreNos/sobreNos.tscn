@@ -1,18 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://2wd8i33mbuxq"]
+[gd_scene load_steps=8 format=3 uid="uid://2wd8i33mbuxq"]
 
-[ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_mcvx1"]
-[ext_resource type="PackedScene" uid="uid://cgxhvl0bbqpr5" path="res://componentes/header/titulo.tscn" id="2_qrj3u"]
-[ext_resource type="PackedScene" uid="uid://dsvvawk8r61ko" path="res://componentes/panel/panelQuadrado.tscn" id="3_d37r3"]
-[ext_resource type="PackedScene" uid="uid://xdx1elefqpmj" path="res://componentes/header/hSeparator.tscn" id="3_drndv"]
-[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="5_50044"]
-[ext_resource type="PackedScene" uid="uid://dsf02j8x81udb" path="res://componentes/panel/panelHorizontal.tscn" id="6_0cg5s"]
+[ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_y83vj"]
+[ext_resource type="PackedScene" uid="uid://dsvvawk8r61ko" path="res://componentes/panel/panelQuadrado.tscn" id="2_j8ntw"]
+[ext_resource type="PackedScene" uid="uid://b5ac7sektrul4" path="res://componentes/header/headerSobreNos.tscn" id="2_oe1ml"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="3_cgcm5"]
+[ext_resource type="PackedScene" uid="uid://dsf02j8x81udb" path="res://componentes/panel/panelHorizontal.tscn" id="4_untln"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ck3sd"]
-font = ExtResource("5_50044")
+font = ExtResource("3_cgcm5")
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_rrg3u"]
-font = ExtResource("5_50044")
+font = ExtResource("3_cgcm5")
 font_size = 32
 
 [node name="SobreNos" type="Control"]
@@ -39,7 +38,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sidebar" parent="Comum" instance=ExtResource("1_mcvx1")]
+[node name="Sidebar" parent="Comum" instance=ExtResource("1_y83vj")]
 z_index = 1
 layout_mode = 0
 
@@ -55,26 +54,7 @@ theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 30
 
-[node name="Header" type="Control" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Header"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.292
-anchor_top = -0.225
-anchor_right = -0.292
-anchor_bottom = -0.225
-offset_left = 283.24
-offset_top = 21.375
-offset_right = 1253.24
-offset_bottom = 117.375
-
-[node name="Titulo" parent="MarginContainer/Header/VBoxContainer" instance=ExtResource("2_qrj3u")]
-layout_mode = 2
-text = "SOBRE NÓS"
-
-[node name="Separador" parent="MarginContainer/Header/VBoxContainer" instance=ExtResource("3_drndv")]
+[node name="Header" parent="MarginContainer" instance=ExtResource("2_oe1ml")]
 layout_mode = 2
 
 [node name="Main" type="Control" parent="."]
@@ -85,7 +65,7 @@ anchor_right = 0.976563
 anchor_bottom = 0.979167
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" parent="Main" instance=ExtResource("3_d37r3")]
+[node name="Panel" parent="Main" instance=ExtResource("2_j8ntw")]
 layout_mode = 0
 anchor_right = 0.463918
 anchor_bottom = 0.526316
@@ -107,7 +87,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel2" parent="Main" instance=ExtResource("3_d37r3")]
+[node name="Panel2" parent="Main" instance=ExtResource("2_j8ntw")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.536082
@@ -129,7 +109,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel3" parent="Main" instance=ExtResource("6_0cg5s")]
+[node name="Panel3" parent="Main" instance=ExtResource("4_untln")]
 layout_mode = 0
 anchor_top = 0.578947
 anchor_right = 1.0

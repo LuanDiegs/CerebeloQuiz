@@ -1,25 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4vphgog1ukg1"]
+[gd_scene load_steps=4 format=3 uid="uid://b5ac7sektrul4"]
 
-[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_sa0kl"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_ursk1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fcxqk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hm5dt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3e6c"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_xn3fj"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_q6n7x"]
 color = Color(0.25, 0.25, 0.25, 1)
 thickness = 2
 
-[node name="Header" type="PanelContainer"]
-anchors_preset = -1
+[node name="Header" type="Control"]
+layout_mode = 3
 anchor_right = 1.0
 anchor_bottom = 0.133333
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fcxqk")
 metadata/_edit_use_anchors_ = true
 
 [node name="Header" type="VBoxContainer" parent="."]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -35.6563
 metadata/_edit_use_anchors_ = true
 
 [node name="Titulo" type="Label" parent="Header"]
@@ -27,10 +28,10 @@ custom_minimum_size = Vector2(900, 50)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_sa0kl")
+theme_override_fonts/font = ExtResource("1_ursk1")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_hm5dt")
-text = "PERGUNTAS FREQUENTES"
+theme_override_styles/normal = SubResource("StyleBoxFlat_j3e6c")
+text = "SOBRE NÓS"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -41,5 +42,5 @@ anchor_left = 0.003125
 anchor_top = 0.897727
 anchor_right = 1.00312
 anchor_bottom = 0.943182
-theme_override_styles/separator = SubResource("StyleBoxLine_xn3fj")
+theme_override_styles/separator = SubResource("StyleBoxLine_q6n7x")
 metadata/_edit_use_anchors_ = true

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1f1wc50yx0eg"]
+[gd_scene load_steps=5 format=3 uid="uid://c1f1wc50yx0eg"]
 
+[ext_resource type="Script" path="res://cenas/quizzesPopulares/quizzesPopulares.gd" id="1_nlaon"]
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_qfcxc"]
 [ext_resource type="PackedScene" uid="uid://bjkqryv64dep8" path="res://componentes/header/headerPopulares.tscn" id="2_htlrx"]
-[ext_resource type="PackedScene" uid="uid://1pddmxtluccu" path="res://componentes/scrollContainer/scrollContainerPopulares.tscn" id="3_uq4h7"]
+[ext_resource type="PackedScene" uid="uid://1pddmxtluccu" path="res://componentes/containerQuizzesPopularesEFavoritos/containerQuizzesPopularesEFavoritos.tscn" id="3_uq4h7"]
 
 [node name="QuizzesPopulares" type="Control"]
 layout_mode = 3
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nlaon")
 
 [node name="Comum" type="Control" parent="."]
 layout_mode = 1
@@ -36,19 +38,20 @@ anchors_preset = -1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.196094
+anchor_top = -0.00138889
 anchor_right = 1.0
-anchor_bottom = 0.998611
+anchor_bottom = 0.997222
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 30
 metadata/_edit_use_anchors_ = true
 
-[node name="Header" parent="MarginContainer" instance=ExtResource("2_htlrx")]
+[node name="ItensDaTela" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="ContainerQuizzesPopulares" parent="." instance=ExtResource("3_uq4h7")]
-layout_mode = 1
-anchor_left = 0.221875
-anchor_top = 0.304167
-anchor_right = 0.979688
-anchor_bottom = 0.998611
+[node name="Header" parent="MarginContainer/ItensDaTela" instance=ExtResource("2_htlrx")]
+layout_mode = 2
+
+[node name="ContainerQuizzesPopulares" parent="MarginContainer/ItensDaTela" instance=ExtResource("3_uq4h7")]
+layout_mode = 2
+size_flags_vertical = 3

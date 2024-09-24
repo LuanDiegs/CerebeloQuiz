@@ -1,53 +1,69 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxmn3h6n30sjt"]
+[gd_scene load_steps=11 format=3 uid="uid://bxmn3h6n30sjt"]
 
 [ext_resource type="Script" path="res://componentes/header/headerMeusQuizzes.gd" id="1_0f1eb"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_s7m8h"]
 [ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="2_27uiw"]
-[ext_resource type="Texture2D" uid="uid://do3xi1txsir1d" path="res://resources/imagens/2lupa.png" id="3_hxadb"]
+[ext_resource type="Theme" uid="uid://c2upscdlr08l" path="res://componentes/header/inputPesquisaTemaBase.tres" id="3_o05k6"]
+[ext_resource type="Texture2D" uid="uid://cva1p6ishymj" path="res://resources/imagens/icons/lupa.png" id="4_cpol2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8i3l"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ba6n0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6late"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_gsadk"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nsj4g"]
+color = Color(0.25, 0.25, 0.25, 1)
 thickness = 2
 
-[node name="HeaderMeusQuizzes" type="Control"]
-layout_mode = 3
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_djr6r"]
+color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8r630"]
+color = Color(0, 0, 0, 0)
+
+[node name="HeaderMeusQuizzes" type="PanelContainer"]
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.25
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(640, 92)
 mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ba6n0")
 script = ExtResource("1_0f1eb")
 metadata/_edit_use_anchors_ = true
 
 [node name="Header" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -13.0006
+layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Titulo" type="Label" parent="Header"]
 custom_minimum_size = Vector2(900, 50)
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_s7m8h")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i3l")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6late")
 text = "MEUS QUIZZES"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Separador" type="HSeparator" parent="Header"]
+[node name="Separador" type="HSeparator" parent="Header/Titulo"]
 layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_gsadk")
+anchor_left = 0.003125
+anchor_top = 0.897727
+anchor_right = 1.00312
+anchor_bottom = 0.943182
+theme_override_styles/separator = SubResource("StyleBoxLine_nsj4g")
+metadata/_edit_use_anchors_ = true
 
-[node name="Espaco" type="Label" parent="Header"]
+[node name="Espaco" type="HSeparator" parent="Header"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+theme_override_constants/separation = 7
+theme_override_styles/separator = SubResource("StyleBoxLine_djr6r")
 
 [node name="Botoes" type="HBoxContainer" parent="Header"]
 layout_mode = 2
@@ -55,6 +71,7 @@ layout_mode = 2
 [node name="BotaoCriarQuiz" type="Button" parent="Header/Botoes"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "CRIAR QUIZ"
 
 [node name="Separador" type="Label" parent="Header/Botoes"]
@@ -62,10 +79,10 @@ custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
 [node name="InputPesquisa" type="LineEdit" parent="Header/Botoes"]
-custom_minimum_size = Vector2(550, 0)
+custom_minimum_size = Vector2(550, 40)
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_right = NodePath(".")
+theme = ExtResource("3_o05k6")
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0.333333, 0.333333, 0.333333, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -73,8 +90,18 @@ theme_override_constants/caret_width = 2
 theme_override_fonts/font = ExtResource("2_27uiw")
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Digite o nome do quiz ou do usuário para pesquisar..."
-max_length = 650
-right_icon = ExtResource("3_hxadb")
+max_length = 150
+select_all_on_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="IconPesquisa" type="TextureRect" parent="Header/Botoes"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_cpol2")
+expand_mode = 2
+stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="Separador2" type="Label" parent="Header/Botoes"]
@@ -83,6 +110,7 @@ layout_mode = 2
 
 [node name="FiltroSelect" type="OptionButton" parent="Header/Botoes"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -96,3 +124,9 @@ popup/item_1/id = 1
 popup/item_2/text = "PRÓPRIOS"
 popup/item_2/id = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Espaco2" type="HSeparator" parent="Header"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxLine_8r630")

@@ -55,7 +55,6 @@ func saidaPergunta():
 func insereAlternativas():
 	#Randomiza 3 vezes para randomizar as alternativas
 	alternativas.shuffle()
-	alternativas.shuffle()
 	
 	#Cria um novo grupo
 	var botaoGrupo = ButtonGroup.new()
@@ -67,9 +66,11 @@ func insereAlternativas():
 		botaoEscolherAlternativa.isAlternativaCorreta = alternativa.isAlternativaCorreta
 		botaoEscolherAlternativa.button_group = botaoGrupo
 		botaoEscolherAlternativa.disabled = isTwitchQuiz
+		botaoEscolherAlternativa.mouse_default_cursor_shape = CURSOR_POINTING_HAND if !isTwitchQuiz else CURSOR_ARROW
 		
 		quizEAlternativas.add_child(botaoEscolherAlternativa)
-		
+		print(botaoEscolherAlternativa.size)
+
 		#Insere a alternativa da Twitch
 		if isTwitchQuiz:
 			var codigoOpcaoTwitch = "!" + str(botaoEscolherAlternativa.get_index()-1)

@@ -108,3 +108,15 @@ func getQuizzesDoUsuario(idUsuario):
 		return banco.query_result
 	
 	return []
+
+
+func getTodosQuizzesPublicos():
+	var banco = BD.banco as SQLite
+	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesTabela + " q 
+		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON q.usuarioId = u.usuarioId 
+		WHERE isPrivado=0"
+	
+	if(banco.query(query)):
+		return banco.query_result
+	
+	return []

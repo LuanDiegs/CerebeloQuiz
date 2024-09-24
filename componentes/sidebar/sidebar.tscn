@@ -80,8 +80,20 @@ theme = ExtResource("4_04r82")
 text = "CRIAR QUIZ"
 icon_alignment = 1
 script = ExtResource("4_61853")
-iconBotaoCriarQuiz = NodePath("../../../IconBotaoCriarQuiz")
+iconBotaoCriarQuiz = NodePath("IconBotaoCriarQuiz")
 redirecionarPara = "res://cenas/criarQuiz/criarQuiz.tscn"
+
+[node name="IconBotaoCriarQuiz" type="TextureRect" parent="SessaoCentral/SessaoCentral/BotaoCriarQuiz/CriarQuiz"]
+layout_mode = 0
+anchor_left = 0.1
+anchor_top = 0.215385
+anchor_right = 0.259302
+anchor_bottom = 0.77907
+offset_right = 27.3604
+offset_bottom = 27.3604
+scale = Vector2(0.572493, 0.572493)
+texture = ExtResource("5_pvyk5")
+metadata/_edit_use_anchors_ = true
 
 [node name="ContainerBotoesCentrais" type="MarginContainer" parent="SessaoCentral/SessaoCentral"]
 layout_mode = 2
@@ -135,27 +147,19 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "SOBRE NÓS"
 script = ExtResource("3_mnyfy")
-redirecionarPara = "res://cenas/sobreNós/sobre_nós.tscn"
-
-[node name="IconBotaoCriarQuiz" type="TextureRect" parent="SessaoCentral"]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 29.0
-offset_right = 97.0
-offset_bottom = 93.0
-scale = Vector2(0.572493, 0.572493)
-texture = ExtResource("5_pvyk5")
+redirecionarPara = "res://cenas/sobreNos/sobreNos.tscn"
 
 [node name="VersaoSoftware" type="Label" parent="SessaoCentral"]
 layout_mode = 0
-offset_top = 494.0
-offset_right = 250.0
-offset_bottom = 517.0
+anchor_top = 0.957364
+anchor_right = 1.0
+anchor_bottom = 1.00194
 theme_override_fonts/font = ExtResource("9_7vew8")
 theme_override_font_sizes/font_size = 16
 text = "
 "
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="SessaoDeLogin" type="Control" parent="."]
 layout_mode = 1
@@ -181,7 +185,7 @@ theme_override_constants/margin_bottom = 15
 
 [node name="Separador" type="Line2D" parent="SessaoDeLogin/ContainerSessaoLogin"]
 position = Vector2(0, 5)
-points = PackedVector2Array(0, -5, 250, -5)
+points = PackedVector2Array(0, -5, 122.339, -5, 250, -5)
 width = 1.0
 sharp_limit = 1.0
 round_precision = 1

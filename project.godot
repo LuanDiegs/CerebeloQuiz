@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Cursor="*res://globals/cursor.gd"
 TransicaoCena="*res://cenas/transicaoCena/transicaoCena.tscn"
 BD="*res://bancoDeDados/bancoDeDados.gd"
 UsuariosEntidade="*res://bancoDeDados/entidades/usuarios.gd"
@@ -37,6 +38,7 @@ window/size/viewport_height=720
 window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="res://resources/imagens/cursor/pointer_b.png"
 
 [editor_plugins]
 

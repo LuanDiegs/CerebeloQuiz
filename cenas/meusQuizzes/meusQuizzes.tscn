@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3auriun7vtvq"]
+[gd_scene load_steps=6 format=3 uid="uid://c3auriun7vtvq"]
 
 [ext_resource type="Script" path="res://cenas/meusQuizzes/meusQuizzes.gd" id="1_50pn3"]
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_c5mtp"]
 [ext_resource type="PackedScene" uid="uid://bxmn3h6n30sjt" path="res://componentes/header/headerMeusQuizzes.tscn" id="2_5o037"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="4_6div2"]
+[ext_resource type="PackedScene" uid="uid://unde2lvowa5h" path="res://componentes/cardMeusQuizzes/cardMeusQuizzes.tscn" id="5_g4x02"]
 
 [node name="MeusQuizzes" type="Control"]
 layout_mode = 3
@@ -46,32 +47,24 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 metadata/_edit_use_anchors_ = true
 
-[node name="HeaderMeusQuizzes" parent="MarginContainer" instance=ExtResource("2_5o037")]
+[node name="ItensTela" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="HeaderMeusQuizzes" parent="MarginContainer/ItensTela" instance=ExtResource("2_5o037")]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/ItensTela"]
 custom_minimum_size = Vector2(-3.92, 4.64)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.219531
-anchor_top = 0.325
-anchor_right = 0.976563
-anchor_bottom = 1.0
-offset_top = 1.52588e-05
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(485, 214)
+layout_mode = 2
 size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="MeusQuizzesContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="MeusQuizzesContainer" type="VBoxContainer" parent="MarginContainer/ItensTela/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 10
 
-[node name="HSeparator" type="HSeparator" parent="ScrollContainer/MeusQuizzesContainer"]
-layout_mode = 2
-
-[node name="LabelSemQuizzes" type="Label" parent="ScrollContainer/MeusQuizzesContainer"]
+[node name="LabelSemQuizzes" type="Label" parent="MarginContainer/ItensTela/ScrollContainer/MeusQuizzesContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.589762, 0.589762, 0.589762, 1)
 theme_override_fonts/font = ExtResource("4_6div2")
@@ -80,3 +73,7 @@ text = "Você não tem quizzes criados :(
 Crie um agora!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PainelMeusQuizzes" parent="MarginContainer/ItensTela/ScrollContainer/MeusQuizzesContainer" instance=ExtResource("5_g4x02")]
+visible = false
+layout_mode = 2

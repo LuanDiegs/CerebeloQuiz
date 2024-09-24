@@ -20,7 +20,7 @@ var _insercaoPerguntaTerminou := true
 var _quizCard: EscolhaAlternativaQuiz = null
 
 #Quiz
-var quizId: int = 2
+@export var quizId: int = 0
 var perguntas: Array
 var perguntasCardsComponentes: Array[EscolhaAlternativaQuiz]
 var indexPerguntaAtual := 0
@@ -53,18 +53,10 @@ func _ready() -> void:
 	
 	#Aleatoriza as perguntas
 	perguntasCardsComponentes.shuffle()
-	perguntasCardsComponentes.shuffle()
 	
 	#Insere a primeira pergunta
 	_quizContainer.add_child(perguntasCardsComponentes[indexPerguntaAtual])
 	_quizCard = perguntasCardsComponentes[indexPerguntaAtual]
-	
-	#Insere todas as perguntas e remove elas para deixar salvo (menos o primeiro)
-	for i in perguntasCardsComponentes.size():
-		if(i == 0):
-			continue
-		_quizContainer.add_child(perguntasCardsComponentes[i])
-		_quizContainer.remove_child(perguntasCardsComponentes[i])
 
 
 func criarComponentesDasPerguntas(perguntas: Array):

@@ -3,8 +3,8 @@ class_name Sidebar
 
 @onready var loginBotao = $SessaoDeLogin/ContainerSessaoLogin/Login
 @onready var perfilBotao = $SessaoDeUsuario/ContainerUsuario/Perfil
-@onready var icon_botao_criar_quiz: TextureRect = $SessaoCentral/IconBotaoCriarQuiz
 @onready var criarQuizBotao: BotaoCriarQuizz = $SessaoCentral/SessaoCentral/BotaoCriarQuiz/CriarQuiz
+@onready var iconBotaoCriarQuiz = $SessaoCentral/SessaoCentral/BotaoCriarQuiz/CriarQuiz/IconBotaoCriarQuiz
 
 @onready var versao_software: Label = $SessaoCentral/VersaoSoftware
 
@@ -21,9 +21,9 @@ func verificaSessao():
 		perfilBotao.text = SessaoUsuario.usuarioLogado.nomeUsuario
 		loginBotao.text = "DESLOGAR"
 		criarQuizBotao.visible = true
-		icon_botao_criar_quiz.visible = true
+		iconBotaoCriarQuiz.visible = true
 	else:
 		perfilBotao.text = "DESLOGADO!"
 		loginBotao.text = "LOGIN"
 		criarQuizBotao.visible = false
-		icon_botao_criar_quiz.visible = false
+		iconBotaoCriarQuiz.visible = false

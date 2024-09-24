@@ -12,7 +12,7 @@ const telaResponderQuiz := "res://cenas/responderQuiz/responderQuiz.tscn"
 const telaResponderQuizTwitch := "res://cenas/responderQuizTwitch/respondeQuizTwitch.tscn"
 
 
-func trocar_cena(target: String, idRegistroEdicao: int = 0) -> void:
+func trocar_cena(target: String, idRegistroEdicao: int = 0, quizId: int = 0) -> void:
 	if(target != null):
 		var telaTargetComponente: PackedScene = load(target)
 		var telaATrocar = telaTargetComponente
@@ -29,6 +29,12 @@ func trocar_cena(target: String, idRegistroEdicao: int = 0) -> void:
 			var telaModificada: PackedScene = PackedScene.new()
 			if("idRegistroEdicao" in telaInstanciada):
 				telaInstanciada.idRegistroEdicao = idRegistroEdicao
+				telaModificada.pack(telaInstanciada)
+				telaATrocar = telaModificada
+			
+			#Insere o quizId se tiver
+			if("quizId" in telaInstanciada):
+				telaInstanciada.quizId = quizId
 				telaModificada.pack(telaInstanciada)
 				telaATrocar = telaModificada
 

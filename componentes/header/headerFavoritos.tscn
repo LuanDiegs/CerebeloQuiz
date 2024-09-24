@@ -1,57 +1,69 @@
-[gd_scene load_steps=6 format=3 uid="uid://00qaslrwjpwy"]
+[gd_scene load_steps=9 format=3 uid="uid://00qaslrwjpwy"]
 
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_hvjb1"]
+[ext_resource type="Theme" uid="uid://c2upscdlr08l" path="res://componentes/header/inputPesquisaTemaBase.tres" id="2_x7wha"]
 [ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="3_o46i7"]
-[ext_resource type="Texture2D" uid="uid://do3xi1txsir1d" path="res://resources/imagens/2lupa.png" id="4_kna3q"]
+[ext_resource type="Texture2D" uid="uid://cva1p6ishymj" path="res://resources/imagens/icons/lupa.png" id="4_mk2ud"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs1dp"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjn8g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0jrs"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_ts0ap"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_g236r"]
+color = Color(0.25, 0.25, 0.25, 1)
 thickness = 2
 
-[node name="Header" type="Control"]
-layout_mode = 3
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ullus"]
+color = Color(0, 0, 0, 0)
+
+[node name="Header" type="PanelContainer"]
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.25
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kjn8g")
 metadata/_edit_use_anchors_ = true
 
 [node name="Header" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.17647
-offset_bottom = -52.5974
+layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Titulo" type="Label" parent="Header"]
 custom_minimum_size = Vector2(900, 50)
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_hvjb1")
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_rs1dp")
-text = "MEUS QUIZZES FAVORITOS"
+theme_override_styles/normal = SubResource("StyleBoxFlat_b0jrs")
+text = "QUIZZES FAVORITOS"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Separador" type="HSeparator" parent="Header"]
+[node name="Separador" type="HSeparator" parent="Header/Titulo"]
 layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_ts0ap")
+anchor_left = 0.003125
+anchor_top = 0.897727
+anchor_right = 1.00312
+anchor_bottom = 0.943182
+theme_override_styles/separator = SubResource("StyleBoxLine_g236r")
+metadata/_edit_use_anchors_ = true
 
-[node name="Espaco" type="Label" parent="Header"]
-custom_minimum_size = Vector2(20, 0)
+[node name="Espaco" type="HSeparator" parent="Header"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+theme_override_constants/separation = 7
+theme_override_styles/separator = SubResource("StyleBoxLine_ullus")
 
 [node name="Botoes" type="HBoxContainer" parent="Header"]
 layout_mode = 2
 
 [node name="InputPesquisa" type="LineEdit" parent="Header/Botoes"]
-custom_minimum_size = Vector2(550, 0)
+custom_minimum_size = Vector2(550, 40)
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_right = NodePath(".")
+theme = ExtResource("2_x7wha")
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0.333333, 0.333333, 0.333333, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -59,8 +71,18 @@ theme_override_constants/caret_width = 2
 theme_override_fonts/font = ExtResource("3_o46i7")
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Digite o nome do quiz ou do usuário para pesquisar..."
-max_length = 650
-right_icon = ExtResource("4_kna3q")
+max_length = 150
+select_all_on_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="IconPesquisa" type="TextureRect" parent="Header/Botoes"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_mk2ud")
+expand_mode = 2
+stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="Espaco" type="Label" parent="Header/Botoes"]
@@ -68,7 +90,9 @@ custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
 [node name="FiltroSelect" type="OptionButton" parent="Header/Botoes"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -82,3 +106,9 @@ popup/item_1/id = 1
 popup/item_2/text = "PRÓPRIOS"
 popup/item_2/id = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Espaco2" type="HSeparator" parent="Header"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxLine_ullus")

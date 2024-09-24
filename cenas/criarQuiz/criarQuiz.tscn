@@ -91,36 +91,37 @@ offset_left = 0.119995
 offset_bottom = 3.72
 
 [node name="TituloQuiz" parent="FormularioInicial" instance=ExtResource("1_47w50")]
+custom_minimum_size = Vector2(950, 50)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.037
-anchor_top = 0.11
-anchor_right = 0.959
-anchor_bottom = 0.317
-offset_left = -0.0730019
-offset_top = -24.93
-offset_right = 1.18903
-offset_bottom = -25.071
+anchor_left = 0.0369291
+anchor_top = 0.0964187
+anchor_right = 0.960155
+anchor_bottom = 0.247934
+offset_right = 0.0
 theme_override_fonts/font = ExtResource("3_rmhbx")
+max_length = 100
 script = ExtResource("3_c1q18")
 placeholder = "INSIRA O TÍTULO DO QUIZ"
 
 [node name="InputInserirImagem - WIP" type="Control" parent="FormularioInicial"]
-anchors_preset = 0
-offset_top = 6.0
-offset_right = 40.0
-offset_bottom = 46.0
+layout_mode = 1
+anchor_top = 0.0165289
+anchor_right = 0.0388727
+anchor_bottom = 0.126722
+metadata/_edit_use_anchors_ = true
 
 [node name="TituloInput" type="Label" parent="FormularioInicial/InputInserirImagem - WIP"]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 110.0
-offset_right = 317.0
-offset_bottom = 144.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 2.75
+anchor_right = 7.925
+anchor_bottom = 3.6
 theme_override_colors/font_color = Color(0.172549, 0.2, 0.435294, 1)
 theme_override_fonts/font = ExtResource("3_rmhbx")
 theme_override_font_sizes/font_size = 24
 text = "Imagem de capa do quiz"
+metadata/_edit_use_anchors_ = true
 
 [node name="InserirImagem" type="Panel" parent="FormularioInicial/InputInserirImagem - WIP"]
 custom_minimum_size = Vector2(320, 180)

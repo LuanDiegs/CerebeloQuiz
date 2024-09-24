@@ -4,7 +4,10 @@
 
 [node name="InputGrande" type="LineEdit" groups=["botaoPerfil"]]
 custom_minimum_size = Vector2(950, 75)
-offset_right = 600.0
-offset_bottom = 75.0
+anchors_preset = -1
+anchor_right = 0.742188
+anchor_bottom = 0.104167
+offset_right = -350.0
 theme = ExtResource("1_p83ru")
 placeholder_text = "Insira um texto"
+metadata/_edit_use_anchors_ = true

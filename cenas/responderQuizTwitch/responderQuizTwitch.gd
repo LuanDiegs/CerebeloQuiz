@@ -18,7 +18,7 @@ var modalCarregando: PopUpNotificacao
 const _temaMensagensChat = preload("res://cenas/responderQuizTwitch/mensagemRichLabelTema.tres")
 
 #Quiz e perguntas
-const _quizId: int = 2
+@export var quizId: int = 0
 var _perguntas: Array
 var _perguntasCardsComponentes: Array[EscolhaAlternativaQuiz]
 var _indexPerguntaAtual := 0
@@ -61,7 +61,7 @@ func _ready():
 	_containerAlternativasStreamer.connect("selecionouAlternativa", calculaPontuacaoStreamer)
 	
 	#Pega os quiz e suas perguntas
-	_perguntas = Quizzes.new().getPerguntasEAlternativasDoQuiz(_quizId)
+	_perguntas = Quizzes.new().getPerguntasEAlternativasDoQuiz(quizId)
 	criarComponentesDasPerguntas(_perguntas)
 	
 	#Conecta o cronometro

@@ -28,71 +28,71 @@ corner_radius_bottom_left = 10
 Panel/styles/panel = SubResource("StyleBoxFlat_kgolk")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1d1fn"]
-content_margin_left = 20.0
-content_margin_top = 20.0
-content_margin_right = 20.0
-content_margin_bottom = 20.0
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="Theme" id="Theme_g6774"]
 Label/colors/font_color = Color(0, 0, 0, 1)
-Label/font_sizes/font_size = 32
+Label/font_sizes/font_size = 22
 Label/fonts/font = ExtResource("1_yhce4")
 Label/styles/normal = SubResource("StyleBoxFlat_1d1fn")
 
-[node name="CardMeusQuizzes" type="MarginContainer"]
+[node name="PainelMeusQuizzes" type="PanelContainer"]
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.208333
+anchor_bottom = 0.134722
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 1.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 5
+theme = SubResource("Theme_3by8i")
 script = ExtResource("1_ebr11")
 metadata/_edit_use_anchors_ = true
 
-[node name="PainelMeusQuizzes" type="PanelContainer" parent="."]
-layout_mode = 2
-theme = SubResource("Theme_3by8i")
-
-[node name="MarginDentroDoPanel" type="MarginContainer" parent="PainelMeusQuizzes"]
+[node name="MarginDentroDoPanel" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 10
 
-[node name="Elementos" type="HBoxContainer" parent="PainelMeusQuizzes/MarginDentroDoPanel"]
+[node name="Elementos" type="HBoxContainer" parent="MarginDentroDoPanel"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="PainelMeusQuizzes/MarginDentroDoPanel/Elementos"]
-custom_minimum_size = Vector2(225, 100)
+[node name="Panel" type="Panel" parent="MarginDentroDoPanel/Elementos"]
+custom_minimum_size = Vector2(150, 75)
 layout_mode = 2
 theme = SubResource("Theme_xyoo1")
 
-[node name="TituloQuiz" type="Label" parent="PainelMeusQuizzes/MarginDentroDoPanel/Elementos"]
+[node name="TituloQuiz" type="Label" parent="MarginDentroDoPanel/Elementos"]
+custom_minimum_size = Vector2(300, 90)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = SubResource("Theme_g6774")
-text = "[TITULO DO QUIZ]"
+text = "[TITULO DO QUIZ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
+clip_text = true
+text_overrun_behavior = 3
 
-[node name="BotoesContainer" type="VBoxContainer" parent="PainelMeusQuizzes/MarginDentroDoPanel/Elementos"]
+[node name="BotoesContainer" type="VBoxContainer" parent="MarginDentroDoPanel/Elementos"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="Editar" type="Button" parent="PainelMeusQuizzes/MarginDentroDoPanel/Elementos/BotoesContainer"]
+[node name="Editar" type="Button" parent="MarginDentroDoPanel/Elementos/BotoesContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 text = "EDITAR"
 
-[node name="Deletar" type="Button" parent="PainelMeusQuizzes/MarginDentroDoPanel/Elementos/BotoesContainer"]
+[node name="Deletar" type="Button" parent="MarginDentroDoPanel/Elementos/BotoesContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2

@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="4_pr7rq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adxrp"]
-content_margin_left = 15.0
+content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 5.0
 content_margin_bottom = 5.0
@@ -16,24 +16,25 @@ custom_minimum_size = Vector2(250, 35)
 anchors_preset = -1
 anchor_right = 0.195313
 anchor_bottom = 0.0416667
+mouse_default_cursor_shape = 2
 theme = ExtResource("1_o5yk0")
 toggle_mode = true
 button_group = ExtResource("2_xwn40")
-text = "teste"
-autowrap_mode = 1
+text = "ALTERNATIVAssssssssssss"
+autowrap_mode = 3
+clip_text = true
 script = ExtResource("3_4fbet")
 metadata/_edit_use_anchors_ = true
 
 [node name="AlternativaTwitch" type="Label" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.161765
-anchor_right = 0.16
-anchor_bottom = 0.838235
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 33.0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
 theme_override_fonts/font = ExtResource("4_pr7rq")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_adxrp")
 text = "!s"
-metadata/_edit_use_anchors_ = true
+vertical_alignment = 1

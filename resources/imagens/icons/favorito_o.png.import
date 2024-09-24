@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cctua42yuwn7u"
-path="res://.godot/imported/body-organ 32px.png-26430f7dd0ffa133e74e398775f05452.ctex"
+uid="uid://bifalplasrpbm"
+path="res://.godot/imported/favorito_o.png-63145460be224e9f7088f7402122e5aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/imagens/body-organ 32px.png"
-dest_files=["res://.godot/imported/body-organ 32px.png-26430f7dd0ffa133e74e398775f05452.ctex"]
+source_file="res://resources/imagens/icons/favorito_o.png"
+dest_files=["res://.godot/imported/favorito_o.png-63145460be224e9f7088f7402122e5aa.ctex"]
 
 [params]
 

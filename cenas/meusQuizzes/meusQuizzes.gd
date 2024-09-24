@@ -3,8 +3,9 @@ class_name MeusQuizzes
 
 var quizzes: Array
 
-@onready var _meusQuizzesContainer = $ScrollContainer/MeusQuizzesContainer as VBoxContainer
-@onready var _labelMensagemSemQuizzes = $ScrollContainer/MeusQuizzesContainer/LabelSemQuizzes
+@onready var _meusQuizzesContainer = $MarginContainer/ItensTela/ScrollContainer/MeusQuizzesContainer
+@onready var _labelMensagemSemQuizzes = $MarginContainer/ItensTela/ScrollContainer/MeusQuizzesContainer/LabelSemQuizzes
+
 
 func _process(delta):
 	_labelMensagemSemQuizzes.visible = true if !quizzes else false
