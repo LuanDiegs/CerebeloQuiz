@@ -8,22 +8,36 @@ var quizzes: Array
 
 
 func _process(delta):
-	_labelMensagemSemQuizzes.visible = true if !quizzes else false
+	_labelMensagemSemQuizzes.visible = true if quizzes.size() == 0 else false
+	print(quizzes.size())
 
 
 func _ready():
 	quizzes = Quizzes.new().getQuizzesDoUsuario(SessaoUsuario.usuarioLogado.idUsuario)
-	criaQuizzes()
+	_criaQuizzes()
 	
 
-func criaQuizzes():
+func _criaQuizzes():
 	if(quizzes):
 		for quiz in quizzes:
 			var cardComponente = preload("res://componentes/cardMeusQuizzes/cardMeusQuizzes.tscn").instantiate()
 			
 			#Coloca as propriedades
-			cardComponente.perguntaId = quiz.quizId
+			cardComponente.quizId = quiz.quizId
 			cardComponente.tituloDoQuiz = quiz.titulo
 			
 			#Insere o card do quiz
 			_meusQuizzesContainer.add_child(cardComponente)
+		
+
+func _deletaOsQuizzesNaGrid():
+	for quiz in _meusQuizzesContainer.get_children():
+		if(quiz is CardMeusQuizzes):
+			_meusQuizzesContainer.remove_child(quiz)
+
+
+func atualizarGridMeusQuizzes():
+	_deletaOsQuizzesNaGrid()
+	quizzes = Quizzes.new().getQuizzesDoUsuario(SessaoUsuario.usuarioLogado.idUsuario)
+	print(quizzes)
+	_criaQuizzes()

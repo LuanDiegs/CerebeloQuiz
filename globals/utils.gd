@@ -26,3 +26,7 @@ func agruparArray(valores: Array):
 			valoresAgrupados.append(valor)
 	
 	return valoresAgrupados
+
+
+func criaBotaoAdicional(textoBotao: String, funcaoBotao: Callable, funcaoAposAcao: Callable = func(): pass):
+	return {"textoBotao": textoBotao, "funcaoBotao": funcaoBotao, "funcaoAposAcao": funcaoAposAcao}

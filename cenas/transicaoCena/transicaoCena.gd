@@ -11,8 +11,15 @@ const telaMeusQuizzes := "res://cenas/meusQuizzes/meusQuizzes.tscn"
 const telaResponderQuiz := "res://cenas/responderQuiz/responderQuiz.tscn"
 const telaResponderQuizTwitch := "res://cenas/responderQuizTwitch/respondeQuizTwitch.tscn"
 
+@onready var _nomesTelasConfirmarSaida := [
+	ConstantesPadroes.NOME_TELA_RESPONDER_QUIZ.to_lower(),
+	ConstantesPadroes.NOME_TELA_CRIAR_EDITAR_QUIZ.to_lower()]
 
-func trocar_cena(target: String, idRegistroEdicao: int = 0, quizId: int = 0) -> void:
+func trocar_cena(
+		target: String, 
+		idRegistroEdicaoPropriedade: int = 0, 
+		quizIdPropriedade: int = 0, 
+		confirmado: bool = false) -> void:
 	if(target != null):
 		var telaTargetComponente: PackedScene = load(target)
 		var telaATrocar = telaTargetComponente
@@ -20,6 +27,11 @@ func trocar_cena(target: String, idRegistroEdicao: int = 0, quizId: int = 0) -> 
 		var nomeTelaAtual = get_tree().current_scene.name
 
 		if(nomeTelaTarget and nomeTelaAtual != nomeTelaTarget):
+			#Verifica se precisa de confirmaçao para sair da tela
+			if(_nomesTelasConfirmarSaida.has(nomeTelaAtual.to_lower()) and !confirmado):
+				confirmarTrocarCena("Deseja realmente sair?", "Eita...", target)
+				return
+
 			transicao.play("bloco_entra")
 			await transicao.animation_finished
 			
@@ -28,15 +40,23 @@ func trocar_cena(target: String, idRegistroEdicao: int = 0, quizId: int = 0) -> 
 			var telaInstanciada = telaTargetComponente.instantiate()
 			var telaModificada: PackedScene = PackedScene.new()
 			if("idRegistroEdicao" in telaInstanciada):
-				telaInstanciada.idRegistroEdicao = idRegistroEdicao
+				telaInstanciada.idRegistroEdicao = idRegistroEdicaoPropriedade
 				telaModificada.pack(telaInstanciada)
 				telaATrocar = telaModificada
 			
 			#Insere o quizId se tiver
 			if("quizId" in telaInstanciada):
-				telaInstanciada.quizId = quizId
+				telaInstanciada.quizId = quizIdPropriedade
 				telaModificada.pack(telaInstanciada)
 				telaATrocar = telaModificada
 
 			get_tree().change_scene_to_packed(telaATrocar)
 			transicao.play("bloco_sai")
+
+
+func confirmarTrocarCena(texto: String, titulo: String, cenaATrocar: String):
+	PopUp.criaPopupConfirmacao(
+		texto, 
+		titulo, 
+		"Cancelar", 
+		Utils.criaBotaoAdicional("Confirmar", func(): trocar_cena(cenaATrocar, 0, 0, true)))

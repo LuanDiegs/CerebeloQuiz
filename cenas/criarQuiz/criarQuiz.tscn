@@ -42,7 +42,7 @@ script/source = "extends VBoxContainer
 func _ready() -> void:
 	pass"
 
-[node name="Criar-quiz" type="Control"]
+[node name="CriarQuiz" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

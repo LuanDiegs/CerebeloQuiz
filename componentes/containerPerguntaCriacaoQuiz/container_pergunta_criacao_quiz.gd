@@ -8,10 +8,9 @@ var limiteDoContainer = 100
 @onready var panelQuiz: PanelContainer = $PanelQuiz
 @onready var vbox: VBoxContainer = self.get_parent()
 
-@onready var botaoAgarrar = $PanelQuiz/MarginConteudo/Conteudos/BotaoAgarrar
+@onready var _botaoApagar = $PanelQuiz/MarginConteudo/Conteudos/BotaoApagar
+@onready var _botaoEditar = $PanelQuiz/MarginConteudo/Conteudos/BotaoEditar
 @onready var _conteudoLabel: Label = $PanelQuiz/MarginConteudo/Conteudos/Conteudo
-
-@onready var botaoEditar = $PanelQuiz/MarginConteudo/Conteudos/BotaoEditar
 
 var idPergunta = 0
 var conteudoPergunta = "" #"teste"
@@ -20,9 +19,11 @@ var alternativasConteudoSalvas: Array  #=[["a", true], ["b", false], ["v", false
 
 func _ready() -> void:
 	set_process_input(false)
-	botaoEditar.connect("pressed", abrirFormPergunta)	
+	_botaoEditar.connect("pressed", _abrirFormPergunta)
+	_botaoApagar.connect("pressed", _apagarPergunta)
 
 
+#region InutilPorEnquanto
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion or event is InputEventScreenDrag:
 		nodePego.global_position.y = get_global_mouse_position().y - dragOffset
@@ -60,13 +61,19 @@ func _on_botaoAgarrar_gui_input(event: InputEvent) -> void:
 		set_process_input(true)
 		
 		nodePego.global_position = self.global_position
-
+#endregion
 
 func _process(delta: float) -> void:
 	_conteudoLabel.text = conteudoPergunta if !conteudoPergunta.is_empty() else "Pergunta sem conteúdo"
-	botaoAgarrar.text = "Pergunta Nº " + str(self.get_index() + 1)
 	
 
-func abrirFormPergunta():
+func _abrirFormPergunta():
 	var titulo = "Nova pergunta" if idPergunta == 0 else "Editar pergunta"
 	PopUp.criaPopupEditFormPergunta(titulo, self)
+
+
+func _apagarPergunta():
+	PopUp.criaPopupConfirmacao("Certeza que deseja apagar a pergunta Nº" + str(self.get_index()+1), 
+		"Atenção",
+		"Cancelar",
+		{"textoBotao": "Confirmar", "funcaoBotao": func(): self.queue_free()})

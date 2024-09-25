@@ -45,9 +45,10 @@ func fechaPopup():
 	
 	self.queue_free()
 	
-	#Caso exista essa propriedade após fechar o modal ele será redirecionado para aquela tela
+	#Caso exista essa propriedade após fechar o modal ele será redirecionado para aquela tela diretamente
+	#Idependente se tiver ou não confirmação
 	if(!redirecionaPara.is_empty()):
-		TransicaoCena.trocar_cena(redirecionaPara)
+		TransicaoCena.trocar_cena(redirecionaPara, 0, 0, true)
 
 
 func _on_gui_input(event: InputEvent) -> void:
@@ -56,14 +57,16 @@ func _on_gui_input(event: InputEvent) -> void:
 			fechaPopup()
 
 
-func inserirBotaoOpcional(textoBotao: String, funcaoBotao: Callable):
+func inserirBotaoOpcional(textoBotao: String, funcaoBotao: Callable, funcaoAposAcao: Callable = func(): pass):
 	var novoBotao = _fecharBotao.duplicate() as Button
 	novoBotao.text = textoBotao
 	novoBotao.connect(
 		"pressed", 
 		func(): 
 			funcaoBotao.call()
-			self.fechaPopup())
+			self.fechaPopup()
+			if funcaoAposAcao:
+				funcaoAposAcao.call())
 	
 	_containerBotoes.add_child(novoBotao)
 	_containerBotoes.move_child(novoBotao, 0)

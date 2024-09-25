@@ -189,3 +189,13 @@ func notificaPontuacao(acertos: int):
 		aviso + mensagem, 
 		"", 
 		"Parabéns!")
+
+
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_PREDELETE:
+			on_predelete()
+
+func on_predelete() -> void:
+	print("saiu")
+	pass
