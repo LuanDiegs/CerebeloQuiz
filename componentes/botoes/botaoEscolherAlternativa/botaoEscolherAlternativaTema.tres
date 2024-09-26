@@ -1,16 +1,10 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://cf0egruvk6mmg"]
 
 [ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="1_o71wk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irupi"]
-bg_color = Color(0.198, 0.2232, 0.45, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[ext_resource type="StyleBox" uid="uid://def07acomcq7y" path="res://componentes/botoes/botaoEscolherAlternativa/botaoEscolherAlternativaTypoDesabilitado.tres" id="2_ds73u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yl8bd"]
-bg_color = Color(0.24, 0.276, 0.6, 1)
+bg_color = Color(0.198, 0.2232, 0.45, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -31,7 +25,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ljb6"]
-bg_color = Color(0.264, 0.2976, 0.6, 1)
+bg_color = Color(0.26, 0.299, 0.65, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -42,7 +36,7 @@ Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/font_sizes/font_size = 20
 Button/fonts/font = ExtResource("1_o71wk")
-Button/styles/disabled = SubResource("StyleBoxFlat_irupi")
+Button/styles/disabled = ExtResource("2_ds73u")
 Button/styles/focus = SubResource("StyleBoxFlat_yl8bd")
 Button/styles/hover = SubResource("StyleBoxFlat_nl7ah")
 Button/styles/normal = SubResource("StyleBoxFlat_nxcvv")

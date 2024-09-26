@@ -158,11 +158,21 @@ func responderQuiz():
 				acertos = acertos+1 if alternativa.button_pressed and alternativa.isAlternativaCorreta else acertos
 	
 	#Verifica se ele respondeu todas as perguntas
-	#TODO: Ele só verifica por enquanto, alterar quanto criar o popup de confirmação
 	if(quantidadePerguntasRespondidas < perguntasCardsComponentes.size()):
-		PopUp.criaPopupNotificacao("Você não respondeu todas as perguntas.\n Quer salvar mesmo assim?")
+		PopUp.criaPopupConfirmacao(
+			"Você não respondeu todas as perguntas.\n Quer salvar mesmo assim?",
+			"Atenção",
+			"Cancelar",
+			Utils.criaBotaoAdicional(
+				"Confirmar", 
+				func(): 
+					salvarResultado(acertos)))
 		return
 	
+	salvarResultado(acertos)
+
+
+func salvarResultado(acertos: int):
 	if(SessaoUsuario.isLogada):
 		var tempoTotalPercorrido = (_minutosPercorridos*60) + _segundosPercorridos
 
@@ -179,7 +189,8 @@ func responderQuiz():
 				"Poxa")
 	else:
 		notificaPontuacao(acertos)
-
+	
+	_tempoPercorrido.stop()
 
 func notificaPontuacao(acertos: int):
 	var aviso = "*Não logado\n" if !SessaoUsuario.isLogada else ""
@@ -189,13 +200,3 @@ func notificaPontuacao(acertos: int):
 		aviso + mensagem, 
 		"", 
 		"Parabéns!")
-
-
-func _notification(what: int) -> void:
-	match what:
-		NOTIFICATION_PREDELETE:
-			on_predelete()
-
-func on_predelete() -> void:
-	print("saiu")
-	pass

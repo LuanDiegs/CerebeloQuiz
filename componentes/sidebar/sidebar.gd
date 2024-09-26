@@ -1,29 +1,38 @@
 extends Panel
 class_name Sidebar
 
-@onready var loginBotao = $SessaoDeLogin/ContainerSessaoLogin/Login
-@onready var perfilBotao = $SessaoDeUsuario/ContainerUsuario/Perfil
-@onready var criarQuizBotao: BotaoCriarQuizz = $SessaoCentral/SessaoCentral/BotaoCriarQuiz/CriarQuiz
-@onready var iconBotaoCriarQuiz = $SessaoCentral/SessaoCentral/BotaoCriarQuiz/CriarQuiz/IconBotaoCriarQuiz
+@onready var _loginBotao = $SessaoDeLogin/ContainerSessaoLogin/Login
+@onready var _perfilBotao = $SessaoDeUsuario/ContainerUsuario/Perfil
+@onready var _iconBotaoCriarQuiz = $SessaoCentral/SessaoCentral/BotaoCriarQuiz/CriarQuiz/IconBotaoCriarQuiz
 
-@onready var versao_software: Label = $SessaoCentral/VersaoSoftware
+@onready var _versaoSoftware: Label = $SessaoCentral/VersaoSoftware
+
+@onready var _meusQuizesBotao: BotaoMenuSidebar = $SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais/MeusQuizes
+@onready var _criarQuizBotao: BotaoCriarQuizz = $SessaoCentral/SessaoCentral/BotaoCriarQuiz/CriarQuiz
 
 func _ready() -> void:
-	versao_software.text = "Versão " + ProjectSettings.get_setting("application/config/version")
+	_versaoSoftware.text = "Versão " + ProjectSettings.get_setting("application/config/version")
 
 
 func _process(delta):
 	verificaSessao()
-		
-		
+
+
 func verificaSessao():
 	if(SessaoUsuario.isLogada):
-		perfilBotao.text = SessaoUsuario.usuarioLogado.nomeUsuario
-		loginBotao.text = "DESLOGAR"
-		criarQuizBotao.visible = true
-		iconBotaoCriarQuiz.visible = true
+		_perfilBotao.text = SessaoUsuario.usuarioLogado.nomeUsuario
+		_loginBotao.text = "DESLOGAR"
+		
+		_criarQuizBotao.visible = true
+		_iconBotaoCriarQuiz.visible = true
+		
+		_perfilBotao.redirecionarPara = ""
+		_meusQuizesBotao.redirecionarPara = "res://cenas/meusQuizzes/meusQuizzes.tscn"
 	else:
-		perfilBotao.text = "DESLOGADO!"
-		loginBotao.text = "LOGIN"
-		criarQuizBotao.visible = false
-		iconBotaoCriarQuiz.visible = false
+		_perfilBotao.text = "DESLOGADO!"
+		_loginBotao.text = "LOGIN"
+		
+		_criarQuizBotao.visible = false
+		_iconBotaoCriarQuiz.visible = false
+		
+		_meusQuizesBotao.redirecionarPara = "res://cenas/login/login.tscn"

@@ -9,7 +9,6 @@ var quizzes: Array
 
 func _process(delta):
 	_labelMensagemSemQuizzes.visible = true if quizzes.size() == 0 else false
-	print(quizzes.size())
 
 
 func _ready():
@@ -37,7 +36,6 @@ func _deletaOsQuizzesNaGrid():
 
 
 func atualizarGridMeusQuizzes():
-	_deletaOsQuizzesNaGrid()
 	quizzes = Quizzes.new().getQuizzesDoUsuario(SessaoUsuario.usuarioLogado.idUsuario)
-	print(quizzes)
+	_deletaOsQuizzesNaGrid()
 	_criaQuizzes()

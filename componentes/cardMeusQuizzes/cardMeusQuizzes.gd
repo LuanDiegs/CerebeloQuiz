@@ -17,8 +17,6 @@ func _ready():
 	_deletarBotao.connect("pressed", _deletarQuiz)
 	_tituloQuiz.text = tituloDoQuiz
 	
-	print(get_tree().current_scene as MeusQuizzes)
-
 
 func _editarQuiz():
 	TransicaoCena.trocar_cena(TransicaoCena.telaEditFormQuiz, quizId)

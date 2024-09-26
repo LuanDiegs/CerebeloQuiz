@@ -16,5 +16,13 @@ func onClick():
 	if(!SessaoUsuario.isLogada):
 		TransicaoCena.trocar_cena(TransicaoCena.telaLogin)
 	else:
-		SessaoUsuario.sessaoDesativada()
-		TransicaoCena.trocar_cena(TransicaoCena.telaQuizzesPopulares)
+		PopUp.criaPopupConfirmacao(
+			SessaoUsuario.usuarioLogado.nomeUsuario + " certeza que deseja sair da sua sessão?",
+			"Atenção",
+			"Cancelar",
+			Utils.criaBotaoAdicional("Confirmar", _deslogar))
+		
+
+func _deslogar():
+	SessaoUsuario.sessaoDesativada()
+	TransicaoCena.trocar_cena(TransicaoCena.telaQuizzesPopulares)

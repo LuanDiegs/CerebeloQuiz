@@ -19,13 +19,15 @@ var alternativas: Array
 #Resposta
 var alternativaEscolhida: int
 
+#Constantes
+const ALTURA_MAXIMA := 60
 
 func _ready() -> void:
 	posicaoInicial = self.global_position
 	
 	#Insere o texto da pergunta
 	textoPergunta.text = perguntaConteudo
-
+	
 	#Insere as alternativas
 	if(alternativas):
 		insereAlternativas()
@@ -62,18 +64,28 @@ func insereAlternativas():
 	for alternativa in alternativas:
 		var botaoEscolherAlternativa = load("res://componentes/botoes/botaoEscolherAlternativa/botaoEscolherAlternativa.tscn").instantiate() as BotaoEscolherAlternativa
 		
-		botaoEscolherAlternativa.text = alternativa.conteudoAlternativa
 		botaoEscolherAlternativa.isAlternativaCorreta = alternativa.isAlternativaCorreta
 		botaoEscolherAlternativa.button_group = botaoGrupo
 		botaoEscolherAlternativa.disabled = isTwitchQuiz
 		botaoEscolherAlternativa.mouse_default_cursor_shape = CURSOR_POINTING_HAND if !isTwitchQuiz else CURSOR_ARROW
-		
+
 		quizEAlternativas.add_child(botaoEscolherAlternativa)
-		print(botaoEscolherAlternativa.size)
+		
+		botaoEscolherAlternativa.insereTextoBotao(alternativa.conteudoAlternativa)
+
+		#Limita a altura
+		if botaoEscolherAlternativa.size.y > ALTURA_MAXIMA:
+			botaoEscolherAlternativa.size.y = ALTURA_MAXIMA
 
 		#Insere a alternativa da Twitch
 		if isTwitchQuiz:
 			var codigoOpcaoTwitch = "!" + str(botaoEscolherAlternativa.get_index()-1)
+			var estiloDesabilitadoBotao := preload("res://componentes/botoes/botaoEscolherAlternativa/botaoEscolherAlternativaTypoDesabilitado.tres")
+			
+			#Coloca o estilo para não cobrir a opção da twitch no lado esquerdo
+			estiloDesabilitadoBotao.content_margin_left = 35
+			botaoEscolherAlternativa.theme.set_stylebox("disabled", "button", estiloDesabilitadoBotao)
+			
 			botaoEscolherAlternativa.inserirLabelAlternativaTwitch(codigoOpcaoTwitch)
 
 			if alternativa.isAlternativaCorreta:
