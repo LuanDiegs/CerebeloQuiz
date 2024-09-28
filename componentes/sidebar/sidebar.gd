@@ -36,3 +36,4 @@ func verificaSessao():
 		_iconBotaoCriarQuiz.visible = false
 		
 		_meusQuizesBotao.redirecionarPara = "res://cenas/login/login.tscn"
+		_perfilBotao.redirecionarPara = "res://cenas/cadastroUsuario/cadastroUsuario.tscn"

@@ -14,3 +14,10 @@ func inserirQuizzes(quizzes: Array):
 		quizCardComponente.criador = quiz.nome
 		
 		_quizzesGrid.add_child(quizCardComponente)
+
+
+func atualizaQuizzes(quizzes: Array):
+	for quiz in _quizzesGrid.get_children():
+		_quizzesGrid.remove_child(quiz)
+	
+	inserirQuizzes(quizzes)

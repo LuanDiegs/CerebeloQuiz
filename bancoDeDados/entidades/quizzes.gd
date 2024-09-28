@@ -44,6 +44,56 @@ func editarQuiz(idRegistroEdicao: int, quiz, perguntas):
 	
 	return 0
 
+#region QuizFavoritado
+func favoritarQuiz(quizId):
+	if(!SessaoUsuario.usuarioLogado):
+		return
+	
+	var banco = BD.banco as SQLite
+	var entidade: Dictionary = {"quizId": quizId, "usuarioId": SessaoUsuario.usuarioLogado.idUsuario}
+	
+	if(banco.insert_row(EntidadeConstantes.QuizzesFavoritosTabela, entidade)):
+		return banco.last_insert_rowid
+	
+	return false
+
+
+func desfavoritarQuiz(favoritadoId):
+	var banco = BD.banco as SQLite
+	var condicao = "quizFavoritoId="+str(favoritadoId)
+	
+	if(banco.delete_rows(EntidadeConstantes.QuizzesFavoritosTabela, condicao)):
+		return true
+	
+	return false
+
+
+func getQuizFavoritado(quizId):
+	if(!SessaoUsuario.usuarioLogado):
+		return null
+		
+	var banco = BD.banco as SQLite
+	var query = "SELECT * from " + EntidadeConstantes.QuizzesFavoritosTabela + " WHERE quizId=? and usuarioId=?"
+	var params = [quizId, SessaoUsuario.usuarioLogado.idUsuario]
+	
+	banco.query_with_bindings(query, params)
+	
+	return banco.query_result
+
+
+func getTodosQuizzesFavoritadosPublicos():
+	var banco = BD.banco as SQLite
+	
+	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesFavoritosTabela + " f 
+		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON f.usuarioId = u.usuarioId 
+		INNER JOIN " + EntidadeConstantes.QuizzesTabela + " q ON f.quizId = q.quizId 
+		WHERE q.isPrivado=0 AND u.usuarioId = " + str(SessaoUsuario.usuarioLogado.idUsuario)
+
+	if(banco.query(query)):
+		return banco.query_result
+	
+	return []
+#endregion
 
 func getQuizCompleto(idQuiz):
 	var banco = BD.banco as SQLite

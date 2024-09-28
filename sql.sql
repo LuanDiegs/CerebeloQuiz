@@ -72,3 +72,23 @@ ON rankingPessoal (quizId);
 
 CREATE INDEX rankingPessoalUsuarioIdIdx
 ON rankingPessoal (usuarioId);
+
+
+CREATE TABLE quizzesFavoritos (
+	quizFavoritoId INTEGER NOT NULL,
+	quizId INTEGER NOT NULL,
+	usuarioId INTEGER NOT NULL,
+	PRIMARY KEY(quizFavoritoId AUTOINCREMENT),
+	CONSTRAINT quizFk
+		FOREIGN KEY (quizId)
+		REFERENCES quizzes(quizId)
+	CONSTRAINT usuarioFk
+		FOREIGN KEY (usuarioId)
+		REFERENCES usuarios(usuarioId)
+);
+
+CREATE INDEX quizzesFavoritosQuizIdIdx
+ON quizzesFavoritos (quizId);
+
+CREATE INDEX quizzesFavoritosUsuarioIdIdx
+ON quizzesFavoritos (usuarioId);

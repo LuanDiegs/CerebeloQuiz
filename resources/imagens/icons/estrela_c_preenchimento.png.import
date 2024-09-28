@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifalplasrpbm"
-path="res://.godot/imported/favorito_o.png-63145460be224e9f7088f7402122e5aa.ctex"
+uid="uid://2xmwaomqspfx"
+path="res://.godot/imported/estrela_c_preenchimento.png-ff795f545056b1bcd40d3e816bb3836a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/imagens/icons/favorito_o.png"
-dest_files=["res://.godot/imported/favorito_o.png-63145460be224e9f7088f7402122e5aa.ctex"]
+source_file="res://resources/imagens/icons/estrela_c_preenchimento.png"
+dest_files=["res://.godot/imported/estrela_c_preenchimento.png-ff795f545056b1bcd40d3e816bb3836a.ctex"]
 
 [params]
 

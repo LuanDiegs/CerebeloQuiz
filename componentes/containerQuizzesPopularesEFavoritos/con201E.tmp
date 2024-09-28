@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://1pddmxtluccu"]
+
+[ext_resource type="Script" path="res://componentes/containerQuizzesPopularesEFavoritos/containerQuizzesPopularesEFavoritos.gd" id="1_0rk04"]
+[ext_resource type="PackedScene" uid="uid://codj1qfrivht6" path="res://componentes/cards/cardQuizPopularEFavoritos.tscn" id="1_mg0mn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hc7sn"]
+
+[sub_resource type="Theme" id="Theme_hu3wg"]
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_hc7sn")
+
+[sub_resource type="Theme" id="Theme_q8eg3"]
+GridContainer/constants/h_separation = 10
+GridContainer/constants/v_separation = 10
+
+[node name="ContainerQuizzesPopularesEFavoritos" type="ScrollContainer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.00278
+theme = SubResource("Theme_hu3wg")
+script = ExtResource("1_0rk04")
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_q8eg3")
+columns = 4
+
+[node name="PanelQuiz" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+visible = false
+layout_mode = 2
+
+[node name="PanelQuiz2" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+visible = false
+layout_mode = 2
