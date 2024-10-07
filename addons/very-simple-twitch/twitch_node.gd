@@ -46,7 +46,7 @@ func get_emote(loc_id: String):
 	return await _twitch_chat.get_emote(loc_id)
 
 
-func change_Channel():
+func change_channel():
 	return await _twitch_chat.change_chat_channel()
 
 

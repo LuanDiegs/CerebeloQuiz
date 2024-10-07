@@ -92,3 +92,9 @@ ON quizzesFavoritos (quizId);
 
 CREATE INDEX quizzesFavoritosUsuarioIdIdx
 ON quizzesFavoritos (usuarioId);
+
+CREATE TABLE motivosDenuncia(
+	motivosDenunciaId INTEGER NOT NULL,
+	descricao TEXT NOT NULL CHECK(descricao != ''),
+	PRIMARY KEY(motivosDenunciaId AUTOINCREMENT)
+);

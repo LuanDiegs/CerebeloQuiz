@@ -117,6 +117,7 @@ func tentaVincularComATwitch():
 		return
 	
 	VerySimpleTwitch.login_chat_anon(nomeDoCanal)
+	VerySimpleTwitch.change_channel()
 	VerySimpleTwitch._twitch_chat.OnSucess.connect(vinculadoComATwitchComSucesso)
 	VerySimpleTwitch._twitch_chat.OnFailure.connect(vinculadoComATwitchComErro)
 	

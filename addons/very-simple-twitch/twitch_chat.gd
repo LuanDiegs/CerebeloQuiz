@@ -289,6 +289,4 @@ func get_settings():
 func change_chat_channel():
 	if _hasConnected:
 		_hasConnected = false
-		print('Trocando de canal...')
 		await start_chat_client()
-		print('Canal trocado!')

@@ -19,9 +19,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+BD="*res://bancoDeDados/bancoDeDados.gd"
 Cursor="*res://globals/cursor.gd"
 TransicaoCena="*res://cenas/transicaoCena/transicaoCena.tscn"
-BD="*res://bancoDeDados/bancoDeDados.gd"
 UsuariosEntidade="*res://bancoDeDados/entidades/usuarios.gd"
 EntidadeConstantes="*res://bancoDeDados/entidades/entidadesConstantes.gd"
 SessaoUsuario="*res://globals/sessao.gd"

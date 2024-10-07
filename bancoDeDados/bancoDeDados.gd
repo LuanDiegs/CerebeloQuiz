@@ -12,7 +12,18 @@ func conectarBanco():
 	banco.path = "res://cerebelo.db"
 	banco.verbosity_level = SQLite.NORMAL
 	banco.open_db()
+	verificaSePrecisaCriarTabelas()
 	pass
+
+
+func verificaSePrecisaCriarTabelas():
+	#Verifica se existe a tabela de usuários, caso sim não roda o sql, caso não ele cria as tabelas
+	banco.query("SELECT name FROM sqlite_master WHERE type='table' AND name='usuarios'")
+	if(banco.query_result.size() == 0):
+		var sqlArquivo = "res://bancoDeDados/sql.sql"
+		var arquivo = FileAccess.open(sqlArquivo, FileAccess.READ)
+		var sql = arquivo.get_as_text()
+		banco.query(sql)
 
 
 func inserirDados(tableName: String, data: Dictionary):
