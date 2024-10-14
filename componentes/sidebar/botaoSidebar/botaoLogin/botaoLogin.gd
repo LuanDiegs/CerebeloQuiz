@@ -12,6 +12,7 @@ func _process(delta):
 	else:
 		self.text = "LOGIN"
 
+
 func onClick():
 	if(!SessaoUsuario.isLogada):
 		TransicaoCena.trocar_cena(TransicaoCena.telaLogin)

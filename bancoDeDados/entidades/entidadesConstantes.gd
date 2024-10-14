@@ -7,4 +7,7 @@ var PerguntasTabela = "perguntas";
 var AlternativasTabela = "alternativas";
 var RankingPessoalTabela = "rankingPessoal";
 var QuizzesFavoritosTabela = "quizzesFavoritos";
+var MotivosDenunciaTabela = "motivosDenuncia";
+var DenunciasTabela = "denuncias";
+var DenunciaMotivosTabela = "denunciaMotivos";
 	

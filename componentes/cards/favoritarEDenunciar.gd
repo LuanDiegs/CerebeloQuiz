@@ -3,6 +3,7 @@ class_name FavoritarEDenunciarContainer
 
 @onready var _botaoDenuncia = $BotaoDenuncia
 @onready var _botaoFavoritar = $BotaoFavoritar
+@onready var _tituloLabel = $"../../Titulo"
 
 var _isFavoritado := false
 var quizId := 0
@@ -13,9 +14,14 @@ const ICON_QUIZ_DESFAVORITADO = preload("res://resources/imagens/icons/estrela_s
 
 func _ready():
 	_botaoFavoritar.connect("pressed", _favoritarQuiz)
+	_botaoDenuncia.connect("pressed", _denunciarQuiz)
 
-
+#region Favoritar
 func _favoritarQuiz():	
+	if !SessaoUsuario.isLogada:
+		PopUp.criaPopupNotificacao("É necessário estar logado para favoritar um quiz")
+		return
+	
 	if !_isFavoritado:
 		var response = Quizzes.new().favoritarQuiz(quizId)
 		
@@ -66,3 +72,14 @@ func _animaClique():
 	tween2.tween_property(_botaoFavoritar, "rotation", deg_to_rad(-30), 0.3).as_relative()
 	tween2.tween_property(_botaoFavoritar, "rotation", deg_to_rad(390), 0.4).as_relative()
 	await tween.finished
+#endregion
+
+#region Denunciar
+func _denunciarQuiz():
+	if !SessaoUsuario.isLogada:
+		PopUp.criaPopupNotificacao("É necessário estar logado para denunciar um quiz")
+		return
+		
+	var tituloDoQuiz = _tituloLabel.text
+	PopUp.criaPopupDenunciaQuiz(quizId, tituloDoQuiz)
+#endregion

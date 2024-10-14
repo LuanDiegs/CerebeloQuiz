@@ -1,4 +1,4 @@
-extends Panel
+extends PanelContainer
 class_name PopUpBase
 
 
@@ -61,6 +61,28 @@ func criaPopupEditFormPergunta(
 	get_tree().root.add_child(componente)
 	
 	#Anima a entrada do componente
+	componente.animaEntrada()
+
+
+func criaPopupRankingQuiz(quizId: int) -> void:
+	var componente = preload("res://componentes/popUps/popUpRankingQuiz/popUpRankingQuiz.tscn").instantiate()
+	componente.quizId = quizId
+	
+	#Cria o componente na tela
+	get_tree().root.add_child(componente)
+	
+	#Anima a entrada do componente
+	componente.animaEntrada()
+
+
+func criaPopupDenunciaQuiz(quizId: int, quizTitulo: String) -> void:
+	var componente = preload("res://componentes/popUps/popUpFormDenuncia/popUpFormDenuncia.tscn").instantiate()
+	
+	#Cria o componente na tela
+	get_tree().root.add_child(componente)
+	
+	#Anima a entrada do componente e insere as propriedades
+	componente.definePropriedadesDoQuiz(quizId, quizTitulo)
 	componente.animaEntrada()
 
 

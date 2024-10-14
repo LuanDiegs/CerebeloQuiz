@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgi534yihbsgm"]
+
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="1_pac5k"]
+[ext_resource type="Script" path="res://componentes/popUps/popUpFormDenuncia/motivoBotaoSelecao.gd" id="2_rhsvc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b5y5l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpc48"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.35, 0.35, 0.35, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6tcd5"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.2535, 0.29315, 0.65, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ky2cy"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.44, 0.44, 0.44, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Motivo" type="Button"]
+custom_minimum_size = Vector2(185, 35)
+anchors_preset = -1
+anchor_right = 0.144531
+anchor_bottom = 0.0486111
+offset_right = -185.0
+offset_bottom = -35.0
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_pac5k")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b5y5l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rpc48")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6tcd5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ky2cy")
+toggle_mode = true
+text = "Violação de copyright"
+clip_text = true
+script = ExtResource("2_rhsvc")
+metadata/_edit_use_anchors_ = true

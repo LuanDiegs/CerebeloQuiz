@@ -26,4 +26,9 @@ func insereTextoBotao(texto: String):
 
 func _draw():
 	self.text = str(_conteudoAlternativa.left(130))
-	
+
+
+func exibeAlternativaCorreta():
+	var temaAlternativaCorreta = preload("res://componentes/botoes/botaoEscolherAlternativa/botaoEscolherAlternativaAlternativaCorreta.tres")
+	self.disabled = true
+	self.add_theme_stylebox_override("disabled", temaAlternativaCorreta)

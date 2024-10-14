@@ -6,12 +6,13 @@ var titulo: String
 var conteudoPergunta: String
 var textoBotaoFechar: String
 
-@onready var popUp: Panel = $PopUp
+@onready var _popUp: Panel = $PopUp
 
 #Modal
 @onready var tituloLabel = $PopUp/ContainerVertical/Titulo
 @onready var fecharBotao = $PopUp/ContainerVertical/MarginForm/Form/Alternativas/RodapeBotoes/Fechar
 @onready var salvarBotao = $PopUp/ContainerVertical/MarginForm/Form/Alternativas/RodapeBotoes/Salvar
+@onready var _fecharSuperior = $PopUp/ContainerVertical/Titulo/FecharModal
 
 #Pergunta
 @onready var perguntaConteudoInput := $PopUp/ContainerVertical/MarginForm/Form/PerguntaConteudo as TextEdit
@@ -29,11 +30,10 @@ const _temaAlternativaIncorreto = preload("res://componentes/containerAlternativ
 const _temaAlternativaCorreta = preload("res://componentes/containerAlternativaFormQuiz/containerAlternativaCorretaFormQuizTema.tres")
 
 
-func _ready() -> void:
-	popUp.scale = Vector2(0,0)
-	
+func _ready() -> void:	
 	#Sinais
 	fecharBotao.connect("pressed", fechaPopup.bind(false))
+	_fecharSuperior.connect("pressed", fechaPopup.bind(false))
 	salvarBotao.connect("pressed", fechaPopup.bind(true))
 	inserirNovaAlternativaBotao.connect("pressed", inserirNovaAlternativa)
 	
@@ -52,16 +52,21 @@ func _ready() -> void:
 	
 	
 func animaEntrada():
+	_popUp.scale = Vector2(0,0)
+	_popUp.pivot_offset.x = _popUp.size.x/2
+	_popUp.pivot_offset.y = _popUp.size.y/2
+	
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(popUp, "scale", Vector2(1.15,1.15), 0.3)
-	tween.tween_property(popUp, "scale", Vector2(1,1), 0.2)
+	tween.tween_property(_popUp, "scale", Vector2(0,0), 0.00001)
+	tween.tween_property(_popUp, "scale", Vector2(1.15,1.15), 0.3)
+	tween.tween_property(_popUp, "scale", Vector2(1,1), 0.2)
 	await tween.finished
 
 
 func fechaPopup(salvar: bool):
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(popUp, "scale", Vector2(1.1,1.1), 0.2)
-	tween.tween_property(popUp, "scale", Vector2(0,0), 0.3)
+	tween.tween_property(_popUp, "scale", Vector2(1.1,1.1), 0.2)
+	tween.tween_property(_popUp, "scale", Vector2(0,0), 0.3)
 	await tween.finished
 	
 	if(salvar and componenteCardPergunta):

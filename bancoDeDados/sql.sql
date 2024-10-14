@@ -93,8 +93,51 @@ ON quizzesFavoritos (quizId);
 CREATE INDEX quizzesFavoritosUsuarioIdIdx
 ON quizzesFavoritos (usuarioId);
 
+CREATE TABLE denuncias(
+	denunciaId INTEGER NOT NULL,
+	justificativa TEXT NOT NULL CHECK(justificativa != ''),
+	quizId INTEGER NOT NULL,
+	usuarioId INTEGER NOT NULL,
+	PRIMARY KEY(denunciaId AUTOINCREMENT)
+	CONSTRAINT quizFk
+		FOREIGN KEY (quizId)
+		REFERENCES quizzes(quizId)
+	CONSTRAINT usuarioFk
+		FOREIGN KEY (usuarioId)
+		REFERENCES usuarios(usuarioId)
+);
+
+CREATE INDEX denunciasQuizIdIdx
+ON denuncias (quizId);
+
+CREATE INDEX denunciasUsuarioIdIdx
+ON denuncias (usuarioId);
+
+CREATE TABLE denunciaMotivos(
+	denunciaMotivosId INTEGER NOT NULL,
+	denunciaId INTEGER NOT NULL,
+	motivoId INTEGER NOT NULL,
+	PRIMARY KEY(denunciaMotivosId AUTOINCREMENT)
+	CONSTRAINT denunciaFk
+		FOREIGN KEY (denunciaId)
+		REFERENCES denuncias(denunciaId)
+	CONSTRAINT motivosFk
+		FOREIGN KEY (motivoId)
+		REFERENCES motivosDenuncia(motivoId)
+);
+
+CREATE INDEX denunciaMotivosDenunciaIdIdx
+ON denunciaMotivos (denunciaId);
+
+CREATE INDEX denunciaMotivosMotivoIdIdx
+ON denunciaMotivos (motivoId);
+
 CREATE TABLE motivosDenuncia(
 	motivosDenunciaId INTEGER NOT NULL,
 	descricao TEXT NOT NULL CHECK(descricao != ''),
 	PRIMARY KEY(motivosDenunciaId AUTOINCREMENT)
 );
+
+-- Insercao dos itens
+INSERT INTO usuarios(nome, email, senha, dataNascimento, telefone, isDesativado) 
+	VALUES ('dev', 'dev@dev', '123', '2000-01-01', 999999999, 0);	

@@ -25,7 +25,12 @@ func trocar_cena(
 		var telaATrocar = telaTargetComponente
 		var nomeTelaTarget = telaTargetComponente.instantiate().name if telaTargetComponente else null
 		var nomeTelaAtual = get_tree().current_scene.name
-
+	
+		#Verifica se a tela tema funcao atualizaGridQuizzes
+		print(get_tree().current_scene.has_method("atualizarGridQuizzes"))
+		if(get_tree().current_scene.has_method("atualizarGridQuizzes")):
+			get_tree().current_scene.atualizarGridQuizzes()
+			
 		if(nomeTelaTarget and nomeTelaAtual != nomeTelaTarget):
 			#Verifica se precisa de confirmaçao para sair da tela
 			if(_nomesTelasConfirmarSaida.has(nomeTelaAtual.to_lower()) and !confirmado):

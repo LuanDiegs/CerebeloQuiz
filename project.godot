@@ -39,6 +39,7 @@ window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="res://resources/imagens/cursor/pointer_b.png"
+mouse_cursor/tooltip_position_offset=Vector2(0, 0)
 
 [editor_plugins]
 
@@ -52,6 +53,7 @@ CardPergunaEditFormQuiz=""
 alternativasResposta=""
 abrirFechar="Botão do tipo MenuButton, utilizado para controlar o Collapsible"
 placarMinimalistaIntegracaoTwitch="placar lateral da integração com a twitch"
+itemPontuacaoRanking="Item da pontuação do ranking"
 
 [input]
 

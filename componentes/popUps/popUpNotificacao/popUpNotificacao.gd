@@ -17,9 +17,7 @@ var redirecionaPara: String
 var botaoFecharInvisivel: bool = false
 var isModalConfirmacao: bool = false
 
-func _ready() -> void:
-	_popUp.scale = Vector2(0,0)
-	
+func _ready() -> void:	
 	_fecharBotao.connect("pressed", fechaPopup)
 	
 	_tituloLabel.text = titulo
@@ -31,7 +29,12 @@ func _ready() -> void:
 	
 	
 func animaEntrada():
+	_popUp.scale = Vector2(0,0)
+	_popUp.pivot_offset.x = _popUp.size.x/2
+	_popUp.pivot_offset.y = _popUp.size.y/2
+	
 	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(_popUp, "scale", Vector2(0,0), 0.00001)
 	tween.tween_property(_popUp, "scale", Vector2(1.15,1.15), 0.3)
 	tween.tween_property(_popUp, "scale", Vector2(1,1), 0.2)
 	await tween.finished

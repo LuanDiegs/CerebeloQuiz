@@ -57,6 +57,13 @@ func _ready() -> void:
 	#Insere a primeira pergunta
 	_quizContainer.add_child(perguntasCardsComponentes[indexPerguntaAtual])
 	_quizCard = perguntasCardsComponentes[indexPerguntaAtual]
+	
+	for index in perguntasCardsComponentes.size():
+		if index == indexPerguntaAtual:
+			continue
+		
+		_quizContainer.add_child(perguntasCardsComponentes[index])
+		_quizContainer.remove_child(perguntasCardsComponentes[index])
 
 
 func criarComponentesDasPerguntas(perguntas: Array):
@@ -99,10 +106,6 @@ func animaEntradaSaida(isProximaPergunta: bool = true):
 	
 	#Anima saida pergunta
 	_quizCard.isEntradaEsquerda = isProximaPergunta
-	#_quizCard.saidaPergunta()
-	
-	#Anima entrada e tira o node após terminar a animação
-	#await perguntaCard.entradaPergunta()
 	
 	#Remove o node que saiu
 	_quizContainer.remove_child(_quizCard)
@@ -176,12 +179,12 @@ func salvarResultado(acertos: int):
 	if(SessaoUsuario.isLogada):
 		var tempoTotalPercorrido = (_minutosPercorridos*60) + _segundosPercorridos
 
-		var pontuacaoFinal = (acertos*100)/tempoTotalPercorrido
+		var pontuacaoFinal = (acertos*1000)/tempoTotalPercorrido
 		var rankingPessoal = RankingPessoal.new().instanciaEntidade(pontuacaoFinal, quizId, SessaoUsuario.usuarioLogado.idUsuario)
 		var response = BD.inserirDados(EntidadeConstantes.RankingPessoalTabela, rankingPessoal)
 		
 		if(response):
-			notificaPontuacao(acertos)
+			notificaPontuacao(acertos, pontuacaoFinal)
 		else:
 			PopUp.criaPopupNotificacao(
 				"Ocorreu um erro ao computar sua pontuação!", 
@@ -190,13 +193,33 @@ func salvarResultado(acertos: int):
 	else:
 		notificaPontuacao(acertos)
 	
-	_tempoPercorrido.stop()
+	#finalizaQuiz()
 
-func notificaPontuacao(acertos: int):
-	var aviso = "*Não logado\n" if !SessaoUsuario.isLogada else ""
-	var mensagem = "Você acertou " + str(acertos) + "/" + str(perguntasCardsComponentes.size())
+
+func finalizaQuiz():
+	#Para o tempo e desabilita ele responder o quiz novamente
+	_tempoPercorrido.stop()
+	_salvar.visible = false
+	exibeRespostasCorretas()
 	
-	PopUp.criaPopupNotificacao(
-		aviso + mensagem, 
-		"", 
-		"Parabéns!")
+
+func exibeRespostasCorretas():
+	for pergunta in perguntasCardsComponentes:
+		pergunta.desabilitaEMostraAlternativaCorretaQuiz()
+
+
+func notificaPontuacao(acertos: int, pontuacao: int = -1):
+	var aviso = "*Não logado\n" if !SessaoUsuario.isLogada else ""
+	var acertosMensagem = "Você acertou " + str(acertos) + "/" + str(perguntasCardsComponentes.size())
+	var pontuacaoMensagem = "" if pontuacao < 0 else "\n Sua pontuacao foi de " + str(pontuacao)
+	
+	PopUp.criaPopupConfirmacao(
+		aviso + acertosMensagem + pontuacaoMensagem, 
+		"Parabéns!", 
+		"Revisar o quiz",
+		Utils.criaBotaoAdicional(
+			"Ver ranking", 
+			func(): PopUp.criaPopupRankingQuiz(quizId)))
+
+	
+	

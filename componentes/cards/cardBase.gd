@@ -15,8 +15,8 @@ var quizId := 0
 
 
 func _ready():
-	_jogarBotao.connect("pressed", responderQuizTeste)
-	_jogaTwitchBotao.connect("pressed", responderQuizTwitchTeste)
+	_jogarBotao.connect("pressed", responderQuiz)
+	_jogaTwitchBotao.connect("pressed", responderQuizTwitch)
 	
 	_criadorLabel.text = str(criador)
 	_tituloLabel.text = str(titulo)
@@ -24,9 +24,9 @@ func _ready():
 	_favoritarEDenunciarContainer.setaQuizFavoritado(quizId)
 
 
-func responderQuizTeste():
+func responderQuiz():
 	TransicaoCena.trocar_cena(TransicaoCena.telaResponderQuiz, 0, quizId)
 
 
-func responderQuizTwitchTeste():
+func responderQuizTwitch():
 	TransicaoCena.trocar_cena(TransicaoCena.telaResponderQuizTwitch, 0, quizId)

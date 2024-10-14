@@ -98,3 +98,11 @@ func getAlternativaCorreta() -> BotaoEscolherAlternativa:
 			return alternativa
 
 	return null
+
+
+func desabilitaEMostraAlternativaCorretaQuiz():
+	for alternativa in quizEAlternativas.get_children():
+		if alternativa is BotaoEscolherAlternativa:
+			alternativa.disabled = !alternativa.button_pressed
+			if alternativa.isAlternativaCorreta:
+				alternativa.exibeAlternativaCorreta()
