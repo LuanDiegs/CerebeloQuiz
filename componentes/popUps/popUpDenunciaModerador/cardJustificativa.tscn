@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://c15o5dk50s0bx"]
+
+[ext_resource type="FontFile" uid="uid://bx1dxv0xq3rv3" path="res://resources/fonts/Nunito/static/Nunito-Regular.ttf" id="1_bwnj0"]
+[ext_resource type="Script" path="res://componentes/popUps/popUpDenunciaModerador/cardJustificativa.gd" id="1_ibhai"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1074g"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.501961, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="FontVariation" id="FontVariation_dfye1"]
+base_font = ExtResource("1_bwnj0")
+
+[sub_resource type="FontVariation" id="FontVariation_ixh35"]
+base_font = ExtResource("1_bwnj0")
+spacing_top = 5
+
+[node name="MarginCardJustificativa" type="MarginContainer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.223611
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 15
+script = ExtResource("1_ibhai")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelCardJustificativa" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1074g")
+
+[node name="MarginInternaCardQuiz" type="MarginContainer" parent="PanelCardJustificativa"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="ItensCardJustificativa" type="VBoxContainer" parent="PanelCardJustificativa/MarginInternaCardQuiz"]
+layout_mode = 2
+
+[node name="Justificativa" type="RichTextLabel" parent="PanelCardJustificativa/MarginInternaCardQuiz/ItensCardJustificativa"]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_dfye1")
+theme_override_font_sizes/normal_font_size = 18
+text = "[JUSTIFICATIVA DO USUARIO]"
+
+[node name="NomeDeUsuario" type="Label" parent="PanelCardJustificativa/MarginInternaCardQuiz/ItensCardJustificativa"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_ixh35")
+theme_override_font_sizes/font_size = 16
+text = "Por: [NOME DE USUÁRIO]"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbmmxgswavcb8"
-path="res://.godot/imported/lupa.png-56752c4c4bb4568f9080d85364403934.ctex"
+uid="uid://dq5sl8pskeidm"
+path="res://.godot/imported/exclamation-mark.png-29698acd7b741f154a1278081945d0dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/imagens/lupa.png"
-dest_files=["res://.godot/imported/lupa.png-56752c4c4bb4568f9080d85364403934.ctex"]
+source_file="res://resources/imagens/icons/exclamation-mark.png"
+dest_files=["res://.godot/imported/exclamation-mark.png-29698acd7b741f154a1278081945d0dd.ctex"]
 
 [params]
 

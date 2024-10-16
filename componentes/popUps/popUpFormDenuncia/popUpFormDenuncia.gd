@@ -56,7 +56,7 @@ func fechaPopup():
 func validaFormulario(motivosSelecionados: Array):
 	var erro = false
 	
-	if !_justificativaInput.text:
+	if _justificativaInput.text.strip_edges().is_empty():
 		_erroJustificativaLabel.text = "O campo de justificativa é obrigatório"
 		erro = true
 	else: 

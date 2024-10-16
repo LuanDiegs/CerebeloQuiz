@@ -86,6 +86,17 @@ func criaPopupDenunciaQuiz(quizId: int, quizTitulo: String) -> void:
 	componente.animaEntrada()
 
 
+func criaPopupDenunciaModerador(quizId: int, quizTitulo: String) -> void:
+	var componente = preload("res://componentes/popUps/popUpDenunciaModerador/popUpDenunciaModerador.tscn").instantiate()
+	
+	#Cria o componente na tela
+	get_tree().root.add_child(componente)
+	
+	#Anima a entrada do componente
+	componente.animaEntrada()
+	componente.insereInformacoesPrincipais(quizTitulo, quizId)
+
+
 func animaEntradaPadrao():
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1,1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)

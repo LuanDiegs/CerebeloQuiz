@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=3 uid="uid://d034tri4q1o1n"]
+
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_7a4yw"]
+[ext_resource type="Script" path="res://componentes/denunciaPage/cardDenuncia.gd" id="1_voycn"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="2_xlvvo"]
+[ext_resource type="PackedScene" uid="uid://bc0m02yl356vq" path="res://componentes/denunciaPage/porcentagemDenuncia.tscn" id="3_bs6n4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8l40"]
+bg_color = Color(0, 0, 0, 0.0784314)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.254902, 0.305882, 0.752941, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b1plc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0q6i"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.136, 0.1624, 0.4, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc3ng"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.153, 0.17775, 0.45, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2daq"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.17, 0.203, 0.5, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="CardDenuncia" type="MarginContainer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.208333
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 20
+script = ExtResource("1_voycn")
+metadata/_edit_use_anchors_ = true
+
+[node name="PainelCardDenuncia" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k8l40")
+
+[node name="MarginContainer" type="MarginContainer" parent="PainelCardDenuncia"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Conteudo" type="HBoxContainer" parent="PainelCardDenuncia/MarginContainer"]
+layout_mode = 2
+
+[node name="InformacoesPrincipais" type="VBoxContainer" parent="PainelCardDenuncia/MarginContainer/Conteudo"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="NomeDoQuizLabel" type="Label" parent="PainelCardDenuncia/MarginContainer/Conteudo/InformacoesPrincipais"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7a4yw")
+theme_override_font_sizes/font_size = 24
+text = "[Nome do quiz]"
+clip_text = true
+
+[node name="ContagemDenunciasContainer" type="HBoxContainer" parent="PainelCardDenuncia/MarginContainer/Conteudo/InformacoesPrincipais"]
+layout_mode = 2
+
+[node name="ContagemDenuncias" type="Label" parent="PainelCardDenuncia/MarginContainer/Conteudo/InformacoesPrincipais/ContagemDenunciasContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xlvvo")
+theme_override_font_sizes/font_size = 22
+text = "20"
+
+[node name="DenunciasLabel" type="Label" parent="PainelCardDenuncia/MarginContainer/Conteudo/InformacoesPrincipais/ContagemDenunciasContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xlvvo")
+theme_override_font_sizes/font_size = 22
+text = "denúncias"
+clip_text = true
+
+[node name="VerJustificativas" type="Button" parent="PainelCardDenuncia/MarginContainer/Conteudo/InformacoesPrincipais"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b1plc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k0q6i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yc3ng")
+theme_override_styles/normal = SubResource("StyleBoxFlat_x2daq")
+text = "Ver justificativas"
+
+[node name="Denuncias" type="VBoxContainer" parent="PainelCardDenuncia/MarginContainer/Conteudo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ContainerPorcentagemDenuncia" type="VBoxContainer" parent="PainelCardDenuncia/MarginContainer/Conteudo/Denuncias"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 15
+
+[node name="ItemPorcentagemDenuncia" parent="PainelCardDenuncia/MarginContainer/Conteudo/Denuncias/ContainerPorcentagemDenuncia" instance=ExtResource("3_bs6n4")]
+visible = false
+layout_mode = 2

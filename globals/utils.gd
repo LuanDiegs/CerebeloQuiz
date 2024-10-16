@@ -26,6 +26,15 @@ func agruparArray(valores: Array):
 			valoresAgrupados.append(valor)
 	
 	return valoresAgrupados
+	
+
+func somaValoresArray(valores: Array):
+	var valorFinal = 0
+	
+	for valor in valores:
+		valorFinal += valor
+	
+	return valorFinal
 
 
 func criaBotaoAdicional(textoBotao: String, funcaoBotao: Callable, funcaoAposAcao: Callable = func(): pass):

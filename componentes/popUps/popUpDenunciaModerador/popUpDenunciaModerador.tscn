@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqjw71cddhjhn"]
+
+[ext_resource type="Script" path="res://componentes/popUps/popUpDenunciaModerador/popUpDenunciaModerador.gd" id="1_dq1aq"]
+[ext_resource type="Theme" uid="uid://dvbp11qywc6mv" path="res://componentes/popUps/popUp.tres" id="2_kbu7j"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="3_d46jc"]
+[ext_resource type="PackedScene" uid="uid://c15o5dk50s0bx" path="res://componentes/popUps/popUpDenunciaModerador/cardJustificativa.tscn" id="4_xajfg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mugep"]
+bg_color = Color(0, 0, 0, 0.294118)
+
+[sub_resource type="FontVariation" id="FontVariation_ce2ij"]
+base_font = ExtResource("3_d46jc")
+spacing_bottom = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qldka"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0kh7a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_273e7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sgdpl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4d1b8"]
+
+[node name="PopUpRankingQuiz" type="PanelContainer"]
+z_index = 4096
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mugep")
+script = ExtResource("1_dq1aq")
+
+[node name="PopUp" type="Panel" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(900, 650)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_kbu7j")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginJustificativas" type="MarginContainer" parent="PopUp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 25
+
+[node name="VboxContainer" type="VBoxContainer" parent="PopUp/MarginJustificativas"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="PopUp/MarginJustificativas/VboxContainer"]
+layout_mode = 2
+
+[node name="LabelTitulo" type="Label" parent="PopUp/MarginJustificativas/VboxContainer/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_ce2ij")
+theme_override_font_sizes/font_size = 26
+text = "Justificativas do quiz"
+
+[node name="TituloQuiz" type="Label" parent="PopUp/MarginJustificativas/VboxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_ce2ij")
+theme_override_font_sizes/font_size = 26
+text = "[NOME DO QUIZ]"
+clip_text = true
+
+[node name="JustificativasScroll" type="ScrollContainer" parent="PopUp/MarginJustificativas/VboxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="JustificativasContainer" type="VBoxContainer" parent="PopUp/MarginJustificativas/VboxContainer/JustificativasScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="MarginCardJustificativa" parent="PopUp/MarginJustificativas/VboxContainer/JustificativasScroll/JustificativasContainer" instance=ExtResource("4_xajfg")]
+visible = false
+layout_mode = 2
+
+[node name="Separador" type="HSeparator" parent="PopUp/MarginJustificativas/VboxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qldka")
+
+[node name="Botoes" type="HBoxContainer" parent="PopUp/MarginJustificativas/VboxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Button" type="Button" parent="PopUp/MarginJustificativas/VboxContainer/Botoes"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Desativar quiz"
+
+[node name="Button2" type="Button" parent="PopUp/MarginJustificativas/VboxContainer/Botoes"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Desativar usuário por 7 dias"
+
+[node name="FecharModal" type="Button" parent="PopUp"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.951111
+anchor_right = 0.997778
+anchor_bottom = 0.0646154
+grow_horizontal = 0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_colors/font_pressed_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_colors/font_focus_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_colors/font_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_fonts/font = ExtResource("3_d46jc")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0kh7a")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_273e7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_sgdpl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4d1b8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0kh7a")
+text = "X"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

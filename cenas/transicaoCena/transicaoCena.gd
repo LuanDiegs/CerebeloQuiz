@@ -27,7 +27,6 @@ func trocar_cena(
 		var nomeTelaAtual = get_tree().current_scene.name
 	
 		#Verifica se a tela tema funcao atualizaGridQuizzes
-		print(get_tree().current_scene.has_method("atualizarGridQuizzes"))
 		if(get_tree().current_scene.has_method("atualizarGridQuizzes")):
 			get_tree().current_scene.atualizarGridQuizzes()
 			

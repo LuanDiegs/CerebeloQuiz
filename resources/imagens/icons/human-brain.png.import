@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw6etviqo7xcw"
-path="res://.godot/imported/Denuncia.png-a1d76675263d1cdde39591849a074853.ctex"
+uid="uid://bclh84ofe8slx"
+path="res://.godot/imported/human-brain.png-ad3a3870a7af7e2b5b84631d59c8fe73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/imagens/Denuncia.png"
-dest_files=["res://.godot/imported/Denuncia.png-a1d76675263d1cdde39591849a074853.ctex"]
+source_file="res://resources/imagens/icons/human-brain.png"
+dest_files=["res://.godot/imported/human-brain.png-ad3a3870a7af7e2b5b84631d59c8fe73.ctex"]
 
 [params]
 

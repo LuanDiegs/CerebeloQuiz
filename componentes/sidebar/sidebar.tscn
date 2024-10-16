@@ -98,16 +98,14 @@ metadata/_edit_use_anchors_ = true
 [node name="ContainerBotoesCentrais" type="MarginContainer" parent="SessaoCentral/SessaoCentral"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 15
 
 [node name="VBoxBotoesCentrais" type="VBoxContainer" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="QuizzesPopulares" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
-custom_minimum_size = Vector2(230, 65)
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 size_flags_vertical = 0
 text = "QUIZZES 
@@ -116,7 +114,7 @@ script = ExtResource("3_mnyfy")
 redirecionarPara = "res://cenas/quizzesPopulares/quizzesPopulares.tscn"
 
 [node name="MeusQuizes" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
-custom_minimum_size = Vector2(230, 65)
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 size_flags_vertical = 0
 text = "MEUS QUIZZES"
@@ -124,7 +122,7 @@ script = ExtResource("3_mnyfy")
 redirecionarPara = "res://cenas/meusQuizzes/meusQuizzes.tscn"
 
 [node name="QuizzesFavoritos" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
-custom_minimum_size = Vector2(230, 65)
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 size_flags_vertical = 0
 text = "QUIZZES
@@ -133,7 +131,7 @@ script = ExtResource("3_mnyfy")
 redirecionarPara = "res://cenas/quizzesFavoritos/quizzesFavoritos.tscn"
 
 [node name="PerguntasFrequentes" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
-custom_minimum_size = Vector2(230, 65)
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 size_flags_vertical = 0
 text = "PERGUNTAS
@@ -142,7 +140,7 @@ script = ExtResource("3_mnyfy")
 redirecionarPara = "res://cenas/perguntasFrequentes/perguntasFrequentes.tscn"
 
 [node name="SobreNos" parent="SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
-custom_minimum_size = Vector2(230, 65)
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 size_flags_vertical = 0
 text = "SOBRE NÓS"

@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwrt54bg4io2d"]
+
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_l44r0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3e6c"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_q6n7x"]
+color = Color(0.25, 0.25, 0.25, 1)
+thickness = 2
+
+[node name="Header" type="VBoxContainer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.106944
+metadata/_edit_use_anchors_ = true
+
+[node name="Titulo" type="Label" parent="."]
+custom_minimum_size = Vector2(900, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_l44r0")
+theme_override_font_sizes/font_size = 54
+theme_override_styles/normal = SubResource("StyleBoxFlat_j3e6c")
+text = "QUIZZES MAIS DENUNCIADOS"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Separador" type="HSeparator" parent="Titulo"]
+layout_mode = 2
+anchor_left = 0.00078125
+anchor_top = 0.893333
+anchor_right = 0.999219
+anchor_bottom = 0.946667
+theme_override_styles/separator = SubResource("StyleBoxLine_q6n7x")
+metadata/_edit_use_anchors_ = true

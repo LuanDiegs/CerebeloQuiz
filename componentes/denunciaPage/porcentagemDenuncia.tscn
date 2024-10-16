@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bc0m02yl356vq"]
+
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="1_athqe"]
+[ext_resource type="Script" path="res://componentes/denunciaPage/porcentagemDenuncia.gd" id="1_bdtu1"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_qhb7l"]
+
+[sub_resource type="FontVariation" id="FontVariation_0tw8e"]
+base_font = ExtResource("1_athqe")
+
+[sub_resource type="FontVariation" id="FontVariation_t72ku"]
+base_font = ExtResource("2_qhb7l")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xmfh"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwt18"]
+bg_color = Color(0.172549, 0.2, 0.435294, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ItemPorcentagemDenuncia" type="HBoxContainer"]
+script = ExtResource("1_bdtu1")
+
+[node name="NomeMotivo" type="Label" parent="."]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_0tw8e")
+theme_override_font_sizes/font_size = 18
+text = "Violação de copyright
+"
+
+[node name="PorcentagemDenuncia" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(300, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = SubResource("FontVariation_t72ku")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/background = SubResource("StyleBoxFlat_3xmfh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hwt18")
+max_value = 20.0
+step = 1.0
+value = 7.0
