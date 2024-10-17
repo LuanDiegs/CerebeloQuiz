@@ -138,6 +138,26 @@ CREATE TABLE motivosDenuncia(
 	PRIMARY KEY(motivosDenunciaId AUTOINCREMENT)
 );
 
+CREATE TABLE comentarios(
+	comentarioId INTEGER NOT NULL,
+	comentarioDescricao TEXT NOT NULL CHECK(comentarioDescricao != ''),
+	quizId INTEGER NOT NULL,
+	usuarioId INTEGER NOT NULL,
+	PRIMARY KEY(comentarioId AUTOINCREMENT)
+	CONSTRAINT quizFk
+		FOREIGN KEY (quizId)
+		REFERENCES quizzes(quizId)
+	CONSTRAINT usuarioFk
+		FOREIGN KEY (usuarioId)
+		REFERENCES usuarios(usuarioId)
+);
+
+CREATE INDEX comentariosQuizIdIdx
+ON comentarios (quizId);
+
+CREATE INDEX comentariosUsuarioIdIdx
+ON comentarios (usuarioId);
+
 -- Insercao dos itens
 INSERT INTO usuarios(nome, email, senha, dataNascimento, telefone, isDesativado) 
 	VALUES ('dev', 'dev@dev', '123', '2000-01-01', 999999999, 0);	

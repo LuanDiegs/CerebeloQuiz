@@ -168,11 +168,19 @@ theme_override_font_sizes/font_size = 30
 text = "Nossos quizzes"
 horizontal_alignment = 1
 
-[node name="Exclamation-mark" type="Sprite2D" parent="VBoxContainer/HBoxContainer/NossosQuizzes/PanelContainer/VBoxContainer/PanelContainer"]
-position = Vector2(433, 3)
+[node name="Exclamation-mark" type="TextureRect" parent="VBoxContainer/HBoxContainer/NossosQuizzes/PanelContainer/VBoxContainer/PanelContainer/Label"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.916479
+anchor_top = -1.33333
+anchor_right = 1.03069
+anchor_bottom = 0.954952
+offset_right = 77.4062
+offset_bottom = 31.892
 rotation = 0.300833
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_yh7qa")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/NossosQuizzes/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 260)

@@ -1,11 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwfirh0i4fw5b"]
+[gd_scene load_steps=8 format=3 uid="uid://dwfirh0i4fw5b"]
 
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_6u4su"]
 [ext_resource type="PackedScene" uid="uid://b4vphgog1ukg1" path="res://componentes/header/headerPerguntasFrequentes.tscn" id="2_noavp"]
-[ext_resource type="PackedScene" uid="uid://djc7ie5w0dc73" path="res://componentes/perguntasFrequentes/vBoxContainerAberto.tscn" id="3_oc8qx"]
-[ext_resource type="PackedScene" uid="uid://c272s1nqsad7x" path="res://componentes/perguntasFrequentes/vBoxContainerFechado.tscn" id="4_iahwh"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="3_5t1vj"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="4_wsrpp"]
 
-[sub_resource type="Theme" id="Theme_1h6vy"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_agavl"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.172549, 0.2, 0.435294, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jcfm"]
+bg_color = Color(0.172549, 0.2, 0.435294, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+expand_margin_left = 9.0
+expand_margin_top = 10.0
+expand_margin_right = 9.0
+
+[sub_resource type="FontVariation" id="FontVariation_yii0d"]
+base_font = ExtResource("4_wsrpp")
 
 [node name="PerguntasFrequentes" type="Control"]
 layout_mode = 3
@@ -35,78 +60,252 @@ grow_vertical = 2
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.196094
-anchor_right = 1.0
-anchor_bottom = 0.998611
-offset_left = -1.00034
-offset_bottom = -599.0
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 30
-metadata/_edit_use_anchors_ = true
-
-[node name="Header" parent="MarginContainer" instance=ExtResource("2_noavp")]
-layout_mode = 2
-
-[node name="Main" type="Control" parent="."]
-layout_mode = 2
-anchors_preset = 0
-anchor_left = -0.0210938
-anchor_right = -0.0210938
-offset_left = 277.0
-offset_top = 120.0
-offset_right = 1307.0
-offset_bottom = 695.0
-theme = SubResource("Theme_1h6vy")
-metadata/_edit_use_anchors_ = true
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Main"]
+[node name="ItensContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 1000.0
-offset_bottom = 575.0
+anchor_left = 0.195313
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 50
+metadata/_edit_use_anchors_ = true
 
-[node name="GridContainer" type="GridContainer" parent="Main/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ItensContainer"]
+layout_mode = 2
+
+[node name="Header" parent="ItensContainer/VBoxContainer" instance=ExtResource("2_noavp")]
+layout_mode = 2
+
+[node name="ScollPerguntas" type="ScrollContainer" parent="ItensContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Perguntas" type="VBoxContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Main/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="CriarQuiz" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelGeral" type="PanelContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/CriarQuiz"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_agavl")
+
+[node name="Conteudos" type="VBoxContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/CriarQuiz/PanelGeral"]
 layout_mode = 2
 
-[node name="VBoxContainerAberto" parent="Main/ScrollContainer/GridContainer" instance=ExtResource("3_oc8qx")]
+[node name="Header" type="PanelContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/CriarQuiz/PanelGeral/Conteudos"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jcfm")
 
-[node name="MarginContainer2" type="MarginContainer" parent="Main/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="Titulo" type="Label" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/CriarQuiz/PanelGeral/Conteudos/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_5t1vj")
+theme_override_font_sizes/font_size = 24
+text = "Como eu crio um quiz?"
+horizontal_alignment = 1
+
+[node name="Texto" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/CriarQuiz/PanelGeral/Conteudos"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Texto" type="Label" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/CriarQuiz/PanelGeral/Conteudos/Texto"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_yii0d")
+text = "Nam ornare, odio sed commodo gravida, tellus dolor consequat quam, sit amet rutrum nulla turpis vitae lectus. Nulla facilisi. Nulla facilisi. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam eu nibh interdum lacus finibus semper non sed urna. Etiam dictum leo eu porta pharetra. Phasellus blandit dui venenatis, elementum nisi eu, semper elit."
+autowrap_mode = 3
+
+[node name="SessaoTwitch" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelGeral" type="PanelContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/SessaoTwitch"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_agavl")
+
+[node name="Conteudos" type="VBoxContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/SessaoTwitch/PanelGeral"]
 layout_mode = 2
 
-[node name="VBoxContainerFechado" parent="Main/ScrollContainer/GridContainer" instance=ExtResource("4_iahwh")]
+[node name="Header" type="PanelContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/SessaoTwitch/PanelGeral/Conteudos"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jcfm")
 
-[node name="VBoxContainerFechado2" parent="Main/ScrollContainer/GridContainer" instance=ExtResource("4_iahwh")]
+[node name="Titulo" type="Label" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/SessaoTwitch/PanelGeral/Conteudos/Header"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_5t1vj")
+theme_override_font_sizes/font_size = 24
+text = "Como crio uma sessão com outras pessoas?"
+horizontal_alignment = 1
 
-[node name="VBoxContainerFechado3" parent="Main/ScrollContainer/GridContainer" instance=ExtResource("4_iahwh")]
+[node name="Texto" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/SessaoTwitch/PanelGeral/Conteudos"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainerFechado4" parent="Main/ScrollContainer/GridContainer" instance=ExtResource("4_iahwh")]
+[node name="Texto" type="Label" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/SessaoTwitch/PanelGeral/Conteudos/Texto"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_yii0d")
+text = "Nam ornare, odio sed commodo gravida, tellus dolor consequat quam, sit amet rutrum nulla turpis vitae lectus. Nulla facilisi. Nulla facilisi. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam eu nibh interdum lacus finibus semper non sed urna. Etiam dictum leo eu porta pharetra. Phasellus blandit dui venenatis, elementum nisi eu, semper elit."
+autowrap_mode = 3
 
-[node name="VBoxContainerFechado5" parent="Main/ScrollContainer/GridContainer" instance=ExtResource("4_iahwh")]
+[node name="ComentarioQuiz" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelGeral" type="PanelContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ComentarioQuiz"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_agavl")
+
+[node name="Conteudos" type="VBoxContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ComentarioQuiz/PanelGeral"]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ComentarioQuiz/PanelGeral/Conteudos"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jcfm")
+
+[node name="Titulo" type="Label" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ComentarioQuiz/PanelGeral/Conteudos/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_5t1vj")
+theme_override_font_sizes/font_size = 24
+text = "Como eu comento em um quiz?"
+horizontal_alignment = 1
+
+[node name="Texto" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ComentarioQuiz/PanelGeral/Conteudos"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Texto" type="Label" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ComentarioQuiz/PanelGeral/Conteudos/Texto"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_yii0d")
+text = "Nam ornare, odio sed commodo gravida, tellus dolor consequat quam, sit amet rutrum nulla turpis vitae lectus. Nulla facilisi. Nulla facilisi. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam eu nibh interdum lacus finibus semper non sed urna. Etiam dictum leo eu porta pharetra. Phasellus blandit dui venenatis, elementum nisi eu, semper elit."
+autowrap_mode = 3
+
+[node name="QuizSuspenso" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelGeral" type="PanelContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/QuizSuspenso"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_agavl")
+
+[node name="Conteudos" type="VBoxContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/QuizSuspenso/PanelGeral"]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/QuizSuspenso/PanelGeral/Conteudos"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jcfm")
+
+[node name="Titulo" type="Label" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/QuizSuspenso/PanelGeral/Conteudos/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_5t1vj")
+theme_override_font_sizes/font_size = 24
+text = "O que acontece se meu quiz for suspenso?"
+horizontal_alignment = 1
+
+[node name="Texto" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/QuizSuspenso/PanelGeral/Conteudos"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Texto" type="Label" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/QuizSuspenso/PanelGeral/Conteudos/Texto"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_yii0d")
+text = "Nam ornare, odio sed commodo gravida, tellus dolor consequat quam, sit amet rutrum nulla turpis vitae lectus. Nulla facilisi. Nulla facilisi. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam eu nibh interdum lacus finibus semper non sed urna. Etiam dictum leo eu porta pharetra. Phasellus blandit dui venenatis, elementum nisi eu, semper elit."
+autowrap_mode = 3
+
+[node name="ContaSuspensa" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelGeral" type="PanelContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ContaSuspensa"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_agavl")
+
+[node name="Conteudos" type="VBoxContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ContaSuspensa/PanelGeral"]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ContaSuspensa/PanelGeral/Conteudos"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0jcfm")
+
+[node name="Titulo" type="Label" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ContaSuspensa/PanelGeral/Conteudos/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_5t1vj")
+theme_override_font_sizes/font_size = 24
+text = "O que ocorre se minha conta for suspensa?"
+horizontal_alignment = 1
+
+[node name="Texto" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ContaSuspensa/PanelGeral/Conteudos"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Texto" type="Label" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ContaSuspensa/PanelGeral/Conteudos/Texto"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_yii0d")
+text = "Nam ornare, odio sed commodo gravida, tellus dolor consequat quam, sit amet rutrum nulla turpis vitae lectus. Nulla facilisi. Nulla facilisi. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam eu nibh interdum lacus finibus semper non sed urna. Etiam dictum leo eu porta pharetra. Phasellus blandit dui venenatis, elementum nisi eu, semper elit."
+autowrap_mode = 3

@@ -19,7 +19,7 @@ func conectarBanco():
 func verificaSePrecisaCriarTabelas():
 	#Verifica se existe a tabela de usuários, caso sim não roda o sql, caso não ele cria as tabelas
 	banco.query("SELECT name FROM sqlite_master WHERE type='table' AND name='usuarios'")
-	if(banco.query_result.size() == 0):
+	if (banco.query_result.size() == 0):
 		var sqlArquivo = "res://bancoDeDados/sql.sql"
 		var arquivo = FileAccess.open(sqlArquivo, FileAccess.READ)
 		var bytes = arquivo.get_file_as_bytes(arquivo.get_path())
@@ -33,7 +33,7 @@ func verificaSePrecisaCriarTabelas():
 
 
 func inserirDados(tableName: String, data: Dictionary):
-	if(banco.insert_row(tableName, data)):
+	if (banco.insert_row(tableName, data)):
 		return banco.last_insert_rowid
 
 		

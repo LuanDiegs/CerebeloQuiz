@@ -23,11 +23,14 @@ var popUpSalvando: PopUpNotificacao
 @export var idRegistroEdicao: int = 0
 var quizSalvo
 
+#Salvas
+var perguntasDoBancoQuiz: Dictionary
+
 func _process(delta):
 	#Verifica se tem alguma pergunta para exibir a mensagem
-	_labelSemPerguntas.visible = true if _perguntasContainer.get_child_count() == 0  else false
+	_labelSemPerguntas.visible = true if _perguntasContainer.get_child_count() == 0 else false
 	
-	if(retornou):
+	if (retornou):
 		retornou = false
 		responseInsercao = false
 		verificarResponse(responseInsercao)
@@ -39,7 +42,7 @@ func _ready() -> void:
 	salvarQuizBotao.connect("pressed", salvarQuiz)
 	
 	#Se o quiz tiver um id significa que ele já existe
-	if(idRegistroEdicao != 0):
+	if (idRegistroEdicao != 0):
 		quizSalvo = Quizzes.new().getQuizCompleto(idRegistroEdicao)
 		preencheDadosDoQuizSalvo()
 
@@ -48,7 +51,7 @@ func preencheDadosDoQuizSalvo():
 	#Quiz
 	tituloQuiz.text = quizSalvo.titulo
 	botaoToggleIsPrivado.insereValor(quizSalvo.isPrivado)
-	classificacaoIndicativa.selected = quizSalvo.classificacaoIndicativa-1 #-1 pois a gente salva o ID e não o selecionado
+	classificacaoIndicativa.selected = quizSalvo.classificacaoIndicativa - 1 # -1 pois a gente salva o ID e não o selecionado
 	
 	#Perguntas
 	criarPerguntasSalvas()
@@ -63,6 +66,8 @@ func criarPerguntasSalvas():
 	
 	#Insere as perguntas
 	for pergunta in perguntas:
+		perguntasDoBancoQuiz.get_or_add(pergunta.perguntaId, pergunta)
+		
 		var perguntaCard = perguntaQuizCardComponente.instantiate() as ContainerPerguntaQuiz
 		perguntaCard.idPergunta = pergunta.perguntaId
 		perguntaCard.conteudoPergunta = pergunta.conteudoPergunta
@@ -73,7 +78,7 @@ func criarPerguntasSalvas():
 		
 
 func salvarQuiz() -> void:
-	if(validaFormulario()):
+	if (validaFormulario()):
 		var quiz = Quizzes.new().instanciaEntidade(tituloQuiz.text, botaoToggleIsPrivado.obterValorSelecionado(), classificacaoIndicativa.get_selected_id(), SessaoUsuario.usuarioLogado.idUsuario)
 		var perguntas = _perguntasContainer.get_children() as Array[ContainerPerguntaQuiz]
 		
@@ -86,12 +91,16 @@ func salvarQuizAlgoritmo(quiz, perguntas):
 	
 	#Insercao ou edição do quiz, retornando o id criado
 	var responseQuiz
-	if(idRegistroEdicao == 0):
+	if (idRegistroEdicao == 0):
 		responseQuiz = Quizzes.new().inserirQuiz(quiz, perguntas)
 	else:
-		responseQuiz = Quizzes.new().editarQuiz(idRegistroEdicao, quiz, perguntas)
+		responseQuiz = Quizzes.new().editarInserirQuiz(
+			idRegistroEdicao,
+			quiz,
+			perguntasDoBancoQuiz,
+			perguntas)
 		
-	if(!responseQuiz):
+	if (!responseQuiz):
 		erroAoInserir = true
 	
 	retornou = true
@@ -103,48 +112,48 @@ func validaFormulario():
 	var valido = true
 	var perguntasComConteudoVazio = _perguntasContainer.get_children().map(getPerguntasComConteudoVazio)
 	
-	if(tituloQuiz.text.is_empty()):
+	if (tituloQuiz.text.is_empty()):
 		valido = false
 		mensagem = "O título do quiz não foi inserido"
 	
-	if(valido):
+	if (valido):
 		mensagem = "As seguintes perguntas estão com o conteúdo vazio: \n"
 		for i in perguntasComConteudoVazio.size():
-			if(perguntasComConteudoVazio[i]):
+			if (perguntasComConteudoVazio[i]):
 				valido = false
 				mensagem = mensagem + str(perguntasComConteudoVazio[i]) + ", "
 			
 		#Remove a última vírgula e coloca um ponto
-		mensagem = mensagem.left(mensagem.length()-2) + "." if !valido else ""
+		mensagem = mensagem.left(mensagem.length() - 2) + "." if !valido else ""
 	
 	#Necessário salvar pelo menos 1 pergunta
-	if(valido):
+	if (valido):
 		var alternativas = _perguntasContainer.get_children()
-		if(!alternativas):
+		if (!alternativas):
 			valido = false
 			mensagem = "É necessário inserir pelo menos 1 pergunta."
 		
 		
-	if(valido):
+	if (valido):
 		var alternativasComProblemas = _perguntasContainer.get_children().map(getAlternativasComConteudoVazio)
 		mensagem = "As alternativas dos seguintes quizzes estão inválidas: \n"
 		
 		for i in alternativasComProblemas.size():
-			if(alternativasComProblemas[i]):
+			if (alternativasComProblemas[i]):
 				valido = false
 				mensagem = mensagem + str(alternativasComProblemas[i]) + ", "
 			
 		#Remove a última vírgula e coloca um ponto
-		mensagem = mensagem.left(mensagem.length()-2) + "." if !valido else ""
+		mensagem = mensagem.left(mensagem.length() - 2) + "." if !valido else ""
 		
-	if(!mensagem.is_empty()):
+	if (!mensagem.is_empty()):
 		PopUp.criaPopupNotificacao(mensagem)
 	
 	return valido
 
 
 func criarPergunta() -> void:
-	if(_perguntasContainer.get_children().size() < ConstantesPadroes.MAXIMO_PERGUNTAS_QUIZ):
+	if (_perguntasContainer.get_children().size() < ConstantesPadroes.MAXIMO_PERGUNTAS_QUIZ):
 		var perguntaCard = perguntaQuizCardComponente.instantiate()
 		_perguntasContainer.add_child(perguntaCard)
 	else:
@@ -153,13 +162,14 @@ func criarPergunta() -> void:
 
 
 func verificarResponse(erroAoInserir: bool):
-	var mensagem = "Ocorreu um erro ao salvar o quiz" if erroAoInserir else "Quiz criado com sucesso!"
+	var mensagemCriacaoEdicao = "Quiz criado com sucesso!" if idRegistroEdicao == 0 else "Quiz editado com sucesso!"
+	var mensagem = "Ocorreu um erro ao salvar o quiz" if erroAoInserir else mensagemCriacaoEdicao
 	
 	#Fecha a thread
 	thread.wait_to_finish()
 	
 	#Remove o popup de salvando
-	if(popUpSalvando):
+	if (popUpSalvando):
 		popUpSalvando.queue_free()
 	
 	#Mostra o popup e redireciona para a tela de meus quizzes
@@ -168,7 +178,7 @@ func verificarResponse(erroAoInserir: bool):
 
 
 func getPerguntasComConteudoVazio(pergunta: ContainerPerguntaQuiz):
-	if !pergunta.conteudoPergunta or pergunta.conteudoPergunta.is_empty(): 
+	if !pergunta.conteudoPergunta or pergunta.conteudoPergunta.is_empty():
 		return str(pergunta.get_index() + 1)
 	
 	return null
@@ -178,12 +188,12 @@ func getAlternativasComConteudoVazio(pergunta: ContainerPerguntaQuiz):
 	var alternativas = pergunta.alternativasConteudoSalvas.map(func(value): return value["conteudoAlternativa"] == "")
 	var alternativasInvalidas = alternativas.has(true)
 	
-	if alternativasInvalidas: 
+	if alternativasInvalidas:
 		return str(pergunta.get_index() + 1)
 	
 	return null
 
 
 func _exit_tree():
-	if(thread.is_alive()):
+	if (thread.is_alive()):
 		thread.wait_to_finish()
