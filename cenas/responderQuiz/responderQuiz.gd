@@ -193,7 +193,7 @@ func salvarResultado(acertos: int):
 	else:
 		notificaPontuacao(acertos)
 	
-	#finalizaQuiz()
+	finalizaQuiz()
 
 
 func finalizaQuiz():

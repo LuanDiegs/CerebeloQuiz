@@ -242,8 +242,8 @@ func getTodosQuizzesFavoritadosPublicos():
 	var banco = BD.banco as SQLite
 	
 	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesFavoritosTabela + " f 
-		INNER JOIN" + EntidadeConstantes.UsuarioTabela + " u ON f.usuarioId = u.usuarioId 
-		INNER JOIN" + EntidadeConstantes.QuizzesTabela + " q ON f.quizId = q.quizId 
+		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON f.usuarioId = u.usuarioId 
+		INNER JOIN " + EntidadeConstantes.QuizzesTabela + " q ON f.quizId = q.quizId 
 		WHERE q.isPrivado=0 AND u.usuarioId =" + str(SessaoUsuario.usuarioLogado.idUsuario)
 
 	if (banco.query(query)):
@@ -255,8 +255,8 @@ func getTodosQuizzesFavoritadosPublicos():
 func getQuizCompleto(idQuiz):
 	var banco = BD.banco as SQLite
 	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesTabela + " q 
-	INNER JOIN" + EntidadeConstantes.PerguntasTabela + " p ON p.quizId = q.quizId 
-	INNER JOIN" + EntidadeConstantes.AlternativasTabela + " a ON a.perguntaId = p.perguntaId 
+	INNER JOIN " + EntidadeConstantes.PerguntasTabela + " p ON p.quizId = q.quizId 
+	INNER JOIN " + EntidadeConstantes.AlternativasTabela + " a ON a.perguntaId = p.perguntaId 
 	WHERE q.quizId = ?"
 		
 	var params = [idQuiz]
@@ -320,7 +320,7 @@ func getQuizzesDoUsuario(idUsuario):
 func getTodosQuizzesPublicos():
 	var banco = BD.banco as SQLite
 	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesTabela + " q 
-		INNER JOIN" + EntidadeConstantes.UsuarioTabela + " u ON q.usuarioId = u.usuarioId 
+		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON q.usuarioId = u.usuarioId 
 		WHERE isPrivado=0"
 	
 	if (banco.query(query)):
