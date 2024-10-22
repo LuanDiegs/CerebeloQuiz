@@ -209,12 +209,12 @@ func exibeRespostasCorretas():
 
 
 func notificaPontuacao(acertos: int, pontuacao: int = -1):
-	var aviso = "*Não logado\n" if !SessaoUsuario.isLogada else ""
+	var aviso = "\n*Não logado, sua pontuação não estará no ranking" if !SessaoUsuario.isLogada else ""
 	var acertosMensagem = "Você acertou " + str(acertos) + "/" + str(perguntasCardsComponentes.size())
 	var pontuacaoMensagem = "" if pontuacao < 0 else "\n Sua pontuacao foi de " + str(pontuacao)
 	
 	PopUp.criaPopupConfirmacao(
-		aviso + acertosMensagem + pontuacaoMensagem, 
+		acertosMensagem + aviso + pontuacaoMensagem, 
 		"Parabéns!", 
 		"Revisar o quiz",
 		Utils.criaBotaoAdicional(

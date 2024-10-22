@@ -35,7 +35,6 @@ VerySimpleTwitch="*res://addons/very-simple-twitch/twitch_node.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="res://resources/imagens/cursor/pointer_b.png"

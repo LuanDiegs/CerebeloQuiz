@@ -50,7 +50,7 @@ var tempoPassado := 1
 #endregion
 
 #Constantes
-const TEMPO_LIMITE_PERGUNTA = 10
+const TEMPO_LIMITE_PERGUNTA = 20
 const TEMPO_LIMITE_RESULTADOS = 10
 const QUANTIDADE_DE_USUARIOS_PARA_MOSTRAR_NA_TELA = 20
 
@@ -300,7 +300,7 @@ func calculaPontuacaoUsuario(chatter: Chatter):
 			_listaPontuacao.get_or_add(nicknameUsuario, 1000/(tempoPassado-1))
 		
 		#DEBUG
-		_listaPontuacao.get_or_add("nicknameUsuario"+str(randi_range(0, 50)), 10*randi_range(0, 30))
+		_listaPontuacao.get_or_add("nicknameUsuarioTeste"+str(randi_range(0, 50)), 10*randi_range(0, 30))
 		
 		#O usuário respondeu, independente se acertou ou errou
 		_listaUsuariosJaResponderam.get_or_add(nicknameUsuario, true)
