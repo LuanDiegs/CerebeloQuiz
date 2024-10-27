@@ -24,7 +24,6 @@ func criaCardsJustificativas():
 	#Cria as justificativas
 	var denunciasJustificativas = Denuncia.new().getDenunciasJustificativasDoQuiz(_quizId)
 	for justificativa in denunciasJustificativas:
-		print(justificativa)
 		var cardInstanciado = preload("res://componentes/popUps/popUpDenunciaModerador/cardJustificativa.tscn").instantiate()
 		
 		_justificativasContainer.add_child(cardInstanciado)

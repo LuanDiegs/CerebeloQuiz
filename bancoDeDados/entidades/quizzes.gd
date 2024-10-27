@@ -14,7 +14,7 @@ func instanciaEntidade(titulo: String, isPrivado: bool, classificacaoIndicativa:
 	return propriedades
 
 
-func inserirQuiz(quiz, perguntas):
+func inserirQuiz(quiz, perguntas, imagemExtensao, imagemDoQuiz):
 	var banco = BD.banco as SQLite
 	if (!banco.insert_row(EntidadeConstantes.QuizzesTabela, quiz)):
 		return false
@@ -35,14 +35,48 @@ func inserirQuiz(quiz, perguntas):
 		if (!banco.insert_rows(EntidadeConstantes.AlternativasTabela, alternativasAInserir)):
 			return false
 			
+		if !salvarImagemQuiz(imagemDoQuiz, imagemExtensao, idQuizInserido):
+			return false
+		#Salvar imagem
+		
 	return true
+
+func salvarImagemQuiz(imagem, extensaoImagem, idQuiz):
+	var caminho = "user://data/imagensQuizzes/" + str(SessaoUsuario.usuarioLogado.idUsuario) + "/" + str(idQuiz)
+	var bytes: PackedByteArray
+	
+	if !DirAccess.dir_exists_absolute(caminho):
+		DirAccess.make_dir_recursive_absolute(caminho)
+	
+	match extensaoImagem:
+		"webp":
+			bytes = imagem.save_webp_to_buffer()
+		"png":
+			bytes = imagem.save_png_to_buffer()
+		"jpg", "jpeg":
+			bytes = imagem.save_jpg_to_buffer()
+		_: 
+			return
+	
+	#Remove a imagem antiga
+	var arquivosNoDiretorio = Array(DirAccess.get_files_at(caminho))
+	for arquivo in arquivosNoDiretorio:
+		DirAccess.remove_absolute(caminho + "/" + arquivo)
+	
+	var caminhoImagem = caminho + "/" + "quizImagem." + extensaoImagem 
+	var arquivo = FileAccess.open(caminhoImagem, FileAccess.WRITE)
+
+	arquivo.store_buffer(bytes)
+	arquivo.close()
 
 
 func editarInserirQuiz(
 	idRegistroEdicao: int,
 	quiz,
 	perguntasBanco,
-	perguntasAlterarInserir):
+	perguntasAlterarInserir,
+	extensaoImagem,
+	imagem):
 	var banco = BD.banco as SQLite
 	
 	var condicaoQuiz = "quizId = " + str(idRegistroEdicao)
@@ -51,6 +85,9 @@ func editarInserirQuiz(
 	#Perguntas
 	alterarInserirPergunta(perguntasBanco, perguntasAlterarInserir, idRegistroEdicao)
 
+	#Imagem
+	salvarImagemQuiz(imagem, extensaoImagem, idRegistroEdicao)
+	
 
 func alterarInserirPergunta(
 	perguntasBanco: Dictionary,
@@ -238,15 +275,22 @@ func getQuizFavoritado(quizId):
 	return banco.query_result
 
 
-func getTodosQuizzesFavoritadosPublicos():
+func getTodosQuizzesFavoritadosPublicos(filtro: String = ""):
 	var banco = BD.banco as SQLite
+	var queryFiltro = ""
+	var classificacaoDoUsuario = "1,2" if SessaoUsuario.usuarioLogado.isMaiorDeIdade else "1"
 	
+	if filtro:
+		queryFiltro = "AND (titulo like '%" + filtro + "%' OR u.nome like '%" + filtro + "%')"
+		
 	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesFavoritosTabela + " f 
-		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON f.usuarioId = u.usuarioId 
 		INNER JOIN " + EntidadeConstantes.QuizzesTabela + " q ON f.quizId = q.quizId 
-		WHERE q.isPrivado=0 AND u.usuarioId =" + str(SessaoUsuario.usuarioLogado.idUsuario)
+		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON q.usuarioId = u.usuarioId 
+		WHERE q.isPrivado=? AND f.usuarioId =? AND q.classificacaoIndicativa 
+		IN(" + classificacaoDoUsuario + ")" + queryFiltro
 
-	if (banco.query(query)):
+	var params = [0, SessaoUsuario.usuarioLogado.idUsuario]
+	if (banco.query_with_bindings(query, params)):
 		return banco.query_result
 	
 	return []
@@ -306,9 +350,14 @@ func getPerguntasEAlternativasDoQuiz(idQuiz):
 	return perguntas
 	
 	
-func getQuizzesDoUsuario(idUsuario):
+func getQuizzesDoUsuario(idUsuario, filtro: String = ""):
+	var queryFiltro = ""
+	
+	if filtro:
+		queryFiltro = "AND titulo like '%" + filtro + "%'"
+		
 	var banco = BD.banco as SQLite
-	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesTabela + " WHERE usuarioId=?"
+	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesTabela + " WHERE usuarioId=?" + queryFiltro
 	var param = [idUsuario]
 	
 	if (banco.query_with_bindings(query, param)):
@@ -317,13 +366,22 @@ func getQuizzesDoUsuario(idUsuario):
 	return []
 
 
-func getTodosQuizzesPublicos():
+func getTodosQuizzesPublicos(filtro: String = ""):
+	var queryFiltro = ""
 	var banco = BD.banco as SQLite
+	var classificacaoDoUsuario = "1"
+	
+	if SessaoUsuario.usuarioLogado:
+		classificacaoDoUsuario = "1,2" if SessaoUsuario.usuarioLogado.isMaiorDeIdade else "1"
+	
+	if filtro:
+		queryFiltro = "AND (titulo like '%" + filtro + "%' OR u.nome like '%" + filtro + "%')"
+		
 	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesTabela + " q 
 		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON q.usuarioId = u.usuarioId 
-		WHERE isPrivado=0"
-	
-	if (banco.query(query)):
+		WHERE q.isPrivado=? AND q.classificacaoIndicativa IN(" + classificacaoDoUsuario + ")" + queryFiltro
+	var params = ["0"]
+	if (banco.query_with_bindings(query, params)):
 		return banco.query_result
 	
 	return []

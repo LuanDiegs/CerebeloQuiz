@@ -9,6 +9,7 @@ class_name Sidebar
 
 @onready var _meusQuizesBotao: BotaoMenuSidebar = $SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais/MeusQuizes
 @onready var _criarQuizBotao: BotaoCriarQuizz = $SessaoCentral/SessaoCentral/BotaoCriarQuiz/CriarQuiz
+@onready var _quizzesFavoritos = $SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais/QuizzesFavoritos
 
 func _ready() -> void:
 	_versaoSoftware.text = "Versão " + ProjectSettings.get_setting("application/config/version")
@@ -29,7 +30,7 @@ func verificaSessao():
 		_perfilBotao.redirecionarPara = "res://cenas/denuncias/denuncias.tscn"
 		_meusQuizesBotao.redirecionarPara = "res://cenas/meusQuizzes/meusQuizzes.tscn"
 	else:
-		_perfilBotao.text = "DESLOGADO!"
+		_perfilBotao.text = "CRIAR CONTA!"
 		_loginBotao.text = "LOGIN"
 		
 		_criarQuizBotao.visible = false
@@ -37,3 +38,4 @@ func verificaSessao():
 		
 		_meusQuizesBotao.redirecionarPara = "res://cenas/login/login.tscn"
 		_perfilBotao.redirecionarPara = "res://cenas/cadastroUsuario/cadastroUsuario.tscn"
+		_quizzesFavoritos.redirecionarPara = "res://cenas/login/login.tscn"

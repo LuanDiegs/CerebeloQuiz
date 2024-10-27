@@ -5,6 +5,7 @@ var quizzes: Array
 
 @onready var _meusQuizzesContainer = $MarginContainer/ItensTela/ScrollContainer/MeusQuizzesContainer
 @onready var _labelMensagemSemQuizzes = $MarginContainer/ItensTela/ScrollContainer/MeusQuizzesContainer/LabelSemQuizzes
+@onready var _headerMeusQuizzes = $MarginContainer/ItensTela/HeaderMeusQuizzes
 
 
 func _process(delta):
@@ -14,6 +15,8 @@ func _process(delta):
 func _ready():
 	quizzes = Quizzes.new().getQuizzesDoUsuario(SessaoUsuario.usuarioLogado.idUsuario)
 	_criaQuizzes()
+	
+	_headerMeusQuizzes.connect("filtrarQuizzes", _filtraQuizzes)
 	
 
 func _criaQuizzes():
@@ -37,5 +40,11 @@ func _deletaOsQuizzesNaGrid():
 
 func atualizarGridMeusQuizzes():
 	quizzes = Quizzes.new().getQuizzesDoUsuario(SessaoUsuario.usuarioLogado.idUsuario)
+	_deletaOsQuizzesNaGrid()
+	_criaQuizzes()
+
+
+func _filtraQuizzes(quizzes):
+	self.quizzes = quizzes
 	_deletaOsQuizzesNaGrid()
 	_criaQuizzes()

@@ -26,7 +26,7 @@ var perguntasCardsComponentes: Array[EscolhaAlternativaQuiz]
 var indexPerguntaAtual := 0
 
 #Salvamento
-@onready var _salvar: Button = $Salvar
+@onready var _salvar: Button = $ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer/Salvar
 
 func _process(delta):
 	#Verifica se os botões de avançar e retroceder ficarão desabilitados
@@ -56,6 +56,8 @@ func _ready() -> void:
 	
 	#Insere a primeira pergunta
 	_quizContainer.add_child(perguntasCardsComponentes[indexPerguntaAtual])
+	_quizContainer.move_child(perguntasCardsComponentes[indexPerguntaAtual], 
+		perguntasCardsComponentes[indexPerguntaAtual].get_index() - 2)
 	_quizCard = perguntasCardsComponentes[indexPerguntaAtual]
 	
 	for index in perguntasCardsComponentes.size():
@@ -116,6 +118,8 @@ func animaEntradaSaida(isProximaPergunta: bool = true):
 	_insercaoPerguntaTerminou = true
 	self.remove_child(perguntaCard)
 	_quizContainer.add_child(perguntaCard)
+	_quizContainer.move_child(perguntaCard, 
+		perguntaCard.get_index() - 2)
 
 
 func aumentaTimer():

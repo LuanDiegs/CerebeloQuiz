@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://00qaslrwjpwy"]
+[gd_scene load_steps=10 format=3 uid="uid://00qaslrwjpwy"]
 
+[ext_resource type="Script" path="res://componentes/header/headerFavoritos.gd" id="1_v3oha"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_hvjb1"]
 [ext_resource type="Theme" uid="uid://c2upscdlr08l" path="res://componentes/header/inputPesquisaTemaBase.tres" id="2_x7wha"]
 [ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="3_o46i7"]
@@ -22,6 +23,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.25
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kjn8g")
+script = ExtResource("1_v3oha")
 metadata/_edit_use_anchors_ = true
 
 [node name="Header" type="VBoxContainer" parent="."]

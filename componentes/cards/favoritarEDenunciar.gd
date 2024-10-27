@@ -1,8 +1,8 @@
 extends HBoxContainer
 class_name FavoritarEDenunciarContainer
 
-@onready var _botaoDenuncia = $BotaoDenuncia
-@onready var _botaoFavoritar = $BotaoFavoritar
+@onready var _botaoDenuncia = $ColorRect/BotaoDenuncia
+@onready var _botaoFavoritar = $Panel/BotaoFavoritar
 @onready var _tituloLabel = $"../../Titulo"
 
 var _isFavoritado := false
@@ -37,6 +37,7 @@ func _favoritarQuiz():
 			_idQuizFavoritado = 0
 		
 	await _animaClique()
+	_botaoFavoritar.disabled = false
 	_setaIconesFavoritado(_isFavoritado)
 	
 	if(get_tree().current_scene is QuizzesFavoritos):
@@ -67,6 +68,7 @@ func _animaClique():
 	var tween = create_tween().set_trans(Tween.TRANS_SINE)
 	var tween2 = create_tween().set_trans(Tween.TRANS_SINE)
 	_botaoFavoritar.pivot_offset = _botaoFavoritar.size/2
+	_botaoFavoritar.disabled = true
 	tween.tween_property(_botaoFavoritar, "scale", Vector2(1.4, 1.4), 0.3)
 	tween.tween_property(_botaoFavoritar, "scale", Vector2(1, 1), 0.3)
 	tween2.tween_property(_botaoFavoritar, "rotation", deg_to_rad(-30), 0.3).as_relative()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bkqebfftf76n3"]
+[gd_scene load_steps=27 format=3 uid="uid://bkqebfftf76n3"]
 
 [ext_resource type="Theme" uid="uid://bueidph1nopmi" path="res://componentes/popUps/popUpFundo.tres" id="1_aa541"]
 [ext_resource type="Script" path="res://componentes/popUps/popUpFormPergunta/popUpFormPergunta.gd" id="2_8xtpa"]
@@ -59,7 +59,62 @@ TextEdit/styles/focus = SubResource("StyleBoxFlat_jgia7")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_d4xpe")
 TextEdit/styles/read_only = SubResource("StyleBoxFlat_n1hf1")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcda0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_305nx"]
+bg_color = Color(0.16, 0.184, 0.4, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5ki4"]
+bg_color = Color(0.160784, 0.184314, 0.4, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38ys8"]
+bg_color = Color(0.227451, 0.258824, 0.521569, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="Theme" id="Theme_gptgx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pp6hx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8qh0"]
+bg_color = Color(0.18, 0.4, 0.198333, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kphol"]
+bg_color = Color(0.25098, 0.501961, 0.270588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2kga"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bppun"]
+bg_color = Color(0.55, 0.22, 0.22, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiyvw"]
+bg_color = Color(0.619608, 0.278431, 0.278431, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xidoe"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -161,9 +216,16 @@ size_flags_vertical = 3
 layout_mode = 2
 
 [node name="InserirNovaAlternativa" type="Button" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas/HeaderAlternativas"]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_rjvwc")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcda0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_305nx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e5ki4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_38ys8")
 text = "Inserir nova alternativa"
 
 [node name="AlternativasContainer" type="VBoxContainer" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas"]
@@ -180,6 +242,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_rjvwc")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pp6hx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k8qh0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k8qh0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kphol")
 text = "Salvar"
 
 [node name="Fechar" type="Button" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas/RodapeBotoes"]
@@ -188,6 +257,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_rjvwc")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d2kga")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bppun")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bppun")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tiyvw")
 text = "Cancelar"
 
 [node name="MarginBottom" type="HSeparator" parent="PopUp/ContainerVertical/MarginForm/Form/Alternativas"]

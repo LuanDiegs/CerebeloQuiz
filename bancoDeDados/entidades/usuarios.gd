@@ -8,15 +8,18 @@ var idUsuario: int
 var nomeUsuario: String
 var emailUsuario: String
 var isDesativado: bool
+var dataDeNascimento: String
+var idade: int
+var isMaiorDeIdade: bool
 
 func instanciaEntidade(nome: String, email: String, senha: String, dataNascimento: String, telefone: String):
 	self.propriedades = {
 		"nome": nome,
 		"email": email,
 		"senha": senha,
-		"datanascimento": dataNascimento,
+		"dataNascimento": dataNascimento,
 		"telefone": telefone,
-		"isdesativado": false,
+		"isDesativado": false,
 	}
 	
 	return propriedades
@@ -36,23 +39,52 @@ func verificarLogin(email: String, senha: String):
 	return usuarioId
 
 
-func getUsuario(usuarioId):
+func getUsuario(usuarioId) -> Usuarios:
 	var banco = BD.banco as SQLite
-	var query = "SELECT * FROM " + EntidadeConstantes.UsuarioTabela + " WHERE usuarioId=?"
+	var query = "SELECT *, (strftime('%Y', 'now') - strftime('%Y', dataNascimento)) - (strftime('%m-%d', 'now') < strftime('%m-%d', dataNascimento)) as idade FROM " + EntidadeConstantes.UsuarioTabela + " WHERE usuarioId=?"
+
 	var parametros = [usuarioId]
 
 	banco.query_with_bindings(query, parametros)
 	
 	if(banco.query_result): 
 		return _criaEntidade(banco.query_result[0])
+	
+	return null
 
 
-func _criaEntidade(dados: Dictionary):
+func _criaEntidade(dados: Dictionary) -> Usuarios:
 	var entidade = Usuarios.new()
 	
 	entidade.idUsuario = dados.get("usuarioId")
 	entidade.nomeUsuario = dados.get("nome")
 	entidade.emailUsuario = dados.get("email")
 	entidade.isDesativado = dados.get("isDesativado")
-	
+	entidade.dataDeNascimento = dados.get("dataNascimento")
+	entidade.idade = dados.get("idade")
+	entidade.isMaiorDeIdade = true if entidade.idade >= 18 else false
+
 	return entidade
+
+
+func existeUsuarioComEmail(email: String):
+	var banco = BD.banco as SQLite
+	var query = "SELECT * FROM " + EntidadeConstantes.UsuarioTabela + " WHERE email=?"
+	var parametros = [email]
+
+	banco.query_with_bindings(query, parametros)
+	if(banco.query_result.size() > 0): 
+		return true
+	
+	return false
+
+func existeUsuarioComNome(usuario: String):
+	var banco = BD.banco as SQLite
+	var query = "SELECT * FROM " + EntidadeConstantes.UsuarioTabela + " WHERE nome=?"
+	var parametros = [usuario]
+
+	banco.query_with_bindings(query, parametros)
+	if(banco.query_result.size() > 0): 
+		return true
+	
+	return false

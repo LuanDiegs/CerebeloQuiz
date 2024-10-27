@@ -11,13 +11,32 @@ var tituloDoQuiz := ""
 @onready var _editarBotao = $MarginDentroDoPanel/Elementos/BotoesContainer/Editar
 @onready var _deletarBotao = $MarginDentroDoPanel/Elementos/BotoesContainer/Deletar
 
+#Imagem
+@onready var _imagemDoQuiz = $MarginDentroDoPanel/Elementos/ImagemDoQuiz
+
 
 func _ready():
 	_editarBotao.connect("pressed", _editarQuiz)
 	_deletarBotao.connect("pressed", _deletarQuiz)
 	_tituloQuiz.text = tituloDoQuiz
-	
+	_insereImagemQuiz()
 
+
+func _insereImagemQuiz():
+	var diretorioImagens = ConstantesPadroes.DIRETORIO_IMAGEMS_QUIZZES + str(SessaoUsuario.usuarioLogado.idUsuario) + "/" + str(quizId)
+	if DirAccess.dir_exists_absolute(diretorioImagens):
+		var arquivosNoDiretorio = DirAccess.get_files_at(diretorioImagens)
+		var arrayArquivos = Array(arquivosNoDiretorio)
+
+		if arrayArquivos.size() > 0:
+			var arquivoCaminho = diretorioImagens + "/" + arrayArquivos[0]
+			var image = Image.new()
+			var texture = ImageTexture.new()
+			image.load(ProjectSettings.globalize_path(arquivoCaminho))			
+			texture.set_image(image)
+			_imagemDoQuiz.texture = texture
+			
+			
 func _editarQuiz():
 	TransicaoCena.trocar_cena(TransicaoCena.telaEditFormQuiz, quizId)
 	

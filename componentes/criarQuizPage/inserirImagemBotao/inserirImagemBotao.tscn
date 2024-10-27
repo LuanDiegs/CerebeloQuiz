@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://np05ym5cpyik"]
+
+[ext_resource type="Script" path="res://componentes/criarQuizPage/inserirImagemBotao/inserirImagemBotao_botao.gd" id="1_ip04y"]
+[ext_resource type="Texture2D" uid="uid://bqc3ej2f1ddii" path="res://resources/imagens/noImage.png" id="1_peb3v"]
+
+[sub_resource type="Theme" id="Theme_5wdns"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v84wp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xm8g"]
+bg_color = Color(0.6, 0.6, 0.6, 0.392157)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snage"]
+
+[node name="InserirImagem" type="TextureRect"]
+custom_minimum_size = Vector2(320, 180)
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 3.6
+anchor_right = 8.95
+anchor_bottom = 8.1
+theme = SubResource("Theme_5wdns")
+texture = ExtResource("1_peb3v")
+expand_mode = 2
+stretch_mode = 6
+script = ExtResource("1_ip04y")
+metadata/_edit_use_anchors_ = true
+
+[node name="AbrirArquivosBotao" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v84wp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1xm8g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1xm8g")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_snage")
+metadata/_edit_use_anchors_ = true
+
+[node name="Arquivos" type="FileDialog" parent="."]
+title = "Selecionar uma imagem"
+initial_position = 2
+size = Vector2i(600, 450)
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+cancel_button_text = "Cancelar"
+file_mode = 0
+access = 2
+root_subfolder = "C:/"
+use_native_dialog = true
+
+[connection signal="file_selected" from="Arquivos" to="." method="_selecionarArquivo"]

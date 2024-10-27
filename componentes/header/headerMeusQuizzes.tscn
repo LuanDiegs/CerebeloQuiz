@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxmn3h6n30sjt"]
+[gd_scene load_steps=15 format=3 uid="uid://bxmn3h6n30sjt"]
 
 [ext_resource type="Script" path="res://componentes/header/headerMeusQuizzes.gd" id="1_0f1eb"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_s7m8h"]
@@ -17,6 +17,29 @@ thickness = 2
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_djr6r"]
 color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1mxs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axxvv"]
+bg_color = Color(0.25098, 0.501961, 0.270588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eff5y"]
+bg_color = Color(0.2025, 0.45, 0.223125, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ea1ll"]
+bg_color = Color(0.25098, 0.501961, 0.270588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_8r630"]
 color = Color(0, 0, 0, 0)
@@ -72,6 +95,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_s7m8h")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d1mxs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_axxvv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eff5y")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ea1ll")
 text = "CRIAR QUIZ"
 
 [node name="Separador" type="Label" parent="Header/Botoes"]

@@ -52,4 +52,3 @@ layout_mode = 2
 
 [node name="ContainerQuizzesPopularesEFavoritos" parent="MarginContainer/ItensTela" instance=ExtResource("3_5yory")]
 layout_mode = 2
-size_flags_vertical = 3

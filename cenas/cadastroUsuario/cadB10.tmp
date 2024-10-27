@@ -88,7 +88,7 @@ anchor_bottom = 0.601388
 offset_top = 3.05176e-05
 offset_right = 0.0
 offset_bottom = 0.0
-placeholder = "Ex: 11999999999"
+placeholder = "Insira seu telefone"
 labelTexto = "Telefone:"
 metadata/_edit_use_anchors_ = true
 
@@ -126,7 +126,6 @@ anchor_right = 0.698737
 anchor_bottom = 0.891667
 offset_right = 0.0
 offset_bottom = 0.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "CADASTRAR
 "
 script = ExtResource("5_2c3c7")

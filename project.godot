@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CerebeloQuiz"
-config/version="0.0"
+config/version="0.9"
 config/tags=PackedStringArray("tg")
 run/main_scene="res://cenas/quizzesPopulares/quizzesPopulares.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
@@ -21,10 +21,10 @@ config/icon="res://icon.svg"
 
 BD="*res://bancoDeDados/bancoDeDados.gd"
 Cursor="*res://globals/cursor.gd"
+SessaoUsuario="*res://globals/sessao.gd"
 TransicaoCena="*res://cenas/transicaoCena/transicaoCena.tscn"
 UsuariosEntidade="*res://bancoDeDados/entidades/usuarios.gd"
 EntidadeConstantes="*res://bancoDeDados/entidades/entidadesConstantes.gd"
-SessaoUsuario="*res://globals/sessao.gd"
 ConstantesPadroes="*res://globals/constantesPadrao.gd"
 Utils="*res://globals/utils.gd"
 TelaCarregamento="*res://globals/telaCarregamento.gd"

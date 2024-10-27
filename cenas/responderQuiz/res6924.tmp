@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://txu7gbsnc1ys"]
+[gd_scene load_steps=6 format=3 uid="uid://txu7gbsnc1ys"]
 
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_3b5s4"]
 [ext_resource type="Script" path="res://cenas/responderQuiz/responderQuiz.gd" id="1_uuyp6"]
@@ -16,28 +16,6 @@ Label/colors/font_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 36
 Label/fonts/font = ExtResource("2_kkviv")
 Label/styles/normal = SubResource("StyleBoxFlat_gemb4")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bt0v7"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05gwx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jff02"]
-content_margin_top = 3.0
-content_margin_bottom = 3.0
-bg_color = Color(0.25098, 0.501961, 0.270588, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3n58"]
-content_margin_top = 3.0
-content_margin_bottom = 3.0
-bg_color = Color(0.25098, 0.501961, 0.270588, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [node name="ResponderQuiz" type="Control"]
 layout_mode = 3
@@ -97,7 +75,6 @@ custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 text = "<-"
 
 [node name="QuizRespostaMargin" type="MarginContainer" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer"]
@@ -124,21 +101,8 @@ vertical_alignment = 1
 [node name="Espaco" type="Label" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer"]
 layout_mode = 2
 
-[node name="Separador" type="HSeparator" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxEmpty_bt0v7")
-
 [node name="Salvar" type="Button" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer"]
 layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_kkviv")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_05gwx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_jff02")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_jff02")
-theme_override_styles/normal = SubResource("StyleBoxFlat_l3n58")
 text = "Terminar de responder"
 metadata/_edit_use_anchors_ = true
 
@@ -148,7 +112,6 @@ custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 text = "->"
 
 [node name="TempoPercorrido" type="Timer" parent="."]

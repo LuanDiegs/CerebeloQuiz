@@ -1,7 +1,7 @@
 extends ScrollContainer
 class_name ContainerQuizzesPopularesEFavoritos
 
-@onready var _quizzesGrid: GridContainer = $GridContainer
+@onready var _quizzesGrid: GridContainer = $MarginContainer/GridContainer
 @onready var _quizzes: Array
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://codj1qfrivht6"]
+[gd_scene load_steps=19 format=3 uid="uid://codj1qfrivht6"]
 
 [ext_resource type="Script" path="res://componentes/cards/cardBase.gd" id="1_kw8vd"]
 [ext_resource type="Texture2D" uid="uid://bqc3ej2f1ddii" path="res://resources/imagens/noImage.png" id="2_ajeye"]
@@ -24,6 +24,22 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe6iv"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.203922, 0.211765, 0.45098, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_nev5b"]
 color = Color(0.256, 0.274133, 0.8, 1)
@@ -87,10 +103,12 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 
 [node name="ImgCapaQuiz" type="TextureRect" parent="ItensCard"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+size_flags_vertical = 3
 texture = ExtResource("2_ajeye")
-expand_mode = 5
-stretch_mode = 1
+expand_mode = 3
+stretch_mode = 6
 
 [node name="FavoritarEDenunciar" type="HBoxContainer" parent="ItensCard/ImgCapaQuiz"]
 layout_mode = 2
@@ -99,9 +117,18 @@ anchor_bottom = 0.259542
 script = ExtResource("3_buli8")
 metadata/_edit_use_anchors_ = true
 
-[node name="BotaoDenuncia" type="TextureButton" parent="ItensCard/ImgCapaQuiz/FavoritarEDenunciar"]
+[node name="ColorRect" type="Panel" parent="ItensCard/ImgCapaQuiz/FavoritarEDenunciar"]
+custom_minimum_size = Vector2(40, 35)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fe6iv")
+
+[node name="BotaoDenuncia" type="TextureButton" parent="ItensCard/ImgCapaQuiz/FavoritarEDenunciar/ColorRect"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+anchor_left = 0.1
+anchor_top = 0.0285714
+anchor_right = 0.9
+anchor_bottom = 0.942857
 size_flags_horizontal = 8
 size_flags_vertical = 4
 mouse_force_pass_scroll_events = false
@@ -109,19 +136,30 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_l0jfj")
 ignore_texture_size = true
 stretch_mode = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ItensCard/ImgCapaQuiz/FavoritarEDenunciar"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BotaoFavoritar" type="TextureButton" parent="ItensCard/ImgCapaQuiz/FavoritarEDenunciar"]
+[node name="Panel" type="Panel" parent="ItensCard/ImgCapaQuiz/FavoritarEDenunciar"]
+custom_minimum_size = Vector2(40, 35)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fe6iv")
+
+[node name="BotaoFavoritar" type="TextureButton" parent="ItensCard/ImgCapaQuiz/FavoritarEDenunciar/Panel"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+anchor_left = 0.1
+anchor_top = 0.0285714
+anchor_right = 0.9
+anchor_bottom = 0.942857
 size_flags_horizontal = 8
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 ignore_texture_size = true
 stretch_mode = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="CriadoPor" type="HBoxContainer" parent="ItensCard"]
 layout_mode = 2

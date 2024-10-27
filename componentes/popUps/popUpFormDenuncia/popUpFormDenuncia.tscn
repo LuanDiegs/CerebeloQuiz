@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://w3bhkcyonlw6"]
+[gd_scene load_steps=21 format=3 uid="uid://w3bhkcyonlw6"]
 
 [ext_resource type="Script" path="res://componentes/popUps/popUpFormDenuncia/popUpFormDenuncia.gd" id="1_t2lrs"]
 [ext_resource type="Theme" uid="uid://dvbp11qywc6mv" path="res://componentes/popUps/popUp.tres" id="2_xv6hl"]
@@ -70,6 +70,29 @@ TextEdit/fonts/font = ExtResource("4_5jlax")
 TextEdit/styles/focus = SubResource("StyleBoxFlat_fhiel")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_t6gw3")
 TextEdit/styles/read_only = SubResource("StyleBoxFlat_evwxl")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mqolu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmqta"]
+bg_color = Color(0.18, 0.4, 0.198333, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdovu"]
+bg_color = Color(0.18, 0.4, 0.198333, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rww2"]
+bg_color = Color(0.25098, 0.501961, 0.270588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="PopUpFormDenuncia" type="PanelContainer"]
 z_index = 4095
@@ -226,6 +249,13 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 10
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_fgmy0")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mqolu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kmqta")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hdovu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3rww2")
 text = "Salvar"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

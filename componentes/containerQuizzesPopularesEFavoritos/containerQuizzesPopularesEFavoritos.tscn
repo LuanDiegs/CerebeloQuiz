@@ -16,21 +16,30 @@ GridContainer/constants/v_separation = 10
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.00278
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = SubResource("Theme_hu3wg")
 script = ExtResource("1_0rk04")
 metadata/_edit_use_anchors_ = true
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_q8eg3")
 columns = 4
 
-[node name="PanelQuiz" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+[node name="PanelQuiz" parent="MarginContainer/GridContainer" instance=ExtResource("1_mg0mn")]
 visible = false
 layout_mode = 2
 
-[node name="PanelQuiz2" parent="GridContainer" instance=ExtResource("1_mg0mn")]
+[node name="PanelQuiz2" parent="MarginContainer/GridContainer" instance=ExtResource("1_mg0mn")]
 visible = false
 layout_mode = 2

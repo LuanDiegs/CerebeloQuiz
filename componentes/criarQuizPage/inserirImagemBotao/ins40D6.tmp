@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://np05ym5cpyik"]
+
+[ext_resource type="Script" path="res://componentes/criarQuizPage/inserirImagemBotao/inserirImagemBotao_botao.gd" id="1_ip04y"]
+
+[sub_resource type="Theme" id="Theme_5wdns"]
+
+[node name="InserirImagem" type="TextureRect"]
+custom_minimum_size = Vector2(320, 180)
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 3.6
+anchor_right = 8.95
+anchor_bottom = 8.1
+theme = SubResource("Theme_5wdns")
+expand_mode = 3
+script = ExtResource("1_ip04y")
+metadata/_edit_use_anchors_ = true
+
+[node name="AbrirArquivosBotao" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Arquivos" type="FileDialog" parent="."]
+title = "Selecionar uma imagem"
+initial_position = 2
+size = Vector2i(600, 450)
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+cancel_button_text = "Cancelar"
+file_mode = 0
+access = 2
+root_subfolder = "C:/"
+use_native_dialog = true
+
+[connection signal="file_selected" from="Arquivos" to="." method="selecionarArquivo"]

@@ -22,7 +22,7 @@ func verificaSePrecisaCriarTabelas():
 	if (banco.query_result.size() == 0):
 		var sqlArquivo = "res://bancoDeDados/sql.sql"
 		var arquivo = FileAccess.open(sqlArquivo, FileAccess.READ)
-		var bytes = arquivo.get_file_as_bytes(arquivo.get_path())
+		var bytes = FileAccess.get_file_as_bytes(arquivo.get_path())
 		var sql = bytes.get_string_from_utf8().strip_edges(true)
 		
 		#Por algum motivo da erro de codificação ao inserir os motivos da denuncia, os caracteres

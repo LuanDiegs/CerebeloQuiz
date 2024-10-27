@@ -12,6 +12,8 @@ const perguntaQuizCardComponente = preload("res://componentes/containerPerguntaC
 @onready var tituloQuiz := $FormularioInicial/TituloQuiz
 @onready var botaoToggleIsPrivado := $FormularioInicial/BotaoToggle as BotaoToggle
 @onready var classificacaoIndicativa := $FormularioInicial/ClassificacaoIndicativa as OptionButton
+@onready var imagemDoQuizBotao = $"FormularioInicial/InputInserirImagem/InserirImagem"
+
 var thread: Thread
 
 #Propriedades para abrir o modal de inserção
@@ -56,6 +58,9 @@ func preencheDadosDoQuizSalvo():
 	#Perguntas
 	criarPerguntasSalvas()
 	
+	#Imagem
+	inserirImagemSalva()
+
 
 func criarPerguntasSalvas():
 	var perguntas = quizSalvo.perguntas
@@ -75,30 +80,49 @@ func criarPerguntasSalvas():
 		#Alternativas
 		perguntaCard.alternativasConteudoSalvas = pergunta.alternativas
 		_perguntasContainer.add_child(perguntaCard)
+	
+		
+func inserirImagemSalva():
+	var diretorioImagens = ConstantesPadroes.DIRETORIO_IMAGEMS_QUIZZES + str(SessaoUsuario.usuarioLogado.idUsuario) + "/" + str(idRegistroEdicao)
+	if DirAccess.dir_exists_absolute(diretorioImagens):
+		var arquivosNoDiretorio = DirAccess.get_files_at(diretorioImagens)
+		var arrayArquivos = Array(arquivosNoDiretorio)
+
+		if arrayArquivos.size() > 0:
+			var arquivoCaminho = diretorioImagens + "/" + arrayArquivos[0]
+			var image = Image.new()
+			var texture = ImageTexture.new()	
+			image.load(ProjectSettings.globalize_path(arquivoCaminho))
+			texture.set_image(image)
+			imagemDoQuizBotao.texture = texture
 		
 
 func salvarQuiz() -> void:
 	if (validaFormulario()):
 		var quiz = Quizzes.new().instanciaEntidade(tituloQuiz.text, botaoToggleIsPrivado.obterValorSelecionado(), classificacaoIndicativa.get_selected_id(), SessaoUsuario.usuarioLogado.idUsuario)
 		var perguntas = _perguntasContainer.get_children() as Array[ContainerPerguntaQuiz]
+		var imagemExtensao = imagemDoQuizBotao.extensaoDaImagem
+		var imagem = imagemDoQuizBotao.imagemDoQuiz
 		
 		popUpSalvando = PopUp.criaPopupNotificacao("Salvando seu quiz...", "", "Salvando...", true) as PopUpNotificacao
-		thread.start(salvarQuizAlgoritmo.bind(quiz, perguntas))
+		thread.start(salvarQuizAlgoritmo.bind(quiz, perguntas, imagemExtensao, imagem))
 		
 
-func salvarQuizAlgoritmo(quiz, perguntas):
+func salvarQuizAlgoritmo(quiz, perguntas, imagemExtensao, imagem):
 	var erroAoInserir = false
 	
 	#Insercao ou edição do quiz, retornando o id criado
 	var responseQuiz
 	if (idRegistroEdicao == 0):
-		responseQuiz = Quizzes.new().inserirQuiz(quiz, perguntas)
+		responseQuiz = Quizzes.new().inserirQuiz(quiz, perguntas, imagemExtensao, imagem)
 	else:
 		responseQuiz = Quizzes.new().editarInserirQuiz(
 			idRegistroEdicao,
 			quiz,
 			perguntasDoBancoQuiz,
-			perguntas)
+			perguntas,
+			imagemExtensao,
+			imagem)
 		
 	if (!responseQuiz):
 		erroAoInserir = true
