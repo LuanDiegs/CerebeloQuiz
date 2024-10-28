@@ -35,9 +35,10 @@ func inserirQuiz(quiz, perguntas, imagemExtensao, imagemDoQuiz):
 		if (!banco.insert_rows(EntidadeConstantes.AlternativasTabela, alternativasAInserir)):
 			return false
 			
-		if !salvarImagemQuiz(imagemDoQuiz, imagemExtensao, idQuizInserido):
-			return false
-		#Salvar imagem
+		
+	#Salvar imagem
+	if !salvarImagemQuiz(imagemDoQuiz, imagemExtensao, idQuizInserido):
+		return false
 		
 	return true
 
@@ -68,7 +69,8 @@ func salvarImagemQuiz(imagem, extensaoImagem, idQuiz):
 
 	arquivo.store_buffer(bytes)
 	arquivo.close()
-
+	
+	return true
 
 func editarInserirQuiz(
 	idRegistroEdicao: int,
