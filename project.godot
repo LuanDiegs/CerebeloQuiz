@@ -15,7 +15,7 @@ config/version="0.9"
 config/tags=PackedStringArray("tg")
 run/main_scene="res://cenas/quizzesPopulares/quizzesPopulares.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -53,6 +53,8 @@ alternativasResposta=""
 abrirFechar="Botão do tipo MenuButton, utilizado para controlar o Collapsible"
 placarMinimalistaIntegracaoTwitch="placar lateral da integração com a twitch"
 itemPontuacaoRanking="Item da pontuação do ranking"
+comentarioPerguntaPainel=""
+comentarioCardPergunta=""
 
 [input]
 
@@ -66,3 +68,4 @@ CliqueDireito={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

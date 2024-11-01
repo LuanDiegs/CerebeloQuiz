@@ -72,9 +72,9 @@ layout_mode = 0
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.195313
-anchor_top = -0.0402778
+anchor_top = -0.0458333
 anchor_right = 0.999219
-anchor_bottom = 0.995833
+anchor_bottom = 1.00139
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginQuizzes" type="MarginContainer" parent="ScrollQuizzes"]
@@ -87,11 +87,15 @@ theme_override_constants/margin_right = 35
 theme_override_constants/margin_bottom = 20
 metadata/_edit_use_anchors_ = true
 
-[node name="QuizzesContainer" type="HBoxContainer" parent="ScrollQuizzes/MarginQuizzes"]
+[node name="ContainerItens" type="VBoxContainer" parent="ScrollQuizzes/MarginQuizzes"]
 layout_mode = 2
+
+[node name="QuizzesContainer" type="HBoxContainer" parent="ScrollQuizzes/MarginQuizzes/ContainerItens"]
+layout_mode = 2
+size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="RetrocederPerguntaBotao" type="Button" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer"]
+[node name="RetrocederPerguntaBotao" type="Button" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer"]
 z_index = 1
 custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
@@ -100,19 +104,19 @@ size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 text = "<-"
 
-[node name="QuizRespostaMargin" type="MarginContainer" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer"]
+[node name="QuizRespostaMargin" type="MarginContainer" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_bottom = 10
 
-[node name="QuizContainer" type="VBoxContainer" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin"]
+[node name="QuizContainer" type="VBoxContainer" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/QuizRespostaMargin"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TempoPercorridoLabel" type="Label" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer"]
+[node name="TempoPercorridoLabel" type="Label" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/QuizRespostaMargin/QuizContainer"]
 custom_minimum_size = Vector2(175, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -121,15 +125,15 @@ text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Espaco" type="Label" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer"]
+[node name="Espaco" type="Label" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/QuizRespostaMargin/QuizContainer"]
 layout_mode = 2
 
-[node name="Separador" type="HSeparator" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer"]
+[node name="Separador" type="HSeparator" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/QuizRespostaMargin/QuizContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 theme_override_styles/separator = SubResource("StyleBoxEmpty_bt0v7")
 
-[node name="Salvar" type="Button" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer"]
+[node name="Salvar" type="Button" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/QuizRespostaMargin/QuizContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -142,7 +146,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_l3n58")
 text = "Terminar de responder"
 metadata/_edit_use_anchors_ = true
 
-[node name="AvancarPerguntaBotao" type="Button" parent="ScrollQuizzes/MarginQuizzes/QuizzesContainer"]
+[node name="AvancarPerguntaBotao" type="Button" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer"]
 z_index = 1
 custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
@@ -150,6 +154,16 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 text = "->"
+
+[node name="PerguntasMarginMargin" type="MarginContainer" parent="ScrollQuizzes/MarginQuizzes/ContainerItens"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 90
+
+[node name="ComentáriosContainer" type="VBoxContainer" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/PerguntasMarginMargin"]
+layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="TempoPercorrido" type="Timer" parent="."]
 autostart = true

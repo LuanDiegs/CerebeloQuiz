@@ -6,27 +6,32 @@ class_name ResponderQuiz
 
 #Timer
 @onready var _tempoPercorrido: Timer = $TempoPercorrido
-@onready var _tempoPercorridoLabel: Label = $ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer/TempoPercorridoLabel
+@onready var _tempoPercorridoLabel: Label = $ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/QuizRespostaMargin/QuizContainer/TempoPercorridoLabel
 var _segundosPercorridos: int = 0
 var _minutosPercorridos: int = 0
 
 #Botoes avançar e retroceder pergunta
-@onready var _retrocederPerguntaBotao: Button = $ScrollQuizzes/MarginQuizzes/QuizzesContainer/RetrocederPerguntaBotao
-@onready var _avancarPerguntaBotao: Button = $ScrollQuizzes/MarginQuizzes/QuizzesContainer/AvancarPerguntaBotao
+@onready var _retrocederPerguntaBotao: Button = $ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/RetrocederPerguntaBotao
+@onready var _avancarPerguntaBotao: Button = $ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/AvancarPerguntaBotao
 var _insercaoPerguntaTerminou := true
 
 #Container quiz
-@onready var _quizContainer: VBoxContainer = $ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer
+@onready var _quizContainer: VBoxContainer = $ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/QuizRespostaMargin/QuizContainer
 var _quizCard: EscolhaAlternativaQuiz = null
 
 #Quiz
 @export var quizId: int = 0
+@onready var _separadorQuiz = $ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/QuizRespostaMargin/QuizContainer/Separador
 var perguntas: Array
 var perguntasCardsComponentes: Array[EscolhaAlternativaQuiz]
 var indexPerguntaAtual := 0
 
 #Salvamento
-@onready var _salvar: Button = $ScrollQuizzes/MarginQuizzes/QuizzesContainer/QuizRespostaMargin/QuizContainer/Salvar
+@onready var _salvar: Button = $ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/QuizRespostaMargin/QuizContainer/Salvar
+@onready var _separador = $ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/QuizRespostaMargin/QuizContainer/Separador
+
+#Comentáriois
+@onready var _comentariosContainer = $"ScrollQuizzes/MarginQuizzes/ContainerItens/PerguntasMarginMargin/ComentáriosContainer"
 
 func _process(delta):
 	#Verifica se os botões de avançar e retroceder ficarão desabilitados
@@ -56,8 +61,7 @@ func _ready() -> void:
 	
 	#Insere a primeira pergunta
 	_quizContainer.add_child(perguntasCardsComponentes[indexPerguntaAtual])
-	_quizContainer.move_child(perguntasCardsComponentes[indexPerguntaAtual], 
-		perguntasCardsComponentes[indexPerguntaAtual].get_index() - 2)
+	_quizContainer.move_child(perguntasCardsComponentes[indexPerguntaAtual], _separador.get_index())
 	_quizCard = perguntasCardsComponentes[indexPerguntaAtual]
 	
 	for index in perguntasCardsComponentes.size():
@@ -118,8 +122,13 @@ func animaEntradaSaida(isProximaPergunta: bool = true):
 	_insercaoPerguntaTerminou = true
 	self.remove_child(perguntaCard)
 	_quizContainer.add_child(perguntaCard)
-	_quizContainer.move_child(perguntaCard, 
-		perguntaCard.get_index() - 2)
+	_quizContainer.move_child(perguntaCard, _separadorQuiz.get_index())
+	
+	#Altera o id da pergunta a inserir o comentário
+	_alteraPerguntaDoComentario()
+	
+	#Altera os comentarios da pergunta
+	_atualizarComentariosDaPergunta()
 
 
 func aumentaTimer():
@@ -206,6 +215,10 @@ func finalizaQuiz():
 	_salvar.visible = false
 	exibeRespostasCorretas()
 	
+	if(SessaoUsuario.isLogada):
+		_inserePainelParaComentar()
+		_insereComentariosDaPergunta()
+
 
 func exibeRespostasCorretas():
 	for pergunta in perguntasCardsComponentes:
@@ -225,5 +238,39 @@ func notificaPontuacao(acertos: int, pontuacao: int = -1):
 			"Ver ranking", 
 			func(): PopUp.criaPopupRankingQuiz(quizId)))
 
+
+func _inserePainelParaComentar():
+	var componente = preload("res://cenas/responderQuiz/inserirComentaro/inserirComentario.tscn").instantiate()
 	
+	_comentariosContainer.add_child(componente)
+	componente.connect("inseriuComentario", _atualizarComentariosDaPergunta)
+	componente.definePerguntaId(perguntasCardsComponentes[indexPerguntaAtual].perguntaId)
+
+
+func _insereComentariosDaPergunta():
+	var comentarios = Comentario.new().getComentariosDaPergunta(perguntasCardsComponentes[indexPerguntaAtual].perguntaId)
+	for comentario in comentarios:
+		var componente = preload("res://cenas/responderQuiz/comentario/comentarioCard.tscn").instantiate()
+		
+		_comentariosContainer.add_child(componente)
+		componente.inserirInformacoesDoComentario(
+			comentario.nome, 
+			comentario.comentarioDescricao, 
+			comentario.quantidadeCurtidas, 
+			comentario.quantidadeDescurtidas)
+
+
+func _atualizarComentariosDaPergunta():
+	if _salvar.visible == false:
+		for componente in _comentariosContainer.get_children():
+			if componente.is_in_group("comentarioCardPergunta"):
+				_comentariosContainer.remove_child(componente)
 	
+		_insereComentariosDaPergunta()
+
+
+func _alteraPerguntaDoComentario():
+	for componente in _comentariosContainer.get_children():
+		if componente.is_in_group("comentarioPerguntaPainel"):
+			componente = componente as InserirComentarioPainel
+			componente.definePerguntaId(perguntasCardsComponentes[indexPerguntaAtual].perguntaId)

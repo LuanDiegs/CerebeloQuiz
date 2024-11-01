@@ -27,6 +27,7 @@ func _criaQuizzes():
 			#Coloca as propriedades
 			cardComponente.quizId = quiz.quizId
 			cardComponente.tituloDoQuiz = quiz.titulo
+			cardComponente.isDesativado = quiz.isDesativado
 			
 			#Insere o card do quiz
 			_meusQuizzesContainer.add_child(cardComponente)

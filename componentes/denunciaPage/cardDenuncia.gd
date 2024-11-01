@@ -9,14 +9,22 @@ class_name CardDenuncia
 
 var _quizTitulo: String = ""
 var _quizId: int = 0
+var _usuarioDoQuizId: int = 0
 
+signal precisaAtualizarGrid
 
 func _ready():
 	_verJustificativasBotao.connect("pressed", abrirPopUpJustificativas)
 
 
-func insereInformacoesPrincipais(quizId: int, nomeDoQuiz: String, quantidadeDenuncias: int, motivos: Array):
+func insereInformacoesPrincipais(
+	quizId: int, 
+	usuarioQuizId: int,
+	nomeDoQuiz: String, 
+	quantidadeDenuncias: int, 
+	motivos: Array):
 	_quizId = quizId
+	_usuarioDoQuizId = usuarioQuizId
 	_quizTitulo = nomeDoQuiz
 	_nomeDoQuizLabel.text = _quizTitulo
 	
@@ -44,4 +52,5 @@ func inserePorcentagemMotivosDenuncias(motivos: Array):
 
 
 func abrirPopUpJustificativas():
-	PopUp.criaPopupDenunciaModerador(_quizId, _quizTitulo)
+	var popup = PopUp.criaPopupDenunciaModerador(_quizId, _usuarioDoQuizId, _quizTitulo)
+	popup.connect("precisaAtualizarGrid", func(): precisaAtualizarGrid.emit())

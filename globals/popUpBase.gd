@@ -86,7 +86,7 @@ func criaPopupDenunciaQuiz(quizId: int, quizTitulo: String) -> void:
 	componente.animaEntrada()
 
 
-func criaPopupDenunciaModerador(quizId: int, quizTitulo: String) -> void:
+func criaPopupDenunciaModerador(quizId: int, usuarioQuizId: int, quizTitulo: String) -> PopUpDenunciaModerador:
 	var componente = preload("res://componentes/popUps/popUpDenunciaModerador/popUpDenunciaModerador.tscn").instantiate()
 	
 	#Cria o componente na tela
@@ -94,7 +94,9 @@ func criaPopupDenunciaModerador(quizId: int, quizTitulo: String) -> void:
 	
 	#Anima a entrada do componente
 	componente.animaEntrada()
-	componente.insereInformacoesPrincipais(quizTitulo, quizId)
+	componente.insereInformacoesPrincipais(quizTitulo, quizId, usuarioQuizId)
+	
+	return componente
 
 
 func animaEntradaPadrao():

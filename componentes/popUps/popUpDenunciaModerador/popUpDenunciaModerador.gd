@@ -8,15 +8,23 @@ class_name PopUpDenunciaModerador
 
 @onready var _justificativasContainer = $PopUp/MarginJustificativas/VboxContainer/JustificativasScroll/JustificativasContainer
 
+@onready var _desativarQuizBotao = $PopUp/MarginJustificativas/VboxContainer/Botoes/DesativarQuiz
+@onready var _desativarUsuarioBotao = $PopUp/MarginJustificativas/VboxContainer/Botoes/DesativarUsuario
+
 var _quizId: int
+var _usuarioQuizId: int
+signal precisaAtualizarGrid
 
 func _ready() -> void:
 	_fecharSuperior.connect("pressed", fechaPopup)
-	
-	
-func insereInformacoesPrincipais(quizTitulo: String, quizId: int):
+	_desativarQuizBotao.connect("pressed", _desativarQuiz)
+	_desativarUsuarioBotao.connect("pressed", _desativarUsuario)
+
+
+func insereInformacoesPrincipais(quizTitulo: String, quizId: int, usuarioQuizId: int):
 	_tituloQuizLabel.text = quizTitulo
 	_quizId = quizId
+	_usuarioQuizId = usuarioQuizId
 	criaCardsJustificativas()
 	
 
@@ -53,3 +61,37 @@ func fechaPopup():
 func _on_gui_input(event: InputEvent) -> void:
 	if(event.is_action_pressed("CliqueDireito")):
 		fechaPopup()
+
+
+func _desativarQuiz():
+	var popUp = PopUp.criaPopupConfirmacao(
+		"Certeza que deseja desativar o quiz?", 
+		"Atenção", 
+		"Não", 
+		Utils.criaBotaoAdicional("Sim", _desativarQuizAlgoritmo))
+
+
+func _desativarQuizAlgoritmo():
+	var response = Quizzes.new().desativarQuiz(_quizId)
+	
+	if response:
+		PopUp.criaPopupNotificacao("Quiz desativado com sucesso!")
+		fechaPopup()
+		precisaAtualizarGrid.emit()
+
+
+func _desativarUsuario():
+	var popUp = PopUp.criaPopupConfirmacao(
+		"Certeza que deseja desativar o usuário?", 
+		"Atenção", 
+		"Não", 
+		Utils.criaBotaoAdicional("Sim", _desativarUsuarioAlgoritmo))
+
+
+func _desativarUsuarioAlgoritmo():
+	var response = Usuarios.new().desativarUsuario(_usuarioQuizId)
+	
+	if response:
+		PopUp.criaPopupNotificacao("Usuário desativado com sucesso!")
+		fechaPopup()
+		precisaAtualizarGrid.emit()

@@ -6,15 +6,17 @@ CREATE TABLE usuarios (
 	dataNascimento TEXT NOT NULL CHECK(dataNascimento != ''),
 	telefone INTEGER CHECK(telefone == NULL OR typeof(telefone) = 'integer'),
 	isDesativado INTEGER DEFAULT 0 CHECK(typeof(isDesativado) = 'integer' AND isDesativado IN (1, 0)),
+	isModerador INTEGER DEFAULT 0 CHECK(typeof(isModerador) = 'integer' AND isModerador IN (1, 0)),
 	PRIMARY KEY(usuarioId AUTOINCREMENT)
 );
 
 CREATE TABLE quizzes (
 	quizId INTEGER NOT NULL,
 	titulo TEXT NOT NULL CHECK(titulo != ''),
-	isPrivado	INTEGER NOT NULL CHECK(typeof(isPrivado) = 'integer' AND isPrivado IN (1, 0)),
+	isPrivado INTEGER NOT NULL CHECK(typeof(isPrivado) = 'integer' AND isPrivado IN (1, 0)),
+	isDesativado INTEGER DEFAULT 0 NOT NULL CHECK(typeof(isDesativado) = 'integer' AND isDesativado IN (1, 0)),
 	classificacaoIndicativa INTEGER NOT NULL CHECK(typeof(classificacaoIndicativa) = 'integer' AND classificacaoIndicativa IN (1, 2)),
-	usuarioId	INTEGER NOT NULL,
+	usuarioId INTEGER NOT NULL,
 	PRIMARY KEY(quizId AUTOINCREMENT),
 	CONSTRAINT usuarioFk
 		FOREIGN KEY (usuarioId)
@@ -141,23 +143,26 @@ CREATE TABLE motivosDenuncia(
 CREATE TABLE comentarios(
 	comentarioId INTEGER NOT NULL,
 	comentarioDescricao TEXT NOT NULL CHECK(comentarioDescricao != ''),
-	quizId INTEGER NOT NULL,
+	quantidadeCurtidas INTEGER DEFAULT 0,
+	quantidadeDescurtidas INTEGER DEFAULT 0,
+	isFixado INTEGER DEFAULT 0,
+	perguntaId INTEGER NOT NULL,
 	usuarioId INTEGER NOT NULL,
 	PRIMARY KEY(comentarioId AUTOINCREMENT)
-	CONSTRAINT quizFk
-		FOREIGN KEY (quizId)
-		REFERENCES quizzes(quizId)
+	CONSTRAINT perguntaFk
+		FOREIGN KEY (perguntaId)
+		REFERENCES perguntas(perguntaId)
 	CONSTRAINT usuarioFk
 		FOREIGN KEY (usuarioId)
 		REFERENCES usuarios(usuarioId)
 );
 
-CREATE INDEX comentariosQuizIdIdx
-ON comentarios (quizId);
+CREATE INDEX comentariosPerguntaIdIdx
+ON comentarios (perguntaId);
 
 CREATE INDEX comentariosUsuarioIdIdx
 ON comentarios (usuarioId);
 
 -- Insercao dos itens
-INSERT INTO usuarios(nome, email, senha, dataNascimento, telefone, isDesativado) 
-	VALUES ('dev', 'dev@dev', '123', '2000-01-01', 999999999, 0);	
+INSERT INTO usuarios(nome, email, senha, dataNascimento, telefone, isDesativado, isModerador) 
+	VALUES ('dev', 'dev@dev', '123', '2000-01-01', 999999999, 0, 1);	

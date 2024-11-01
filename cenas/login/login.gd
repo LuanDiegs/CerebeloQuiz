@@ -15,8 +15,14 @@ func realizarLogin():
 		var banco = BD.banco as SQLite
 		var response = Usuarios.new().verificarLogin(email.text, senha.text)
 
-		if(response):
-			SessaoUsuario.sessaoAtivada(response)
+		if response:
+			if response.isDesativado:
+				PopUp.criaPopupNotificacao(
+					"Sua conta foi desativada por um moderador.\nCaso tenha sido um engano contate a gente.", 
+					"", 
+					"Ixe...")
+				return
+			SessaoUsuario.sessaoAtivada(response.usuarioId)
 			TransicaoCena.trocar_cena(TransicaoCena.telaQuizzesPopulares)
 		else:
 			var popUpNotificacao = preload("res://componentes/popUps/popUpNotificacao/popUpNotificacao.tscn").instantiate()

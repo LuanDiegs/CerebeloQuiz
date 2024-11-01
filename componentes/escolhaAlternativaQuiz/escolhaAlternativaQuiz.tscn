@@ -44,6 +44,7 @@ script = ExtResource("1_0j1lq")
 metadata/_edit_use_anchors_ = true
 
 [node name="QuizEAlternativas" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 
 [node name="QuizTexto" type="PanelContainer" parent="QuizEAlternativas"]

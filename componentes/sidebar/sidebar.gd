@@ -27,7 +27,7 @@ func verificaSessao():
 		_criarQuizBotao.visible = true
 		_iconBotaoCriarQuiz.visible = true
 		
-		_perfilBotao.redirecionarPara = "res://cenas/denuncias/denuncias.tscn"
+		_perfilBotao.redirecionarPara = "res://cenas/denuncias/denuncias.tscn" if SessaoUsuario.usuarioLogado.isModerador else ""
 		_meusQuizesBotao.redirecionarPara = "res://cenas/meusQuizzes/meusQuizzes.tscn"
 	else:
 		_perfilBotao.text = "CRIAR CONTA!"

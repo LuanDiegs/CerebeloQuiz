@@ -28,10 +28,11 @@ func salvarDenuncia(denuncia: Dictionary, idsDosMotivos: Array):
 
 func getDenunciasFormatadas() -> Dictionary:
 	var banco = BD.banco as SQLite
-	var sql = "SELECT count(*) as quantidade, q.titulo, q.quizId, d.denunciaId, md.descricao FROM " + EntidadeConstantes.DenunciaMotivosTabela + " dm 
+	var sql = "SELECT count(*) as quantidade, q.titulo, q.quizId, d.denunciaId, md.descricao, q.usuarioId FROM " + EntidadeConstantes.DenunciaMotivosTabela + " dm 
 		INNER JOIN " + EntidadeConstantes.DenunciasTabela + " d ON dm.denunciaId = d.denunciaId 
 		INNER JOIN " + EntidadeConstantes.MotivosDenunciaTabela + " md ON dm.motivoId = md.motivosDenunciaId
 		INNER JOIN " + EntidadeConstantes.QuizzesTabela + " q ON q.quizId = d.quizId
+		WHERE q.isDesativado = 0
 		GROUP BY md.motivosDenunciaId, d.quizId
 		ORDER BY quantidade DESC"
 		
@@ -45,7 +46,8 @@ func getDenunciasFormatadas() -> Dictionary:
 					{ 
 						"quizTitulo": denuncia.titulo, 
 						"motivos": [{denuncia.descricao: denuncia.quantidade}],
-						"quantidadeDenuncias": getNumeroDasDenunciasDeUmQuiz(denuncia.quizId)
+						"quantidadeDenuncias": getNumeroDasDenunciasDeUmQuiz(denuncia.quizId),
+						"usuarioId": denuncia.usuarioId
 					})
 			else:
 				var motivos: Array = denunciasAgrupadas.get(denuncia.quizId).motivos

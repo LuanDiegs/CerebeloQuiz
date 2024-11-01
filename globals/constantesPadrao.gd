@@ -8,4 +8,4 @@ var MINIMO_ALTERNATIVA_PERGUNTA = 2
 var NOME_TELA_RESPONDER_QUIZ = "ResponderQuiz"
 var NOME_TELA_CRIAR_EDITAR_QUIZ = "CriarQuiz"
 
-var DIRETORIO_IMAGEMS_QUIZZES = "user://data/imagensQuizzes/"
+var DIRETORIO_IMAGEMS_QUIZZES = OS.get_user_data_dir() + "/data/imagensQuizzes/"

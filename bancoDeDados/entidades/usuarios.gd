@@ -11,6 +11,7 @@ var isDesativado: bool
 var dataDeNascimento: String
 var idade: int
 var isMaiorDeIdade: bool
+var isModerador: bool
 
 func instanciaEntidade(nome: String, email: String, senha: String, dataNascimento: String, telefone: String):
 	self.propriedades = {
@@ -27,16 +28,16 @@ func instanciaEntidade(nome: String, email: String, senha: String, dataNasciment
 	
 func verificarLogin(email: String, senha: String):
 	var banco = BD.banco as SQLite
-	var query = "SELECT usuarioId FROM " + EntidadeConstantes.UsuarioTabela + " WHERE email=? AND senha=?"
+	var query = "SELECT * FROM " + EntidadeConstantes.UsuarioTabela + " WHERE email=? AND senha=?"
 	var parametros = [email, senha]
 	
 	banco.query_with_bindings(query, parametros)
 	
-	var usuarioId
+	var usuario
 	if(banco.query_result): 
-		usuarioId = banco.query_result[0].usuarioId
+		usuario = banco.query_result[0]
 
-	return usuarioId
+	return usuario
 
 
 func getUsuario(usuarioId) -> Usuarios:
@@ -63,7 +64,8 @@ func _criaEntidade(dados: Dictionary) -> Usuarios:
 	entidade.dataDeNascimento = dados.get("dataNascimento")
 	entidade.idade = dados.get("idade")
 	entidade.isMaiorDeIdade = true if entidade.idade >= 18 else false
-
+	entidade.isModerador = dados.get("isModerador")
+	
 	return entidade
 
 
@@ -78,6 +80,7 @@ func existeUsuarioComEmail(email: String):
 	
 	return false
 
+
 func existeUsuarioComNome(usuario: String):
 	var banco = BD.banco as SQLite
 	var query = "SELECT * FROM " + EntidadeConstantes.UsuarioTabela + " WHERE nome=?"
@@ -88,3 +91,11 @@ func existeUsuarioComNome(usuario: String):
 		return true
 	
 	return false
+
+
+func desativarUsuario(usuarioId: int):
+	var banco = BD.banco as SQLite
+	var dictionaryUpdate = {"isDesativado": true}
+	var condicao = "usuarioId = " + str(usuarioId)
+	
+	return banco.update_rows(EntidadeConstantes.UsuarioTabela, condicao, dictionaryUpdate)

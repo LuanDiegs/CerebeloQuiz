@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://unde2lvowa5h"]
+[gd_scene load_steps=17 format=3 uid="uid://unde2lvowa5h"]
 
 [ext_resource type="Script" path="res://componentes/cardMeusQuizzes/cardMeusQuizzes.gd" id="1_ebr11"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_yhce4"]
@@ -40,6 +40,9 @@ Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 22
 Label/fonts/font = ExtResource("1_yhce4")
 Label/styles/normal = SubResource("StyleBoxFlat_1d1fn")
+
+[sub_resource type="FontVariation" id="FontVariation_nfj1w"]
+base_font = ExtResource("1_yhce4")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wm5s"]
 
@@ -114,15 +117,33 @@ texture = ExtResource("2_wlcv3")
 expand_mode = 2
 stretch_mode = 6
 
-[node name="TituloQuiz" type="Label" parent="MarginDentroDoPanel/Elementos"]
-custom_minimum_size = Vector2(300, 90)
+[node name="ContainerTextos" type="VBoxContainer" parent="MarginDentroDoPanel/Elementos"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+
+[node name="TituloQuiz" type="Label" parent="MarginDentroDoPanel/Elementos/ContainerTextos"]
+custom_minimum_size = Vector2(300, 65)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = SubResource("Theme_g6774")
 text = "[TITULO DO QUIZ]aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Aviso" type="Label" parent="MarginDentroDoPanel/Elementos/ContainerTextos"]
+visible = false
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.43, 0.0645, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_nfj1w")
+theme_override_font_sizes/font_size = 12
+text = "*Este quiz foi desativado pela moderação por violar nossas políticas."
+horizontal_alignment = 1
 autowrap_mode = 1
 clip_text = true
 text_overrun_behavior = 3

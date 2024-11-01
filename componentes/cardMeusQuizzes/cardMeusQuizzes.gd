@@ -3,9 +3,11 @@ class_name CardMeusQuizzes
 
 var quizId := 0
 var tituloDoQuiz := ""
+var isDesativado := false
 
 #Propriedades
-@onready var _tituloQuiz = $MarginDentroDoPanel/Elementos/TituloQuiz
+@onready var _tituloQuiz = $MarginDentroDoPanel/Elementos/ContainerTextos/TituloQuiz
+@onready var _avisoLabel = $MarginDentroDoPanel/Elementos/ContainerTextos/Aviso
 
 #Botões
 @onready var _editarBotao = $MarginDentroDoPanel/Elementos/BotoesContainer/Editar
@@ -19,6 +21,7 @@ func _ready():
 	_editarBotao.connect("pressed", _editarQuiz)
 	_deletarBotao.connect("pressed", _deletarQuiz)
 	_tituloQuiz.text = tituloDoQuiz
+	_avisoLabel.visible = isDesativado
 	_insereImagemQuiz()
 
 

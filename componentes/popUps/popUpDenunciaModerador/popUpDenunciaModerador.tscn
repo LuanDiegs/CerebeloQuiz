@@ -131,7 +131,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_qldka")
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Button" type="Button" parent="PopUp/MarginJustificativas/VboxContainer/Botoes"]
+[node name="DesativarQuiz" type="Button" parent="PopUp/MarginJustificativas/VboxContainer/Botoes"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -139,13 +139,13 @@ mouse_default_cursor_shape = 2
 theme = SubResource("Theme_3s7ks")
 text = "Desativar quiz"
 
-[node name="Button2" type="Button" parent="PopUp/MarginJustificativas/VboxContainer/Botoes"]
+[node name="DesativarUsuario" type="Button" parent="PopUp/MarginJustificativas/VboxContainer/Botoes"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_3s7ks")
-text = "Desativar usuário por 7 dias"
+text = "Desativar usuário"
 
 [node name="FecharModal" type="Button" parent="PopUp"]
 custom_minimum_size = Vector2(42, 42)

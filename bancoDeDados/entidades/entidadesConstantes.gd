@@ -10,4 +10,5 @@ var QuizzesFavoritosTabela = "quizzesFavoritos";
 var MotivosDenunciaTabela = "motivosDenuncia";
 var DenunciasTabela = "denuncias";
 var DenunciaMotivosTabela = "denunciaMotivos";
+var ComentariosTabela = "comentarios";
 	
