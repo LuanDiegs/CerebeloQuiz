@@ -10,6 +10,7 @@ var limiteDoContainer = 100
 
 @onready var _botaoApagar = $PanelQuiz/MarginConteudo/Conteudos/BotaoApagar
 @onready var _botaoEditar = $PanelQuiz/MarginConteudo/Conteudos/BotaoEditar
+@onready var _botaoComentarios = $PanelQuiz/MarginConteudo/Conteudos/BotaoComentarios
 @onready var _conteudoLabel: Label = $PanelQuiz/MarginConteudo/Conteudos/Conteudo
 
 var idPergunta = 0
@@ -21,6 +22,7 @@ func _ready() -> void:
 	set_process_input(false)
 	_botaoEditar.connect("pressed", _abrirFormPergunta)
 	_botaoApagar.connect("pressed", _apagarPergunta)
+	_botaoComentarios.connect("pressed", _abrirComentarios)
 
 
 #region InutilPorEnquanto
@@ -63,6 +65,7 @@ func _on_botaoAgarrar_gui_input(event: InputEvent) -> void:
 		nodePego.global_position = self.global_position
 #endregion
 
+
 func _process(delta: float) -> void:
 	_conteudoLabel.text = conteudoPergunta if !conteudoPergunta.is_empty() else "Pergunta sem conteúdo"
 	
@@ -77,3 +80,7 @@ func _apagarPergunta():
 		"Atenção",
 		"Cancelar",
 		{"textoBotao": "Confirmar", "funcaoBotao": func(): self.queue_free()})
+
+
+func _abrirComentarios():
+	var popup = PopUp.criaPopupComentariosPergunta(idPergunta)

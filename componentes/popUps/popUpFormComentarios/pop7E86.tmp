@@ -1,0 +1,210 @@
+[gd_scene load_steps=17 format=3 uid="uid://w3bhkcyonlw6"]
+
+[ext_resource type="Script" path="res://componentes/popUps/popUpFormDenuncia/popUpFormDenuncia.gd" id="1_t2lrs"]
+[ext_resource type="Theme" uid="uid://dvbp11qywc6mv" path="res://componentes/popUps/popUp.tres" id="2_xv6hl"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="3_fgmy0"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="4_5jlax"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mugep"]
+bg_color = Color(0, 0, 0, 0.294118)
+
+[sub_resource type="FontVariation" id="FontVariation_cpg6c"]
+base_font = ExtResource("3_fgmy0")
+spacing_bottom = -5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1eykr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_31d7k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3ios"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wepbu"]
+
+[sub_resource type="FontVariation" id="FontVariation_kls4g"]
+base_font = ExtResource("3_fgmy0")
+spacing_top = -5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yvny2"]
+color = Color(0.227451, 0.258824, 0.521569, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhiel"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.8, 0.8, 0.8, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6gw3"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.85098, 0.85098, 0.85098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evwxl"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_r3h7f"]
+TextEdit/colors/font_color = Color(0.313726, 0.313726, 0.313726, 1)
+TextEdit/colors/font_placeholder_color = Color(0.6, 0.6, 0.6, 1)
+TextEdit/colors/font_selected_color = Color(0.41, 0.41, 0.41, 1)
+TextEdit/font_sizes/font_size = 18
+TextEdit/fonts/font = ExtResource("4_5jlax")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_fhiel")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_t6gw3")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_evwxl")
+
+[node name="PopUpFormDenuncia" type="PanelContainer"]
+z_index = 4096
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 360)
+theme_override_styles/panel = SubResource("StyleBoxFlat_mugep")
+script = ExtResource("1_t2lrs")
+
+[node name="PopUp" type="Panel" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(800, 550)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_xv6hl")
+metadata/_edit_use_anchors_ = true
+
+[node name="ContainerVertical" type="VBoxContainer" parent="PopUp"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(400, 275)
+metadata/_edit_use_anchors_ = true
+
+[node name="Titulo" type="Label" parent="PopUp/ContainerVertical"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_cpg6c")
+theme_override_font_sizes/font_size = 40
+text = "Denunciar quiz"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="FecharModal" type="Button" parent="PopUp/ContainerVertical/Titulo"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.94
+anchor_top = -0.0196078
+anchor_right = 0.995
+anchor_bottom = 0.803922
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_colors/font_pressed_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_colors/font_focus_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_colors/font_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_fonts/font = ExtResource("3_fgmy0")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1eykr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_31d7k")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_b3ios")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wepbu")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1eykr")
+text = "X"
+metadata/_edit_use_anchors_ = true
+
+[node name="NomeDoQuiz" type="Label" parent="PopUp/ContainerVertical"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_fonts/font = SubResource("FontVariation_kls4g")
+theme_override_font_sizes/font_size = 22
+text = "[Nome do quiz]"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Separador" type="HSeparator" parent="PopUp/ContainerVertical"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_yvny2")
+
+[node name="MarginRanking" type="MarginContainer" parent="PopUp/ContainerVertical"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="ItensContainer" type="VBoxContainer" parent="PopUp/ContainerVertical/MarginRanking"]
+layout_mode = 2
+
+[node name="SelecaoMotivos" type="VBoxContainer" parent="PopUp/ContainerVertical/MarginRanking/ItensContainer"]
+layout_mode = 2
+
+[node name="SelecioneTodosQueSeAplicam" type="Label" parent="PopUp/ContainerVertical/MarginRanking/ItensContainer/SelecaoMotivos"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_5jlax")
+theme_override_font_sizes/font_size = 17
+text = "Selecione pelo menos um*"
+
+[node name="Motivos" type="GridContainer" parent="PopUp/ContainerVertical/MarginRanking/ItensContainer/SelecaoMotivos"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 8
+columns = 4
+
+[node name="Justificativa" type="VBoxContainer" parent="PopUp/ContainerVertical/MarginRanking/ItensContainer"]
+layout_mode = 2
+
+[node name="Justificativa" type="Label" parent="PopUp/ContainerVertical/MarginRanking/ItensContainer/Justificativa"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_5jlax")
+theme_override_font_sizes/font_size = 17
+text = "Escreva sua justificativa*"
+
+[node name="JustificativaTexto" type="TextEdit" parent="PopUp/ContainerVertical/MarginRanking/ItensContainer/Justificativa"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme = SubResource("Theme_r3h7f")
+placeholder_text = "Escreva sua justificativa aqui..."
+wrap_mode = 1
+caret_blink = true
+
+[node name="Salvar" type="Button" parent="PopUp/ContainerVertical/MarginRanking/ItensContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 10
+mouse_default_cursor_shape = 2
+text = "Salvar"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

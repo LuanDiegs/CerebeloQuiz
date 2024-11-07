@@ -1,13 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://co2vsk5c4n8ux"]
+[gd_scene load_steps=10 format=3 uid="uid://co2vsk5c4n8ux"]
 
+[ext_resource type="StyleBox" uid="uid://eompj67obq0a" path="res://cenas/responderQuiz/comentario/comentarioCardNormal.tres" id="1_1q1ph"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_4y6xn"]
 [ext_resource type="Script" path="res://cenas/responderQuiz/comentario/comentarioCard.gd" id="1_hc8ui"]
 [ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="2_vovxk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nwxn"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_top = 1
-border_color = Color(0.172549, 0.2, 0.435294, 1)
+[sub_resource type="FontVariation" id="FontVariation_u5e5g"]
+base_font = ExtResource("1_4y6xn")
+spacing_glyph = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5t7k4"]
+bg_color = Color(0.25098, 0.501961, 0.270588, 1)
+border_width_bottom = 5
+border_color = Color(0.25098, 0.501961, 0.270588, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+expand_margin_left = 11.0
+expand_margin_top = 11.0
+expand_margin_right = 11.0
 
 [sub_resource type="FontVariation" id="FontVariation_lfkue"]
 base_font = ExtResource("1_4y6xn")
@@ -32,11 +42,11 @@ content_margin_bottom = 10.0
 
 [node name="Comentario" type="PanelContainer" groups=["comentarioCardPergunta"]]
 anchors_preset = -1
-anchor_right = 0.204688
-anchor_bottom = 0.222222
-offset_right = -262.0
-offset_bottom = -160.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_6nwxn")
+anchor_right = 1.0
+anchor_bottom = 0.226389
+offset_bottom = -3.0
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_1q1ph")
 script = ExtResource("1_hc8ui")
 metadata/_edit_use_anchors_ = true
 
@@ -49,6 +59,17 @@ theme_override_constants/margin_bottom = 10
 
 [node name="ItensDoComentario" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
+
+[node name="FixadoPeloCriador" type="Label" parent="Margin/ItensDoComentario"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_u5e5g")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_5t7k4")
+text = "FIXADO PELO CRIADOR"
+horizontal_alignment = 1
 
 [node name="NomeUsuarioComentario" type="Label" parent="Margin/ItensDoComentario"]
 layout_mode = 2
@@ -65,11 +86,13 @@ layout_mode = 2
 [node name="Curtir" type="Button" parent="Margin/ItensDoComentario/Itens/BotoesCurtir"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 
 [node name="Descurtir" type="Button" parent="Margin/ItensDoComentario/Itens/BotoesCurtir"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 
 [node name="PainelComentario" type="PanelContainer" parent="Margin/ItensDoComentario/Itens"]
 custom_minimum_size = Vector2(0, 100)

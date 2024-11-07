@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=3 uid="uid://b1nnpjy0q3oq4"]
+
+[ext_resource type="Script" path="res://componentes/popUps/popUpFormComentarios/popUpFormComentarios.gd" id="1_r42xg"]
+[ext_resource type="Theme" uid="uid://dvbp11qywc6mv" path="res://componentes/popUps/popUp.tres" id="2_7i1gc"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="3_b5rra"]
+[ext_resource type="PackedScene" uid="uid://dgpfn6q55rr2y" path="res://cenas/meusQuizzes/cardComentarioFormComentario/painelComentarios.tscn" id="4_3am5w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mugep"]
+bg_color = Color(0, 0, 0, 0.294118)
+
+[sub_resource type="FontVariation" id="FontVariation_cpg6c"]
+base_font = ExtResource("3_b5rra")
+spacing_top = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1eykr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_31d7k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3ios"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wepbu"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4l341"]
+color = Color(0.227451, 0.258824, 0.521569, 1)
+thickness = 2
+
+[node name="PopUpFormComentarios" type="PanelContainer"]
+z_index = 4095
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 360)
+theme_override_styles/panel = SubResource("StyleBoxFlat_mugep")
+script = ExtResource("1_r42xg")
+
+[node name="PopUp" type="Panel" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(900, 550)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_7i1gc")
+metadata/_edit_use_anchors_ = true
+
+[node name="ContainerVertical" type="VBoxContainer" parent="PopUp"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(400, 275)
+metadata/_edit_use_anchors_ = true
+
+[node name="Titulo" type="Label" parent="PopUp/ContainerVertical"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_cpg6c")
+theme_override_font_sizes/font_size = 40
+text = "Comentários da pergunta"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="FecharModal" type="Button" parent="PopUp/ContainerVertical/Titulo"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.94375
+anchor_right = 0.99875
+anchor_bottom = 0.82353
+offset_right = -2.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_colors/font_pressed_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_colors/font_focus_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_colors/font_color = Color(0.658824, 0.188235, 0.188235, 1)
+theme_override_fonts/font = ExtResource("3_b5rra")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1eykr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_31d7k")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_b3ios")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wepbu")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1eykr")
+text = "X"
+metadata/_edit_use_anchors_ = true
+
+[node name="Separador" type="HSeparator" parent="PopUp/ContainerVertical"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_4l341")
+
+[node name="ScrollComentarios" type="ScrollContainer" parent="PopUp/ContainerVertical"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginComentarios" type="MarginContainer" parent="PopUp/ContainerVertical/ScrollComentarios"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="GridComentarios" type="VBoxContainer" parent="PopUp/ContainerVertical/ScrollComentarios/MarginComentarios"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PainelComentarios" parent="PopUp/ContainerVertical/ScrollComentarios/MarginComentarios/GridComentarios" instance=ExtResource("4_3am5w")]
+layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

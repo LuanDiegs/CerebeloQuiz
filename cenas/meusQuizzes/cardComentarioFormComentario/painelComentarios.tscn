@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgpfn6q55rr2y"]
+
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_kuf1c"]
+[ext_resource type="Script" path="res://cenas/meusQuizzes/cardComentarioFormComentario/painelComentarios.gd" id="1_t38sh"]
+[ext_resource type="Texture2D" uid="uid://bmdrdwqjx7gm8" path="res://resources/imagens/icons/tachinha.png" id="2_ebuso"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="2_hpt17"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jkgl"]
+bg_color = Color(0.3564, 0.40176, 0.81, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.227451, 0.258824, 0.521569, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="FontVariation" id="FontVariation_x6h8l"]
+base_font = ExtResource("1_kuf1c")
+spacing_bottom = -5
+
+[sub_resource type="FontVariation" id="FontVariation_2ih0h"]
+base_font = ExtResource("1_kuf1c")
+spacing_glyph = 1
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4l341"]
+color = Color(0.227451, 0.258824, 0.521569, 1)
+thickness = 2
+
+[sub_resource type="FontVariation" id="FontVariation_ucjxc"]
+base_font = ExtResource("2_hpt17")
+spacing_top = 5
+
+[node name="PainelComentarios" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.223611
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jkgl")
+script = ExtResource("1_t38sh")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginItens" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ItensComentarios" type="VBoxContainer" parent="MarginItens"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Header" type="HBoxContainer" parent="MarginItens/ItensComentarios"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Fixado" type="TextureRect" parent="MarginItens/ItensComentarios/Header"]
+visible = false
+layout_mode = 2
+texture = ExtResource("2_ebuso")
+expand_mode = 2
+
+[node name="Autor" type="Label" parent="MarginItens/ItensComentarios/Header"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_x6h8l")
+theme_override_font_sizes/font_size = 16
+text = "Escrito por: [Autor]"
+clip_text = true
+
+[node name="FixarComentario" type="Button" parent="MarginItens/ItensComentarios/Header"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_2ih0h")
+theme_override_font_sizes/font_size = 16
+text = "Fixar comentário"
+
+[node name="Separador" type="HSeparator" parent="MarginItens/ItensComentarios"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_4l341")
+
+[node name="Comentario" type="Label" parent="MarginItens/ItensComentarios"]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_ucjxc")
+theme_override_font_sizes/font_size = 16
+text = "[Comentario]"
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3

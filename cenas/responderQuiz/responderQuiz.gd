@@ -254,10 +254,12 @@ func _insereComentariosDaPergunta():
 		
 		_comentariosContainer.add_child(componente)
 		componente.inserirInformacoesDoComentario(
+			comentario.comentarioId,
 			comentario.nome, 
 			comentario.comentarioDescricao, 
 			comentario.quantidadeCurtidas, 
-			comentario.quantidadeDescurtidas)
+			comentario.quantidadeDescurtidas,
+			comentario.isFixado)
 
 
 func _atualizarComentariosDaPergunta():

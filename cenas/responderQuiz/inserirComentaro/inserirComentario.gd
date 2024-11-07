@@ -9,6 +9,7 @@ var _perguntaId = 0
 
 signal inseriuComentario
 
+
 func _ready():
 	_comentarBotao.connect("pressed", _inserirComentario)
 	_nomeUsuarioComentarioLabel.text = SessaoUsuario.usuarioLogado.nomeUsuario

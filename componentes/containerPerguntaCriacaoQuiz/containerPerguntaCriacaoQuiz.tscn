@@ -69,13 +69,26 @@ text = "Teste"
 autowrap_mode = 2
 clip_text = true
 
-[node name="BotaoEditar" type="Button" parent="PanelQuiz/MarginConteudo/Conteudos"]
-custom_minimum_size = Vector2(100, 0)
+[node name="BotaoComentarios" type="Button" parent="PanelQuiz/MarginConteudo/Conteudos"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_agpi1")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lxcy2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6kkuf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6kkuf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5db7")
+text = "Comentarios"
+
+[node name="BotaoEditar" type="Button" parent="PanelQuiz/MarginConteudo/Conteudos"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_agpi1")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lxcy2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6kkuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6kkuf")
@@ -83,12 +96,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_i5db7")
 text = "Editar"
 
 [node name="BotaoApagar" type="Button" parent="PanelQuiz/MarginConteudo/Conteudos"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_agpi1")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6tn3c")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6kkuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6kkuf")

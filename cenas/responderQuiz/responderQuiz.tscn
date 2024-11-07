@@ -163,7 +163,7 @@ theme_override_constants/margin_right = 90
 
 [node name="ComentáriosContainer" type="VBoxContainer" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/PerguntasMarginMargin"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 10
 
 [node name="TempoPercorrido" type="Timer" parent="."]
 autostart = true

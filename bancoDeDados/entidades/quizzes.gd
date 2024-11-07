@@ -43,7 +43,7 @@ func inserirQuiz(quiz, perguntas, imagemExtensao, imagemDoQuiz):
 	return true
 
 func salvarImagemQuiz(imagem, extensaoImagem, idQuiz):
-	print(OS.get_user_data_dir())
+
 	var caminho = OS.get_user_data_dir() + "/data/imagensQuizzes/" + str(SessaoUsuario.usuarioLogado.idUsuario) + "/" + str(idQuiz)
 	var bytes: PackedByteArray
 	

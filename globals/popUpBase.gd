@@ -47,8 +47,7 @@ func criaPopupConfirmacao(
 
 func criaPopupEditFormPergunta(
 	titulo: String = "Atenção",
-	perguntaCard: ContainerPerguntaQuiz = null) -> void:
-		
+	perguntaCard: ContainerPerguntaQuiz = null) -> void:	
 	var componente = preload("res://componentes/popUps/popUpFormPergunta/popUpFormPergunta.tscn").instantiate()
 	
 	#Coloca os parametros
@@ -97,6 +96,22 @@ func criaPopupDenunciaModerador(quizId: int, usuarioQuizId: int, quizTitulo: Str
 	componente.insereInformacoesPrincipais(quizTitulo, quizId, usuarioQuizId)
 	
 	return componente
+
+
+func criaPopupComentariosPergunta(
+	perguntaId: int,
+	titulo: String = "Comentários da pergunta",
+	textoBotaoFechar: String = "Fechar"):
+	var componente = preload("res://componentes/popUps/popUpFormComentarios/popUpFormComentarios.tscn").instantiate()
+	
+	#Coloca os parametros
+	componente.definePropriedadesDoComentario(perguntaId)
+	
+	#Cria o componente na tela
+	get_tree().root.add_child(componente)
+	
+	#Anima a entrada do componente
+	componente.animaEntrada()
 
 
 func animaEntradaPadrao():
