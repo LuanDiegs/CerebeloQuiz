@@ -3,10 +3,6 @@ class_name Alternativas
 
 var propriedades: Dictionary
 
-var conteudoAlternativa
-var isAlternativaCorreta
-var perguntaId
-
 func instanciaEntidade(conteudo: String, isAlternativaCorreta: bool , perguntaId: int):
 	self.propriedades = {
 		"conteudoAlternativa": conteudo,

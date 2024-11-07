@@ -15,7 +15,7 @@ func _ready() -> void:
 	_versaoSoftware.text = "Versão " + ProjectSettings.get_setting("application/config/version")
 
 
-func _process(delta):
+func _process(_delta):
 	verificaSessao()
 
 

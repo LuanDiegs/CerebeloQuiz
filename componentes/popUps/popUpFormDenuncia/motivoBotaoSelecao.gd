@@ -2,9 +2,7 @@ extends Button
 class_name MotivoBotaoSelecao
 
 var motivoId: int
-var motivoDescricao: String
 
-
-func inserePropriedadesDoComponente(motivoId: int, motivoDescricao: String):
-	self.motivoId = motivoId
+func inserePropriedadesDoComponente(motivoSelecaoId: int, motivoDescricao: String):
+	self.motivoId = motivoSelecaoId
 	self.text = motivoDescricao

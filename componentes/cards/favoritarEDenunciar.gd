@@ -6,7 +6,7 @@ class_name FavoritarEDenunciarContainer
 @onready var _tituloLabel = $"../../Titulo"
 
 var _isFavoritado := false
-var quizId := 0
+var _quizId := 0
 var _idQuizFavoritado := 0
 
 const ICON_QUIZ_FAVORITADO = preload("res://resources/imagens/icons/estrela_c_preenchimento.png")
@@ -23,7 +23,7 @@ func _favoritarQuiz():
 		return
 	
 	if !_isFavoritado:
-		var response = Quizzes.new().favoritarQuiz(quizId)
+		var response = Quizzes.new().favoritarQuiz(_quizId)
 		
 		#Retorna o id do quizFavoritado
 		if(response):
@@ -46,7 +46,7 @@ func _favoritarQuiz():
 
 
 func setaQuizFavoritado(quizId):
-	self.quizId = quizId
+	_quizId = quizId
 	
 	var quizFavoritado = Quizzes.new().getQuizFavoritado(quizId)
 	
@@ -83,5 +83,5 @@ func _denunciarQuiz():
 		return
 		
 	var tituloDoQuiz = _tituloLabel.text
-	PopUp.criaPopupDenunciaQuiz(quizId, tituloDoQuiz)
+	PopUp.criaPopupDenunciaQuiz(_quizId, tituloDoQuiz)
 #endregion

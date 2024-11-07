@@ -1,27 +1,27 @@
 extends Control
 class_name MeusQuizzes
 
-var quizzes: Array
+var _quizzes: Array
 
 @onready var _meusQuizzesContainer = $MarginContainer/ItensTela/ScrollContainer/MeusQuizzesContainer
 @onready var _labelMensagemSemQuizzes = $MarginContainer/ItensTela/ScrollContainer/MeusQuizzesContainer/LabelSemQuizzes
 @onready var _headerMeusQuizzes = $MarginContainer/ItensTela/HeaderMeusQuizzes
 
 
-func _process(delta):
-	_labelMensagemSemQuizzes.visible = true if quizzes.size() == 0 else false
+func _process(_delta):
+	_labelMensagemSemQuizzes.visible = true if _quizzes.size() == 0 else false
 
 
 func _ready():
-	quizzes = Quizzes.new().getQuizzesDoUsuario(SessaoUsuario.usuarioLogado.idUsuario)
+	_quizzes = Quizzes.new().getQuizzesDoUsuario(SessaoUsuario.usuarioLogado.idUsuario)
 	_criaQuizzes()
 	
 	_headerMeusQuizzes.connect("filtrarQuizzes", _filtraQuizzes)
 	
 
 func _criaQuizzes():
-	if(quizzes):
-		for quiz in quizzes:
+	if(_quizzes):
+		for quiz in _quizzes:
 			var cardComponente = preload("res://componentes/cardMeusQuizzes/cardMeusQuizzes.tscn").instantiate()
 			
 			#Coloca as propriedades
@@ -40,12 +40,12 @@ func _deletaOsQuizzesNaGrid():
 
 
 func atualizarGridMeusQuizzes():
-	quizzes = Quizzes.new().getQuizzesDoUsuario(SessaoUsuario.usuarioLogado.idUsuario)
+	_quizzes = Quizzes.new().getQuizzesDoUsuario(SessaoUsuario.usuarioLogado.idUsuario)
 	_deletaOsQuizzesNaGrid()
 	_criaQuizzes()
 
 
 func _filtraQuizzes(quizzes):
-	self.quizzes = quizzes
+	_quizzes = quizzes
 	_deletaOsQuizzesNaGrid()
 	_criaQuizzes()

@@ -6,7 +6,7 @@ func _ready():
 	self.connect("pressed", onClick)
 
 
-func _process(delta):
+func _process(_delta):
 	if(SessaoUsuario.isLogada):
 		self.text = "DESLOGAR"
 	else:

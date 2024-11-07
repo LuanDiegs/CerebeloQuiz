@@ -13,7 +13,7 @@ const _temaAlternativaIncorreto = preload("res://componentes/containerAlternativ
 const _temaAlternativaCorreta = preload("res://componentes/containerAlternativaFormQuiz/containerAlternativaCorretaFormQuizTema.tres")
 
 
-func _process(delta):
+func _process(_delta):
 	botaoRemover.visible = get_tree().get_nodes_in_group("alternativa").size() > ConstantesPadroes.MINIMO_ALTERNATIVA_PERGUNTA
 	
 	if(self.get_index() == 0):

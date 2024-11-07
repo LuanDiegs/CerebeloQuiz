@@ -99,9 +99,7 @@ func criaPopupDenunciaModerador(quizId: int, usuarioQuizId: int, quizTitulo: Str
 
 
 func criaPopupComentariosPergunta(
-	perguntaId: int,
-	titulo: String = "Comentários da pergunta",
-	textoBotaoFechar: String = "Fechar"):
+	perguntaId: int):
 	var componente = preload("res://componentes/popUps/popUpFormComentarios/popUpFormComentarios.tscn").instantiate()
 	
 	#Coloca os parametros

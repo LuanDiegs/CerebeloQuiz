@@ -64,7 +64,7 @@ func _on_gui_input(event: InputEvent) -> void:
 
 
 func _desativarQuiz():
-	var popUp = PopUp.criaPopupConfirmacao(
+	PopUp.criaPopupConfirmacao(
 		"Certeza que deseja desativar o quiz?", 
 		"Atenção", 
 		"Não", 
@@ -81,7 +81,7 @@ func _desativarQuizAlgoritmo():
 
 
 func _desativarUsuario():
-	var popUp = PopUp.criaPopupConfirmacao(
+	PopUp.criaPopupConfirmacao(
 		"Certeza que deseja desativar o usuário?", 
 		"Atenção", 
 		"Não", 

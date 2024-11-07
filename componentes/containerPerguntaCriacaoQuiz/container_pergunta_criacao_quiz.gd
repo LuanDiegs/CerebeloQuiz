@@ -66,7 +66,7 @@ func _on_botaoAgarrar_gui_input(event: InputEvent) -> void:
 #endregion
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_conteudoLabel.text = conteudoPergunta if !conteudoPergunta.is_empty() else "Pergunta sem conteúdo"
 	
 
@@ -83,4 +83,4 @@ func _apagarPergunta():
 
 
 func _abrirComentarios():
-	var popup = PopUp.criaPopupComentariosPergunta(idPergunta)
+	PopUp.criaPopupComentariosPergunta(idPergunta)

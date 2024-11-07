@@ -28,7 +28,7 @@ var quizSalvo
 #Salvas
 var perguntasDoBancoQuiz: Dictionary
 
-func _process(delta):
+func _process(_delta):
 	#Verifica se tem alguma pergunta para exibir a mensagem
 	_labelSemPerguntas.visible = true if _perguntasContainer.get_child_count() == 0 else false
 	
