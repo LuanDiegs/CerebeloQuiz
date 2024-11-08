@@ -29,8 +29,11 @@ func verificaSePrecisaCriarTabelas():
 		#Por algum motivo da erro de codificação ao inserir os motivos da denuncia, os caracteres
 		#especiais ficam tudo torto, ent vou fazer manualmente essa porra
 		var insercaoMotivosDenuncia = "INSERT INTO motivosDenuncia(descricao) VALUES ('Fake news'), ('Violação de copyright'), ('Conteúdo racista'), ('Conteúdo adulto'), ('Conteúdo homofóbico'), ('Plágio');"
-		banco.query(sql)
-		banco.query(insercaoMotivosDenuncia)
+		var insercaoCategorias = "INSERT INTO categoriasQuiz(descricao) VALUES ('Geral'), ('Literatura'), ('Geografia'), ('História'), ('Matemática'), ('Idiomas'), ('Cultura geek'), ('Biologia'), ('Cultura pop');"
+	
+		await banco.query(sql)
+		await banco.query(insercaoMotivosDenuncia)
+		await banco.query(insercaoCategorias)
 
 
 func inserirDados(tableName: String, data: Dictionary):

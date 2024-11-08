@@ -3,12 +3,13 @@ class_name Quizzes
 
 var propriedades: Dictionary
 
-func instanciaEntidade(titulo: String, isPrivado: bool, classificacaoIndicativa: int, usuarioId: int):
+func instanciaEntidade(titulo: String, isPrivado: bool, classificacaoIndicativa: int, usuarioId: int, categoriaId: int):
 	self.propriedades = {
 		"titulo": titulo,
 		"isPrivado": isPrivado,
 		"classificacaoIndicativa": classificacaoIndicativa,
 		"usuarioId": usuarioId,
+		"categoriaId": categoriaId
 	}
 	
 	return propriedades
@@ -278,14 +279,17 @@ func getQuizFavoritado(quizId):
 	return banco.query_result
 
 
-func getTodosQuizzesFavoritadosPublicos(filtro: String = ""):
+func getTodosQuizzesFavoritadosPublicos(filtro: String = "", categoriaId = null):
 	var banco = BD.banco as SQLite
 	var queryFiltro = ""
 	var classificacaoDoUsuario = "1,2" if SessaoUsuario.usuarioLogado.isMaiorDeIdade else "1"
 	
 	if filtro:
-		queryFiltro = "AND (titulo like '%" + filtro + "%' OR u.nome like '%" + filtro + "%')"
-		
+		queryFiltro = " AND (titulo like '%" + filtro + "%' OR u.nome like '%" + filtro + "%')"
+	
+	if categoriaId:
+		queryFiltro += " AND categoriaId=" + str(categoriaId)
+	
 	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesFavoritosTabela + " f 
 		INNER JOIN " + EntidadeConstantes.QuizzesTabela + " q ON f.quizId = q.quizId 
 		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON q.usuarioId = u.usuarioId 
@@ -339,6 +343,7 @@ func getQuizCompleto(idQuiz):
 		"titulo": resultado[0].titulo,
 		"isPrivado": resultado[0].isPrivado,
 		"classificacaoIndicativa": resultado[0].classificacaoIndicativa,
+		"categoriaId": resultado[0].categoriaId,
 		"usuarioId": resultado[0].usuarioId,
 		"perguntas": perguntas
 	}
@@ -353,12 +358,15 @@ func getPerguntasEAlternativasDoQuiz(idQuiz):
 	return perguntas
 	
 	
-func getQuizzesDoUsuario(idUsuario, filtro: String = ""):
+func getQuizzesDoUsuario(idUsuario, filtro: String = "", categoriaId = null):
 	var queryFiltro = ""
 	
 	if filtro:
-		queryFiltro = "AND titulo like '%" + filtro + "%'"
-		
+		queryFiltro = " AND titulo like '%" + filtro + "%'"
+	
+	if categoriaId:
+		queryFiltro += " AND categoriaId=" + str(categoriaId)
+
 	var banco = BD.banco as SQLite
 	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesTabela + " WHERE usuarioId=?" + queryFiltro
 	var param = [idUsuario]
@@ -369,7 +377,7 @@ func getQuizzesDoUsuario(idUsuario, filtro: String = ""):
 	return []
 
 
-func getTodosQuizzesPublicos(filtro: String = ""):
+func getTodosQuizzesPublicos(filtro: String = "", categoriaId = null):
 	var queryFiltro = ""
 	var banco = BD.banco as SQLite
 	var classificacaoDoUsuario = "1"
@@ -378,7 +386,10 @@ func getTodosQuizzesPublicos(filtro: String = ""):
 		classificacaoDoUsuario = "1,2" if SessaoUsuario.usuarioLogado.isMaiorDeIdade else "1"
 	
 	if filtro:
-		queryFiltro = "AND (titulo like '%" + filtro + "%' OR u.nome like '%" + filtro + "%')"
+		queryFiltro = " AND (titulo like '%" + filtro + "%' OR u.nome like '%" + filtro + "%')"
+	
+	if categoriaId:
+		queryFiltro += " AND categoriaId=" + str(categoriaId)
 		
 	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesTabela + " q 
 		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON q.usuarioId = u.usuarioId 

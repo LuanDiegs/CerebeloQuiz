@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ererdchmeglr"]
+[gd_scene load_steps=18 format=3 uid="uid://ererdchmeglr"]
 
 [ext_resource type="Script" path="res://cenas/criarQuiz/criarQuiz.gd" id="1_2l7ao"]
 [ext_resource type="PackedScene" uid="uid://dwnglevk7xndx" path="res://componentes/inputs/inputGrande/inputGrande.tscn" id="1_47w50"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="3_rmhbx"]
 [ext_resource type="PackedScene" uid="uid://np05ym5cpyik" path="res://componentes/criarQuizPage/inserirImagemBotao/inserirImagemBotao.tscn" id="6_dccih"]
 [ext_resource type="PackedScene" uid="uid://vm0l2tcvjfhw" path="res://componentes/botoes/botaoToggle/botaoToggle.tscn" id="6_gfst8"]
+[ext_resource type="Theme" uid="uid://cbbycepjg8xgt" path="res://cenas/criarQuiz/selectBox.tres" id="8_nha7a"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_j3bxe"]
 color = Color(0.227451, 0.258824, 0.521569, 1)
@@ -14,71 +15,28 @@ grow_begin = 0.0
 grow_end = 0.0
 thickness = 2
 
-[sub_resource type="FontVariation" id="FontVariation_vlj12"]
-base_font = ExtResource("3_rmhbx")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e8oj4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljtxt"]
-bg_color = Color(0.18, 0.207, 0.45, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0su3k"]
-bg_color = Color(0.227451, 0.258824, 0.521569, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1px4"]
-bg_color = Color(0.18, 0.207, 0.45, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utyxc"]
-bg_color = Color(0.286, 0.3224, 0.65, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hroac"]
-bg_color = Color(0.227451, 0.258824, 0.521569, 1)
-corner_detail = 1
-
-[sub_resource type="Theme" id="Theme_veqsr"]
-OptionButton/font_sizes/font_size = 20
-OptionButton/fonts/font = SubResource("FontVariation_vlj12")
-OptionButton/styles/focus = SubResource("StyleBoxEmpty_e8oj4")
-OptionButton/styles/hover = SubResource("StyleBoxFlat_ljtxt")
-OptionButton/styles/normal = SubResource("StyleBoxFlat_0su3k")
-OptionButton/styles/pressed = SubResource("StyleBoxFlat_n1px4")
-PopupMenu/styles/hover = SubResource("StyleBoxFlat_utyxc")
-PopupMenu/styles/panel = SubResource("StyleBoxFlat_hroac")
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sv4hl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6115"]
 bg_color = Color(0.18, 0.4, 0.202, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47clu"]
 bg_color = Color(0.258824, 0.517647, 0.286275, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtn07"]
 bg_color = Color(0.18, 0.4, 0.202, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_ym00b"]
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -215,7 +173,8 @@ anchor_top = 0.413223
 anchor_right = 0.959184
 anchor_bottom = 0.556474
 mouse_default_cursor_shape = 2
-theme = SubResource("Theme_veqsr")
+theme = ExtResource("8_nha7a")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 alignment = 1
 selected = 0
 item_count = 2
@@ -225,15 +184,55 @@ popup/item_1/text = "Maiores de 18 anos"
 popup/item_1/id = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="ClassificacaoIndicativaLabel" type="Label" parent="FormularioInicial/ClassificacaoIndicativa"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -3.09615
+anchor_right = 1.41799
+anchor_bottom = -2.44231
+offset_left = -0.000513793
+offset_top = 127.0
+offset_right = -0.000457764
+offset_bottom = 127.0
+theme_override_colors/font_color = Color(0.172549, 0.2, 0.435294, 1)
+theme_override_fonts/font = ExtResource("3_rmhbx")
+theme_override_font_sizes/font_size = 24
+text = "Classificação indicativa"
+metadata/_edit_use_anchors_ = true
+
+[node name="Categoria" type="OptionButton" parent="FormularioInicial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.377065
+anchor_top = 0.76584
+anchor_right = 0.672498
+anchor_bottom = 0.909091
+mouse_default_cursor_shape = 2
+theme = ExtResource("8_nha7a")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+alignment = 1
+selected = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="CategoriaLabel" type="Label" parent="FormularioInicial/Categoria"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.653846
+anchor_right = 0.999999
+theme_override_colors/font_color = Color(0.172549, 0.2, 0.435294, 1)
+theme_override_fonts/font = ExtResource("3_rmhbx")
+theme_override_font_sizes/font_size = 24
+text = "Categoria"
+metadata/_edit_use_anchors_ = true
+
 [node name="Salvar" type="Button" parent="FormularioInicial"]
 custom_minimum_size = Vector2(150, 35)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.377065
-anchor_top = 0.815427
-anchor_right = 0.522838
+anchor_left = 0.698737
+anchor_top = 0.76584
+anchor_right = 0.960155
 anchor_bottom = 0.911846
-offset_right = -75.0
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_ym00b")
 text = "SALVAR"

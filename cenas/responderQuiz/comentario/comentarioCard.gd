@@ -26,14 +26,22 @@ func inserirInformacoesDoComentario(
 		quantidadeCurtidas: int, 
 		quantidadeDecurtidas: int, 
 		isFixado: bool):
+			
 	_comentarioId = id
 	_nomeUsuarioComentario.text = nomeUsuario
 	_comentarioLabel.text = comentario
+	
 	_quantidadeCurtidas = quantidadeCurtidas
 	_curtirBotao.text = str(_quantidadeCurtidas)
-	_quantidadeDescurtidas = quantidadeDecurtidas
-	_descurtirBotao.text = str(quantidadeDecurtidas)
 	
+	_quantidadeDescurtidas = quantidadeDecurtidas
+	_descurtirBotao.text = str(quantidadeDecurtidas)	
+	
+	_alteraTemaComentarioFixado(isFixado)
+	_toggleBotaoCurtidaDescurtida()
+
+
+func _alteraTemaComentarioFixado(isFixado: bool):
 	_isFixado = isFixado
 	if _isFixado:
 		var estiloComentarioFicado = preload("res://cenas/responderQuiz/comentario/comentarioCardFixado.tres")
@@ -43,16 +51,61 @@ func inserirInformacoesDoComentario(
 
 
 func _curtirBotaoClick():
-	var novaQuantidade = _quantidadeCurtidas + 1
-	var response = Comentario.new().incrementaQuantidadeCurtidaComentario(_comentarioId, novaQuantidade)
-	
-	_quantidadeCurtidas = novaQuantidade
-	_curtirBotao.text = str(novaQuantidade)
+	var acao = CurtidasDescurtidasComentario.new().acaoComentario
+	_curtirDescurtirComentario(acao.Curtida)
 	
 
 func _descurtirBotaoClick():
-	var novaQuantidade = _quantidadeDescurtidas + 1
-	var response = Comentario.new().incrementaQuantidadeDescurtidaComentario(_comentarioId, novaQuantidade)
+	var acao = CurtidasDescurtidasComentario.new().acaoComentario
+	_curtirDescurtirComentario(acao.Descurtida)
+
+
+func _curtirDescurtirComentario(acaoComentario):
+	if !SessaoUsuario.isLogada:
+		PopUp.criaPopupNotificacao("Somente usuários logados podem curtir/descurtir um comentário")
+		_curtirBotao.button_pressed = false		
+		_descurtirBotao.button_pressed = false
+		return
 	
-	_quantidadeDescurtidas = novaQuantidade
-	_descurtirBotao.text = str(novaQuantidade)
+	var acao = CurtidasDescurtidasComentario.new().acaoComentario
+	
+	if CurtidasDescurtidasComentario.new().inserirCurtidaDescurtidaComentario(_comentarioId, acaoComentario):	
+		var quantidades = CurtidasDescurtidasComentario.new().getQuantidadeCurtidasDescurtidasComentario(_comentarioId) as Array
+
+		if quantidades:
+			var curtidaOuDescurtida = quantidades[0]
+			_insereQuantidadeCurtidaDescurtida(curtidaOuDescurtida)
+		
+			if quantidades.size() > 1:
+				var curtidaOuDescurtidaNova = quantidades[1]
+				_insereQuantidadeCurtidaDescurtida(curtidaOuDescurtidaNova)
+				
+		_toggleBotaoCurtidaDescurtida()
+
+
+func _insereQuantidadeCurtidaDescurtida(curtidaOuDescurtidaDic: Dictionary):
+	var acao = CurtidasDescurtidasComentario.new().acaoComentario
+	
+	if curtidaOuDescurtidaDic.acao == acao.Curtida:
+		_quantidadeCurtidas = curtidaOuDescurtidaDic.quantidade
+		_curtirBotao.text = str(_quantidadeCurtidas)
+	else:
+		_quantidadeDescurtidas = curtidaOuDescurtidaDic.quantidade
+		_descurtirBotao.text = str(_quantidadeDescurtidas)
+
+
+func _toggleBotaoCurtidaDescurtida():
+	if !SessaoUsuario.isLogada:
+		return
+		
+	var curtidaDescurtidaDoUsuario = CurtidasDescurtidasComentario.new().getCurtidaDescurtidaDoUsuarioNoComentario(_comentarioId)
+
+	if curtidaDescurtidaDoUsuario.size() > 0:
+		var isCurtida = curtidaDescurtidaDoUsuario[0].acao == 1
+		var isDescurtida = curtidaDescurtidaDoUsuario[0].acao == 2
+		
+		_curtirBotao.button_pressed = isCurtida
+		_curtirBotao.disabled = isCurtida
+		
+		_descurtirBotao.button_pressed = isDescurtida
+		_descurtirBotao.disabled = isDescurtida

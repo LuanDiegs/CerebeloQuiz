@@ -13,6 +13,7 @@ const perguntaQuizCardComponente = preload("res://componentes/containerPerguntaC
 @onready var botaoToggleIsPrivado := $FormularioInicial/BotaoToggle as BotaoToggle
 @onready var classificacaoIndicativa := $FormularioInicial/ClassificacaoIndicativa as OptionButton
 @onready var imagemDoQuizBotao = $"FormularioInicial/InputInserirImagem/InserirImagem"
+@onready var categoriaBotaoSelect = $FormularioInicial/Categoria
 
 var thread: Thread
 
@@ -43,6 +44,11 @@ func _ready() -> void:
 	_adicionarPerguntaBotao.connect("pressed", criarPergunta)
 	salvarQuizBotao.connect("pressed", salvarQuiz)
 	
+	#PreencheCategorias
+	var categorias = CategoriasQuiz.new().getCategoriasQuiz()
+	for categoria in categorias:
+		categoriaBotaoSelect.add_item(categoria.descricao, categoria.categoriaId)
+		
 	#Se o quiz tiver um id significa que ele já existe
 	if (idRegistroEdicao != 0):
 		quizSalvo = Quizzes.new().getQuizCompleto(idRegistroEdicao)
@@ -54,6 +60,7 @@ func preencheDadosDoQuizSalvo():
 	tituloQuiz.text = quizSalvo.titulo
 	botaoToggleIsPrivado.insereValor(quizSalvo.isPrivado)
 	classificacaoIndicativa.selected = quizSalvo.classificacaoIndicativa - 1 # -1 pois a gente salva o ID e não o selecionado
+	categoriaBotaoSelect.selected = quizSalvo.categoriaId - 1 # -1 pois a gente salva o ID e não o selecionado
 	
 	#Perguntas
 	criarPerguntasSalvas()
@@ -99,7 +106,12 @@ func inserirImagemSalva():
 
 func salvarQuiz() -> void:
 	if (validaFormulario()):
-		var quiz = Quizzes.new().instanciaEntidade(tituloQuiz.text, botaoToggleIsPrivado.obterValorSelecionado(), classificacaoIndicativa.get_selected_id(), SessaoUsuario.usuarioLogado.idUsuario)
+		var quiz = Quizzes.new().instanciaEntidade(
+			tituloQuiz.text, 
+			botaoToggleIsPrivado.obterValorSelecionado(), 
+			classificacaoIndicativa.get_selected_id(), 
+			SessaoUsuario.usuarioLogado.idUsuario, 
+			categoriaBotaoSelect.get_selected_id())
 		var perguntas = _perguntasContainer.get_children() as Array[ContainerPerguntaQuiz]
 		var imagemExtensao = imagemDoQuizBotao.extensaoDaImagem
 		var imagem = imagemDoQuizBotao.imagemDoQuiz
