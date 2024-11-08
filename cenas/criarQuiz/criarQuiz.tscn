@@ -235,6 +235,7 @@ anchor_right = 0.960155
 anchor_bottom = 0.911846
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_ym00b")
+theme_override_font_sizes/font_size = 20
 text = "SALVAR"
 metadata/_edit_use_anchors_ = true
 
@@ -274,7 +275,7 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_ym00b")
-text = "NOVA ALTERNATIVA"
+text = "NOVA PERGUNTA"
 
 [node name="PerguntasScrollContainer" type="ScrollContainer" parent="Perguntas"]
 custom_minimum_size = Vector2(950, 250)
