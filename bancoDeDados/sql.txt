@@ -17,14 +17,21 @@ CREATE TABLE quizzes (
 	isDesativado INTEGER DEFAULT 0 NOT NULL CHECK(typeof(isDesativado) = 'integer' AND isDesativado IN (1, 0)),
 	classificacaoIndicativa INTEGER NOT NULL CHECK(typeof(classificacaoIndicativa) = 'integer' AND classificacaoIndicativa IN (1, 2)),
 	usuarioId INTEGER NOT NULL,
+	categoriaId INTEGER NOT NULL,
 	PRIMARY KEY(quizId AUTOINCREMENT),
 	CONSTRAINT usuarioFk
 		FOREIGN KEY (usuarioId)
 		REFERENCES usuarios(usuarioId)
+	CONSTRAINT categoriaFk
+		FOREIGN KEY (categoriaId)
+		REFERENCES categoriasQuiz(categoriaId)
 );
 
 CREATE INDEX quizzesUsuarioIdIdx
 ON quizzes (usuarioId);
+
+CREATE INDEX quizzesCategoriasIdIdx
+ON quizzes (categoriaId);
 
 CREATE TABLE perguntas (
 	perguntaId INTEGER NOT NULL,
@@ -143,8 +150,6 @@ CREATE TABLE motivosDenuncia(
 CREATE TABLE comentarios(
 	comentarioId INTEGER NOT NULL,
 	comentarioDescricao TEXT NOT NULL CHECK(comentarioDescricao != ''),
-	quantidadeCurtidas INTEGER DEFAULT 0,
-	quantidadeDescurtidas INTEGER DEFAULT 0,
 	isFixado INTEGER DEFAULT 0,
 	perguntaId INTEGER NOT NULL,
 	usuarioId INTEGER NOT NULL,
@@ -162,6 +167,32 @@ ON comentarios (perguntaId);
 
 CREATE INDEX comentariosUsuarioIdIdx
 ON comentarios (usuarioId);
+
+CREATE TABLE curtidasDescurtidasComentarios(
+	curtidaDescurtidaComentarioId INTEGER NOT NULL,
+	comentarioId INTEGER NOT NULL,
+	usuarioId INTEGER NOT NULL,
+	acao INTEGER NOT NULL CHECK(acao IN (1, 2)),
+	PRIMARY KEY(curtidaDescurtidaComentarioId AUTOINCREMENT),
+	CONSTRAINT comentarioFk
+		FOREIGN KEY (comentarioId)
+		REFERENCES comentarios(comentarioId)
+	CONSTRAINT usuarioFk
+		FOREIGN KEY (usuarioId)
+		REFERENCES usuarios(usuarioId)
+);
+
+CREATE INDEX curtidasDescurtidasComentariosComentarioIdIdx
+ON curtidasDescurtidasComentarios (comentarioId);
+
+CREATE INDEX curtidasDescurtidasComentariosUsuarioIdIdx
+ON curtidasDescurtidasComentarios (usuarioId);
+
+CREATE TABLE categoriasQuiz(
+	categoriaId INTEGER NOT NULL,
+	descricao TEXT NOT NULL CHECK(descricao != ''),
+	PRIMARY KEY(categoriaId AUTOINCREMENT)
+);
 
 -- Insercao dos itens
 INSERT INTO usuarios(nome, email, senha, dataNascimento, telefone, isDesativado, isModerador) 

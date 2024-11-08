@@ -23,6 +23,9 @@ func _ready() -> void:
 	_botaoEditar.connect("pressed", _abrirFormPergunta)
 	_botaoApagar.connect("pressed", _apagarPergunta)
 	_botaoComentarios.connect("pressed", _abrirComentarios)
+	
+	if idPergunta == 0:
+		_botaoComentarios.visible = false
 
 
 #region InutilPorEnquanto

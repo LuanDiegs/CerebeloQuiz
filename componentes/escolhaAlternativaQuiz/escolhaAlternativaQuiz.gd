@@ -79,7 +79,7 @@ func insereAlternativas():
 
 		#Insere a alternativa da Twitch
 		if isTwitchQuiz:
-			var codigoOpcaoTwitch = "!" + str(botaoEscolherAlternativa.get_index()-1)
+			var codigoOpcaoTwitch = "!" + str(botaoEscolherAlternativa.get_index())
 			var estiloDesabilitadoBotao := preload("res://componentes/botoes/botaoEscolherAlternativa/botaoEscolherAlternativaTypoDesabilitado.tres")
 			
 			#Coloca o estilo para não cobrir a opção da twitch no lado esquerdo
@@ -90,6 +90,11 @@ func insereAlternativas():
 
 			if alternativa.isAlternativaCorreta:
 				codigoAlternativaCorreta = codigoOpcaoTwitch
+		
+		if !isTwitchQuiz:
+			var estiloDesabilitadoBotao := preload("res://componentes/botoes/botaoEscolherAlternativa/botaoEscolherAlternativaTypoDesabilitado.tres")
+			estiloDesabilitadoBotao.content_margin_left = 0
+			botaoEscolherAlternativa.theme.set_stylebox("disabled", "button", null)
 
 
 func getAlternativaCorreta() -> BotaoEscolherAlternativa:
@@ -104,5 +109,7 @@ func desabilitaEMostraAlternativaCorretaQuiz():
 	for alternativa in quizEAlternativas.get_children():
 		if alternativa is BotaoEscolherAlternativa:
 			alternativa.disabled = !alternativa.button_pressed
+			alternativa.mouse_default_cursor_shape = Control.CURSOR_ARROW
+
 			if alternativa.isAlternativaCorreta:
 				alternativa.exibeAlternativaCorreta()

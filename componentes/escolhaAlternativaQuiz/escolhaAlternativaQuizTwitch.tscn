@@ -44,7 +44,6 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 
 [node name="QuizTexto" type="PanelContainer" parent="QuizEAlternativas"]
-custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -53,6 +52,3 @@ layout_mode = 2
 size_flags_vertical = 1
 theme = SubResource("Theme_7cb1p")
 text = "teste"
-
-[node name="Espaco" type="Label" parent="QuizEAlternativas"]
-layout_mode = 2

@@ -90,7 +90,7 @@ func sairSessaoClicked():
 #Tá repetido mas que se foda
 func criarComponentesDasPerguntas(perguntas: Array):
 	for pergunta in perguntas:
-		var quizCardComponente = preload("res://componentes/escolhaAlternativaQuiz/escolhaAlternativaQuiz.tscn").instantiate() as EscolhaAlternativaQuiz
+		var quizCardComponente = preload("res://componentes/escolhaAlternativaQuiz/escolhaAlternativaQuizTwitch.tscn").instantiate() as EscolhaAlternativaQuiz
 		
 		quizCardComponente.perguntaId = pergunta["perguntaId"]
 		quizCardComponente.perguntaConteudo = pergunta["conteudoPergunta"]

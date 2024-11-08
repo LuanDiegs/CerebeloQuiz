@@ -1,0 +1,46 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cbbycepjg8xgt"]
+
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_hecnj"]
+
+[sub_resource type="FontVariation" id="FontVariation_vlj12"]
+base_font = ExtResource("1_hecnj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e8oj4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljtxt"]
+bg_color = Color(0.18, 0.207, 0.45, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0su3k"]
+bg_color = Color(0.227451, 0.258824, 0.521569, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1px4"]
+bg_color = Color(0.18, 0.207, 0.45, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utyxc"]
+bg_color = Color(0.286, 0.3224, 0.65, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hroac"]
+bg_color = Color(0.227451, 0.258824, 0.521569, 1)
+corner_detail = 1
+
+[resource]
+OptionButton/font_sizes/font_size = 20
+OptionButton/fonts/font = SubResource("FontVariation_vlj12")
+OptionButton/styles/focus = SubResource("StyleBoxEmpty_e8oj4")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_ljtxt")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_0su3k")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_n1px4")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_utyxc")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_hroac")

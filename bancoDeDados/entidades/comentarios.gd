@@ -23,33 +23,24 @@ func inserirComentario(comentarioDescricao: String, perguntaId: int):
 
 func getComentariosDaPergunta(perguntaId: int):
 	var banco = BD.banco as SQLite
-	var sql = "SELECT *, (c.quantidadeCurtidas - c.quantidadeDescurtidas) AS diferencaCurtidas FROM " + EntidadeConstantes.ComentariosTabela + " c 
-		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON c.usuarioId = u.usuarioId
-		WHERE c.perguntaId=?
-		ORDER BY isFixado DESC, diferencaCurtidas DESC"
+	var sql = "
+	SELECT 
+		coment.*,
+		u.*,
+		(coment.quantidadeCurtidas - coment.quantidadeDescurtidas) AS diferencaCurtidas 
+	FROM 
+		(SELECT 
+			c.*,
+			(SELECT count(*) FROM " + EntidadeConstantes.CurtidasDescurtidasComentariosTabela + " cd WHERE cd.comentarioId = c.comentarioId AND cd.acao = 1) AS quantidadeCurtidas,
+			(SELECT count(*) FROM " + EntidadeConstantes.CurtidasDescurtidasComentariosTabela + " cd WHERE cd.comentarioId = c.comentarioId AND cd.acao = 2) AS quantidadeDescurtidas
+		FROM " + EntidadeConstantes.ComentariosTabela + " c) AS coment
+	INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON coment.usuarioId = u.usuarioId
+	WHERE coment.perguntaId=?
+	ORDER BY isFixado DESC, diferencaCurtidas DESC"
+	
 	var parametros = [perguntaId]
 	
 	banco.query_with_bindings(sql, parametros)
-	
-	return banco.query_result
-
-
-func incrementaQuantidadeCurtidaComentario(comentarioId: int, quantidadeCurtidas: int):
-	var banco = BD.banco as SQLite
-	var condicoes = "comentarioId="+str(comentarioId)
-	var valorAlterar = {"quantidadeCurtidas": quantidadeCurtidas}
-		
-	banco.update_rows(EntidadeConstantes.ComentariosTabela, condicoes, valorAlterar)
-	
-	return banco.query_result
-
-
-func incrementaQuantidadeDescurtidaComentario(comentarioId: int, quantidadeDescurtidas: int):
-	var banco = BD.banco as SQLite
-	var condicoes = "comentarioId="+str(comentarioId)
-	var valorAlterar = {"quantidadeDescurtidas": quantidadeDescurtidas}
-		
-	banco.update_rows(EntidadeConstantes.ComentariosTabela, condicoes, valorAlterar)
 	
 	return banco.query_result
 	

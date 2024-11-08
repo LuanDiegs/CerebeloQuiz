@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="2_27uiw"]
 [ext_resource type="Theme" uid="uid://c2upscdlr08l" path="res://componentes/header/inputPesquisaTemaBase.tres" id="3_o05k6"]
 [ext_resource type="Texture2D" uid="uid://cva1p6ishymj" path="res://resources/imagens/icons/lupa.png" id="4_cpol2"]
+[ext_resource type="Theme" uid="uid://cbbycepjg8xgt" path="res://cenas/criarQuiz/selectBox.tres" id="6_hi5so"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ba6n0"]
 
@@ -22,24 +23,17 @@ color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axxvv"]
 bg_color = Color(0.25098, 0.501961, 0.270588, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eff5y"]
-bg_color = Color(0.2025, 0.45, 0.223125, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ea1ll"]
 bg_color = Color(0.25098, 0.501961, 0.270588, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_8r630"]
 color = Color(0, 0, 0, 0)
@@ -92,7 +86,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_djr6r")
 layout_mode = 2
 
 [node name="BotaoCriarQuiz" type="Button" parent="Header/Botoes"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -100,7 +94,7 @@ theme_override_fonts/font = ExtResource("1_s7m8h")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_d1mxs")
 theme_override_styles/hover = SubResource("StyleBoxFlat_axxvv")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_eff5y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_axxvv")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ea1ll")
 text = "CRIAR QUIZ"
 
@@ -139,20 +133,15 @@ custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
 [node name="FiltroSelect" type="OptionButton" parent="Header/Botoes"]
+custom_minimum_size = Vector2(150, 45)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_27uiw")
-theme_override_font_sizes/font_size = 24
+theme = ExtResource("6_hi5so")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+alignment = 1
 selected = 0
-item_count = 3
-popup/item_0/text = "FILTRAR"
-popup/item_1/text = "RECENTES"
-popup/item_1/id = 1
-popup/item_2/text = "PRÓPRIOS"
-popup/item_2/id = 2
+item_count = 1
+popup/item_0/text = "Todos"
 metadata/_edit_use_anchors_ = true
 
 [node name="Espaco2" type="HSeparator" parent="Header"]

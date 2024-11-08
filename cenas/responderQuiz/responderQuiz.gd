@@ -217,7 +217,8 @@ func finalizaQuiz():
 	
 	if(SessaoUsuario.isLogada):
 		_inserePainelParaComentar()
-		_insereComentariosDaPergunta()
+		
+	_insereComentariosDaPergunta()
 
 
 func exibeRespostasCorretas():

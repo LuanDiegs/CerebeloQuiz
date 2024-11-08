@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://co2vsk5c4n8ux"]
+[gd_scene load_steps=18 format=3 uid="uid://co2vsk5c4n8ux"]
 
 [ext_resource type="StyleBox" uid="uid://eompj67obq0a" path="res://cenas/responderQuiz/comentario/comentarioCardNormal.tres" id="1_1q1ph"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_4y6xn"]
 [ext_resource type="Script" path="res://cenas/responderQuiz/comentario/comentarioCard.gd" id="1_hc8ui"]
 [ext_resource type="FontFile" uid="uid://owxdw1iuxu1p" path="res://resources/fonts/Nunito/static/Nunito-SemiBold.ttf" id="2_vovxk"]
+[ext_resource type="ButtonGroup" uid="uid://8mxcy1w5dvle" path="res://cenas/responderQuiz/comentario/comentarioCurtidaDescurtida.tres" id="4_8v1ku"]
 
 [sub_resource type="FontVariation" id="FontVariation_u5e5g"]
 base_font = ExtResource("1_4y6xn")
@@ -22,12 +23,60 @@ expand_margin_right = 11.0
 [sub_resource type="FontVariation" id="FontVariation_lfkue"]
 base_font = ExtResource("1_4y6xn")
 
+[sub_resource type="FontVariation" id="FontVariation_gp51e"]
+base_font = ExtResource("1_4y6xn")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abfhy"]
+bg_color = Color(0.301961, 0.329412, 0.6, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1mhps"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_km7po"]
+bg_color = Color(0.301961, 0.329412, 0.6, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqg4q"]
+bg_color = Color(0.2288, 0.25792, 0.52, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.227451, 0.258824, 0.521569, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_arena"]
+Button/colors/font_color = Color(0.227451, 0.258824, 0.521569, 1)
+Button/colors/font_disabled_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.227451, 0.258824, 0.521569, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/fonts/font = SubResource("FontVariation_gp51e")
+Button/styles/disabled = SubResource("StyleBoxFlat_abfhy")
+Button/styles/focus = SubResource("StyleBoxEmpty_1mhps")
+Button/styles/hover = SubResource("StyleBoxFlat_km7po")
+Button/styles/normal = SubResource("StyleBoxFlat_eqg4q")
+Button/styles/pressed = SubResource("StyleBoxFlat_abfhy")
+
+[sub_resource type="FontVariation" id="FontVariation_ep3rj"]
+base_font = ExtResource("1_4y6xn")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxwy2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color(0.172549, 0.2, 0.435294, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -87,12 +136,22 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
+theme = SubResource("Theme_arena")
+theme_override_fonts/font = SubResource("FontVariation_ep3rj")
+toggle_mode = true
+button_group = ExtResource("4_8v1ku")
+text = "0"
+icon_alignment = 1
 
 [node name="Descurtir" type="Button" parent="Margin/ItensDoComentario/Itens/BotoesCurtir"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
+theme = SubResource("Theme_arena")
+toggle_mode = true
+button_group = ExtResource("4_8v1ku")
+text = "0"
 
 [node name="PainelComentario" type="PanelContainer" parent="Margin/ItensDoComentario/Itens"]
 custom_minimum_size = Vector2(0, 100)
