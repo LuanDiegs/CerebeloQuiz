@@ -19,6 +19,15 @@ corner_radius_bottom_left = 10
 [sub_resource type="Theme" id="Theme_3by8i"]
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_r4s71")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgolk"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_xyoo1"]
+Panel/styles/panel = SubResource("StyleBoxFlat_kgolk")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_junkv"]
 bg_color = Color(0.172549, 0.2, 0.435294, 1)
 border_width_left = 1
@@ -30,15 +39,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgolk"]
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="Theme" id="Theme_xyoo1"]
-Panel/styles/panel = SubResource("StyleBoxFlat_kgolk")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1d1fn"]
 content_margin_left = 10.0
@@ -121,22 +121,6 @@ theme_override_constants/margin_bottom = 10
 [node name="Elementos" type="HBoxContainer" parent="MarginDentroDoPanel"]
 layout_mode = 2
 
-[node name="CategoriaPainel" type="PanelContainer" parent="MarginDentroDoPanel/Elementos"]
-visible = false
-custom_minimum_size = Vector2(50, 20)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_junkv")
-
-[node name="CategoriaLabel" type="Label" parent="MarginDentroDoPanel/Elementos/CategoriaPainel"]
-layout_direction = 3
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_yhce4")
-text = "[Categoria]"
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
-
 [node name="ImagemDoQuiz" type="TextureRect" parent="MarginDentroDoPanel/Elementos"]
 custom_minimum_size = Vector2(150, 75)
 layout_mode = 2
@@ -148,6 +132,22 @@ stretch_mode = 6
 [node name="ContainerTextos" type="VBoxContainer" parent="MarginDentroDoPanel/Elementos"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="CategoriaPainel" type="PanelContainer" parent="MarginDentroDoPanel/Elementos/ContainerTextos"]
+visible = false
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_junkv")
+
+[node name="CategoriaLabel" type="Label" parent="MarginDentroDoPanel/Elementos/ContainerTextos/CategoriaPainel"]
+layout_direction = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_yhce4")
+text = "[Categoria]"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
 
 [node name="TituloQuiz" type="Label" parent="MarginDentroDoPanel/Elementos/ContainerTextos"]
 custom_minimum_size = Vector2(300, 65)

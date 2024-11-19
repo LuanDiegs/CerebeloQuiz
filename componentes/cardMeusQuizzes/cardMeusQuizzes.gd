@@ -62,4 +62,5 @@ func _deletarQuizBanco():
 		
 
 func inserirCategoria(categoria: String):
-	_categoriaLabel.text = categoria
+	pass
+	#_categoriaLabel.text = categoria
