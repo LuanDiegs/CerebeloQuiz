@@ -11,8 +11,8 @@ var _segundosPercorridos: int = 0
 var _minutosPercorridos: int = 0
 
 #Botoes avançar e retroceder pergunta
-@onready var _retrocederPerguntaBotao: Button = $ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/RetrocederPerguntaBotao
-@onready var _avancarPerguntaBotao: Button = $ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/AvancarPerguntaBotao
+@onready var _retrocederPerguntaBotao: TextureButton = $ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/RetrocederPerguntaBotao
+@onready var _avancarPerguntaBotao: TextureButton = $ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer/AvancarPerguntaBotao
 var _insercaoPerguntaTerminou := true
 
 #Container quiz
@@ -179,10 +179,7 @@ func responderQuiz():
 			"Você não respondeu todas as perguntas.\n Quer salvar mesmo assim?",
 			"Atenção",
 			"Cancelar",
-			Utils.criaBotaoAdicional(
-				"Confirmar", 
-				func(): 
-					salvarResultado(acertos)))
+			[Utils.criaBotaoAdicional("Confirmar", func(): salvarResultado(acertos))])
 		return
 	
 	salvarResultado(acertos)
@@ -235,9 +232,8 @@ func notificaPontuacao(acertos: int, pontuacao: int = -1):
 		acertosMensagem + aviso + pontuacaoMensagem, 
 		"Parabéns!", 
 		"Revisar o quiz",
-		Utils.criaBotaoAdicional(
-			"Ver ranking", 
-			func(): PopUp.criaPopupRankingQuiz(quizId)))
+		[Utils.criaBotaoAdicional("Ver ranking", func(): PopUp.criaPopupRankingQuiz(quizId)),
+		Utils.criaBotaoAdicional("Sair", func(): TransicaoCena.trocar_cena(TransicaoCena.telaQuizzesPopulares, 0, 0, true))])
 
 
 func _inserePainelParaComentar():

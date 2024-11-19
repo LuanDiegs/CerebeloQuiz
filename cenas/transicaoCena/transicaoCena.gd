@@ -63,4 +63,4 @@ func confirmarTrocarCena(texto: String, titulo: String, cenaATrocar: String):
 		texto, 
 		titulo, 
 		"Cancelar", 
-		Utils.criaBotaoAdicional("Confirmar", func(): trocar_cena(cenaATrocar, 0, 0, true)))
+		[Utils.criaBotaoAdicional("Confirmar", func(): trocar_cena(cenaATrocar, 0, 0, true))])

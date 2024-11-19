@@ -8,6 +8,7 @@ var isDesativado := false
 #Propriedades
 @onready var _tituloQuiz = $MarginDentroDoPanel/Elementos/ContainerTextos/TituloQuiz
 @onready var _avisoLabel = $MarginDentroDoPanel/Elementos/ContainerTextos/Aviso
+@onready var _categoriaLabel = $MarginDentroDoPanel/Elementos/ContainerTextos/CategoriaPainel/CategoriaLabel
 
 #Botões
 @onready var _editarBotao = $MarginDentroDoPanel/Elementos/BotoesContainer/Editar
@@ -49,7 +50,7 @@ func _deletarQuiz():
 		"Certeza que deseja deletar o quiz " + tituloDoQuiz,
 		"Atenção",
 		"Cancelar",
-		Utils.criaBotaoAdicional("Confirmar", _deletarQuizBanco)
+		[Utils.criaBotaoAdicional("Confirmar", _deletarQuizBanco)]
 	)
 
 func _deletarQuizBanco():
@@ -59,3 +60,6 @@ func _deletarQuizBanco():
 		
 		PopUp.criaPopupNotificacao("O Quiz foi excluído com sucesso!", "", "Sucesso")
 		
+
+func inserirCategoria(categoria: String):
+	_categoriaLabel.text = categoria

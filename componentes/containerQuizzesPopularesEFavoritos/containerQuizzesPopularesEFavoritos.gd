@@ -12,8 +12,10 @@ func inserirQuizzes(quizzes: Array):
 		quizCardComponente.quizId = quiz.quizId
 		quizCardComponente.titulo = quiz.titulo 
 		quizCardComponente.criador = quiz.nome
-		
+			
 		_quizzesGrid.add_child(quizCardComponente)
+		
+		quizCardComponente.inserirCategoria(quiz.descricaoCategoria)
 
 
 func atualizaQuizzes(quizzes: Array):

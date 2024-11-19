@@ -6,8 +6,10 @@ class_name ComentarioCard
 @onready var _fixadoPeloCriadorLabel = $Margin/ItensDoComentario/FixadoPeloCriador
 
 @onready var _curtirBotao = $Margin/ItensDoComentario/Itens/BotoesCurtir/Curtir
+@onready var _quantidadeCurtidasLabel = $Margin/ItensDoComentario/Itens/BotoesCurtir/Curtir/QuantidadeCurtidas
 var _quantidadeCurtidas = 0
 @onready var _descurtirBotao = $Margin/ItensDoComentario/Itens/BotoesCurtir/Descurtir
+@onready var _quantidadeDescurtidasLabel = $Margin/ItensDoComentario/Itens/BotoesCurtir/Descurtir/QuantidadeDescurtidas
 var _quantidadeDescurtidas = 0
 
 
@@ -17,6 +19,18 @@ var _isFixado = false
 func _ready():
 	_curtirBotao.connect("pressed", _curtirBotaoClick)
 	_descurtirBotao.connect("pressed", _descurtirBotaoClick)
+
+
+func _process(_delta):
+	if _curtirBotao.is_hovered() or _curtirBotao.button_pressed or _curtirBotao.disabled:
+		_quantidadeCurtidasLabel.add_theme_color_override("font_color", Color("FFFFFF"))
+	else:
+		_quantidadeCurtidasLabel.add_theme_color_override("font_color", Color("2c336f"))
+	
+	if _descurtirBotao.is_hovered() or _descurtirBotao.button_pressed or _descurtirBotao.disabled:
+		_quantidadeDescurtidasLabel.add_theme_color_override("font_color", Color("FFFFFF"))
+	else:
+		_quantidadeDescurtidasLabel.add_theme_color_override("font_color", Color("2c336f"))
 
 
 func inserirInformacoesDoComentario(
@@ -32,10 +46,10 @@ func inserirInformacoesDoComentario(
 	_comentarioLabel.text = comentario
 	
 	_quantidadeCurtidas = quantidadeCurtidas
-	_curtirBotao.text = str(_quantidadeCurtidas)
+	_quantidadeCurtidasLabel.text = str(_quantidadeCurtidas)
 	
 	_quantidadeDescurtidas = quantidadeDecurtidas
-	_descurtirBotao.text = str(quantidadeDecurtidas)	
+	_quantidadeDescurtidasLabel.text = str(quantidadeDecurtidas)	
 	
 	_alteraTemaComentarioFixado(isFixado)
 	_toggleBotaoCurtidaDescurtida()
@@ -88,10 +102,10 @@ func _insereQuantidadeCurtidaDescurtida(curtidaOuDescurtidaDic: Dictionary):
 	
 	if curtidaOuDescurtidaDic.acao == acao.Curtida:
 		_quantidadeCurtidas = curtidaOuDescurtidaDic.quantidade
-		_curtirBotao.text = str(_quantidadeCurtidas)
+		_quantidadeCurtidasLabel.text = str(_quantidadeCurtidas)
 	else:
 		_quantidadeDescurtidas = curtidaOuDescurtidaDic.quantidade
-		_descurtirBotao.text = str(_quantidadeDescurtidas)
+		_quantidadeDescurtidasLabel.text = str(_quantidadeDescurtidas)
 
 
 func _toggleBotaoCurtidaDescurtida():

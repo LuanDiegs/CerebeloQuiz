@@ -6,6 +6,7 @@ class_name CardBase
 
 @onready var _criadorLabel = $ItensCard/CriadoPor/Criador
 @onready var _tituloLabel = $ItensCard/Titulo
+@onready var _categoriaLabel = $ItensCard/CategoriaPanel/CategoriaTexto
 @onready var _favoritarEDenunciarContainer := $ItensCard/ImgCapaQuiz/FavoritarEDenunciar
 @onready var _imagemCapaQuizContainer = $ItensCard/ImgCapaQuiz
 
@@ -48,3 +49,7 @@ func responderQuiz():
 
 func responderQuizTwitch():
 	TransicaoCena.trocar_cena(TransicaoCena.telaResponderQuizTwitch, 0, quizId)
+
+
+func inserirCategoria(categoria: String):
+	_categoriaLabel.text = categoria

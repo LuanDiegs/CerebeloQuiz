@@ -37,7 +37,7 @@ func _fixarComentario():
 		"Certeza que deseja fixar esse comentário?",
 		"Confirmar",
 		"Fechar",
-		Utils.criaBotaoAdicional("Confirmar", _fixarComentarioAlgoritmo))
+		[Utils.criaBotaoAdicional("Confirmar", _fixarComentarioAlgoritmo)])
 	
 
 func _fixarComentarioAlgoritmo():

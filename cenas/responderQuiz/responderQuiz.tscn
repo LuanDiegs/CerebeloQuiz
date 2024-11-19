@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://txu7gbsnc1ys"]
+[gd_scene load_steps=13 format=3 uid="uid://txu7gbsnc1ys"]
 
 [ext_resource type="PackedScene" uid="uid://4ykp06og1xp2" path="res://componentes/sidebar/sidebar.tscn" id="1_3b5s4"]
 [ext_resource type="Script" path="res://cenas/responderQuiz/responderQuiz.gd" id="1_uuyp6"]
 [ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="2_kkviv"]
+[ext_resource type="Texture2D" uid="uid://c2rpryb1g6x3y" path="res://resources/imagens/icons/seta-sem-preenchimento.png" id="4_qrfd7"]
+[ext_resource type="Texture2D" uid="uid://ckvtwbluvxyyi" path="res://resources/imagens/icons/seta-com-preenchimento.png" id="5_wc4t2"]
+[ext_resource type="Texture2D" uid="uid://cn7wtr1m5uk6t" path="res://resources/imagens/icons/seta-com-preenchimento-desabilitado.png" id="6_5fgew"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gemb4"]
 bg_color = Color(0.227451, 0.258824, 0.521569, 1)
@@ -95,14 +98,19 @@ layout_mode = 2
 size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="RetrocederPerguntaBotao" type="Button" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer"]
-z_index = 1
+[node name="RetrocederPerguntaBotao" type="TextureButton" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer"]
 custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
-text = "<-"
+texture_normal = ExtResource("4_qrfd7")
+texture_pressed = ExtResource("5_wc4t2")
+texture_hover = ExtResource("5_wc4t2")
+texture_disabled = ExtResource("6_5fgew")
+texture_focused = ExtResource("4_qrfd7")
+ignore_texture_size = true
+stretch_mode = 5
+flip_h = true
 
 [node name="QuizRespostaMargin" type="MarginContainer" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer"]
 layout_mode = 2
@@ -146,14 +154,17 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_l3n58")
 text = "Terminar de responder"
 metadata/_edit_use_anchors_ = true
 
-[node name="AvancarPerguntaBotao" type="Button" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer"]
-z_index = 1
+[node name="AvancarPerguntaBotao" type="TextureButton" parent="ScrollQuizzes/MarginQuizzes/ContainerItens/QuizzesContainer"]
 custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
-text = "->"
+texture_normal = ExtResource("4_qrfd7")
+texture_pressed = ExtResource("5_wc4t2")
+texture_hover = ExtResource("5_wc4t2")
+texture_disabled = ExtResource("6_5fgew")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="PerguntasMarginMargin" type="MarginContainer" parent="ScrollQuizzes/MarginQuizzes/ContainerItens"]
 layout_mode = 2
