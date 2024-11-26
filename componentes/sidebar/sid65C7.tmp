@@ -1,0 +1,233 @@
+[gd_scene load_steps=20 format=3 uid="uid://4ykp06og1xp2"]
+
+[ext_resource type="Theme" uid="uid://crxo0r1ylmse7" path="res://componentes/sidebar/sidebarTema.tres" id="1_b34h6"]
+[ext_resource type="Script" path="res://componentes/sidebar/sidebar.gd" id="2_lbasx"]
+[ext_resource type="PackedScene" uid="uid://da8wliqqanqml" path="res://componentes/sidebar/botaoSidebar/botaoNormalSidebar.tscn" id="2_orqhk"]
+[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botaoPerfil/botaoPerfil.gd" id="3_0723v"]
+[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botaoNormalSidebar.gd" id="3_mnyfy"]
+[ext_resource type="Theme" uid="uid://bqahw306y08uc" path="res://componentes/sidebar/botaoSidebar/botaoCriarQuizz/botaoCriarQuizzSidebarTema.tres" id="4_04r82"]
+[ext_resource type="Theme" uid="uid://b4cdfixe50hm2" path="res://componentes/sidebar/botaoSidebar/botaoPerfil/botaoModeradorSidebarTema.tres" id="4_13vnq"]
+[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botaoCriarQuizz/botaoCriarQuizz.gd" id="4_61853"]
+[ext_resource type="Texture2D" uid="uid://2qx50vmr5d24" path="res://resources/imagens/body-organ 64px.png" id="5_pvyk5"]
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="6_twu8v"]
+[ext_resource type="FontFile" uid="uid://bkberxkouofus" path="res://resources/fonts/Nunito/static/Nunito-Bold.ttf" id="9_7vew8"]
+[ext_resource type="Script" path="res://componentes/sidebar/botaoSidebar/botaoLogin/botaoLogin.gd" id="10_6rvil"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ukcv7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ewr8e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pix14"]
+content_margin_top = 7.0
+bg_color = Color(0.258824, 0.517647, 0.286275, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+expand_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6o4e0"]
+color = Color(1, 1, 1, 1)
+grow_begin = 10.0
+grow_end = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6dmo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ttqpu"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mhwxr"]
+color = Color(1, 1, 1, 1)
+grow_begin = 10.0
+grow_end = 10.0
+
+[node name="Sidebar" type="Panel" groups=["botaoPerfil"]]
+offset_right = 250.0
+offset_bottom = 720.0
+theme = ExtResource("1_b34h6")
+script = ExtResource("2_lbasx")
+
+[node name="Itens" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SessaoDeUsuario" type="PanelContainer" parent="Itens"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ukcv7")
+
+[node name="ContainerUsuario" type="MarginContainer" parent="Itens/SessaoDeUsuario"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+
+[node name="Perfil" type="VBoxContainer" parent="Itens/SessaoDeUsuario/ContainerUsuario"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Separador5" type="HSeparator" parent="Itens/SessaoDeUsuario/ContainerUsuario/Perfil"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ewr8e")
+
+[node name="ModeradorLabel" type="Label" parent="Itens/SessaoDeUsuario/ContainerUsuario/Perfil"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_twu8v")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_pix14")
+text = "MODERADOR"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Perfil" parent="Itens/SessaoDeUsuario/ContainerUsuario/Perfil" groups=["botaoPerfil"] instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(230, 65)
+layout_mode = 2
+theme = ExtResource("4_13vnq")
+text = "[PERFIL]"
+script = ExtResource("3_0723v")
+redirecionarPara = "res://cenas/cadastroUsuario/cadastroUsuario.tscn"
+
+[node name="Separador4" type="HSeparator" parent="Itens/SessaoDeUsuario/ContainerUsuario/Perfil"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ewr8e")
+
+[node name="Separador" type="HSeparator" parent="Itens/SessaoDeUsuario/ContainerUsuario/Perfil"]
+layout_mode = 2
+theme_override_constants/separation = 1
+theme_override_styles/separator = SubResource("StyleBoxLine_6o4e0")
+
+[node name="SessaoCentral" type="PanelContainer" parent="Itens"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o6dmo")
+
+[node name="SessaoCentral" type="VBoxContainer" parent="Itens/SessaoCentral"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="BotaoCriarQuiz" type="MarginContainer" parent="Itens/SessaoCentral/SessaoCentral"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="CriarQuiz" parent="Itens/SessaoCentral/SessaoCentral/BotaoCriarQuiz" node_paths=PackedStringArray("iconBotaoCriarQuiz") instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(230, 65)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("4_04r82")
+text = "CRIAR QUIZ"
+icon_alignment = 1
+script = ExtResource("4_61853")
+iconBotaoCriarQuiz = NodePath("IconBotaoCriarQuiz")
+redirecionarPara = "res://cenas/criarQuiz/criarQuiz.tscn"
+
+[node name="IconBotaoCriarQuiz" type="TextureRect" parent="Itens/SessaoCentral/SessaoCentral/BotaoCriarQuiz/CriarQuiz"]
+layout_mode = 0
+anchor_left = 0.1
+anchor_top = 0.215385
+anchor_right = 0.259302
+anchor_bottom = 0.77907
+offset_right = 27.3604
+offset_bottom = 27.3604
+scale = Vector2(0.572493, 0.572493)
+texture = ExtResource("5_pvyk5")
+metadata/_edit_use_anchors_ = true
+
+[node name="ContainerBotoesCentrais" type="MarginContainer" parent="Itens/SessaoCentral/SessaoCentral"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxBotoesCentrais" type="VBoxContainer" parent="Itens/SessaoCentral/SessaoCentral/ContainerBotoesCentrais"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="QuizzesPopulares" parent="Itens/SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 0
+text = "QUIZZES 
+POPULARES"
+script = ExtResource("3_mnyfy")
+redirecionarPara = "res://cenas/quizzesPopulares/quizzesPopulares.tscn"
+
+[node name="MeusQuizes" parent="Itens/SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 0
+text = "MEUS QUIZZES"
+script = ExtResource("3_mnyfy")
+redirecionarPara = "res://cenas/meusQuizzes/meusQuizzes.tscn"
+
+[node name="QuizzesFavoritos" parent="Itens/SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 0
+text = "QUIZZES
+FAVORITOS"
+script = ExtResource("3_mnyfy")
+redirecionarPara = "res://cenas/quizzesFavoritos/quizzesFavoritos.tscn"
+
+[node name="PerguntasFrequentes" parent="Itens/SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 0
+text = "PERGUNTAS
+FREQUENTES"
+script = ExtResource("3_mnyfy")
+redirecionarPara = "res://cenas/perguntasFrequentes/perguntasFrequentes.tscn"
+
+[node name="SobreNos" parent="Itens/SessaoCentral/SessaoCentral/ContainerBotoesCentrais/VBoxBotoesCentrais" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 0
+text = "SOBRE NÓS"
+script = ExtResource("3_mnyfy")
+redirecionarPara = "res://cenas/sobreNos/sobreNos.tscn"
+
+[node name="SessaoDeLogin" type="PanelContainer" parent="Itens"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ttqpu")
+
+[node name="ContainerSessaoLogin" type="MarginContainer" parent="Itens/SessaoDeLogin"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="Login" type="VBoxContainer" parent="Itens/SessaoDeLogin/ContainerSessaoLogin"]
+layout_mode = 2
+
+[node name="VersaoSoftware" type="Label" parent="Itens/SessaoDeLogin/ContainerSessaoLogin/Login"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("9_7vew8")
+theme_override_font_sizes/font_size = 16
+text = "teste"
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Separador3" type="HSeparator" parent="Itens/SessaoDeLogin/ContainerSessaoLogin/Login"]
+layout_mode = 2
+theme_override_constants/separation = 1
+theme_override_styles/separator = SubResource("StyleBoxLine_mhwxr")
+
+[node name="Separador2" type="HSeparator" parent="Itens/SessaoDeLogin/ContainerSessaoLogin/Login"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ewr8e")
+
+[node name="Login" parent="Itens/SessaoDeLogin/ContainerSessaoLogin/Login" instance=ExtResource("2_orqhk")]
+custom_minimum_size = Vector2(230, 65)
+layout_mode = 2
+text = "LOGIN"
+script = ExtResource("10_6rvil")
