@@ -22,7 +22,7 @@ content_margin_top = 7.0
 bg_color = Color(0.258824, 0.517647, 0.286275, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
-expand_margin_bottom = 7.0
+expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_6o4e0"]
 color = Color(1, 1, 1, 1)
@@ -72,15 +72,17 @@ layout_mode = 2
 theme_override_constants/separation = 5
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ewr8e")
 
-[node name="ModeradorLabel" type="Label" parent="Itens/SessaoDeUsuario/ContainerUsuario/Perfil"]
+[node name="ModeradorLabel" type="RichTextLabel" parent="Itens/SessaoDeUsuario/ContainerUsuario/Perfil"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("6_twu8v")
-theme_override_font_sizes/font_size = 22
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("6_twu8v")
+theme_override_font_sizes/normal_font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_pix14")
-text = "MODERADOR"
-horizontal_alignment = 1
-vertical_alignment = 2
+bbcode_enabled = true
+text = "[center][wave amp=40 freq=5 align=center]MODERADOR"
+fit_content = true
+scroll_active = false
+tab_size = 5
 
 [node name="Perfil" parent="Itens/SessaoDeUsuario/ContainerUsuario/Perfil" groups=["botaoPerfil"] instance=ExtResource("2_orqhk")]
 custom_minimum_size = Vector2(230, 65)
