@@ -18,12 +18,23 @@ var isDesativado := false
 @onready var _imagemDoQuiz = $MarginDentroDoPanel/Elementos/ImagemDoQuiz
 
 
+var thread: Thread
+var terminouThread = false
+
+
+func _process(_delta):
+	if terminouThread:
+		thread.wait_to_finish()
+		terminouThread = false
+		
+		
 func _ready():
+	thread = Thread.new()
 	_editarBotao.connect("pressed", _editarQuiz)
 	_deletarBotao.connect("pressed", _deletarQuiz)
 	_tituloQuiz.text = tituloDoQuiz
 	_avisoLabel.visible = isDesativado
-	_insereImagemQuiz()
+	thread.start(_insereImagemQuiz)
 
 
 func _insereImagemQuiz():
@@ -38,8 +49,10 @@ func _insereImagemQuiz():
 			var texture = ImageTexture.new()
 			image.load(ProjectSettings.globalize_path(arquivoCaminho))			
 			texture.set_image(image)
-			_imagemDoQuiz.texture = texture
-			
+			_imagemDoQuiz.call_deferred("set_texture", texture)
+	
+	terminouThread = true
+	
 			
 func _editarQuiz():
 	TransicaoCena.trocar_cena(TransicaoCena.telaEditFormQuiz, quizId)
