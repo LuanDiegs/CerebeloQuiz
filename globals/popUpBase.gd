@@ -35,14 +35,15 @@ func criaPopupConfirmacao(
 	conteudo: String = "Ocorreu um erro inesperado",
 	titulo: String = "Atenção",
 	textoBotaoFechar: String = "Fechar",
-	botaoAdicional: Dictionary = {"textoBotao": "", "funcaoBotao": func(): pass, "funcaoAposAcao": func(): pass}):
+	botoesAdicionais: Array[Dictionary] = [{"textoBotao": "", "funcaoBotao": func(): pass, "funcaoAposAcao": func(): pass}]):
 	
 	var popup = criaPopupNotificacao(conteudo, "", titulo, false, textoBotaoFechar)
 	
-	if(!botaoAdicional.has("funcaoAposAcao")):
-		botaoAdicional.get_or_add("funcaoAposAcao", func(): pass)
+	for botaoAdicional in botoesAdicionais:
+		if(!botaoAdicional.has("funcaoAposAcao")):
+			botaoAdicional.get_or_add("funcaoAposAcao", func(): pass)
 
-	popup.inserirBotaoOpcional(botaoAdicional.textoBotao, botaoAdicional.funcaoBotao, botaoAdicional.funcaoAposAcao)
+		popup.inserirBotaoOpcional(botaoAdicional.textoBotao, botaoAdicional.funcaoBotao, botaoAdicional.funcaoAposAcao)
 
 
 func criaPopupEditFormPergunta(

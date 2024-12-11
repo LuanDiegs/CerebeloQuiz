@@ -31,7 +31,9 @@ func _criaQuizzes():
 			
 			#Insere o card do quiz
 			_meusQuizzesContainer.add_child(cardComponente)
-		
+			
+			#Insere a categoria
+			cardComponente.inserirCategoria(quiz.descricaoCategoria)
 
 func _deletaOsQuizzesNaGrid():
 	for quiz in _meusQuizzesContainer.get_children():

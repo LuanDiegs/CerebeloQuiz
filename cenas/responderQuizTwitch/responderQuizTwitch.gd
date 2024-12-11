@@ -81,10 +81,7 @@ func sairSessaoClicked():
 	PopUp.criaPopupConfirmacao("Deseja sair da sessão?", 
 		"Sair da sessão",
 		"Cancelar",
-		{
-			"textoBotao": "Confirmar", 
-			"funcaoBotao": 
-				func(): await TransicaoCena.trocar_cena(TransicaoDeCena.telaQuizzesPopulares)})
+		[Utils.criaBotaoAdicional("Confirmar", func(): await TransicaoCena.trocar_cena(TransicaoDeCena.telaQuizzesPopulares))])
 
 
 #Tá repetido mas que se foda

@@ -68,7 +68,7 @@ func _desativarQuiz():
 		"Certeza que deseja desativar o quiz?", 
 		"Atenção", 
 		"Não", 
-		Utils.criaBotaoAdicional("Sim", _desativarQuizAlgoritmo))
+		[Utils.criaBotaoAdicional("Sim", _desativarQuizAlgoritmo)])
 
 
 func _desativarQuizAlgoritmo():
@@ -85,7 +85,7 @@ func _desativarUsuario():
 		"Certeza que deseja desativar o usuário?", 
 		"Atenção", 
 		"Não", 
-		Utils.criaBotaoAdicional("Sim", _desativarUsuarioAlgoritmo))
+		[Utils.criaBotaoAdicional("Sim", _desativarUsuarioAlgoritmo)])
 
 
 func _desativarUsuarioAlgoritmo():

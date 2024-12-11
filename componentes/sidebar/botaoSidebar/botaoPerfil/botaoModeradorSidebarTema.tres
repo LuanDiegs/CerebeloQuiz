@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://b4cdfixe50hm2"]
+
+[ext_resource type="FontFile" uid="uid://hoguj3iguvyo" path="res://resources/fonts/Nunito/static/Nunito-Black.ttf" id="1_66l42"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvp5e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5j86"]
+bg_color = Color(0.203593, 0.232261, 0.47551, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.258824, 0.517647, 0.286275, 1)
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_top = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w82c0"]
+bg_color = Color(0.227451, 0.258824, 0.521569, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.258824, 0.517647, 0.286275, 1)
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_top = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j1do"]
+bg_color = Color(0.241073, 0.273998, 0.547229, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.258824, 0.517647, 0.286275, 1)
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_top = 6.0
+
+[resource]
+Button/constants/h_separation = 0
+Button/font_sizes/font_size = 22
+Button/fonts/font = ExtResource("1_66l42")
+Button/styles/focus = SubResource("StyleBoxEmpty_hvp5e")
+Button/styles/hover = SubResource("StyleBoxFlat_b5j86")
+Button/styles/normal = SubResource("StyleBoxFlat_w82c0")
+Button/styles/pressed = SubResource("StyleBoxFlat_5j1do")

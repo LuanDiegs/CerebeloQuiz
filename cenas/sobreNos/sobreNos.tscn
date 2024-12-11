@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dq5sl8pskeidm" path="res://resources/imagens/icons/exclamation-mark.png" id="4_4th4x"]
 [ext_resource type="Texture2D" uid="uid://bclh84ofe8slx" path="res://resources/imagens/icons/human-brain.png" id="6_yh7qa"]
 [ext_resource type="Texture2D" uid="uid://id1jy4ns0nym" path="res://resources/imagens/instagram.png" id="7_ehbr2"]
+[ext_resource type="Texture2D" uid="uid://bqtp1d1b3d2d8" path="res://resources/imagens/icons/BlueskyeIcon.png" id="8_cmnt7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_np1da"]
 content_margin_left = 10.0
@@ -37,9 +38,6 @@ base_font = ExtResource("3_cgcm5")
 spacing_top = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lua7a"]
-
-[sub_resource type="FontVariation" id="FontVariation_lel70"]
-base_font = ExtResource("3_cgcm5")
 
 [node name="SobreNos" type="Control"]
 layout_mode = 3
@@ -134,8 +132,7 @@ size_flags_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_cgcm5")
 theme_override_font_sizes/font_size = 16
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed tristique ipsum. Maecenas suscipit luctus accumsan. Etiam et libero posuere, auctor felis eu, consectetur ante. Etiam ac cursus libero, sit amet malesuada nulla. Proin lacus erat, hendrerit ac bibendum et, viverra non libero. Donec consectetur semper lorem, sed pharetra mi semper in."
-horizontal_alignment = 3
+text = "Nossa missão é criar uma plataforma gamificada que combina aprendizado e diversão, promovendo a troca de conhecimentos em um ambiente seguro e inclusivo. Nossa visão é ser referência em ferramentas educacionais digitais, transformando o aprendizado em uma experiência prazerosa e acessível. Valorizamos a inovação para engajar e educar, a ética na proteção à privacidade e o respeito à inclusão e colaboração, promovendo uma comunidade segura e responsável."
 autowrap_mode = 2
 clip_text = true
 
@@ -189,7 +186,7 @@ size_flags_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_cgcm5")
 theme_override_font_sizes/font_size = 16
-text = "Nam ornare, odio sed commodo gravida, tellus dolor consequat quam, sit amet rutrum nulla turpis vitae lectus. Nulla facilisi. Nulla facilisi. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam eu nibh interdum lacus finibus semper non sed urna. Etiam dictum leo eu porta pharetra. Phasellus blandit dui venenatis, elementum nisi eu, semper elit. Suspendisse potenti. "
+text = "Nossos quizzes combinam aprendizado e diversão, permitindo aos usuários testar conhecimentos, receber feedbacks imediatos e compartilhar saberes em uma experiência interativa. Usando gamificação, com recompensas e rankings, tornam o estudo mais dinâmico, engajador e prazeroso. São ferramentas flexíveis, aplicáveis à educação e ao entretenimento, incentivando autonomia, criatividade e um aprendizado mais efetivo."
 horizontal_alignment = 3
 autowrap_mode = 2
 clip_text = true
@@ -263,7 +260,7 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_smpoi")
 theme_override_font_sizes/font_size = 18
-text = "@Cerebelo"
+text = "@cerebelo"
 uri = "https://www.instagram.com/"
 
 [node name="Separador" type="VSeparator" parent="VBoxContainer/NossosQuizzes/NossosQuizesPanel/Conteudo/MarginInformacoes/Itens/RedesSociais"]
@@ -271,15 +268,18 @@ layout_mode = 2
 theme_override_constants/separation = 50
 theme_override_styles/separator = SubResource("StyleBoxEmpty_lua7a")
 
-[node name="Insta2" type="TextureRect" parent="VBoxContainer/NossosQuizzes/NossosQuizesPanel/Conteudo/MarginInformacoes/Itens/RedesSociais"]
+[node name="BlueSkye" type="TextureRect" parent="VBoxContainer/NossosQuizzes/NossosQuizesPanel/Conteudo/MarginInformacoes/Itens/RedesSociais"]
 layout_mode = 2
-texture = ExtResource("7_ehbr2")
+texture = ExtResource("8_cmnt7")
+expand_mode = 2
 stretch_mode = 5
 
-[node name="RedeSocial3" type="Label" parent="VBoxContainer/NossosQuizzes/NossosQuizesPanel/Conteudo/MarginInformacoes/Itens/RedesSociais"]
+[node name="LinkButton2" type="LinkButton" parent="VBoxContainer/NossosQuizzes/NossosQuizesPanel/Conteudo/MarginInformacoes/Itens/RedesSociais"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_lel70")
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_smpoi")
 theme_override_font_sizes/font_size = 18
-text = "@CerebeloQuiz"
-vertical_alignment = 1
+text = "@cerebelo.bsky.social"
+uri = "https://bsky.app/"

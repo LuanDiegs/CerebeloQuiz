@@ -82,7 +82,7 @@ func _apagarPergunta():
 	PopUp.criaPopupConfirmacao("Certeza que deseja apagar a pergunta Nº" + str(self.get_index()+1), 
 		"Atenção",
 		"Cancelar",
-		{"textoBotao": "Confirmar", "funcaoBotao": func(): self.queue_free()})
+		[Utils.criaBotaoAdicional("Confirmar", func(): self.queue_free())])
 
 
 func _abrirComentarios():

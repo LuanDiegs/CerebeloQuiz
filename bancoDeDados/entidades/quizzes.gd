@@ -43,6 +43,7 @@ func inserirQuiz(quiz, perguntas, imagemExtensao, imagemDoQuiz):
 		
 	return true
 
+
 func salvarImagemQuiz(imagem, extensaoImagem, idQuiz):
 
 	var caminho = OS.get_user_data_dir() + "/data/imagensQuizzes/" + str(SessaoUsuario.usuarioLogado.idUsuario) + "/" + str(idQuiz)
@@ -58,7 +59,7 @@ func salvarImagemQuiz(imagem, extensaoImagem, idQuiz):
 			bytes = imagem.save_png_to_buffer()
 		"jpg", "jpeg":
 			bytes = imagem.save_jpg_to_buffer()
-		_: 
+		_:
 			return
 	
 	#Remove a imagem antiga
@@ -66,13 +67,14 @@ func salvarImagemQuiz(imagem, extensaoImagem, idQuiz):
 	for arquivo in arquivosNoDiretorio:
 		DirAccess.remove_absolute(caminho + "/" + arquivo)
 	
-	var caminhoImagem = caminho + "/" + "quizImagem." + extensaoImagem 
+	var caminhoImagem = caminho + "/" + "quizImagem." + extensaoImagem
 	var arquivo = FileAccess.open(caminhoImagem, FileAccess.WRITE)
 
 	arquivo.store_buffer(bytes)
 	arquivo.close()
 	
 	return true
+
 
 func editarInserirQuiz(
 	idRegistroEdicao: int,
@@ -288,12 +290,13 @@ func getTodosQuizzesFavoritadosPublicos(filtro: String = "", categoriaId = null)
 		queryFiltro = " AND (titulo like '%" + filtro + "%' OR u.nome like '%" + filtro + "%')"
 	
 	if categoriaId:
-		queryFiltro += " AND categoriaId=" + str(categoriaId)
+		queryFiltro += " AND q.categoriaId=" + str(categoriaId)
 	
-	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesFavoritosTabela + " f 
+	var query = "SELECT *, c.descricao as descricaoCategoria FROM " + EntidadeConstantes.QuizzesFavoritosTabela + " f 
 		INNER JOIN " + EntidadeConstantes.QuizzesTabela + " q ON f.quizId = q.quizId 
-		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON q.usuarioId = u.usuarioId 
-		WHERE q.isPrivado=? AND q.isDesativado=0 AND u.isDesativado=0 AND f.usuarioId =? AND q.classificacaoIndicativa 
+		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON q.usuarioId = u.usuarioId
+		INNER JOIN " + EntidadeConstantes.CategoriasTabela + " c ON q.categoriaId = c.categoriaId 
+		WHERE q.isPrivado=? AND q.isDesativado=0 AND u.isDesativado=0 AND f.usuarioId =? AND q.classificacaoIndicativa
 		IN(" + classificacaoDoUsuario + ")" + queryFiltro
 
 	var params = [0, SessaoUsuario.usuarioLogado.idUsuario]
@@ -365,10 +368,12 @@ func getQuizzesDoUsuario(idUsuario, filtro: String = "", categoriaId = null):
 		queryFiltro = " AND titulo like '%" + filtro + "%'"
 	
 	if categoriaId:
-		queryFiltro += " AND categoriaId=" + str(categoriaId)
+		queryFiltro += " AND q.categoriaId=" + str(categoriaId)
 
 	var banco = BD.banco as SQLite
-	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesTabela + " WHERE usuarioId=?" + queryFiltro
+	var query = "SELECT *, c.descricao as descricaoCategoria FROM " + EntidadeConstantes.QuizzesTabela + " q  
+	INNER JOIN " + EntidadeConstantes.CategoriasTabela + " c ON q.categoriaId = c.categoriaId 
+	WHERE usuarioId=?" + queryFiltro
 	var param = [idUsuario]
 	
 	if (banco.query_with_bindings(query, param)):
@@ -389,10 +394,11 @@ func getTodosQuizzesPublicos(filtro: String = "", categoriaId = null):
 		queryFiltro = " AND (titulo like '%" + filtro + "%' OR u.nome like '%" + filtro + "%')"
 	
 	if categoriaId:
-		queryFiltro += " AND categoriaId=" + str(categoriaId)
+		queryFiltro += " AND q.categoriaId=" + str(categoriaId)
 		
-	var query = "SELECT * FROM " + EntidadeConstantes.QuizzesTabela + " q 
+	var query = "SELECT *, c.descricao as descricaoCategoria FROM " + EntidadeConstantes.QuizzesTabela + " q 
 		INNER JOIN " + EntidadeConstantes.UsuarioTabela + " u ON q.usuarioId = u.usuarioId 
+		INNER JOIN " + EntidadeConstantes.CategoriasTabela + " c ON q.categoriaId = c.categoriaId 
 		WHERE q.isPrivado=? AND q.isDesativado=0 AND u.isDesativado=0 AND q.classificacaoIndicativa IN(" + classificacaoDoUsuario + ")" + queryFiltro
 	var params = ["0"]
 	if (banco.query_with_bindings(query, params)):

@@ -127,7 +127,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_yii0d")
-text = "Nam ornare, odio sed commodo gravida, tellus dolor consequat quam, sit amet rutrum nulla turpis vitae lectus. Nulla facilisi. Nulla facilisi. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam eu nibh interdum lacus finibus semper non sed urna. Etiam dictum leo eu porta pharetra. Phasellus blandit dui venenatis, elementum nisi eu, semper elit."
+text = "Para criar um quiz no Cerebelo, é necessário criar uma conta. Após o cadastro, você pode criar um quiz clicando no botão \"Criar quiz\", localizado na barra lateral esquerda, ou acessando a seção \"Meus quizzes\", onde também encontrará a opção \"Criar quiz\"."
 autowrap_mode = 3
 
 [node name="SessaoTwitch" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas"]
@@ -157,7 +157,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_5t1vj")
 theme_override_font_sizes/font_size = 24
-text = "Como crio uma sessão com outras pessoas?"
+text = "Como crio uma sessão na twitch?"
 horizontal_alignment = 1
 
 [node name="Texto" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/SessaoTwitch/PanelGeral/Conteudos"]
@@ -172,7 +172,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_yii0d")
-text = "Nam ornare, odio sed commodo gravida, tellus dolor consequat quam, sit amet rutrum nulla turpis vitae lectus. Nulla facilisi. Nulla facilisi. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam eu nibh interdum lacus finibus semper non sed urna. Etiam dictum leo eu porta pharetra. Phasellus blandit dui venenatis, elementum nisi eu, semper elit."
+text = "Criar uma sessão vinculada à Twitch é simples! Basta clicar em \"Jogar na Twitch\". Em seguida, você será redirecionado para uma página onde, para iniciar uma sessão com seu chat, basta inserir o nome do seu canal na Twitch e começar o quiz!"
 autowrap_mode = 3
 
 [node name="ComentarioQuiz" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas"]
@@ -217,7 +217,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_yii0d")
-text = "Nam ornare, odio sed commodo gravida, tellus dolor consequat quam, sit amet rutrum nulla turpis vitae lectus. Nulla facilisi. Nulla facilisi. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam eu nibh interdum lacus finibus semper non sed urna. Etiam dictum leo eu porta pharetra. Phasellus blandit dui venenatis, elementum nisi eu, semper elit."
+text = "Para comentar em um quiz, é necessário estar logado e ter terminado de responder todas as perguntas. Após finalizar, aparecerá uma caixa abaixo de cada pergunta para você deixar seu comentário, além dos comentários de outros usuários para você ler. Lembre-se de que cada pergunta tem comentários específicos, então verifique se está na pergunta correta antes de comentar!"
 autowrap_mode = 3
 
 [node name="QuizSuspenso" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas"]
@@ -247,7 +247,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_5t1vj")
 theme_override_font_sizes/font_size = 24
-text = "O que acontece se meu quiz for suspenso?"
+text = "O que acontece se meu quiz for desativado?"
 horizontal_alignment = 1
 
 [node name="Texto" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/QuizSuspenso/PanelGeral/Conteudos"]
@@ -262,7 +262,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_yii0d")
-text = "Nam ornare, odio sed commodo gravida, tellus dolor consequat quam, sit amet rutrum nulla turpis vitae lectus. Nulla facilisi. Nulla facilisi. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam eu nibh interdum lacus finibus semper non sed urna. Etiam dictum leo eu porta pharetra. Phasellus blandit dui venenatis, elementum nisi eu, semper elit."
+text = "Se seu quiz for desativado, ele não poderá ser respondido por ninguém, ficando como se estivesse privado. Ele aparecerá apenas para você na página \"Meus quizzes\", com um aviso de que foi desativado. Caso ache que foi um engano, entre em contato conosco para que possamos revisar e verificar se o quiz infringiu nossas políticas."
 autowrap_mode = 3
 
 [node name="ContaSuspensa" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas"]
@@ -292,7 +292,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_5t1vj")
 theme_override_font_sizes/font_size = 24
-text = "O que ocorre se minha conta for suspensa?"
+text = "O que ocorre se minha conta for desativada?"
 horizontal_alignment = 1
 
 [node name="Texto" type="MarginContainer" parent="ItensContainer/VBoxContainer/ScollPerguntas/Perguntas/ContaSuspensa/PanelGeral/Conteudos"]
@@ -307,5 +307,5 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_yii0d")
-text = "Nam ornare, odio sed commodo gravida, tellus dolor consequat quam, sit amet rutrum nulla turpis vitae lectus. Nulla facilisi. Nulla facilisi. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam eu nibh interdum lacus finibus semper non sed urna. Etiam dictum leo eu porta pharetra. Phasellus blandit dui venenatis, elementum nisi eu, semper elit."
+text = "Se sua conta for desativada, isso significa que nossos moderadores verificaram denúncias nos seus quizzes e identificaram que o problema vai além dos quizzes. Um usuário com a conta desativada não poderá acessar sua conta, e um aviso será exibido caso tente fazer login. Se você acreditar que a desativação foi injusta, entre em contato conosco para que possamos revisar a situação."
 autowrap_mode = 3

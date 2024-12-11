@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://codj1qfrivht6"]
+[gd_scene load_steps=20 format=3 uid="uid://codj1qfrivht6"]
 
 [ext_resource type="Script" path="res://componentes/cards/cardBase.gd" id="1_kw8vd"]
 [ext_resource type="Texture2D" uid="uid://bqc3ej2f1ddii" path="res://resources/imagens/noImage.png" id="2_ajeye"]
@@ -40,6 +40,18 @@ expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjlhd"]
+bg_color = Color(0.176, 0.2024, 0.44, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.172549, 0.2, 0.435294, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_nev5b"]
 color = Color(0.256, 0.274133, 0.8, 1)
@@ -180,6 +192,30 @@ theme_override_font_sizes/font_size = 12
 text = "zdziin"
 clip_text = true
 text_overrun_behavior = 3
+
+[node name="CategoriaPanel" type="Panel" parent="ItensCard"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjlhd")
+
+[node name="CategoriaTexto" type="Label" parent="ItensCard/CategoriaPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.075
+anchor_right = 1.0
+anchor_bottom = 1.075
+offset_top = 1.5
+offset_bottom = -1.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.172549, 0.2, 0.435294, 1)
+theme_override_fonts/font = ExtResource("6_0vj1s")
+theme_override_font_sizes/font_size = 14
+text = "[Categoria]"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+metadata/_edit_use_anchors_ = true
 
 [node name="SeparadorTituloCriador" type="HSeparator" parent="ItensCard"]
 layout_mode = 2
